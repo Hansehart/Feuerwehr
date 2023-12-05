@@ -17,7 +17,7 @@ public class TestFfLernAppApplication {
 	}
 
 	public static void main(String[] args) {
-		SpringApplication.from(FfLernAppApplication::main).with(TestFfLernAppApplication.class).run(args);
+		SpringApplication.from(FFLernAppApplication::main).with(TestFfLernAppApplication.class).run(args);
 	}
 
 }
