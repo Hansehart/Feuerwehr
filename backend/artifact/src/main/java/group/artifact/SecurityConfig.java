@@ -16,8 +16,6 @@ public class SecurityConfig {
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers("/postman").permitAll()
                         .anyRequest().authenticated())
-                .csrf(req -> req
-                        .disable())
                 .build();
     }
 }
