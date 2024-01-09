@@ -14,8 +14,7 @@ public class PostmanController {
     RadioCallSignRepository radioCallSignRepository;
 
     @PostMapping("/postman")
-    private void postman(@RequestBody RadioCallSign body) {
-        RadioCallSign radioCallSign = new RadioCallSign();
-        radioCallSignRepository.save(radioCallSign);
+    private void postman(@RequestBody RadioCallSign rcs) {
+        radioCallSignRepository.save(rcs);
     }
 }

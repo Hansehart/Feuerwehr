@@ -11,7 +11,7 @@ import lombok.NoArgsConstructor;
 @Data
 @Entity
 @NoArgsConstructor
-@Table(name="RaduiCallSign")
+@Table(name="radiocallsign")
 public class RadioCallSign {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
