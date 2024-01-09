@@ -9,5 +9,4 @@ public class FFLernAppApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(FFLernAppApplication.class, args);
 	}
-
 }
