@@ -1,6 +1,6 @@
 package group.artifact.models.keys;
-import java.io.Serializable;
 
+import java.io.Serializable;
 import jakarta.persistence.Column;
 import jakarta.persistence.Embeddable;
 
@@ -10,11 +10,11 @@ public class ImagesForContentpagesKey implements Serializable{
     private Integer fkImageC;
 
     @Column(name = "fk_contentpage")
-    private Integer fkContentpage;
+    private Integer fkContentpageI;
 
     @Override
     public int hashCode() {
-        return (int) (fkImageC.hashCode() * fkContentpage.hashCode());
+        return (int) (fkImageC.hashCode() * fkContentpageI.hashCode());
     }
 
     @Override
@@ -27,7 +27,7 @@ public class ImagesForContentpagesKey implements Serializable{
         }
         ImagesForContentpagesKey other = (ImagesForContentpagesKey) o;
         boolean equalsForeignKeys = (fkImageC == null && other.fkImageC == null) || (fkImageC != null && this.fkImageC.equals(other.fkImageC))
-         || (fkContentpage == null && other.fkContentpage == null) || (fkContentpage != null && this.fkContentpage.equals(other.fkContentpage));
+         || (fkContentpageI == null && other.fkContentpageI == null) || (fkContentpageI != null && this.fkContentpageI.equals(other.fkContentpageI));
         return equalsForeignKeys;
     }
 }

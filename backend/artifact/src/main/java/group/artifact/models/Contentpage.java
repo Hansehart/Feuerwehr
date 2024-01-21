@@ -22,6 +22,6 @@ public class Contentpage {
     private String title;
     private String content;
 
-    @OneToMany(mappedBy = "contentpage")
+    @OneToMany(mappedBy = "contentpageI")
     Set<ImagesForContentpages> imagesForContentpages;
 }

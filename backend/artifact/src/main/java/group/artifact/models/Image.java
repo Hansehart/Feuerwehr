@@ -3,6 +3,7 @@ package group.artifact.models;
 import java.util.Set;
 
 import group.artifact.models.mappers.ImagesForContentpages;
+import group.artifact.models.mappers.ImagesForMaterials;
 import group.artifact.models.mappers.ImagesForVehicles;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -30,4 +31,7 @@ public class Image {
 
     @OneToMany(mappedBy = "imageC")
     Set<ImagesForContentpages> imagesForContentpages;
+
+    @OneToMany(mappedBy = "imageM")
+    Set<ImagesForMaterials> imagesForMaterials;
 }
