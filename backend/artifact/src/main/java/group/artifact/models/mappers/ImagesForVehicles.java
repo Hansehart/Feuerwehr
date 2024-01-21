@@ -23,7 +23,7 @@ public class ImagesForVehicles {
     @ManyToOne
     @MapsId("fkImage")
     @JoinColumn(name = "fk_image")
-    Image image;
+    Image imageV;
 
     @ManyToOne
     @MapsId("fkVehicle")

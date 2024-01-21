@@ -2,6 +2,7 @@ package group.artifact.models;
 
 import java.util.Set;
 
+import group.artifact.models.mappers.ImagesForContentpages;
 import group.artifact.models.mappers.ImagesForVehicles;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -11,7 +12,6 @@ import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
 
 @Data
 @Entity
@@ -25,6 +25,9 @@ public class Image {
     private Short width;
     private Short height;
 
-    @OneToMany(mappedBy = "image")
+    @OneToMany(mappedBy = "imageV")
     Set<ImagesForVehicles> imagesForVehicles;
+
+    @OneToMany(mappedBy = "imageC")
+    Set<ImagesForContentpages> imagesForContentpages;
 }

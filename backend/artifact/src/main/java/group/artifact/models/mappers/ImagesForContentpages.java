@@ -21,9 +21,9 @@ public class ImagesForContentpages {
     ImagesForContentpagesKey id = new ImagesForContentpagesKey();
 
     @ManyToOne
-    @MapsId("fkImage")
+    @MapsId("fkImageC")
     @JoinColumn(name = "fk_image")
-    Image image;
+    Image imageC;
 
     @ManyToOne
     @MapsId("fkContentpage")
