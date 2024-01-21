@@ -14,7 +14,7 @@ public class SecurityConfig {
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         return http
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/postman").permitAll()
+                        .requestMatchers("/postman/*").permitAll()
                         .anyRequest().authenticated())
                 .csrf(req -> req
                         .disable())
