@@ -15,7 +15,7 @@ public class ImagesForVehiclesKey implements Serializable {
 
     @Override
     public int hashCode() {
-        return 0;
+        return (int) (fkImage.hashCode() * fkVehicle.hashCode());
     }
 
     @Override
