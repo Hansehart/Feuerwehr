@@ -29,4 +29,6 @@ public class StorageLocationContainsMaterial {
     @MapsId("fkMaterial")
     @JoinColumn(name = "fk_material")
     Material material;
+
+    Short quantity;
 }
