@@ -1,20 +1,10 @@
-package group.artifact.models;
+package group.artifact.models.Keys;
 
 import java.io.Serializable;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Embeddable;
-// import jakarta.persistence.Entity;
-// import jakarta.persistence.Table;
-// import lombok.Data;
-// import lombok.NoArgsConstructor;
 
-
-
-// @Data
-// @Entity
-// @NoArgsConstructor
-// @Table(name="images_for_vehicles")
 @Embeddable
 public class ImagesForVehiclesKey implements Serializable{
     @Column(name = "fk_image")
