@@ -1,4 +1,4 @@
-package group.artifact.models.Keys;
+package group.artifact.models.keys;
 
 import java.io.Serializable;
 

@@ -1,5 +1,6 @@
 package group.artifact.models;
 
+import group.artifact.models.keys.ImagesForVehiclesKey;
 import jakarta.persistence.EmbeddedId;
 import jakarta.persistence.Entity;
 import jakarta.persistence.JoinColumn;
