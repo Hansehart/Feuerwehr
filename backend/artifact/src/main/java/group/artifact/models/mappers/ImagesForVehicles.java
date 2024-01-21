@@ -1,5 +1,7 @@
-package group.artifact.models;
+package group.artifact.models.mappers;
 
+import group.artifact.models.Image;
+import group.artifact.models.Vehicle;
 import group.artifact.models.keys.ImagesForVehiclesKey;
 import jakarta.persistence.EmbeddedId;
 import jakarta.persistence.Entity;

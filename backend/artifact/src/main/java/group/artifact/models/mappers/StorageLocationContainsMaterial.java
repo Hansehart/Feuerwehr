@@ -1,4 +1,4 @@
-package group.artifact.models;
+package group.artifact.models.mappers;
 
 public class StorageLocationContainsMaterial {
     
