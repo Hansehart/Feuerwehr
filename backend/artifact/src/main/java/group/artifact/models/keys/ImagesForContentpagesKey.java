@@ -7,14 +7,14 @@ import jakarta.persistence.Embeddable;
 @Embeddable
 public class ImagesForContentpagesKey implements Serializable{
     @Column(name = "fk_image")
-    private Integer fkImageC;
+    private Integer fkImage;
 
     @Column(name = "fk_contentpage")
-    private Integer fkContentpageI;
+    private Integer fkContentpage;
 
     @Override
     public int hashCode() {
-        return (int) (fkImageC.hashCode() * fkContentpageI.hashCode());
+        return (int) (fkImage.hashCode() * fkContentpage.hashCode());
     }
 
     @Override
@@ -26,8 +26,8 @@ public class ImagesForContentpagesKey implements Serializable{
             return false;
         }
         ImagesForContentpagesKey other = (ImagesForContentpagesKey) o;
-        boolean equalsForeignKeys = (fkImageC == null && other.fkImageC == null) || (fkImageC != null && this.fkImageC.equals(other.fkImageC))
-         || (fkContentpageI == null && other.fkContentpageI == null) || (fkContentpageI != null && this.fkContentpageI.equals(other.fkContentpageI));
+        boolean equalsForeignKeys = (fkImage == null && other.fkImage == null) || (fkImage != null && this.fkImage.equals(other.fkImage))
+         || (fkContentpage == null && other.fkContentpage == null) || (fkContentpage != null && this.fkContentpage.equals(other.fkContentpage));
         return equalsForeignKeys;
     }
 }

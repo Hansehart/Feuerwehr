@@ -13,7 +13,7 @@ import lombok.NoArgsConstructor;
 @Data
 @Entity
 @NoArgsConstructor
-@Table(name="material")
+@Table(name="storagelocation")
 public class StorageLocation {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

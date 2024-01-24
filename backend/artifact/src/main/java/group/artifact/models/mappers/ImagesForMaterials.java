@@ -7,7 +7,6 @@ import jakarta.persistence.EmbeddedId;
 import jakarta.persistence.Entity;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
-import jakarta.persistence.MapsId;
 import jakarta.persistence.Table;
 import lombok.NoArgsConstructor;
 import lombok.Data;
@@ -21,12 +20,10 @@ public class ImagesForMaterials {
     ImagesForMaterialsKey id = new ImagesForMaterialsKey();
 
     @ManyToOne
-    @MapsId("fkImageM")
-    @JoinColumn(name = "fk_image")
-    Image imageM;
+    @JoinColumn(name = "fk_image", insertable = false, updatable = false)
+    Image image;
 
     @ManyToOne
-    @MapsId("fkMaterialI")
-    @JoinColumn(name = "fk_material")
-    Material materialI;
+    @JoinColumn(name = "fk_material", insertable = false, updatable = false)
+    Material material;
 }

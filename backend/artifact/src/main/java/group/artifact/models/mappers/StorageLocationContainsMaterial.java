@@ -7,7 +7,6 @@ import jakarta.persistence.EmbeddedId;
 import jakarta.persistence.Entity;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
-import jakarta.persistence.MapsId;
 import jakarta.persistence.Table;
 import lombok.NoArgsConstructor;
 import lombok.Data;
@@ -15,19 +14,17 @@ import lombok.Data;
 @Data
 @Entity
 @NoArgsConstructor
-@Table(name="storagelocation_contains_material")
+@Table(name="storagelocations_contains_materials")
 public class StorageLocationContainsMaterial {
     @EmbeddedId
     StorageLocationContainsMaterialKey id = new StorageLocationContainsMaterialKey();
 
     @ManyToOne
-    @MapsId("fkStoragelocation")
-    @JoinColumn(name = "fk_storagelocation")
+    @JoinColumn(name = "fk_storagelocation", insertable = false, updatable = false)
     StorageLocation storageLocation;
 
     @ManyToOne
-    @MapsId("fkMaterial")
-    @JoinColumn(name = "fk_material")
+    @JoinColumn(name = "fk_material", insertable = false, updatable = false)
     Material material;
 
     Short quantity;

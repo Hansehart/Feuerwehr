@@ -9,10 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import group.artifact.models.Contentpage;
 import group.artifact.models.Image;
-import group.artifact.models.RadioCallSign;
-import group.artifact.models.Vehicle;
 import group.artifact.models.mappers.ImagesForContentpages;
-import group.artifact.models.mappers.ImagesForVehicles;
 import group.artifact.repositories.ContentpageRepository;
 import group.artifact.repositories.ImageRepository;
 import group.artifact.repositories.ImagesForContentpagesRepository;
@@ -50,36 +47,14 @@ public class PostmanController {
         Integer fkImage = requestParams.get("fk_image");
         Integer fk = requestParams.get("fk_contentpage");
 
-        System.out.println(fk + " " + fkImage);
-
         Image img = imageRepository.getReferenceById(fkImage);
-        
-        System.out.println(img);
-
         Contentpage v = contentpageRepository.getReferenceById(fk);
-
-        System.out.println(img + " " + v);
-        
         ImagesForContentpages imgFVehicles = new ImagesForContentpages();
-        imgFVehicles.setImageC(img);
-        imgFVehicles.setContentpageI(v);
+
+        System.out.println(img.toString() + "" + v.toString());
+
+        imgFVehicles.setImage(img);
+        imgFVehicles.setContentpage(v);
         imagesForContentpagesRepository.save(imgFVehicles);
     }
-
-    // @PostMapping("/postman/imagesforvehicles")
-    // private void postman(@RequestBody Map<String, Integer> requestParams) {
-    //     Integer fkVehicle = requestParams.get("fk_vehicle");
-    //     Integer fkImage = requestParams.get("fk_image");
-
-    //     Image img = imageRepository.getReferenceById(fkImage);
-    //     Vehicle v = vehicleRepository.getReferenceById(fkVehicle);
-
-    //     System.out.println(fkVehicle + " " + fkImage);
-    //     System.out.println(img + " " + v);
-        
-    //     ImagesForVehicles imgFVehicles = new ImagesForVehicles();
-    //     imgFVehicles.setImage(img);
-    //     imgFVehicles.setVehicle(v);
-    //     imagesForVehiclesRepository.save(imgFVehicles);
-    // }
 }

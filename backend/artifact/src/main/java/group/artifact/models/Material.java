@@ -23,6 +23,6 @@ public class Material {
     private String name;
     private String description;
 
-    @OneToMany(mappedBy = "materialI")
+    @OneToMany(mappedBy = "material")
     Set<ImagesForMaterials> imagesForMaterials;
 }

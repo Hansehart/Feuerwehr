@@ -26,12 +26,12 @@ public class Image {
     private Short width;
     private Short height;
 
-    @OneToMany(mappedBy = "imageV")
+    @OneToMany(mappedBy = "image")
     Set<ImagesForVehicles> imagesForVehicles;
 
-    @OneToMany(mappedBy = "imageC")
+    @OneToMany(mappedBy = "image")
     Set<ImagesForContentpages> imagesForContentpages;
 
-    @OneToMany(mappedBy = "imageM")
+    @OneToMany(mappedBy = "image")
     Set<ImagesForMaterials> imagesForMaterials;
 }

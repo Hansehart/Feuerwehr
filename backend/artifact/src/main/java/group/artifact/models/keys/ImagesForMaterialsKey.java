@@ -7,14 +7,14 @@ import jakarta.persistence.Embeddable;
 @Embeddable
 public class ImagesForMaterialsKey implements Serializable{
     @Column(name = "fk_image")
-    private Integer fkImageM;
+    private Integer fkImage;
 
     @Column(name = "fk_material")
-    private Integer fkMaterialI;
+    private Integer fkMaterial;
 
     @Override
     public int hashCode() {
-        return (int) (fkImageM.hashCode() * fkMaterialI.hashCode());
+        return (int) (fkImage.hashCode() * fkMaterial.hashCode());
     }
 
     @Override
@@ -26,8 +26,8 @@ public class ImagesForMaterialsKey implements Serializable{
             return false;
         }
         ImagesForMaterialsKey other = (ImagesForMaterialsKey) o;
-        boolean equalsForeignKeys = (fkImageM == null && other.fkImageM == null) || (fkImageM != null && this.fkImageM.equals(other.fkImageM))
-         || (fkMaterialI == null && other.fkMaterialI == null) || (fkMaterialI != null && this.fkMaterialI.equals(other.fkMaterialI));
+        boolean equalsForeignKeys = (fkImage == null && other.fkImage == null) || (fkImage != null && this.fkImage.equals(other.fkImage))
+         || (fkMaterial == null && other.fkMaterial == null) || (fkMaterial != null && this.fkMaterial.equals(other.fkMaterial));
         return equalsForeignKeys;
     }
 }

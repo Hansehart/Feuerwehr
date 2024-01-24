@@ -7,7 +7,6 @@ import jakarta.persistence.EmbeddedId;
 import jakarta.persistence.Entity;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
-import jakarta.persistence.MapsId;
 import jakarta.persistence.Table;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -15,18 +14,16 @@ import lombok.NoArgsConstructor;
 @Data
 @Entity
 @NoArgsConstructor
-@Table(name = "contentpages_for_material")
+@Table(name = "contentpages_for_materials")
 public class ContentPagesForMaterial {
     @EmbeddedId
     ContentPagesForMaterialKey id = new ContentPagesForMaterialKey();
 
     @ManyToOne
-    @MapsId("fkContentpage")
-    @JoinColumn(name = "fk_contentpage")
+    @JoinColumn(name = "fk_contentpage", insertable = false, updatable = false)
     Contentpage contentpage;
 
     @ManyToOne
-    @MapsId("fkMaterial")
-    @JoinColumn(name = "fk_material")
+    @JoinColumn(name = "fk_material", insertable = false, updatable = false)
     Material material;
 }
