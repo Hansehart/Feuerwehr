@@ -8,7 +8,7 @@ import org.testcontainers.containers.PostgreSQLContainer;
 import org.testcontainers.utility.DockerImageName;
 
 @TestConfiguration(proxyBeanMethods = false)
-public class TestFfLernAppApplication {
+public class TestFFLernAppApplication {
 
 	@Bean
 	@ServiceConnection
@@ -17,7 +17,7 @@ public class TestFfLernAppApplication {
 	}
 
 	public static void main(String[] args) {
-		SpringApplication.from(FFLernAppApplication::main).with(TestFfLernAppApplication.class).run(args);
+		SpringApplication.from(FFLernAppApplication::main).with(TestFFLernAppApplication.class).run(args);
 	}
 
 }

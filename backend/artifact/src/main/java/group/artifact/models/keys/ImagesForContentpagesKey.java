@@ -3,7 +3,9 @@ package group.artifact.models.keys;
 import java.io.Serializable;
 import jakarta.persistence.Column;
 import jakarta.persistence.Embeddable;
+import lombok.Data;
 
+@Data
 @Embeddable
 public class ImagesForContentpagesKey implements Serializable{
     @Column(name = "fk_image")

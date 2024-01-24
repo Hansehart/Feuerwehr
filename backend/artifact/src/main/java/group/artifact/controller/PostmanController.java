@@ -7,8 +7,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import group.artifact.dtos.ImagesForContentpagesDTO;
 import group.artifact.models.Contentpage;
-import group.artifact.models.Image;
 import group.artifact.models.mappers.ImagesForContentpages;
 import group.artifact.repositories.ContentpageRepository;
 import group.artifact.repositories.ImageRepository;
@@ -45,16 +45,11 @@ public class PostmanController {
     @PostMapping("/postman/imagesfor")
     private void postman(@RequestBody Map<String, Integer> requestParams) {
         Integer fkImage = requestParams.get("fk_image");
-        Integer fk = requestParams.get("fk_contentpage");
+        Integer fkContentpage = requestParams.get("fk_contentpage");
 
-        Image img = imageRepository.getReferenceById(fkImage);
-        Contentpage v = contentpageRepository.getReferenceById(fk);
-        ImagesForContentpages imgFVehicles = new ImagesForContentpages();
-
-        System.out.println(img.toString() + "" + v.toString());
-
-        imgFVehicles.setImage(img);
-        imgFVehicles.setContentpage(v);
-        imagesForContentpagesRepository.save(imgFVehicles);
+        // create and save the DTO
+        ImagesForContentpagesDTO dto = new ImagesForContentpagesDTO(fkImage, fkContentpage);
+        ImagesForContentpages imagesForContentpages = new ImagesForContentpages(dto);
+        imagesForContentpagesRepository.save(imagesForContentpages);
     }
 }

@@ -1,5 +1,6 @@
 package group.artifact.models.mappers;
 
+import group.artifact.dtos.ImagesForContentpagesDTO;
 import group.artifact.models.Contentpage;
 import group.artifact.models.Image;
 import group.artifact.models.keys.ImagesForContentpagesKey;
@@ -26,4 +27,9 @@ public class ImagesForContentpages {
     @ManyToOne
     @JoinColumn(name = "fk_contentpage", insertable = false, updatable = false)
     Contentpage contentpage;
+
+    public ImagesForContentpages(ImagesForContentpagesDTO dto) {
+        this.id.setFkImage(dto.getImageId());
+        this.id.setFkContentpage(dto.getContentpageId());
+    }
 }

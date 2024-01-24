@@ -1,4 +1,5 @@
 package group.artifact.models;
+
 import java.util.Set;
 
 import group.artifact.models.mappers.ImagesForContentpages;
@@ -14,7 +15,7 @@ import lombok.NoArgsConstructor;
 @Data
 @Entity
 @NoArgsConstructor
-@Table(name="contentpage")
+@Table(name = "contentpage")
 public class Contentpage {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
