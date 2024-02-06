@@ -1,14 +1,22 @@
 package group.artifact;
 
-import org.junit.jupiter.api.Test;
-import org.junit.runner.RunWith;
-import org.springframework.test.context.junit4.SpringRunner;
+import static org.junit.Assert.assertNotNull;
 
-@RunWith(SpringRunner.class)
+import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+
+import group.artifact.controller.PostmanController;
+
+@SpringBootTest
 class FFLernAppApplicationTest {
 
-	@Test
-	void contextLoads() {
-	}
+    @Autowired
+    PostmanController postmanController;
 
+    // sanity check for running application
+    @Test
+    void contextLoads() {
+        assertNotNull(postmanController);
+    }
 }
