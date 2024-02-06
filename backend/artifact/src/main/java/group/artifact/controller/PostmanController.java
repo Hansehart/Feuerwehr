@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import group.artifact.dtos.ImagesForContentpagesDTO;
 import group.artifact.models.Contentpage;
+import group.artifact.models.Image;
 import group.artifact.models.mappers.ImagesForContentpages;
 import group.artifact.repositories.ContentpageRepository;
 import group.artifact.repositories.ImageRepository;
@@ -36,6 +37,11 @@ public class PostmanController {
 
     @Autowired
     ImagesForContentpagesRepository imagesForContentpagesRepository;
+
+    @PostMapping("/postman/image")
+    private void postman(@RequestBody Image img) {
+        imageRepository.save(img);
+    }
 
     @PostMapping("/postman/cp")
     private void postman(@RequestBody Contentpage rcs) {
