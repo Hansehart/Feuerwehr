@@ -5,9 +5,9 @@ export default function MobileNavBar() {
   return (
     <>
       <nav>
-        <RoundedIcon />
-        <RoundedIcon />
-        <RoundedIcon />
+        <RoundedIcon icon="firefighter" bgColor="#ffffff" />
+        <RoundedIcon icon="firefighter" bgColor="#ffffff" />
+        <RoundedIcon icon="firefighter" bgColor="#ffffff" />
       </nav>
     </>
   );
