@@ -1,12 +1,13 @@
+import RoundedIcon from "../RoundedIcon";
 import "./MobileNavBarStyle.css";
 
 export default function MobileNavBar() {
   return (
     <>
       <nav>
-        <section className="nav-section">HI</section>
-        <section className="nav-section">HI</section>
-        <section className="nav-section">HI</section>
+        <RoundedIcon />
+        <RoundedIcon />
+        <RoundedIcon />
       </nav>
     </>
   );
