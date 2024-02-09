@@ -1,23 +1,13 @@
-import Alert from "./components/Alert";
-import ListGroup from "./components/ListGroup";
+import MobileBody from "./components/mobile/MobileBody";
+import MobileHeader from "./components/mobile/MobileHeader";
+import MobileNavBar from "./components/mobile/MobileNavBar";
 
 function App() {
-  const items = ["New York", "Los Angeles", "Chicago", "Houston", "Phoenix"];
-  const handleSelectItem = (item: string) => {
-    console.log(item);
-  };
-
   return (
     <div>
-      <ListGroup
-        items={items}
-        heading="Cities"
-        onSelectItem={handleSelectItem}
-      />
-      <Alert>
-        <p>Hello</p>
-        <b>World!</b>
-      </Alert>
+      <MobileHeader name="Mollhagen" />
+      <MobileBody />
+      <MobileNavBar />
     </div>
   );
 }
