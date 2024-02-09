@@ -1,25 +1,34 @@
 header {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 20vh;
-    background-color: #05192A;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 20vh;
+  background-color: #05192a;
 }
 
 header > h1 {
-    font-size: 5vh;
-    position: absolute;
-    z-index: 0;
-    color: #05192A;
+  font-size: 5vh;
+  position: absolute;
+  z-index: 0;
+  color: #05192a;
 }
 
-h1:after {
-    content: attr(data-text);
+h1::after {
+  content: attr(data-text);
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+}
 
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: -1;
-  
-    -webkit-text-stroke: 4vh #EA4138;
+/* default styling with text stroke */
+h1::after {
+  -webkit-text-stroke: 4vh #ea4138;
+}
+
+/* fallback for browsers that don't support text-stroke */
+@supports not (-webkit-text-stroke: 4vh #ea4138) {
+  h1::after {
+    background-color: #ea4138; /* Fallback background color */
   }
+}
