@@ -1,6 +1,6 @@
 nav {
-  display: flex;
-  justify-content: space-around;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
 
   min-height: 20vh;
   background-color: #05192a;

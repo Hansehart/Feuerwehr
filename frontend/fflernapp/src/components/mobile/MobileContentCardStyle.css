@@ -17,8 +17,10 @@
   background-attachment: fixed;
 }
 
-h1 {
+.content-card-section > h1 {
   grid-column: span 2;
+
+  font-size: 3.5em !important;
 }
 
 h2 {
