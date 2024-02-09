@@ -1,0 +1,10 @@
+section {
+  min-height: 20vh;
+
+  margin: 2em;
+
+  background-image: url(src/assets/driving-firefighters-filter.jpg);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}

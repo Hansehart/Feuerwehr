@@ -1,3 +1,5 @@
+import "./MobileContentCardStyle.css";
+
 export default function MobileContentCard() {
   return (
     <section>
