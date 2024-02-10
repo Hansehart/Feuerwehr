@@ -19,9 +19,10 @@ export default function MobileNavBar() {
             key={button.id}
             icon="firefighter"
             bgColor="#ffffff"
-            stroke="#000"
+            strokeWidth="10"
             isActive={activeButton === button.id}
             strokeActive="#ea4138"
+            strokeWidthActive="5"
             onClick={() => handleIconClick(button.id)}
           />
         ))}

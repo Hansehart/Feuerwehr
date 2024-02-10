@@ -4,10 +4,12 @@ interface RoundedIconProps {
   icon: string;
   bgColor: string;
   stroke?: string;
+  strokeWidth?: string;
 
   // button design
   isActive?: boolean;
   strokeActive?: string;
+  strokeWidthActive?: string;
   onClick?: () => void;
 }
 
@@ -23,9 +25,11 @@ function getIconPath(icon: string) {
 export default function RoundedIcon({
   icon,
   bgColor,
-  stroke,
-  isActive,
-  strokeActive,
+  stroke = "none",
+  strokeWidth = "1",
+  isActive, // button is pressed
+  strokeActive, // stroke for pressed buttons
+  strokeWidthActive, // width for presses buttons
   onClick,
 }: RoundedIconProps) {
   return (
@@ -41,6 +45,7 @@ export default function RoundedIcon({
           r="40"
           fill={bgColor}
           stroke={isActive ? strokeActive : stroke}
+          strokeWidth={isActive ? strokeWidthActive : strokeWidth}
         />
         <image href={getIconPath(icon)} x="25" y="25" width="50" height="50" />
       </svg>
