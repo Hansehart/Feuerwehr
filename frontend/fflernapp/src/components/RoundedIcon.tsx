@@ -29,7 +29,7 @@ export default function RoundedIcon({
   strokeWidth = "1",
   isActive, // button is pressed
   strokeActive, // stroke for pressed buttons
-  strokeWidthActive, // width for presses buttons
+  strokeWidthActive, // width for presses
   onClick,
 }: RoundedIconProps) {
   return (

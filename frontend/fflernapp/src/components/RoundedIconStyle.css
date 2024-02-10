@@ -5,6 +5,7 @@
 
   width: 100%;
   height: 100%;
+  transition: transform 0.3s ease;
 }
 
 .svg-div-clicked {
@@ -14,5 +15,6 @@
 
   width: 100%;
   height: 100%;
-  transform: scale(1.2);
+  transform: scale(1.2) translateY(-5vh);
+  transition: transform 0.3s ease;
 }
