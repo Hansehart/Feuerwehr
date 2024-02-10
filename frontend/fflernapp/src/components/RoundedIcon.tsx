@@ -1,4 +1,3 @@
-import { useState } from "react";
 import "./RoundedIconStyle.css";
 
 interface RoundedIconProps {
@@ -6,7 +5,10 @@ interface RoundedIconProps {
   bgColor: string;
   stroke?: string;
 
-  button?: boolean;
+  // button design
+  isActive?: boolean;
+  strokeActive?: string;
+  onClick?: () => void;
 }
 
 function getIconPath(icon: string) {
@@ -22,22 +24,24 @@ export default function RoundedIcon({
   icon,
   bgColor,
   stroke,
-  button,
+  isActive,
+  strokeActive,
+  onClick,
 }: RoundedIconProps) {
-  const [clicked, setClicked] = useState(false);
-
-  const handleClick = () => {
-    console.log("clicked");
-    setClicked(true);
-  };
-
   return (
     <div
-      className={"svg-div" + (clicked ? "-clicked" : "")}
-      onClick={button ? handleClick : undefined}
+      // apply styles from svg-div-clicked for active button
+      className={"svg-div" + (isActive ? "-clicked" : "")}
+      onClick={onClick ? onClick : undefined}
     >
       <svg width="100" height="100">
-        <circle cx="50" cy="50" r="40" fill={bgColor} stroke={stroke} />
+        <circle
+          cx="50"
+          cy="50"
+          r="40"
+          fill={bgColor}
+          stroke={isActive ? strokeActive : stroke}
+        />
         <image href={getIconPath(icon)} x="25" y="25" width="50" height="50" />
       </svg>
     </div>
