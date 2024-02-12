@@ -6,6 +6,9 @@ export default function MobileBody() {
       <MobileContentCard title="Mitglieder" text="40" />
       <MobileContentCard title="Fahrzeuge" text="3" />
       <MobileContentCard title="Events" text="2" />
+      <MobileContentCard title="Mitglieder" text="40" />
+      <MobileContentCard title="Fahrzeuge" text="3" />
+      <MobileContentCard title="Events" text="2" />
     </main>
   );
 }

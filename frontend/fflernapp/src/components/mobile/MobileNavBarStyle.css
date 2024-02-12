@@ -1,7 +1,10 @@
 nav {
   display: grid;
+  position: fixed;
+  bottom: 0;
   grid-template-columns: repeat(3, 1fr);
 
+  width: 100%;
   min-height: 20vh;
   background-color: #05192a;
   overflow-x: clip;
