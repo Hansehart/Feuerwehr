@@ -5,7 +5,11 @@ import "./MobileNavBarStyle.css";
 export default function MobileNavBar({ changeView }: any) {
   const [activeButton, setActiveButton] = useState("");
 
-  const buttons = [{ id: "learn" }, { id: "department" }, { id: "profile" }];
+  const buttons = [
+    { id: "learn", icon: "book" },
+    { id: "department", icon: "vehicle" },
+    { id: "profile", icon: "firefighter" },
+  ];
 
   const handleIconClick = (buttonID: string) => {
     setActiveButton(buttonID);
@@ -18,7 +22,7 @@ export default function MobileNavBar({ changeView }: any) {
         {buttons.map((button) => (
           <RoundedIcon
             key={button.id}
-            icon="firefighter"
+            icon={button.icon}
             bgColor="#ffffff"
             strokeWidth="10"
             isActive={activeButton === button.id}

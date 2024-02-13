@@ -19,6 +19,8 @@ function getIconPath(icon: string) {
       return "src/assets/icons/firefighter.png";
     case "vehicle":
       return "src/assets/icons/firefighter-vehicle.png";
+    case "book":
+      return "src/assets/icons/book.png";
   }
 }
 
