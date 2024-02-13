@@ -17,8 +17,10 @@ function getIconPath(icon: string) {
   switch (icon) {
     case "firefighter":
       return "src/assets/icons/firefighter.png";
-    case "vehicle":
-      return "src/assets/icons/firefighter-vehicle.png";
+    case "vehicle-b":
+      return "src/assets/icons/firefighter-vehicle-blue.png";
+    case "vehicle-r":
+      return "src/assets/icons/firefighter-vehicle-red.png";
     case "book":
       return "src/assets/icons/book.png";
   }

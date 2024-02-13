@@ -7,7 +7,7 @@ export default function MobileNavBar({ changeView }: any) {
 
   const buttons = [
     { id: "learn", icon: "book" },
-    { id: "department", icon: "vehicle" },
+    { id: "department", icon: "vehicle-b" },
     { id: "profile", icon: "firefighter" },
   ];
 

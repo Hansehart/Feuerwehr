@@ -14,7 +14,7 @@ export default function MobileContentCard({
     <section className="content-card-section">
       <h1>{title}</h1>
       <h2>{text}</h2>
-      <RoundedIcon icon="vehicle" bgColor="#000000d6" stroke="#ea4138" />
+      <RoundedIcon icon="vehicle-r" bgColor="#000000d6" stroke="#ea4138" />
     </section>
   );
 }
