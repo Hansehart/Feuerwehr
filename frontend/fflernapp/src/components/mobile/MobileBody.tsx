@@ -1,11 +1,13 @@
 import MobileContentCard from "./MobileContentCard";
 
-export default function MobileBody() {
-  return (
-    <main style={{ marginBottom: "25vh" }}>
-      <MobileContentCard title="Mitglieder" text="40" />
-      <MobileContentCard title="Fahrzeuge" text="3" />
-      <MobileContentCard title="Events" text="2" />
-    </main>
-  );
+interface MobileBodyProps {
+  numberOfCards: number;
+}
+
+export default function MobileBody({ numberOfCards }: MobileBodyProps) {
+  const cards = Array.from({ length: numberOfCards }, (_, index) => (
+    <MobileContentCard key={index} title="Title" text="Description" />
+  ));
+
+  return <main style={{ marginBottom: "25vh" }}>{cards}</main>;
 }
