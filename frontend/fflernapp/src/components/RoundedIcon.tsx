@@ -1,4 +1,8 @@
 import "./RoundedIconStyle.css";
+import firefighter from "/src/assets/icons/firefighter.png";
+import vehicleB from "/src/assets/icons/firefighter-vehicle-blue.png";
+import vehicleR from "/src/assets/icons/firefighter-vehicle-red.png";
+import book from "/src/assets/icons/book.png";
 
 interface RoundedIconProps {
   icon: string;
@@ -16,13 +20,13 @@ interface RoundedIconProps {
 function getIconPath(icon: string) {
   switch (icon) {
     case "firefighter":
-      return "src/assets/icons/firefighter.png";
+      return firefighter;
     case "vehicle-b":
-      return "src/assets/icons/firefighter-vehicle-blue.png";
+      return vehicleB;
     case "vehicle-r":
-      return "src/assets/icons/firefighter-vehicle-red.png";
+      return vehicleR;
     case "book":
-      return "src/assets/icons/book.png";
+      return book;
   }
 }
 
