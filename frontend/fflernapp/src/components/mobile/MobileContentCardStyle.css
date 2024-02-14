@@ -19,7 +19,6 @@
 
 .content-card-section > h1 {
   grid-column: span 2;
-
   font-size: 10vw !important;
 }
 

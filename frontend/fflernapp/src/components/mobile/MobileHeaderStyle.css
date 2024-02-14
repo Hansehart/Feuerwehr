@@ -7,6 +7,7 @@ header {
 }
 
 header > h1 {
+  text-align: center;
   font-size: 5vh;
   position: absolute;
   z-index: 0;
