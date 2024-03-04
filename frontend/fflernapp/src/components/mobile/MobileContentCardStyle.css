@@ -16,6 +16,10 @@
   background-attachment: fixed;
 }
 
+.content-card-section:hover {
+  cursor: pointer;
+}
+
 .content-card-section > h1 {
   grid-column: span 2;
   font-size: 10vw !important;

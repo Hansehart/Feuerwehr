@@ -46,16 +46,22 @@ export default function RoundedIcon({
       className={"svg-div" + (isActive ? "-clicked" : "")}
       onClick={onClick ? onClick : undefined}
     >
-      <svg width="100" height="100">
+      <svg width="20vw" height="20vh">
         <circle
-          cx="50"
-          cy="50"
-          r="40"
+          cx="10vw"
+          cy="10vh"
+          r="8vh"
           fill={bgColor}
           stroke={isActive ? strokeActive : stroke}
           strokeWidth={isActive ? strokeWidthActive : strokeWidth}
         />
-        <image href={getIconPath(icon)} x="25" y="25" width="50" height="50" />
+        <image
+          href={getIconPath(icon)}
+          x="5vw"
+          y="5vh"
+          width="10vw"
+          height="10vh"
+        />
       </svg>
     </div>
   );
