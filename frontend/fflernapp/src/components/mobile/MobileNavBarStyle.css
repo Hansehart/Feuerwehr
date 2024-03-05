@@ -2,10 +2,11 @@ nav {
   display: grid;
   position: fixed;
   bottom: 0;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(3, 33vw);
 
   width: 100%;
-  min-height: 15vh;
+  max-height: 15vh;
+
   background-color: #05192a;
 }
 
