@@ -50,7 +50,7 @@ export default function RoundedIcon({
         <circle
           cx="50"
           cy="50"
-          r="30"
+          r="40"
           fill={bgColor}
           stroke={isActive ? strokeActive : stroke}
           strokeWidth={isActive ? strokeWidthActive : strokeWidth}
