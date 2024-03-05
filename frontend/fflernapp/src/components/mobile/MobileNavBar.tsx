@@ -1,9 +1,19 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import RoundedIcon from "../RoundedIcon";
 import "./MobileNavBarStyle.css";
 
-export default function MobileNavBar({ changeView }: any) {
-  const [activeButton, setActiveButton] = useState("");
+export default function MobileNavBar({
+  changeView,
+  preset,
+}: {
+  changeView: (viewName: string) => void;
+  preset: string;
+}) {
+  const [activeButton, setActiveButton] = useState(preset);
+
+  useEffect(() => {
+    setActiveButton(preset);
+  }, [preset]);
 
   const buttons = [
     { id: "learn", icon: "book" },
