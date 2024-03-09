@@ -18,19 +18,23 @@ function Home() {
     if (location.state && location.state.select) {
       setSelect(location.state.select);
     }
-  }, [location.state]);
+  }, []);
 
   // decide which body to display
   let displayComponent;
+
   switch (select) {
     case "learn":
       displayComponent = <MobileBody numberOfCards={5} />;
+      window.history.replaceState({}, "");
       break;
     case "department":
       displayComponent = <MobileBody numberOfCards={3} />;
+      window.history.replaceState({}, "");
       break;
     case "profile":
       displayComponent = <MobileBody numberOfCards={1} />;
+      window.history.replaceState({}, "");
       break;
     default:
       displayComponent = <MobileBody numberOfCards={1} />;
