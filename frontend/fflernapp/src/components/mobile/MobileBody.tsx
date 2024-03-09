@@ -10,6 +10,7 @@ export default function MobileBody({ numberOfCards }: MobileBodyProps) {
       key={index}
       title="LF10"
       text="Lösch&shy;gruppen&shy;fahrzeug"
+      path="/vehicle"
     />
   ));
 
