@@ -4,6 +4,7 @@ import { useLocation } from "react-router-dom";
 import MobileBody from "../components/mobile/MobileBody";
 import MobileHeader from "../components/mobile/MobileHeader";
 import MobileNavBar from "../components/mobile/MobileNavBar";
+import ProgressBall from "../components/ProgressBall";
 
 function Home() {
   const location = useLocation();
@@ -25,7 +26,7 @@ function Home() {
 
   switch (select) {
     case "learn":
-      displayComponent = <MobileBody numberOfCards={5} />;
+      displayComponent = <ProgressBall />;
       window.history.replaceState({}, "");
       break;
     case "department":
