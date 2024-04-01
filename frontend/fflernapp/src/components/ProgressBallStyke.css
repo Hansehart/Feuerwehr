@@ -8,33 +8,42 @@
   min-width: 20vh;
 }
 
-#route {
+.ball {
   position: absolute;
 
   width: 18vh;
   height: 18vh;
 
   border-radius: 50%;
+}
+
+#route {
+  /*
+  A circle has 360deg.
+  To let the gradient start from the bottom, its flipped 180deg.
+  Additionally 40 deg space are added.
+  That means 20 deg at start and 20 deg at the end.
+  100% progress means 360-40=320deg
+  */
   background-image: conic-gradient(
-    /*180deg means flipped, but taking 200deg provides some style (20deg space)*/
-      from 200deg,
-    #000000 320deg,
-    /*apply style balanced*/ transparent 20deg
+    from 200deg,
+    #05192a 320deg,
+    transparent 20deg
   );
 }
 
 #bar {
-  position: absolute;
-
-  width: 18vh;
-  height: 18vh;
-
-  border-radius: 50%;
+  /*
+  A circle has 360deg.
+  To let the gradient start from the bottom, its flipped 180deg.
+  Additionally 40 deg space are added.
+  That means 20 deg at start and 20 deg at the end.
+  100% progress means 360-40=320deg
+  */
   background-image: conic-gradient(
-    /*180deg means flipped, but taking 200deg provides some style (20deg space)*/
-      from 200deg,
-    #ea4138 180deg,
-    /*apply style balanced*/ transparent 20deg
+    from 200deg,
+    #ea4138 70deg,
+    transparent 20deg
   );
 }
 

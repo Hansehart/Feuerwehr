@@ -3,10 +3,10 @@ import "./ProgressBallStyke.css";
 function ProgressBall() {
   return (
     <div className="container">
-      <div id="route"></div>
-      <div id="bar"></div>
+      <div className="ball" id="route"></div>
+      <div className="ball" id="bar"></div>
       <div id="circle">
-        <h2>100%</h2>
+        <h2>25%</h2>
       </div>
     </div>
   );
