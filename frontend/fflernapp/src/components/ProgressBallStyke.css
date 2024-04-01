@@ -1,37 +1,52 @@
-.main {
-  width: 100vw;
-  height: 40vh;
-
+.container {
   display: flex;
   justify-content: center;
   align-items: center;
+  position: relative;
+
+  min-height: 20vh;
+  min-width: 20vh;
 }
 
-.speedometer {
-  display: grid;
-  grid-template-columns: repeat(7, 5vh);
-  grid-template-rows: repeat(8, 5vh);
-  justify-content: center;
-}
+#route {
+  position: absolute;
 
-.circle {
-  grid-column: 2 / span 5;
-  grid-row: 2 / span 5;
+  width: 18vh;
+  height: 18vh;
 
-  border: 10px solid black;
   border-radius: 50%;
+  background-image: conic-gradient(
+    /*180deg means flipped, but taking 200deg provides some style (20deg space)*/
+      from 200deg,
+    #000000 320deg,
+    /*apply style balanced*/ transparent 20deg
+  );
 }
 
-.stick {
-  background-color: black;
+#bar {
+  position: absolute;
+
+  width: 18vh;
+  height: 18vh;
+
+  border-radius: 50%;
+  background-image: conic-gradient(
+    /*180deg means flipped, but taking 200deg provides some style (20deg space)*/
+      from 200deg,
+    #ea4138 180deg,
+    /*apply style balanced*/ transparent 20deg
+  );
 }
 
-#stick-1 {
-  grid-column: 4 / span 1;
-  grid-row: 1 / span 2;
-}
+#circle {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
 
-#stick-2 {
-  grid-column: 6 / span 2;
-  grid-row: 4 / span 1;
+  width: 16vh;
+  height: 16vh;
+
+  border-radius: 50%;
+  background-color: white;
 }

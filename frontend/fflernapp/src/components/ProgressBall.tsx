@@ -1,16 +1,15 @@
 import "./ProgressBallStyke.css";
 
-function Speedometer() {
+function ProgressBall() {
   return (
-    <div className="main">
-      <div className="speedometer">
-        <div className="circle"></div>
-        <div className="stick" id="stick-1"></div>
-        <div className="stick" id="stick-2"></div>
-        <div className="stick" id="stick-3"></div>
+    <div className="container">
+      <div id="route"></div>
+      <div id="bar"></div>
+      <div id="circle">
+        <h2>100%</h2>
       </div>
     </div>
   );
 }
 
-export default Speedometer;
+export default ProgressBall;
