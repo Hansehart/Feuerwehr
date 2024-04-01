@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import MobileBody from "../components/mobile/MobileBody";
 import MobileHeader from "../components/mobile/MobileHeader";
 import MobileNavBar from "../components/mobile/MobileNavBar";
+import MobileQuizCard from "../components/mobile/MobileQuizCard";
 
 function Exercise() {
   const navigate = useNavigate();
@@ -30,7 +31,7 @@ function Exercise() {
   return (
     <div>
       <MobileHeader name="Übung" />
-      <MobileBody numberOfCards={0} />
+      <MobileBody before={<MobileQuizCard />} numberOfCards={0} />
       <MobileNavBar changeView={changeView} preset="learn" />
     </div>
   );
