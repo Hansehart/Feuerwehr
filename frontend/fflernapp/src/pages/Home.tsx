@@ -40,7 +40,16 @@ function Home() {
       window.history.replaceState({}, "");
       break;
     case "department":
-      displayComponent = <MobileBody numberOfCards={3} />;
+      displayComponent = (
+        <MobileBody
+          before={
+            <div style={{ textAlign: "center", margin: "2em" }}>
+              <h2>Moin, Username!</h2>
+            </div>
+          }
+          numberOfCards={3}
+        />
+      );
       window.history.replaceState({}, "");
       break;
     case "profile":
