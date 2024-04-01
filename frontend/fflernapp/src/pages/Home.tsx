@@ -26,7 +26,17 @@ function Home() {
 
   switch (select) {
     case "learn":
-      displayComponent = <ProgressBall />;
+      displayComponent = (
+        <MobileBody
+          before={
+            <div style={{ textAlign: "center" }}>
+              <ProgressBall></ProgressBall>
+              <h2>Lernfortschritt</h2>
+            </div>
+          }
+          numberOfCards={2}
+        />
+      );
       window.history.replaceState({}, "");
       break;
     case "department":
