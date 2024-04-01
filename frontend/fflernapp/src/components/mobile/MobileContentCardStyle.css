@@ -39,3 +39,7 @@
   height: 100%;
   margin: 0;
 }
+
+.content-card-section .svg-div {
+  max-height: none;
+}

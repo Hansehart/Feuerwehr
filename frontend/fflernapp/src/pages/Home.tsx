@@ -62,7 +62,7 @@ function Home() {
 
   return (
     <div>
-      <MobileHeader name="Mollhagen" />
+      <MobileHeader department={true} name="Mollhagen" />
       {displayComponent}
       <MobileNavBar changeView={changeView} preset={`${select}`} />
     </div>
