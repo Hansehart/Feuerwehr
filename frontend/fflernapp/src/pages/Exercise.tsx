@@ -5,7 +5,7 @@ import MobileBody from "../components/mobile/MobileBody";
 import MobileHeader from "../components/mobile/MobileHeader";
 import MobileNavBar from "../components/mobile/MobileNavBar";
 
-function Vehicle() {
+function Exercise() {
   const navigate = useNavigate();
   const [select, setSelect] = useState("");
 
@@ -29,11 +29,11 @@ function Vehicle() {
 
   return (
     <div>
-      <MobileHeader department={true} name="Mollhagen" />
+      <MobileHeader name="Übung" />
       <MobileBody numberOfCards={0} />
-      <MobileNavBar changeView={changeView} preset="department" />
+      <MobileNavBar changeView={changeView} preset="learn" />
     </div>
   );
 }
 
-export default Vehicle;
+export default Exercise;

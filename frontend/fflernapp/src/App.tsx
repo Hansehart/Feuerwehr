@@ -6,6 +6,7 @@ import {
 } from "react-router-dom";
 import Home from "./pages/Home";
 import Vehicle from "./pages/Vehicle";
+import Exercise from "./pages/Exercise";
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
       <Routes>
         <Route path="/home" element={<Home />} />
         <Route path="/vehicle" element={<Vehicle />} />
+        <Route path="/exercise" element={<Exercise />} />
         <Route path="*" element={<Navigate replace to="/home" />} />
       </Routes>
     </Router>

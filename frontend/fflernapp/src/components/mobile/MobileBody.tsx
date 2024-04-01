@@ -17,7 +17,7 @@ export default function MobileBody({
       key={index}
       title="LF10"
       text="Lösch&shy;gruppen&shy;fahrzeug"
-      path="/vehicle"
+      path="/exercise"
     />
   ));
 
