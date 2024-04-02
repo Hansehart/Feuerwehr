@@ -5,6 +5,7 @@ import drivingFirefighters from "/src/assets/driving-firefighters-filter.jpg";
 function MobileQuizCard() {
   const solution = "answer-1";
   const [count, setCount] = useState(3);
+  const [timerStarted, setTimerStarted] = useState(true);
 
   const handleAnswerClick = (answerID: string) => {
     const solutionElement = document.getElementById(solution);
@@ -19,8 +20,9 @@ function MobileQuizCard() {
 
       const timer = document.getElementById("timer");
 
-      if (timer) {
+      if (timer && timerStarted) {
         timer.style.display = "block";
+        setTimerStarted(false);
 
         const countdown = setInterval(() => {
           setCount((prevCount) => prevCount - 1); // decrement the count
