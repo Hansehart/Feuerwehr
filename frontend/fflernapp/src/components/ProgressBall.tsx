@@ -6,7 +6,7 @@ function ProgressBall() {
       <div className="ball" id="route"></div>
       <div className="ball" id="bar"></div>
       <div id="circle">
-        <h2>25%</h2>
+        <h3>25%</h3>
       </div>
     </div>
   );

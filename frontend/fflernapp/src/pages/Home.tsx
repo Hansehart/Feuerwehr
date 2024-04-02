@@ -31,7 +31,7 @@ function Home() {
           before={
             <div style={{ textAlign: "center" }}>
               <ProgressBall></ProgressBall>
-              <h3 style={{ fontSize: "4vw" }}>Lernfortschritt</h3>
+              <h3>Lernfortschritt</h3>
             </div>
           }
           numberOfCards={2}
@@ -44,7 +44,7 @@ function Home() {
         <MobileBody
           before={
             <div style={{ textAlign: "center", margin: "2em" }}>
-              <h3 style={{ fontSize: "4vw" }}>Moin, Username!</h3>
+              <h3>Moin, Username!</h3>
             </div>
           }
           numberOfCards={3}
