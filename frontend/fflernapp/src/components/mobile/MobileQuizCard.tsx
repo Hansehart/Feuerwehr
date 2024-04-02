@@ -5,11 +5,12 @@ import drivingFirefighters from "/src/assets/driving-firefighters-filter.jpg";
 function MobileQuizCard() {
   const solution = "answer-1";
   const [count, setCount] = useState(3);
-  const [timerStarted, setTimerStarted] = useState(true);
+  const [timerStarted, setTimerStarted] = useState(false);
 
   const handleAnswerClick = (answerID: string) => {
     const solutionElement = document.getElementById(solution);
-    if (solutionElement) {
+    if (solutionElement && !timerStarted) {
+      // element found and timer not started yet (no answer selected)
       solutionElement.style.borderColor = "green";
       const selectedElement = document.getElementById(answerID);
 
@@ -17,19 +18,25 @@ function MobileQuizCard() {
         // wrong answer selected
         selectedElement.style.borderColor = "red";
       }
+    }
 
-      const timer = document.getElementById("timer");
+    const timer = document.getElementById("timer");
+    if (timer && !timerStarted) {
+      timer.style.display = "block";
+      setTimerStarted(true);
 
-      if (timer && timerStarted) {
-        timer.style.display = "block";
-        setTimerStarted(false);
+      const countdown = setInterval(() => {
+        setCount((prevCount) => {
+          if (prevCount > 0) {
+            return prevCount - 1; // decrement the count
+          } else {
+            clearInterval(countdown); // stop the countdown
+            return prevCount;
+          }
+        });
+      }, 1000); // update every second (1000 milliseconds)
 
-        const countdown = setInterval(() => {
-          setCount((prevCount) => prevCount - 1); // decrement the count
-        }, 1000); // update every second (1000 milliseconds)
-
-        return () => clearInterval(countdown); // cleanup the interval when component unmounts
-      }
+      return () => clearInterval(countdown); // cleanup the interval when component unmounts
     }
   };
 
