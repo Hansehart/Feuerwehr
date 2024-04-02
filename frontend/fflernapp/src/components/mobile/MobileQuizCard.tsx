@@ -1,16 +1,32 @@
+import { useState } from "react";
 import "./MobileQuizCardStyle.css";
 import drivingFirefighters from "/src/assets/driving-firefighters-filter.jpg";
 
 function MobileQuizCard() {
   const solution = "answer-1";
+  const [count, setCount] = useState(3);
 
   const handleAnswerClick = (answerID: string) => {
     const solutionElement = document.getElementById(solution);
     if (solutionElement) {
       solutionElement.style.borderColor = "green";
       const selectedElement = document.getElementById(answerID);
+
       if (selectedElement && solution != answerID) {
+        // wrong answer selected
         selectedElement.style.borderColor = "red";
+      }
+
+      const timer = document.getElementById("timer");
+
+      if (timer) {
+        timer.style.display = "block";
+
+        const countdown = setInterval(() => {
+          setCount((prevCount) => prevCount - 1); // decrement the count
+        }, 1000); // update every second (1000 milliseconds)
+
+        return () => clearInterval(countdown); // cleanup the interval when component unmounts
       }
     }
   };
@@ -57,8 +73,8 @@ function MobileQuizCard() {
         </div>
       </section>
       <section className="continue">
-        <h4 id="timer" style={{ display: "hidden" }}>
-          Weiter in 3...
+        <h4 id="timer" style={{ display: "none" }}>
+          Weiter in {count}...
         </h4>
       </section>
     </div>
