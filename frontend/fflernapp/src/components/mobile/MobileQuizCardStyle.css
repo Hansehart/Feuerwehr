@@ -11,6 +11,7 @@
   border-radius: 1em;
 
   color: white;
+  background-size: cover;
 }
 
 .type {
@@ -25,7 +26,15 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-bottom: 1vh;
 
   border: 5px solid #05192a;
+  border-radius: 1em;
   color: #05192a;
+}
+
+.continue {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
