@@ -58,4 +58,9 @@ public class PostmanController {
         ImagesForContentpages imagesForContentpages = new ImagesForContentpages(dto);
         imagesForContentpagesRepository.save(imagesForContentpages);
     }
+
+    @GetMapping("/hello")
+    private String hello() {
+        return "Hello";
+    }
 }
