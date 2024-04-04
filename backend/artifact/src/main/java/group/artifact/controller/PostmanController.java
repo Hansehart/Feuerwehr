@@ -60,7 +60,7 @@ public class PostmanController {
         imagesForContentpagesRepository.save(imagesForContentpages);
     }
 
-    @GetMapping("/postman/hello")
+    @GetMapping("/hello")
     private String hello() {
         return "Hello Test";
     }
