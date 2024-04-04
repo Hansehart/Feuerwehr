@@ -14,7 +14,7 @@ public class SecurityConfig {
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         return http
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/api/data/*").permitAll()
+                        .requestMatchers("/api/data/**").permitAll()
                         .anyRequest().authenticated())
                 .csrf(req -> req
                         .disable())
