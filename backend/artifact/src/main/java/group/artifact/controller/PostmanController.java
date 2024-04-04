@@ -62,6 +62,6 @@ public class PostmanController {
 
     @GetMapping("/postman/hello")
     private String hello() {
-        return "Hello";
+        return "Hello Test";
     }
 }
