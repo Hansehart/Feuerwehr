@@ -14,8 +14,7 @@ public class SecurityConfig {
         public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
                 return http
                                 .authorizeHttpRequests(auth -> auth
-                                                .requestMatchers("/artifact-0.0.1-SNAPSHOT/api/data/hello").permitAll()
-                                                .anyRequest().authenticated())
+                                                .anyRequest().permitAll())
                                 .csrf(req -> req.disable())
                                 .build();
         }
