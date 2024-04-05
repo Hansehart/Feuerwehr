@@ -11,7 +11,7 @@ import group.artifact.models.Contentpage;
 import group.artifact.repositories.ContentpageRepository;
 
 @RestController
-@RequestMapping("/api/service")
+@RequestMapping("/api/service/2/")
 public class ContentpageController {
 
     @Autowired
