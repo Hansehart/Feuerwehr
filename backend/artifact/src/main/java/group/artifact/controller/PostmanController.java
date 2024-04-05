@@ -21,7 +21,6 @@ import group.artifact.repositories.RadioCallSignRepository;
 import group.artifact.repositories.VehicleRepository;
 
 @RestController
-@RequestMapping("/api/service/")
 public class PostmanController {
     @Autowired
     RadioCallSignRepository radioCallSignRepository;
@@ -62,7 +61,7 @@ public class PostmanController {
         imagesForContentpagesRepository.save(imagesForContentpages);
     }
 
-    @GetMapping("/hello")
+    @GetMapping("/api/service/hello")
     private String hello() {
         return "Hello Test";
     }
