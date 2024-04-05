@@ -14,7 +14,7 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 
 @SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT)
-class PostmanControllerTest {
+class ContentpageControllerTest {
 
     @LocalServerPort
     private int port;
@@ -22,12 +22,10 @@ class PostmanControllerTest {
     @Autowired
     private TestRestTemplate restTemplate;
 
-    /*
     @Test
-    void postRequestForImageCreation() throws Exception {
+    void postRequestForContentpageCreation() throws Exception {
         // prepare the request body
-        String jsonBody = "{\"path\": \"/path/to/image.jpg\", \"width\": 800, \"height\": 600}";
-
+        String jsonBody = "{\"title\": \"LF 10\", \"subtitle\": \"Löschgruppenfahrzeug\", \"content\": \"Hierbei handelt es sich um ein Feuerwehrfahrzeug\"}";
         // set the content type to JSON
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON);
@@ -37,11 +35,10 @@ class PostmanControllerTest {
 
         // send the POST request
         ResponseEntity<String> responseEntity = restTemplate.postForEntity(
-                "http://localhost:" + port + "/postman/image",
+                "http://localhost:" + port + "/api/service/save/contentpage",
                 requestEntity,
                 String.class);
 
         assertEquals(200, responseEntity.getStatusCode().value());
     }
-     */
 }

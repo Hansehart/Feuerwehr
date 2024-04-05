@@ -6,17 +6,17 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import group.artifact.controller.PostmanController;
+import group.artifact.controller.ContentpageController;
 
 @SpringBootTest
 class FFLernAppApplicationTest {
 
     @Autowired
-    PostmanController postmanController;
+    ContentpageController contentpageController;
 
     // sanity check for running application
     @Test
     void contextLoads() {
-        assertNotNull(postmanController);
+        assertNotNull(contentpageController);
     }
 }
