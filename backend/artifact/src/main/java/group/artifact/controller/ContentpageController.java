@@ -16,7 +16,7 @@ public class ContentpageController {
     @Autowired
     ContentpageRepository contentpageRepository;
 
-    @PostMapping("/save")
+    @PostMapping("/save/contentpage")
     public void postman(@RequestBody Contentpage cp) {
         contentpageRepository.save(cp);
     }

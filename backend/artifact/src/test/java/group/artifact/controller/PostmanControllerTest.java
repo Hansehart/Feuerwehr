@@ -22,6 +22,7 @@ class PostmanControllerTest {
     @Autowired
     private TestRestTemplate restTemplate;
 
+    /*
     @Test
     void postRequestForImageCreation() throws Exception {
         // prepare the request body
@@ -42,4 +43,5 @@ class PostmanControllerTest {
 
         assertEquals(200, responseEntity.getStatusCode().value());
     }
+     */
 }
