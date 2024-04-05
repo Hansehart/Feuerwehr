@@ -5,13 +5,13 @@ import drivingFirefighters from "/src/assets/driving-firefighters-filter.jpg";
 
 interface MobileContentCardProps {
   title: string;
-  text: string;
+  subtitle: string;
   path: string;
 }
 
 export default function MobileContentCard({
   title,
-  text,
+  subtitle,
   path,
 }: MobileContentCardProps) {
   const navigate = useNavigate();
@@ -27,7 +27,7 @@ export default function MobileContentCard({
       onClick={handeClick}
     >
       <h1>{title}</h1>
-      <h2>{text}</h2>
+      <h2>{subtitle}</h2>
       <RoundedIcon icon="vehicle-r" bgColor="#000000d6" stroke="#ea4138" />
     </section>
   );

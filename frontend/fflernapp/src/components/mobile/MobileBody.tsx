@@ -1,25 +1,39 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import MobileContentCard from "./MobileContentCard";
 
 interface MobileBodyProps {
   before?: React.ReactNode;
-  numberOfCards: number;
   after?: React.ReactNode;
+}
+
+interface ContentData {
+  title: string;
+  subtitle: string;
+  content: string;
 }
 
 export default function MobileBody({
   before,
-  numberOfCards,
   after,
 }: MobileBodyProps) {
-  const cards = Array.from({ length: numberOfCards }, (_, index) => (
+
+  const [contentData, setContentData] = useState<ContentData[]>([]);
+
+  useEffect(() => {
+    fetch("https://fflernapp.hansehart.de/api/service/receive/contentpages")
+      .then((response) => response.json())
+      .then((data) => setContentData(data))
+      .catch((error) => console.error("Error fetching data: ", error));
+  }, []);
+
+  const cards = contentData.map((data, index) => (
     <MobileContentCard
       key={index}
-      title="LF10"
-      text="Lösch&shy;gruppen&shy;fahrzeug"
-      path="/exercise"
+      title={data.title}
+      subtitle={data.subtitle}
+      path="/vehicle"
     />
-  ));
+  ))
 
   return (
     <main style={{ marginBottom: "25vh" }}>
