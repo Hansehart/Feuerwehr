@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import group.artifact.dtos.ImagesForContentpagesDTO;
@@ -61,7 +60,7 @@ public class PostmanController {
         imagesForContentpagesRepository.save(imagesForContentpages);
     }
 
-    @GetMapping("/api/service/hello")
+    @GetMapping("/api/data/hello")
     private String hello() {
         return "Hello Test";
     }
