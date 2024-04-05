@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import group.artifact.dtos.ImagesForContentpagesDTO;
@@ -20,6 +21,7 @@ import group.artifact.repositories.RadioCallSignRepository;
 import group.artifact.repositories.VehicleRepository;
 
 @RestController
+@RequestMapping("/api/service")
 public class PostmanController {
     @Autowired
     RadioCallSignRepository radioCallSignRepository;
@@ -60,7 +62,7 @@ public class PostmanController {
         imagesForContentpagesRepository.save(imagesForContentpages);
     }
 
-    @GetMapping("/api/data/hello")
+    @GetMapping("/hello")
     private String hello() {
         return "Hello Test";
     }
