@@ -21,6 +21,7 @@ public class Contentpage {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private String title;
+    private String subtitle;
     private String content;
 
     @OneToMany(mappedBy = "contentpage")
