@@ -67,7 +67,7 @@ public class PostmanController {
         return "Hello Testz";
     }
 
-    @GetMapping("/hello2")
+    @GetMapping("/hello/hello2")
     public String hello2() {
         return "Hello Test2";
     }
