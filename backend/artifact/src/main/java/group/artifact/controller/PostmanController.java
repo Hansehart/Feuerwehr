@@ -21,7 +21,7 @@ import group.artifact.repositories.RadioCallSignRepository;
 import group.artifact.repositories.VehicleRepository;
 
 @RestController
-@RequestMapping("/api/service")
+@RequestMapping("/api/service/")
 public class PostmanController {
     @Autowired
     RadioCallSignRepository radioCallSignRepository;
