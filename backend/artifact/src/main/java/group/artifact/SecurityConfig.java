@@ -12,13 +12,13 @@ public class SecurityConfig {
 
         /*
          * allowed paths: none
-         * except: /delete/*
+         * except: /api/data/*
          * 
          * rules: csrf disable
          */
         protected void configure(HttpSecurity http) throws Exception {
                 http.authorizeRequests()
-                                .antMatchers("/delete/**").permitAll()
+                                .antMatchers("/api/data/**").permitAll()
                                 .anyRequest().authenticated()
                                 .and()
                                 .httpBasic().and()
