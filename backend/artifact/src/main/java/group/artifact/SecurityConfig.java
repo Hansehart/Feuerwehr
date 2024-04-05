@@ -10,14 +10,19 @@ import org.springframework.security.web.SecurityFilterChain;
 @EnableWebSecurity
 public class SecurityConfig {
 
-    @Bean
-    public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
-        return http
-                .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/api/data/**").permitAll()
-                        .anyRequest().authenticated())
-                .csrf(req -> req
-                        .disable())
-                .build();
-    }
+        /*
+         * allowed paths: none
+         * except: /delete/*
+         * 
+         * rules: csrf disable
+         */
+        protected void configure(HttpSecurity http) throws Exception {
+                http.authorizeRequests()
+                                .antMatchers("/delete/**").permitAll()
+                                .anyRequest().authenticated()
+                                .and()
+                                .httpBasic().and()
+                                .csrf().disable();
+        }
+
 }
