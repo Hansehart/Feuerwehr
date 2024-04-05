@@ -10,19 +10,14 @@ import org.springframework.security.web.SecurityFilterChain;
 @EnableWebSecurity
 public class SecurityConfig {
 
-        /*
-         * allowed paths: none
-         * except: /api/data/*
-         * 
-         * rules: csrf disable
-         */
-        protected void configure(HttpSecurity http) throws Exception {
-                http.authorizeRequests()
-                                .antMatchers("/api/data/**").permitAll()
-                                .anyRequest().authenticated()
-                                .and()
-                                .httpBasic().and()
-                                .csrf().disable();
+        @Bean
+        public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
+                return http
+                                .authorizeHttpRequests(auth -> auth
+                                                .requestMatchers("/artifact-0.0.1-SNAPSHOT/api/data/**").permitAll()
+                                                .anyRequest().authenticated())
+                                .csrf(req -> req.disable())
+                                .build();
         }
 
 }
