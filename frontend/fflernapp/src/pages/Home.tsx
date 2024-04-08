@@ -34,6 +34,7 @@ function Home() {
               <h3>Lernfortschritt</h3>
             </div>
           }
+          source="/learnpages"
         />
       );
       window.history.replaceState({}, "");
@@ -46,17 +47,17 @@ function Home() {
               <h3>Moin, Username!</h3>
             </div>
           }
-
+          source="/vehiclepages"
         />
       );
       window.history.replaceState({}, "");
       break;
     case "profile":
-      displayComponent = <MobileBody />;
+      displayComponent = <MobileBody source="/"/>;
       window.history.replaceState({}, "");
       break;
     default:
-      displayComponent = <MobileBody />;
+      displayComponent = <MobileBody source=""/>;
   }
 
   return (

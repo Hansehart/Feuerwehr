@@ -3,6 +3,7 @@ import MobileContentCard from "./MobileContentCard";
 
 interface MobileBodyProps {
   before?: React.ReactNode;
+  source: string;
   after?: React.ReactNode;
 }
 
@@ -15,13 +16,14 @@ interface ContentData {
 
 export default function MobileBody({
   before,
+  source,
   after,
 }: MobileBodyProps) {
 
   const [contentData, setContentData] = useState<ContentData[]>([]);
 
   useEffect(() => {
-    fetch("https://fflernapp.hansehart.de/api/service/receive/contentpages")
+    fetch(`https://fflernapp.hansehart.de/api/service/receive/${source}`)
       .then((response) => response.json())
       .then((data) => setContentData(data))
       .catch((error) => console.error("Error fetching data: ", error));
