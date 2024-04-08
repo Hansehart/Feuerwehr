@@ -9,6 +9,7 @@ interface MobileBodyProps {
 interface ContentData {
   title: string;
   subtitle: string;
+  path: string;
   content: string;
 }
 
@@ -31,7 +32,7 @@ export default function MobileBody({
       key={index}
       title={data.title}
       subtitle={data.subtitle}
-      path="/vehicle"
+      path={data.path}
     />
   ))
 
