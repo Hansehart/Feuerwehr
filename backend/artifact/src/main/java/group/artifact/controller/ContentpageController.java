@@ -22,15 +22,14 @@ public class ContentpageController {
 
     @GetMapping("/receive/contentpages")
     public List<Contentpage> receiveContentpage(@RequestParam(required = false) String type) {
-        List<Contentpage> result;
         if (type == "vehicle") {
-            result = contentpageRepository.findAllByPathContaining("vehicle");
+            return contentpageRepository.findAllByPathStartingWith("/vehicle%");
         } else if (type == "learn") {
-            result = contentpageRepository.findAllByPathContaining("learn");
+            return contentpageRepository.findAllByPathStartingWith("/learn%");
         } else {
-            System.out.println("ERROR IN CONTENTPAGECONTROLLER");
+            System.out.println("ERROR: type unknown in query string");
+            return null;
         }
-        return contentpageRepository.findAll();
     }
 
     @PostMapping("/save/contentpage")

@@ -9,7 +9,7 @@ import org.springframework.stereotype.Repository;
 import group.artifact.models.Contentpage;
 
 @Repository
-public interface ContentpageRepository extends JpaRepository<Contentpage, Integer>{
-    @Query("SELECT * FROM contentpage WHERE path LIKE 'home%'")
-    List<Contentpage> findAllByPathContaining(String keyword);
+public interface ContentpageRepository extends JpaRepository<Contentpage, Integer> {
+    @Query("SELECT * FROM contentpage WHERE path LIKE :keyword")
+    List<Contentpage> findAllByPathStartingWith(String keyword);
 }
