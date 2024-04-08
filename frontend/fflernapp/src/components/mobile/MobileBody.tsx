@@ -31,7 +31,7 @@ export default function MobileBody({
       key={index}
       title={data.title}
       subtitle={data.subtitle}
-      path="/learn"
+      path="/vehicle"
     />
   ))
 
