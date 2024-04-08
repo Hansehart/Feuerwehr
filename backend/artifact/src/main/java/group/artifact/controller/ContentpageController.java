@@ -22,6 +22,7 @@ public class ContentpageController {
 
     @GetMapping("/receive/contentpages")
     public List<Contentpage> receiveContentpage(@RequestParam(required = false) String type) {
+        System.out.println(type);
         if (type == "vehicle") {
             return contentpageRepository.findAllByPathStartingWith("/vehicle%");
         } else if (type == "learn") {
