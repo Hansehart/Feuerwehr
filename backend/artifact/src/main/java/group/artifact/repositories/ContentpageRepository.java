@@ -10,6 +10,6 @@ import group.artifact.models.Contentpage;
 
 @Repository
 public interface ContentpageRepository extends JpaRepository<Contentpage, Integer> {
-    @Query("SELECT * FROM contentpage WHERE path LIKE :keyword")
+    @Query("SELECT c FROM Contentpage c WHERE c.path LIKE :keyword")
     List<Contentpage> findAllByPathStartingWith(String keyword);
 }
