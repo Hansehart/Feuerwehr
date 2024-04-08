@@ -19,7 +19,7 @@ public class ContentpageController {
     @Autowired
     ContentpageRepository contentpageRepository;
 
-    @GetMapping("/receive/contentpage")
+    @GetMapping("/receive/contentpages")
     public List<Contentpage> receiveContentpage() {
         return contentpageRepository.findAll();
     }

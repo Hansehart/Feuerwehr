@@ -1,10 +1,15 @@
 package group.artifact;
 
+import java.util.List;
+
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.web.cors.CorsConfiguration;
+import org.springframework.web.cors.CorsConfigurationSource;
+import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 
 @Configuration
 @EnableWebSecurity
@@ -16,7 +21,25 @@ public class SecurityConfig {
                                 .authorizeHttpRequests((requests) -> requests
                                                 .requestMatchers("/api/service/**").permitAll()
                                                 .anyRequest().authenticated())
+
+                                .cors(httpSecurityCorsConfigurer -> httpSecurityCorsConfigurer
+                                                .configurationSource(corsConfigurationSource()))
+
                                 .csrf(req -> req.disable())
+
                                 .build();
+        }
+
+        @Bean
+        public CorsConfigurationSource corsConfigurationSource() {
+                CorsConfiguration corsConfiguration = new CorsConfiguration();
+                corsConfiguration.setAllowedOrigins(List.of("https://fflernapp.hansehart.de"));
+                corsConfiguration.setAllowedMethods(List.of("GET", "POST"));
+                corsConfiguration.setAllowedHeaders(List.of("*"));
+                corsConfiguration.setMaxAge(3600L);
+
+                UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
+                source.registerCorsConfiguration("/api/service/**", corsConfiguration);
+                return source;
         }
 }
