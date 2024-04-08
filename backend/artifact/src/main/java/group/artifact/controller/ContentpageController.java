@@ -22,10 +22,9 @@ public class ContentpageController {
 
     @GetMapping("/receive/contentpages")
     public List<Contentpage> receiveContentpage(@RequestParam(required = false) String type) {
-        System.out.println(type);
-        if (type == "vehicle") {
+        if (type.equals("vehicle")) {
             return contentpageRepository.findAllByPathStartingWith("/vehicle%");
-        } else if (type == "learn") {
+        } else if (type.equals("learn")) {
             return contentpageRepository.findAllByPathStartingWith("/learn%");
         } else {
             System.out.println("ERROR: type unknown in query string");
