@@ -34,7 +34,6 @@ function Home() {
               <h3>Lernfortschritt</h3>
             </div>
           }
-          numberOfCards={2}
         />
       );
       window.history.replaceState({}, "");
@@ -47,17 +46,17 @@ function Home() {
               <h3>Moin, Username!</h3>
             </div>
           }
-          numberOfCards={3}
+
         />
       );
       window.history.replaceState({}, "");
       break;
     case "profile":
-      displayComponent = <MobileBody numberOfCards={1} />;
+      displayComponent = <MobileBody />;
       window.history.replaceState({}, "");
       break;
     default:
-      displayComponent = <MobileBody numberOfCards={1} />;
+      displayComponent = <MobileBody />;
   }
 
   return (
