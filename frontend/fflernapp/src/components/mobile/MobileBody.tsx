@@ -39,9 +39,14 @@ export default function MobileBody({
   const addSoftHyphen = (title: string) => {
     let modifiedTitle = title;
     breakWords.forEach(word => {
-      if (modifiedTitle.toLowerCase().includes(word)) {
-        const splitTitle = modifiedTitle.split(word);
-        modifiedTitle = splitTitle.join(word + '&shy;');
+      const lowerCaseWord = word.toLowerCase();
+      const index = modifiedTitle.toLowerCase().indexOf(lowerCaseWord);
+      if (index !== -1) {
+        modifiedTitle =
+          modifiedTitle.substring(0, index) +
+          word +
+          "&shy;" +
+          modifiedTitle.substring(index + word.length);
       }
     });
     return modifiedTitle;
