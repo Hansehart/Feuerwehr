@@ -41,14 +41,19 @@ export default function MobileBody({
     breakWords.forEach(word => {
       const lowerCaseWord = word.toLowerCase();
       const index = modifiedTitle.toLowerCase().indexOf(lowerCaseWord);
-      if (index !== -1) {
+      if (index !== -1) { // result found 
+        // check if the first character of the word in the original title was capitalized
+        if (title.charAt(index) === title.charAt(index).toUpperCase()) {
+          word[0].toUpperCase();
+        }
         modifiedTitle =
           modifiedTitle.substring(0, index) +
           word +
-          "\u00AD" + // soft hyphen unicode character
+          "\u00AD" + // soft hyphen Unicode character
           modifiedTitle.substring(index + word.length);
       }
     });
+
     return modifiedTitle;
   };
 
