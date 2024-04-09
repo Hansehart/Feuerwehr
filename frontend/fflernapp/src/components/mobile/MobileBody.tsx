@@ -52,7 +52,7 @@ export default function MobileBody({
     <MobileContentCard
       key={index}
       title={addSoftHyphen(data.title)}
-      subtitle={data.subtitle}
+      subtitle={addSoftHyphen(data.subtitle)}
       path={data.path}
     />
   ))
