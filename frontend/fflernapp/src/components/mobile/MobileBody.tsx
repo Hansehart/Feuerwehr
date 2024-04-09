@@ -29,10 +29,30 @@ export default function MobileBody({
       .catch((error) => console.error("Error fetching data: ", error));
   }, [type]);
 
+  const breakWords = ['lösch', 'gruppen', 'fahrzeug']; // array of words which causes a break
+
+  /*
+  * Provides soft hypen for long words.
+  * i.e title = löschgruppenfahrzeug, breakWords = [lösch, gruppen, fahrzeug]
+  * then it returns lösch&shy;gruppen&shy;fahrzeug
+  */
+  const addSoftHyphen = (title: string) => {
+    let modifiedTitle = title.toLowerCase();
+    breakWords.forEach(word => {
+      if (modifiedTitle.includes(word)) {
+        const splitTitle = modifiedTitle.split(word);
+        modifiedTitle = splitTitle.join(word + '&shy;');
+      }
+    });
+    modifiedTitle = modifiedTitle[0].toUpperCase  + modifiedTitle.slice(1); // capitalize first letter
+    return modifiedTitle;
+  };
+
+
   const cards = contentData.map((data, index) => (
     <MobileContentCard
       key={index}
-      title={data.title}
+      title={addSoftHyphen(data.title)}
       subtitle={data.subtitle}
       path={data.path}
     />
