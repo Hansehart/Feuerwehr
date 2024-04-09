@@ -33,18 +33,17 @@ export default function MobileBody({
 
   /*
   * Provides soft hypen for long words.
-  * i.e title = löschgruppenfahrzeug, breakWords = [lösch, gruppen, fahrzeug]
-  * then it returns lösch&shy;gruppen&shy;fahrzeug
+  * i.e title = Löschgruppenfahrzeug, breakWords = [lösch, gruppen, fahrzeug]
+  * then it returns Lösch&shy;gruppen&shy;fahrzeug
   */
   const addSoftHyphen = (title: string) => {
-    let modifiedTitle = title.toLowerCase();
+    let modifiedTitle = title;
     breakWords.forEach(word => {
-      if (modifiedTitle.includes(word)) {
+      if (modifiedTitle.toLowerCase().includes(word)) {
         const splitTitle = modifiedTitle.split(word);
         modifiedTitle = splitTitle.join(word + '&shy;');
       }
     });
-    modifiedTitle = modifiedTitle[0].toUpperCase()  + modifiedTitle.slice(1); // capitalize first letter
     return modifiedTitle;
   };
 
