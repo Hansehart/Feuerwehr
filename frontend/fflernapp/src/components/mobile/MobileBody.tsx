@@ -27,7 +27,7 @@ export default function MobileBody({
       .then((response) => response.json())
       .then((data) => setContentData(data))
       .catch((error) => console.error("Error fetching data: ", error));
-  }, []);
+  }, [type]);
 
   const cards = contentData.map((data, index) => (
     <MobileContentCard
