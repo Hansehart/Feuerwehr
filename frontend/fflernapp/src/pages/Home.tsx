@@ -34,7 +34,7 @@ function Home() {
               <h3>Lernfortschritt</h3>
             </div>
           }
-          source="/learnpages"
+          source="learnpages"
         />
       );
       window.history.replaceState({}, "");
@@ -47,7 +47,7 @@ function Home() {
               <h3>Moin, Username!</h3>
             </div>
           }
-          source="/vehiclepages"
+          source="vehiclepages"
         />
       );
       window.history.replaceState({}, "");
