@@ -41,13 +41,11 @@ export default function MobileBody({
     breakWords.forEach(word => {
       const lowerCaseWord = word.toLowerCase();
       const index = modifiedTitle.toLowerCase().indexOf(lowerCaseWord);
-      if (index !== -1) {
-        modifiedTitle =
-          modifiedTitle.substring(0, index) +
-          word +
-          "&shy;" +
-          modifiedTitle.substring(index + word.length);
-      }
+      modifiedTitle =
+        modifiedTitle.substring(0, index) +
+        word +
+        "\u00AD" + // soft hyphen unicode character
+        modifiedTitle.substring(index + word.length);
     });
     return modifiedTitle;
   };
