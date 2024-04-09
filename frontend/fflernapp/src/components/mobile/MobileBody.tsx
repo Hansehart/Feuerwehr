@@ -44,7 +44,7 @@ export default function MobileBody({
         modifiedTitle = splitTitle.join(word + '&shy;');
       }
     });
-    modifiedTitle = modifiedTitle[0].toUpperCase  + modifiedTitle.slice(1); // capitalize first letter
+    modifiedTitle = modifiedTitle[0].toUpperCase()  + modifiedTitle.slice(1); // capitalize first letter
     return modifiedTitle;
   };
 
