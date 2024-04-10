@@ -23,6 +23,8 @@ export default function MobileBody({
   const [contentData, setContentData] = useState<ContentData[]>([]);
 
   useEffect(() => {
+    // clear old cards from another tab
+    setContentData([]);
     fetch(`https://fflernapp.hansehart.de/api/service/receive/contentpages?type=${type}`)
       .then((response) => response.json())
       .then((data) => setContentData(data))
