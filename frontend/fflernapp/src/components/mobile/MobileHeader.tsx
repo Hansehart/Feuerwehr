@@ -2,7 +2,7 @@ import "./MobileHeaderStyle.css";
 
 interface MobileHeaderProps {
   department?: boolean;
-  name: String;
+  name: string;
 }
 
 export default function MobileHeader({ department, name }: MobileHeaderProps) {

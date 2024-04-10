@@ -5,6 +5,7 @@ import MobileBody from "../components/mobile/MobileBody";
 import MobileHeader from "../components/mobile/MobileHeader";
 import MobileNavBar from "../components/mobile/MobileNavBar";
 import ProgressBall from "../components/ProgressBall";
+import MobileButton from "../components/mobile/MobileButton";
 
 function Home() {
   const location = useLocation();
@@ -53,11 +54,11 @@ function Home() {
       window.history.replaceState({}, "");
       break;
     case "profile":
-      displayComponent = <MobileBody type="/"/>;
+      displayComponent = <MobileBody before={<div className="auth-preview"><MobileButton text="Registrieren"></MobileButton><MobileButton text="Anmelden"></MobileButton></div>} type="/profile" />;
       window.history.replaceState({}, "");
       break;
     default:
-      displayComponent = <MobileBody type=""/>;
+      displayComponent = <MobileBody type="" />;
   }
 
   return (

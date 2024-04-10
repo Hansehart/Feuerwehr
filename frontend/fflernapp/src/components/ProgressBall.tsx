@@ -1,6 +1,6 @@
-import "./ProgressBallStyke.css";
+import "./ProgressBallStyle.css";
 
-function ProgressBall() {
+export default function ProgressBall() {
   return (
     <div className="container">
       <div className="ball" id="route"></div>
@@ -11,5 +11,3 @@ function ProgressBall() {
     </div>
   );
 }
-
-export default ProgressBall;
