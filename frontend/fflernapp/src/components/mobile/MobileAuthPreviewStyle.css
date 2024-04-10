@@ -4,7 +4,6 @@
     align-items: center;
 
     height: 80vh;
-
     background-size: cover;
 }
 
@@ -23,7 +22,6 @@
 
 .auth-buttons {
     display: flex;
-    flex-direction: column;
     justify-content: center;
     align-items: center;
 
