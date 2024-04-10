@@ -8,5 +8,6 @@ button {
     letter-spacing: .2vw;
     color: white;
 
-    margin: .2em
+    padding: 1em;
+    margin: .2em;
 }
