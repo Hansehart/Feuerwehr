@@ -44,7 +44,7 @@
   */
   background-image: conic-gradient(
     from 200deg,
-    #ea4138 70deg,
+    #ea4138 var(--angle, 0deg),
     transparent 20deg
   );
 }

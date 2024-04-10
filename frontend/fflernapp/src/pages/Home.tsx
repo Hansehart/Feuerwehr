@@ -59,7 +59,7 @@ function Home() {
           before={
             <MobileAuthPreview/>
           }
-          type="/profile"
+          type="profile"
         />
       );
       window.history.replaceState({}, "");
