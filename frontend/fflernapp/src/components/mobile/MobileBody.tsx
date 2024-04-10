@@ -43,7 +43,7 @@ export default function MobileBody({
   ))
 
   return (
-    <main style={{ marginBottom: "25vh" }}>
+    <main style={{ marginBottom: "15vh" }}>
       {before}
       {cards}
       {after}

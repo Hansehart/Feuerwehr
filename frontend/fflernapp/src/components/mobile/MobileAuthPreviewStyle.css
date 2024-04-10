@@ -1,0 +1,33 @@
+.auth {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    height: 70vh;
+
+    background-size: cover;
+}
+
+.auth-preview {
+    width: 90%;
+}
+
+.auth-text {
+    color: white;
+    background-color: #0000009e;
+
+    border: .35em solid #ea4138;
+    border-radius: .5em;
+    text-align: center;
+}
+
+.auth-buttons {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    margin-top: 1em;
+}
+
