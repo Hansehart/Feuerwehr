@@ -5,6 +5,7 @@ interface MobileBodyProps {
   before?: React.ReactNode;
   type: string;
   after?: React.ReactNode;
+  marginToFooter?: string;
 }
 
 interface ContentData {
@@ -18,6 +19,7 @@ export default function MobileBody({
   before,
   type,
   after,
+  marginToFooter
 }: MobileBodyProps) {
 
   const [contentData, setContentData] = useState<ContentData[]>([]);
@@ -45,7 +47,7 @@ export default function MobileBody({
   ))
 
   return (
-    <main>
+    <main style={{marginBottom: marginToFooter}}>
       {before}
       {cards}
       {after}

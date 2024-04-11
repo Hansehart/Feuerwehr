@@ -36,6 +36,7 @@ function Home() {
             </div>
           }
           type="learn"
+          marginToFooter="18vh"
         />
       );
       window.history.replaceState({}, "");
@@ -49,6 +50,7 @@ function Home() {
             </div>
           }
           type="vehicle"
+          marginToFooter="18vh"
         />
       );
       window.history.replaceState({}, "");
