@@ -10,9 +10,7 @@ export default function ProgressBall() {
     const bar = document.getElementById("bar");
     // 25% -> 80 deg, 50% -> 160 deg, 100% -> 320 deg (ref: ProgressBallStyle.css)
     const angle = String(progress * 3.2) + "deg";
-    console.log(angle);
     bar?.style.setProperty("--angle", angle);
-    console.log()
   }, [progress]);
 
   return (
