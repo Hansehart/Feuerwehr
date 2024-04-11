@@ -14,7 +14,7 @@ function App() {
       <Routes>
         <Route path="/home" element={<Home />} />
         <Route path="/vehicle" element={<Vehicle />} />
-        <Route path="/exercise" element={<Exercise />} />
+        <Route path="/learn" element={<Exercise />} />
         <Route path="*" element={<Navigate replace to="/home" />} />
       </Routes>
     </Router>
