@@ -2,6 +2,7 @@ package group.artifact;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -30,10 +31,13 @@ public class SecurityConfig {
                                 .build();
         }
 
+        @Value("${FRONTEND_ADDRESS}")
+        private String allowedOrigin;
+
         @Bean
         public CorsConfigurationSource corsConfigurationSource() {
                 CorsConfiguration corsConfiguration = new CorsConfiguration();
-                corsConfiguration.setAllowedOrigins(List.of("https://fflernapp.hansehart.de"));
+                corsConfiguration.setAllowedOrigins(List.of(allowedOrigin));
                 corsConfiguration.setAllowedMethods(List.of("GET", "POST"));
                 corsConfiguration.setAllowedHeaders(List.of("*"));
                 corsConfiguration.setMaxAge(3600L);
