@@ -5,7 +5,7 @@ nav {
   grid-template-columns: repeat(3, 33vw);
 
   width: 100%;
-  max-height: 15vh;
+  height: 15vh;
 
   background-color: #05192a;
 }
