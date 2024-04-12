@@ -47,6 +47,11 @@ public class LearnController {
 
     @PostMapping("/save/answer")
     public void saveAnswer(@RequestBody Answer answer) {
-        answerRepository.save(answer);
+        Optional<Quiz> quiz = quizRepository.findById(answer.getQuiz().getId());
+        if (quiz.isPresent()) {
+            answer.setQuiz(quiz.get());
+            answerRepository.save(answer);
+        }
+        System.out.println("ERROR: no corresponding answers for provided quiz id");
     }
 }
