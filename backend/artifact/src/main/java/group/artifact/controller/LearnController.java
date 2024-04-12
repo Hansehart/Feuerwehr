@@ -13,51 +13,50 @@ import org.springframework.web.bind.annotation.RestController;
 
 import group.artifact.models.Selection;
 import group.artifact.dtos.SelectionDTO;
-import group.artifact.models.Quiz;
+import group.artifact.models.Question;
 import group.artifact.repositories.SelectionRepository;
-import group.artifact.repositories.QuizRepository;
+import group.artifact.repositories.QuestionRepository;
 
 @RestController
 @RequestMapping("/api/service")
 public class LearnController {
 
     @Autowired
-    QuizRepository quizRepository;
+    QuestionRepository questionRepository;
     @Autowired
     SelectionRepository selectionRepository;
 
-    @GetMapping("/receive/quiz")
-    public Optional<Quiz> receiveQuiz() {
-        return quizRepository.findById(0);
+    @GetMapping("/receive/question")
+    public Optional<Question> receiveQuiz() {
+        return questionRepository.findById(0);
     }
 
     @GetMapping("/receive/selections")
-    public List<Selection> receiveAnswers(@RequestParam(required = true) Integer quizId) {
-        Optional<Quiz> quiz = quizRepository.findById(quizId);
-        if (quiz.isPresent()) {
-            System.out.println(quiz.get().getSelections());
-            return null;
+    public List<Selection> receiveAnswers(@RequestParam(required = true) Integer questionId) {
+        Optional<Question> question = questionRepository.findById(questionId);
+        if (question.isPresent()) {
+            // TODO
         }
-        System.out.println("ERROR: no corresponding selections for provided quiz id");
+        System.out.println("ERROR: no corresponding selections for provided question id");
         return null;
     }
 
-    @PostMapping("/save/quiz")
-    public void saveQuiz(@RequestBody Quiz quiz) {
-        quizRepository.save(quiz);
+    @PostMapping("/save/question")
+    public void saveQuiz(@RequestBody Question question) {
+        questionRepository.save(question);
     }
 
     @PostMapping("/save/selection")
     public void saveAnswer(@RequestBody SelectionDTO selectionDTO) {
-        Optional<Quiz> quiz = quizRepository.findById(selectionDTO.getQuizId());
-        if (quiz.isPresent()) {
+        Optional<Question> question = questionRepository.findById(selectionDTO.getQuizId());
+        if (question.isPresent()) {
             Selection selection = new Selection();
             selection.setSolution(selectionDTO.isSolution());
             selection.setAnswer(selectionDTO.getAnswer());
-            selection.setQuiz(quiz.get());
+            selection.setQuiz(question.get());
             selectionRepository.save(selection);
             return;
         }
-        System.out.println("ERROR: no corresponding selections for provided quiz id");
+        System.out.println("ERROR: no corresponding selections for provided question id");
     }
 }

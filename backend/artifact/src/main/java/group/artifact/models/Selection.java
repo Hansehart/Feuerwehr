@@ -23,7 +23,7 @@ public class Selection {
 
     @ManyToOne
     @JoinColumn(name = "fk_quiz")
-    private Quiz quiz;
+    private Question quiz;
 
     
 }
