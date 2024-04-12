@@ -28,14 +28,15 @@ public class LearnController {
 
     @GetMapping("/receive/quiz")
     public Optional<Quiz> receiveQuiz() {
-        return quizRepository.findById(1);
+        return quizRepository.findById(0);
     }
 
     @GetMapping("/receive/selections")
     public List<Selection> receiveAnswers(@RequestParam(required = true) Integer quizId) {
         Optional<Quiz> quiz = quizRepository.findById(quizId);
         if (quiz.isPresent()) {
-            return quiz.get().getSelections();
+            System.out.println(quiz.get().getSelections());
+            return null;
         }
         System.out.println("ERROR: no corresponding selections for provided quiz id");
         return null;
