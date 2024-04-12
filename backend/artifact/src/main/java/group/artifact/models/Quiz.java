@@ -20,5 +20,5 @@ public class Quiz {
     private String question;
 
     @OneToMany(mappedBy = "quiz")
-    List<Answer> answers;
+    List<Selection> selections;
 }

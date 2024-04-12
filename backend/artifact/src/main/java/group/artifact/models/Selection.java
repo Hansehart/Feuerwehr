@@ -8,14 +8,17 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Data
 @Entity
-@Table(name = "answer")
-public class Answer {
+@Table(name = "selection")
+@NoArgsConstructor
+public class Selection {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
+    private String answer;
     private boolean solution;
 
     @ManyToOne

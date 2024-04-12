@@ -11,9 +11,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import group.artifact.models.Answer;
+import group.artifact.models.Selection;
+import group.artifact.dtos.SelectionDTO;
 import group.artifact.models.Quiz;
-import group.artifact.repositories.AnswerRepository;
+import group.artifact.repositories.SelectionRepository;
 import group.artifact.repositories.QuizRepository;
 
 @RestController
@@ -23,20 +24,20 @@ public class LearnController {
     @Autowired
     QuizRepository quizRepository;
     @Autowired
-    AnswerRepository answerRepository;
+    SelectionRepository selectionRepository;
 
     @GetMapping("/receive/quiz")
     public Optional<Quiz> receiveQuiz() {
         return quizRepository.findById(1);
     }
 
-    @GetMapping("/receive/answers")
-    public List<Answer> receiveAnswers(@RequestParam(required = true) Integer quizId) {
+    @GetMapping("/receive/selections")
+    public List<Selection> receiveAnswers(@RequestParam(required = true) Integer quizId) {
         Optional<Quiz> quiz = quizRepository.findById(quizId);
         if (quiz.isPresent()) {
-            return quiz.get().getAnswers();
+            return quiz.get().getSelections();
         }
-        System.out.println("ERROR: no corresponding answers for provided quiz id");
+        System.out.println("ERROR: no corresponding selections for provided quiz id");
         return null;
     }
 
@@ -45,13 +46,17 @@ public class LearnController {
         quizRepository.save(quiz);
     }
 
-    @PostMapping("/save/answer")
-    public void saveAnswer(@RequestBody Answer answer) {
-        Optional<Quiz> quiz = quizRepository.findById(answer.getQuiz().getId());
+    @PostMapping("/save/selection")
+    public void saveAnswer(@RequestBody SelectionDTO selectionDTO) {
+        Optional<Quiz> quiz = quizRepository.findById(selectionDTO.getQuizId());
         if (quiz.isPresent()) {
-            answer.setQuiz(quiz.get());
-            answerRepository.save(answer);
+            Selection selection = new Selection();
+            selection.setSolution(selectionDTO.isSolution());
+            selection.setAnswer(selectionDTO.getAnswer());
+            selection.setQuiz(quiz.get());
+            selectionRepository.save(selection);
+            return;
         }
-        System.out.println("ERROR: no corresponding answers for provided quiz id");
+        System.out.println("ERROR: no corresponding selections for provided quiz id");
     }
 }
