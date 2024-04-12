@@ -1,6 +1,6 @@
 package group.artifact.models;
 
-import java.util.Set;
+import java.util.List;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -20,5 +20,5 @@ public class Quiz {
     private String question;
 
     @OneToMany(mappedBy = "quiz")
-    Set<Answer> answers;
+    List<Answer> answers;
 }

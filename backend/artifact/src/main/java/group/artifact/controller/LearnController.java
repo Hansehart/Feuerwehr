@@ -1,6 +1,7 @@
 package group.artifact.controller;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -10,47 +11,42 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import group.artifact.models.Contentpage;
-import group.artifact.repositories.ContentpageRepository;
+import group.artifact.models.Answer;
+import group.artifact.models.Quiz;
+import group.artifact.repositories.AnswerRepository;
+import group.artifact.repositories.QuizRepository;
 
 @RestController
 @RequestMapping("/api/service")
 public class LearnController {
 
     @Autowired
-    ContentpageRepository contentpageRepository;
+    QuizRepository quizRepository;
+    @Autowired
+    AnswerRepository answerRepository;
 
-    @GetMapping("/receive/question")
-    public List<Contentpage> receiveQuestion(@RequestParam(required = false) String type) {
-        if (type.equals("vehicle")) {
-            return contentpageRepository.findAllByPathStartingWith("/vehicle%");
-        } else if (type.equals("learn")) {
-            return contentpageRepository.findAllByPathStartingWith("/learn%");
-        } else {
-            System.out.println("ERROR: type unknown in query string");
-            return null;
-        }
+    @GetMapping("/receive/quiz")
+    public Optional<Quiz> receiveQuiz() {
+        return quizRepository.findById(1);
     }
 
-    @GetMapping("/receive/answer")
-    public List<Contentpage> receiveAnswer(@RequestParam(required = false) String type) {
-        if (type.equals("vehicle")) {
-            return contentpageRepository.findAllByPathStartingWith("/vehicle%");
-        } else if (type.equals("learn")) {
-            return contentpageRepository.findAllByPathStartingWith("/learn%");
-        } else {
-            System.out.println("ERROR: type unknown in query string");
-            return null;
+    @GetMapping("/receive/answers")
+    public List<Answer> receiveAnswers(@RequestParam(required = true) Integer quizId) {
+        Optional<Quiz> quiz = quizRepository.findById(quizId);
+        if (quiz.isPresent()) {
+            return quiz.get().getAnswers();
         }
+        System.out.println("ERROR: no corresponding answers for provided quiz id");
+        return null;
     }
 
-    @PostMapping("/save/question")
-    public void saveQuestion(@RequestBody Contentpage cp) {
-        contentpageRepository.save(cp);
+    @PostMapping("/save/quiz")
+    public void saveQuiz(@RequestBody Quiz quiz) {
+        quizRepository.save(quiz);
     }
 
     @PostMapping("/save/answer")
-    public void saveAnswer(@RequestBody Contentpage cp) {
-        contentpageRepository.save(cp);
+    public void saveAnswer(@RequestBody Answer answer) {
+        answerRepository.save(answer);
     }
 }
