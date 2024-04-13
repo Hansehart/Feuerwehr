@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import group.artifact.dtos.QuizDTO;
+import group.artifact.models.Question;
 import group.artifact.repositories.SelectionRepository;
 import group.artifact.repositories.QuestionRepository;
 
@@ -25,7 +26,9 @@ public class LearnController {
     }
 
     @PostMapping("/save/quiz")
-    public void saveQuiz() {
+    public void saveQuiz(QuizDTO quiz) {
+        Question q = new Question();
+        questionRepository.save(q);
         return; // TODO
     }
 

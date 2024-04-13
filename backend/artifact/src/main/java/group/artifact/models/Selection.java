@@ -22,8 +22,6 @@ public class Selection {
     private boolean solution;
 
     @ManyToOne
-    @JoinColumn(name = "fk_quiz")
-    private Question quiz;
-
-    
+    @JoinColumn(name = "fk_question")
+    private Question question;
 }
