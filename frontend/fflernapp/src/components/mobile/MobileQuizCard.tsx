@@ -19,7 +19,7 @@ function MobileQuizCard() {
       .then((response) => response.json())
       .then((data) => setQuizData(data))
       .catch((error) => console.error("Error fetching data: ", error));
-  }, [quizData]);
+  }, []);
 
   const startTimer = () => {
     const timer = document.getElementById("timer");
