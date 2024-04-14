@@ -43,7 +43,7 @@ public class LearnController {
                 s.setQuestion(q);
                 selectionRepository.save(s);
             }
-            return ResponseEntity.ok("Quiz created successfully.");
+            return ResponseEntity.ok("quiz created successfully");
         } catch (Exception e) {
             System.out.println("ERROR: failed to create quiz");
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("failed to create quiz");
