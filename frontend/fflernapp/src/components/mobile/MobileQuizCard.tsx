@@ -37,6 +37,7 @@ function MobileQuizCard() {
             setTimerStarted(false);
             setQuizData(null);
             setFinished(true);
+            setCount(3);
             return prevCount;
           }
         });
