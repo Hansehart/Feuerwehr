@@ -19,6 +19,7 @@
 }
 
 .select {
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
   margin: 2em;
 }
 
