@@ -19,7 +19,7 @@ function MobileQuizCard() {
       .then((response) => response.json())
       .then((data) => setQuizData(data))
       .catch((error) => console.error("Error fetching data: ", error));
-  }, []);
+  }, [quizData]);
 
   const startTimer = () => {
     const timer = document.getElementById("timer");
@@ -33,6 +33,8 @@ function MobileQuizCard() {
             return prevCount - 1; // decrement the count
           } else {
             clearInterval(countdown); // stop the countdown
+            setTimerStarted(false);
+            setQuizData(null);
             return prevCount;
           }
         });
