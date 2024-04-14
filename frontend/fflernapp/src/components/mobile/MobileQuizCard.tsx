@@ -9,23 +9,19 @@ interface QuizData {
 }
 
 function MobileQuizCard() {
-  const solution = "answer-1";
   const [count, setCount] = useState(3);
   const [timerStarted, setTimerStarted] = useState(false);
+  const [quizData, setQuizData] = useState<QuizData | null>(null);
 
-  const handleAnswerClick = (answerID: string) => {
-    const solutionElement = document.getElementById(solution);
-    if (solutionElement && !timerStarted) {
-      // element found and timer not started yet (no answer selected)
-      solutionElement.style.borderColor = "green";
-      const selectedElement = document.getElementById(answerID);
+  useEffect(() => {
+    // clear old cards from another tab
+    fetch(`https://fflernapp.hansehart.de/api/service/receive/quiz`)
+      .then((response) => response.json())
+      .then((data) => setQuizData(data))
+      .catch((error) => console.error("Error fetching data: ", error));
+  }, []);
 
-      if (selectedElement && solution != answerID) {
-        // wrong answer selected
-        selectedElement.style.borderColor = "red";
-      }
-    }
-
+  const startTimer = () => {
     const timer = document.getElementById("timer");
     if (timer && !timerStarted) {
       timer.style.display = "block";
@@ -46,16 +42,27 @@ function MobileQuizCard() {
     }
   };
 
-  const [quizData, setQuizData] = useState<QuizData | null>(null);
-
-  useEffect(() => {
-    // clear old cards from another tab
-    setQuizData(null);
-    fetch(`https://fflernapp.hansehart.de/api/service/receive/quiz`)
-      .then((response) => response.json())
-      .then((data) => setQuizData(data))
-      .catch((error) => console.error("Error fetching data: ", error));
-  }, []);
+  const handleAnswerClick = (answerID: string) => {
+    if (quizData) {
+      if (quizData.solutionIndexes.length === 1) {
+        // single choice
+        const solutionID = `answer-${quizData.solutionIndexes[0]}`;
+        const solutionElement = document.getElementById(solutionID);
+        if (solutionElement && !timerStarted) {
+          // element found and timer not started yet (no answer selected)
+          solutionElement.style.borderColor = "green";
+          const selectedElement = document.getElementById(answerID);
+          if (selectedElement && solutionID != answerID) {
+            // wrong answer selected
+            selectedElement.style.borderColor = "red";
+          }
+        }
+      } else {
+        // multiple choice
+      }
+      startTimer();
+    }
+  };
 
   return (
     <div>
