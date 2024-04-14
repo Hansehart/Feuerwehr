@@ -31,7 +31,7 @@ function Exercise() {
   return (
     <div>
       <MobileHeader name="Übung" />
-      <MobileBody before={<MobileQuizCard />} type=""/>
+      <MobileBody before={<MobileQuizCard />} marginToFooter="18vh" type="" />
       <MobileNavBar changeView={changeView} preset="learn" />
     </div>
   );
