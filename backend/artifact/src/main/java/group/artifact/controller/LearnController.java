@@ -33,6 +33,7 @@ public class LearnController {
         try {
             Question q = new Question();
             q.setText(quiz.getText()); // extract question from quizdto
+            System.out.println(quiz.getText());
             questionRepository.save(q);
             for (int i = 0; i < quiz.getSelections().length; i++) {
                 Selection s = new Selection();
