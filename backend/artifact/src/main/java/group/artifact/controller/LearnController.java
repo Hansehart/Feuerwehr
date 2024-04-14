@@ -1,5 +1,7 @@
 package group.artifact.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -34,12 +36,18 @@ public class LearnController {
         QuizDTO quiz = new QuizDTO();
         quiz.setText(question.getText());
 
-        String[] selections = selectionRepository.findByQuestion(question)
-                .stream()
+        List<Selection> selections = selectionRepository.findByQuestion(question);
+        String[] s = selections.stream()
                 .map(Selection::getAnswer)
                 .toArray(String[]::new);
-        quiz.setSelections(selections);
+        quiz.setSelections(s);
 
+
+        for (int i = 0; i < selections.size(); i++) {
+            if (selections.get(i).isSolution()){
+                quiz.getSolutionIndexes().add(i);
+            }
+        }
         return ResponseEntity.ok(quiz);
     }
 
@@ -48,12 +56,13 @@ public class LearnController {
         try {
             Question q = new Question();
             q.setText(quiz.getText()); // extract question from quizdto
-            System.out.println(quiz.getText());
             questionRepository.save(q);
+
+            List<Integer> indexes = quiz.getSolutionIndexes();
             for (int i = 0; i < quiz.getSelections().length; i++) {
                 Selection s = new Selection();
                 s.setAnswer(quiz.getSelections()[i]);
-                s.setSolution(i == quiz.getSolutionIndex());
+                s.setSolution(indexes.contains(i));
                 s.setQuestion(q);
                 selectionRepository.save(s);
             }
