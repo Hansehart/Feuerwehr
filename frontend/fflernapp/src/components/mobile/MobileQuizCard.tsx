@@ -15,7 +15,6 @@ function MobileQuizCard() {
   const [quizData, setQuizData] = useState<QuizData | null>(null);
 
   useEffect(() => {
-    // clear old cards from another tab
     fetch(`https://fflernapp.hansehart.de/api/service/receive/quiz`)
       .then((response) => response.json())
       .then((data) => setQuizData(data))
@@ -36,7 +35,7 @@ function MobileQuizCard() {
             clearInterval(countdown); // stop the countdown
             setTimerStarted(false);
             setQuizData(null);
-            setFinished(true);
+            setFinished(!finished);
             setCount(3);
             return prevCount;
           }
