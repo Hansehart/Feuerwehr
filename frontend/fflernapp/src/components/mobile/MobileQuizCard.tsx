@@ -1,6 +1,12 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./MobileQuizCardStyle.css";
 import drivingFirefighters from "/src/assets/driving-firefighters-filter.jpg";
+
+interface QuizData {
+  text: string;
+  solutionIndexes: number[];
+  selections: string[];
+}
 
 function MobileQuizCard() {
   const solution = "answer-1";
@@ -40,52 +46,49 @@ function MobileQuizCard() {
     }
   };
 
+  const [quizData, setQuizData] = useState<QuizData | null>(null);
+
+  useEffect(() => {
+    // clear old cards from another tab
+    setQuizData(null);
+    fetch(`https://fflernapp.hansehart.de/api/service/receive/quiz`)
+      .then((response) => response.json())
+      .then((data) => setQuizData(data))
+      .catch((error) => console.error("Error fetching data: ", error));
+  }, []);
+
   return (
     <div>
-      <section
-        className="question"
-        style={{ backgroundImage: `url(${drivingFirefighters})` }}
-      >
-        <h2>How much is the fish?</h2>
-      </section>
-      <section className="type">
-        <h3>Einzelauswahl</h3>
-      </section>
-      <section className="select">
-        <div
-          className="answer"
-          id="answer-1"
-          onClick={() => handleAnswerClick("answer-1")}
-        >
-          <p>50.000</p>
+      {quizData && (
+        <div className="quiz">
+          <section
+            className="question"
+            style={{ backgroundImage: `url(${drivingFirefighters})` }}
+          >
+            <h2>{quizData.text}</h2>
+          </section>
+          <section className="type">
+            <h3>Einzelauswahl</h3>
+          </section>
+          <section className="select">
+            {quizData.selections.map((selection, index) => (
+              <div
+                key={index}
+                className="answer"
+                id={`answer-${index}`}
+                onClick={() => handleAnswerClick(`answer-${index}`)}
+              >
+                <p>{selection}</p>
+              </div>
+            ))}
+          </section>
+          <section className="continue">
+            <h4 id="timer" style={{ display: "none" }}>
+              Weiter in {count}...
+            </h4>
+          </section>
         </div>
-        <div
-          className="answer"
-          id="answer-2"
-          onClick={() => handleAnswerClick("answer-2")}
-        >
-          <p>80.000</p>
-        </div>
-        <div
-          className="answer"
-          id="answer-3"
-          onClick={() => handleAnswerClick("answer-3")}
-        >
-          <p>30.000</p>
-        </div>
-        <div
-          className="answer"
-          id="answer-4"
-          onClick={() => handleAnswerClick("answer-4")}
-        >
-          <p>100.000</p>
-        </div>
-      </section>
-      <section className="continue">
-        <h4 id="timer" style={{ display: "none" }}>
-          Weiter in {count}...
-        </h4>
-      </section>
+      )}
     </div>
   );
 }
