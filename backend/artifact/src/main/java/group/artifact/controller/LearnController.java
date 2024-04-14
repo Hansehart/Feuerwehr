@@ -1,5 +1,6 @@
 package group.artifact.controller;
 
+import java.util.LinkedList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -42,12 +43,13 @@ public class LearnController {
                 .toArray(String[]::new);
         quiz.setSelections(s);
 
-
+        List<Integer> indexes = new LinkedList<>();
         for (int i = 0; i < selections.size(); i++) {
             if (selections.get(i).isSolution()){
-                quiz.getSolutionIndexes().add(i);
+                indexes.add(i);
             }
         }
+        quiz.setSolutionIndexes(indexes);
         return ResponseEntity.ok(quiz);
     }
 
