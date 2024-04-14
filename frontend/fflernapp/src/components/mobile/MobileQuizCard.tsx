@@ -11,6 +11,7 @@ interface QuizData {
 function MobileQuizCard() {
   const [count, setCount] = useState(3);
   const [timerStarted, setTimerStarted] = useState(false);
+  const [finished, setFinished] = useState(false);
   const [quizData, setQuizData] = useState<QuizData | null>(null);
 
   useEffect(() => {
@@ -19,7 +20,7 @@ function MobileQuizCard() {
       .then((response) => response.json())
       .then((data) => setQuizData(data))
       .catch((error) => console.error("Error fetching data: ", error));
-  }, []);
+  }, [finished]);
 
   const startTimer = () => {
     const timer = document.getElementById("timer");
@@ -35,6 +36,7 @@ function MobileQuizCard() {
             clearInterval(countdown); // stop the countdown
             setTimerStarted(false);
             setQuizData(null);
+            setFinished(true);
             return prevCount;
           }
         });
