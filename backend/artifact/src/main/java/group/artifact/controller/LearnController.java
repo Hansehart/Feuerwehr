@@ -2,6 +2,7 @@ package group.artifact.controller;
 
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Random;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -29,8 +30,16 @@ public class LearnController {
     SelectionRepository selectionRepository;
 
     @GetMapping("/receive/quiz")
-    public ResponseEntity<QuizDTO> receiveQuiz(@RequestParam(required = true) Integer qid) { // question id
-        Question question = questionRepository.findById(qid).orElse(null);
+    public ResponseEntity<QuizDTO> receiveQuiz(@RequestParam(required = false) Integer qid) { // question id
+        Question question;
+        if (qid == null) { // choose a random question
+            List<Question> allQuestions = questionRepository.findAll();
+            Random random = new Random();
+            question = allQuestions.get(random.nextInt(allQuestions.size()));
+        } else { // select quesito by id
+            question = questionRepository.findById(qid).orElse(null);
+        }
+
         if (question == null) {
             return ResponseEntity.notFound().build();
         }
@@ -45,7 +54,7 @@ public class LearnController {
 
         List<Integer> indexes = new LinkedList<>();
         for (int i = 0; i < selections.size(); i++) {
-            if (selections.get(i).isSolution()){
+            if (selections.get(i).isSolution()) {
                 indexes.add(i);
             }
         }
