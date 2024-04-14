@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import group.artifact.dtos.QuizDTO;
@@ -25,8 +26,21 @@ public class LearnController {
     SelectionRepository selectionRepository;
 
     @GetMapping("/receive/quiz")
-    public QuizDTO receiveQuiz() {
-        return null; // TODO
+    public ResponseEntity<QuizDTO> receiveQuiz(@RequestParam(required = true) Integer qid) { // question id
+        Question question = questionRepository.findById(qid).orElse(null);
+        if (question == null) {
+            return ResponseEntity.notFound().build();
+        }
+        QuizDTO quiz = new QuizDTO();
+        quiz.setText(question.getText());
+
+        String[] selections = selectionRepository.findByQuestion(question)
+                .stream()
+                .map(Selection::getAnswer)
+                .toArray(String[]::new);
+        quiz.setSelections(selections);
+
+        return ResponseEntity.ok(quiz);
     }
 
     @PostMapping("/save/quiz")
@@ -49,27 +63,4 @@ public class LearnController {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("failed to create quiz");
         }
     }
-
-    /**
-     * @PostMapping("/save/question")
-     * public void saveQuestion(@RequestBody Question question) {
-     * questionRepository.save(question);
-     * }
-     * 
-     * @PostMapping("/save/selection")
-     * public void saveAnswer(@RequestBody SelectionDTO selectionDTO) {
-     * Optional<Question> question =
-     * questionRepository.findById(selectionDTO.getQuizId());
-     * if (question.isPresent()) {
-     * Selection selection = new Selection();
-     * selection.setSolution(selectionDTO.isSolution());
-     * selection.setAnswer(selectionDTO.getAnswer());
-     * selection.setQuiz(question.get());
-     * selectionRepository.save(selection);
-     * return;
-     * }
-     * System.out.println("ERROR: no corresponding selections for provided question
-     * id");
-     * }
-     */
 }
