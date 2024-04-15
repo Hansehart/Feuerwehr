@@ -58,6 +58,8 @@ function MobileQuizCard() {
         if (solutionElement && !timerStarted) {
           // element found and timer not started yet (no answer selected)
           solutionElement.style.borderColor = "green";
+          solutionElement.style.backgroundColor = "green";
+          solutionElement.style.color = "white";
           const selectedElement = document.getElementById(answerID);
           if (selectedElement && solutionID != answerID) {
             // wrong answer selected
