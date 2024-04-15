@@ -19,18 +19,21 @@ export default function MobileBody({
   before,
   type,
   after,
-  marginToFooter
+  marginToFooter,
 }: MobileBodyProps) {
-
   const [contentData, setContentData] = useState<ContentData[]>([]);
 
   useEffect(() => {
     // clear old cards from another tab
     setContentData([]);
-    fetch(`https://fflernapp.hansehart.de/api/service/receive/contentpages?type=${type}`)
-      .then((response) => response.json())
-      .then((data) => setContentData(data))
-      .catch((error) => console.error("Error fetching data: ", error));
+    if (type) {
+      fetch(
+        `https://fflernapp.hansehart.de/api/service/receive/contentpages?type=${type}`
+      )
+        .then((response) => response.json())
+        .then((data) => setContentData(data))
+        .catch((error) => console.error("Error fetching data: ", error));
+    }
   }, [type]);
 
   const convertSoftHyphen = (title: string) => {
@@ -44,10 +47,10 @@ export default function MobileBody({
       subtitle={convertSoftHyphen(data.subtitle)}
       path={data.path}
     />
-  ))
+  ));
 
   return (
-    <main style={{marginBottom: marginToFooter}}>
+    <main style={{ marginBottom: marginToFooter }}>
       {before}
       {cards}
       {after}
