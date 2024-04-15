@@ -32,12 +32,12 @@ public class SecurityConfig {
         }
 
         @Value("${FRONTEND_ADDRESS}")
-        private String allowedOrigin;
+        private String allowedOrigins;
 
         @Bean
         public CorsConfigurationSource corsConfigurationSource() {
                 CorsConfiguration corsConfiguration = new CorsConfiguration();
-                corsConfiguration.setAllowedOrigins(List.of(allowedOrigin));
+                corsConfiguration.setAllowedOrigins(List.of(allowedOrigins));
                 corsConfiguration.setAllowedMethods(List.of("GET", "POST"));
                 corsConfiguration.setAllowedHeaders(List.of("*"));
                 corsConfiguration.setMaxAge(3600L);
