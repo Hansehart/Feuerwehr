@@ -1,4 +1,4 @@
-import {useState } from "react";
+import {useEffect, useState } from "react";
 import "./MobileQuizCardStyle.css";
 import drivingFirefighters from "/src/assets/driving-firefighters-filter.jpg";
 
@@ -12,6 +12,10 @@ function MobileQuizCard() {
   const [count, setCount] = useState(3);
   const [timerStarted, setTimerStarted] = useState(false);
   const [quizData, setQuizData] = useState<QuizData | null>(null);
+
+  useEffect(() => {
+    fetchQuizData();
+  }, [])
 
   const fetchQuizData = () => {
     setQuizData(null); // clear any data
@@ -67,7 +71,6 @@ function MobileQuizCard() {
     }
   };
 
-  fetchQuizData();
   return (
     <div>
       {quizData && (
