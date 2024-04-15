@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import {useState } from "react";
 import "./MobileQuizCardStyle.css";
 import drivingFirefighters from "/src/assets/driving-firefighters-filter.jpg";
 
@@ -11,15 +11,15 @@ interface QuizData {
 function MobileQuizCard() {
   const [count, setCount] = useState(3);
   const [timerStarted, setTimerStarted] = useState(false);
-  const [finished, setFinished] = useState(false);
   const [quizData, setQuizData] = useState<QuizData | null>(null);
 
-  useEffect(() => {
+  const fetchQuizData = () => {
+    setQuizData(null); // clear any data
     fetch(`https://fflernapp.hansehart.de/api/service/receive/quiz`)
       .then((response) => response.json())
       .then((data) => setQuizData(data))
       .catch((error) => console.error("Error fetching data: ", error));
-  }, [finished]);
+  };
 
   const startTimer = () => {
     const timer = document.getElementById("timer");
@@ -34,9 +34,8 @@ function MobileQuizCard() {
           } else {
             clearInterval(countdown); // stop the countdown
             setTimerStarted(false);
-            setQuizData(null);
-            setFinished(!finished);
             setCount(3);
+            fetchQuizData();
             return prevCount;
           }
         });
@@ -68,6 +67,7 @@ function MobileQuizCard() {
     }
   };
 
+  fetchQuizData();
   return (
     <div>
       {quizData && (
