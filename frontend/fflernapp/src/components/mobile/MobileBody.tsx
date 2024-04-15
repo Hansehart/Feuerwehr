@@ -3,7 +3,7 @@ import MobileContentCard from "./MobileContentCard";
 
 interface MobileBodyProps {
   before?: React.ReactNode;
-  type: string;
+  type?: string;
   after?: React.ReactNode;
   marginToFooter?: string;
 }

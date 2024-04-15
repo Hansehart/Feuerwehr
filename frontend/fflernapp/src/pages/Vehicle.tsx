@@ -30,7 +30,7 @@ function Vehicle() {
   return (
     <div>
       <MobileHeader department={true} name="Mollhagen" />
-      <MobileBody type=""/>
+      <MobileBody/>
       <MobileNavBar changeView={changeView} preset="department" />
     </div>
   );

@@ -67,7 +67,7 @@ function Home() {
       window.history.replaceState({}, "");
       break;
     default:
-      displayComponent = <MobileBody type="" />;
+      displayComponent = <MobileBody />;
   }
 
   return (

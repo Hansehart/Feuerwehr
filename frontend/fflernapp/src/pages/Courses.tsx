@@ -30,7 +30,7 @@ function Courses() {
   return (
     <div>
       <MobileHeader name="Lehrgänge" />
-      <MobileBody type=""/>
+      <MobileBody/>
       <MobileNavBar changeView={changeView} preset="learn" />
     </div>
   );

@@ -30,7 +30,7 @@ function Regulations() {
   return (
     <div>
       <MobileHeader name="Vorschriften" />
-      <MobileBody type=""/>
+      <MobileBody/>
       <MobileNavBar changeView={changeView} preset="learn" />
     </div>
   );
