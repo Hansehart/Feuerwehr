@@ -3,6 +3,8 @@ package group.artifact.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -11,29 +13,32 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import group.artifact.models.Contentpage;
-import group.artifact.repositories.ContentpageRepository;
+import group.artifact.services.ContentpageService;
 
 @RestController
 @RequestMapping("/api/service")
 public class ContentpageController {
 
     @Autowired
-    ContentpageRepository contentpageRepository;
+    ContentpageService contentpageService;
 
     @GetMapping("/receive/contentpages")
-    public List<Contentpage> receiveContentpage(@RequestParam(required = false) String type) {
-        if (type.equals("vehicle")) {
-            return contentpageRepository.findAllByPathStartingWith("/vehicle%");
-        } else if (type.equals("learn")) {
-            return contentpageRepository.findAllByPathStartingWith("/learn%");
-        } else {
-            System.out.println("ERROR: type unknown in query string");
-            return null;
-        }
+    public ResponseEntity<List<Contentpage>> receiveContentpage(@RequestParam(required = false) String type) {
+        try {
+            List<Contentpage> cp = contentpageService.receive(type);
+            return ResponseEntity.ok(cp);
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);
+        } 
     }
 
     @PostMapping("/save/contentpage")
-    public void saveContentpage(@RequestBody Contentpage cp) {
-        contentpageRepository.save(cp);
+    public ResponseEntity<String> saveContentpage(@RequestBody Contentpage cp) {
+        try {
+            contentpageService.save(cp);
+            return ResponseEntity.ok("contentpage successfully created");
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);
+        } 
     }
 }
