@@ -15,12 +15,14 @@ public class ContentpageService {
     ContentpageRepository contentpageRepository;
 
     public List<Contentpage> receive(String type) {
-        if (type.equals("vehicle")) {
-            return contentpageRepository.findAllByPathStartingWith("/vehicle%");
-        } else if (type.equals("learn")) {
+        if (type.equals("learn")) {
             return contentpageRepository.findAllByPathStartingWith("/learn%");
+        } else if (type.equals("vehicle")) {
+            return contentpageRepository.findAllByPathStartingWith("/vehicle%");
+        } else if (type.equals("profile")) {
+            return contentpageRepository.findAllByPathStartingWith("/profile%");
         } else {
-            System.out.println("ERROR: type unknown in query string");
+            System.out.println("ERROR: type unknown in query string when searching for contentpage");
             return null;
         }
     }
