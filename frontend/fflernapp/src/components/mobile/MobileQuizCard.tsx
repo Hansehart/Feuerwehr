@@ -19,7 +19,10 @@ function MobileQuizCard() {
   }, []);
 
   const fetchQuizData = () => {
-    setQuizData(null); // clear any data
+    setQuizData(null);
+    setTimerStarted(false);
+    setMultipleChoice([]);
+    setCount(3);
     fetch(`https://fflernapp.hansehart.de/api/service/receive/quiz`)
       .then((response) => response.json())
       .then((data) => setQuizData(data))
@@ -38,9 +41,7 @@ function MobileQuizCard() {
             return prevCount - 1; // decrement the count
           } else {
             clearInterval(countdown); // stop the countdown
-            setTimerStarted(false);
-            setMultipleChoice([]);
-            setCount(3);
+
             fetchQuizData();
             return prevCount;
           }
@@ -97,7 +98,10 @@ function MobileQuizCard() {
                     element.style.borderColor = "green";
                     element.style.backgroundColor = "green";
                     element.style.color = "white";
-                  } else if (multipleChoice.includes(element.id) || element.id === answerID) {
+                  } else if (
+                    multipleChoice.includes(element.id) ||
+                    element.id === answerID
+                  ) {
                     // wrong choice
                     element.style.borderColor = "red";
                   }
@@ -119,7 +123,7 @@ function MobileQuizCard() {
             className="question"
             style={{ backgroundImage: `url(${drivingFirefighters})` }}
           >
-            <h2>{quizData.text}</h2>
+            <h3>{quizData.text}</h3>
           </section>
           <section className="type">
             <h3>
@@ -140,9 +144,12 @@ function MobileQuizCard() {
               </div>
             ))}
           </section>
-          <section className="continue">
+          <section
+            className="continue"
+            onClick={() => window.location.reload()}
+          >
             <h4 id="timer" style={{ display: "none" }}>
-              Weiter in {count}...
+              <u>Weiter</u> in {count}...
             </h4>
           </section>
         </div>
