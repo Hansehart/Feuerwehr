@@ -23,7 +23,7 @@ public class ContentpageController {
     ContentpageService contentpageService;
 
     @GetMapping("/receive/contentpages")
-    public ResponseEntity<List<Contentpage>> receiveContentpage(@RequestParam(required = false) String type) {
+    public ResponseEntity<List<Contentpage>> receiveContentpage(@RequestParam(required = true) String type) {
         try {
             List<Contentpage> cp = contentpageService.receive(type);
             return ResponseEntity.ok(cp);

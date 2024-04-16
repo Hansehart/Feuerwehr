@@ -27,6 +27,7 @@ export default function MobileBody({
     // clear old cards from another tab
     setContentData([]);
     if (type) {
+      console.log(type)
       fetch(
         `https://fflernapp.hansehart.de/api/service/receive/contentpages?type=${type}`
       )
