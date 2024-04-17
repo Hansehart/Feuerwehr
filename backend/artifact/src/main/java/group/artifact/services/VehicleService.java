@@ -14,7 +14,7 @@ public class VehicleService {
     public void save(VehicleDTO vehicle) {
         Vehicle v = new Vehicle();
 
-        v.setRadioCallSign(vehicle.getRcs());
+        v.setRadioCallSign(vehicle.getRadioCallSign());
         v.setRadioVehicleType(vehicle.getRadioVehicleType());
         v.setRadioVehicleNumber(vehicle.getRadioVehicleNumber());
         v.setName(vehicle.getName());
