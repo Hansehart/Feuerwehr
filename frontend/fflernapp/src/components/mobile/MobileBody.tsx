@@ -2,9 +2,10 @@ import React, { useEffect, useState } from "react";
 import MobileContentCard from "./MobileContentCard";
 
 interface MobileBodyProps {
-  before?: React.ReactNode;
-  type?: string;
-  after?: React.ReactNode;
+  before?: React.ReactNode; // header (in main)
+  type?: string; // main is made with contentcards
+  main?: React.ReactNode; // main is custom made
+  after?: React.ReactNode; // footer (in main)
   marginToFooter?: string;
 }
 
@@ -18,6 +19,7 @@ interface ContentData {
 export default function MobileBody({
   before,
   type,
+  main,
   after,
   marginToFooter,
 }: MobileBodyProps) {
@@ -52,7 +54,7 @@ export default function MobileBody({
   return (
     <main style={{ marginBottom: marginToFooter }}>
       {before}
-      {cards}
+      {cards ? cards: main}
       {after}
     </main>
   );

@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import MobileBody from "../components/mobile/MobileBody";
 import MobileHeader from "../components/mobile/MobileHeader";
 import MobileNavBar from "../components/mobile/MobileNavBar";
+import MobileVehicleView from "../components/mobile/MobileVehicleView";
 
 interface Vehicle {
   name: string;
@@ -42,7 +43,7 @@ function Vehicle() {
   return (
     <div>
       <MobileHeader name={vehicle?.name || "Fahrzeug"} />
-      <MobileBody />
+      <MobileBody main={<MobileVehicleView title={vehicle?.name || "lädt..."}/>}/>
       <MobileNavBar changeView={changeView} preset="department" />
     </div>
   );
