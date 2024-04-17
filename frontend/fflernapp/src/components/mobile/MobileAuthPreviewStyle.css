@@ -1,3 +1,7 @@
+button:hover {
+    cursor: pointer;
+}
+
 .auth {
     display: flex;
     justify-content: center;
@@ -28,5 +32,5 @@
 
     margin-top: 1em;
     gap: 0 1em;
-}
 
+}

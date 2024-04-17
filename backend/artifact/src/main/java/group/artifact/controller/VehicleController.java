@@ -36,7 +36,7 @@ public class VehicleController {
         System.out.println("REACHED");
         try {
             vehicleService.save(v);
-            return ResponseEntity.ok("vehicle successfully created");
+            return ResponseEntity.ok("vehicle and radio call sign successfully created");
         } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);
         } 

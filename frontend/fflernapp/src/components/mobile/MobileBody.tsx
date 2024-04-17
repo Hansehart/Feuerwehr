@@ -54,7 +54,7 @@ export default function MobileBody({
   return (
     <main style={{ marginBottom: marginToFooter }}>
       {before}
-      {cards ? cards: main}
+      {cards.length > 0 ? cards: main} // cards being used
       {after}
     </main>
   );

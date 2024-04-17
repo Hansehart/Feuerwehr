@@ -18,8 +18,8 @@ export default function MobileAuthPreview() {
           </p>
         </div>
         <div className="auth-buttons">
-          <MobileButton text="Registrieren"></MobileButton>
-          <MobileButton text="Anmelden"></MobileButton>
+          <MobileButton text="Registrieren" path="/profile/register"></MobileButton>
+          <MobileButton text="Anmelden" path="/profile/login"></MobileButton>
         </div>
       </div>
     </section>
