@@ -1,5 +1,6 @@
 package group.artifact.dtos;
 
+import group.artifact.models.RadioCallSign;
 import lombok.Data;
 
 @Data
@@ -10,4 +11,5 @@ public class VehicleDTO {
     private Short radioVehicleNumber; // 01 
     private String name;
     private String type;
+    private RadioCallSign rcs;
 }

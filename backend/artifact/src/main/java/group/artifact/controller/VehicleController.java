@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import group.artifact.dtos.VehicleDTO;
 import group.artifact.models.Vehicle;
 import group.artifact.services.VehicleService;
 
@@ -32,7 +33,7 @@ public class VehicleController {
     
 
     @PostMapping("/save/vehicle")
-    public ResponseEntity<String> saveVehicle(@RequestBody Vehicle v) {
+    public ResponseEntity<String> saveVehicle(@RequestBody VehicleDTO v) {
         try {
             vehicleService.save(v);
             return ResponseEntity.ok("vehicle successfully created");
