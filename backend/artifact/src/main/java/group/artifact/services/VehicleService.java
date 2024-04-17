@@ -1,11 +1,13 @@
 package group.artifact.services;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import group.artifact.dtos.VehicleDTO;
 import group.artifact.models.Vehicle;
 import group.artifact.repositories.VehicleRepository;
 
+@Service
 public class VehicleService {
 
     @Autowired
