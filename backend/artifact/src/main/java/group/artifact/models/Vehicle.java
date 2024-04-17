@@ -25,8 +25,8 @@ public class Vehicle {
     @JoinColumn(name = "fk_radio_call_sign")
     private RadioCallSign radioCallSign;
 
-    private char radioVehicleType;
-    private char radioVehicleNumber;
+    private String radioVehicleType;
+    private String radioVehicleNumber;
     private String shortcut;
     private String name;
 
