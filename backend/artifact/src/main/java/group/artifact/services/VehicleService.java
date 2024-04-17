@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 
 import group.artifact.dtos.VehicleDTO;
 import group.artifact.models.Vehicle;
+import group.artifact.repositories.RadioCallSignRepository;
 import group.artifact.repositories.VehicleRepository;
 
 @Service
@@ -12,6 +13,8 @@ public class VehicleService {
 
     @Autowired
     VehicleRepository vehicleRepository;
+    @Autowired
+    RadioCallSignRepository radioCallSignRepository;
 
     public void save(VehicleDTO vehicle) {
         Vehicle v = new Vehicle();
@@ -21,6 +24,9 @@ public class VehicleService {
         v.setRadioVehicleNumber(vehicle.getRadioVehicleNumber());
         v.setName(vehicle.getName());
         v.setType(vehicle.getType());
+
+        radioCallSignRepository.save(vehicle.getRadioCallSign());
+        vehicleRepository.save(v);
     }
 
     public Vehicle receive(Integer cs) { // call sign
