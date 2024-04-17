@@ -22,8 +22,8 @@ public class VehicleService {
         v.setRadioCallSign(vehicle.getRadioCallSign());
         v.setRadioVehicleType(vehicle.getRadioVehicleType());
         v.setRadioVehicleNumber(vehicle.getRadioVehicleNumber());
+        v.setShortcut(vehicle.getShortcut());
         v.setName(vehicle.getName());
-        v.setType(vehicle.getType());
 
         radioCallSignRepository.save(vehicle.getRadioCallSign());
         vehicleRepository.save(v);
