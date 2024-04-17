@@ -30,12 +30,6 @@ public class VehicleController {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);
         } 
     }
-    
-    @GetMapping("/receive/a")
-    public String test() { // call sign i. e. 40-47-01 (place, type, count)
-        System.out.println("AAA");
-        return "AAA";
-    }
 
     @PostMapping("/save/vehicle")
     public ResponseEntity<String> saveVehicle(@RequestBody VehicleDTO v) {

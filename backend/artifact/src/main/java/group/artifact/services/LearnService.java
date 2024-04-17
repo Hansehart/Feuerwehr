@@ -12,6 +12,7 @@ import group.artifact.models.Selection;
 import group.artifact.repositories.QuestionRepository;
 import group.artifact.repositories.SelectionRepository;
 
+@Service
 public class LearnService {
 
     @Autowired
