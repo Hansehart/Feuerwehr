@@ -27,8 +27,8 @@ public class Vehicle {
 
     private char radioVehicleType;
     private char radioVehicleNumber;
+    private String shortcut;
     private String name;
-    private String type;
 
     @OneToMany(mappedBy = "vehicle")
     Set<ImagesForVehicles> imagesForVehicles;
