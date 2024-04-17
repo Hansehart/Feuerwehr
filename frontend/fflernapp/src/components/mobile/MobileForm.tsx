@@ -1,4 +1,4 @@
-import "./MobileFormStyle.css"
+import "./MobileFormStyle.css";
 import drivingFirefighters from "/src/assets/driving-firefighters-filter.jpg";
 
 interface MobileFormProps {
@@ -10,10 +10,14 @@ export default function MobileForm({ background }: MobileFormProps) {
     <section
       className="form"
       style={
-        background ? { backgroundImage: `url(${drivingFirefighters})` } : {backgroundImage: "none"}
+        background
+          ? { backgroundImage: `url(${drivingFirefighters})` }
+          : { backgroundImage: "none" }
       }
     >
-        <h1>hi</h1>
+      <form>
+        
+      </form>
     </section>
   );
 }
