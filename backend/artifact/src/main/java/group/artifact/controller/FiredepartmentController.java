@@ -32,10 +32,9 @@ public class FiredepartmentController {
 
     @PostMapping("/save/firedepartment")
     public ResponseEntity<String> saveFiredepartment(@RequestBody Firedepartment f) {
-        System.out.println("REACHED");
         try {
             firedepartmentService.save(f);
-            return ResponseEntity.ok("vehicle and radio call sign successfully created");
+            return ResponseEntity.ok("firedepartment successfully created");
         } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);
         } 

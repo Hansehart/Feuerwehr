@@ -33,7 +33,6 @@ public class VehicleController {
 
     @PostMapping("/save/vehicle")
     public ResponseEntity<String> saveVehicle(@RequestBody VehicleDTO v) {
-        System.out.println("REACHED");
         try {
             vehicleService.save(v);
             return ResponseEntity.ok("vehicle and radio call sign successfully created");
