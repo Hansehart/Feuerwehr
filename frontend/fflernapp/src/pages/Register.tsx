@@ -10,6 +10,21 @@ function Courses() {
   const navigate = useNavigate();
   const [select, setSelect] = useState("");
 
+  const fields = [
+    {
+      label: "E-Mail",
+      type: "email",
+    },
+    {
+      label: "Passwort",
+      type: "password",
+    },
+    {
+      label: "Passwort wiederholen",
+      type: "password",
+    },
+  ];
+
   useEffect(() => {
     switch (select) {
       case "learn":
@@ -30,8 +45,17 @@ function Courses() {
 
   return (
     <div>
-      <MobileHeader name="Profil" />
-      <MobileBody main={<MobileForm background={true} />} />
+      <MobileHeader name="Registrieren" />
+      <MobileBody
+        main={
+          <MobileForm
+            background={true}
+            fields={fields}
+            submit="Bestätigen"
+          />
+        }
+        marginToFooter="15vh"
+      />
       <MobileNavBar changeView={changeView} preset="profile" />
     </div>
   );

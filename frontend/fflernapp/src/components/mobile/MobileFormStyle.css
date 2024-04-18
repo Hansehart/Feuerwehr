@@ -1,3 +1,50 @@
-.form {
-    height: 80vh;
+.form-section {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 71vh;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+form #submit {
+    width: 60vw;
+    border: none;
+    border-radius: .5em;
+    background-color: #ea4138;
+    
+    font-weight: 600;
+    letter-spacing: .2vw;
+    color: white;
+
+    padding: 1em;
+    margin: .2em;
+}
+
+.field-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 1em;
+}
+
+.field-container label {
+    color: white;
+    font-size: 1.5em;
+    align-self: flex-start;
+}
+
+.field-container input {
+    height: 6vh;
+    width: 60vw;
+
+    font-size: 1.5em;
+    border-radius: .5em;
 }
