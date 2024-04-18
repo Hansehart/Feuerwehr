@@ -14,7 +14,7 @@ import group.artifact.repositories.QuestionRepository;
 import group.artifact.repositories.SelectionRepository;
 
 @Service
-public class LearnService {
+public class QuizService {
 
     @Autowired
     QuestionRepository questionRepository;

@@ -11,14 +11,14 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import group.artifact.dtos.QuizDTO;
-import group.artifact.services.LearnService;
+import group.artifact.services.QuizService;
 
 @RestController
 @RequestMapping("/api/service")
-public class LearnController {
+public class QuizController {
 
     @Autowired
-    LearnService learnService;
+    QuizService learnService;
 
     @GetMapping("/receive/quiz")
     public ResponseEntity<QuizDTO> receiveQuiz(@RequestParam(required = false) Integer qid) { // question id
