@@ -22,8 +22,8 @@ public class Vehicle {
     private Integer id;
 
     @ManyToOne
-    @JoinColumn(name = "fk_radio_call_sign")
-    private RadioCallSign radioCallSign;
+    @JoinColumn(name = "fk_firedepartment")
+    private Firedepartment firedepartment;
 
     private String radioVehicleType;
     private String radioVehicleNumber;
