@@ -6,7 +6,7 @@ import MobileHeader from "../components/mobile/MobileHeader";
 import MobileNavBar from "../components/mobile/MobileNavBar";
 import MobileForm from "../components/mobile/MobileForm";
 
-function Register() {
+function Login() {
   const navigate = useNavigate();
   const [select, setSelect] = useState("");
 
@@ -18,11 +18,7 @@ function Register() {
     {
       label: "Passwort",
       type: "password",
-    },
-    {
-      label: "Passwort wiederholen",
-      type: "password",
-    },
+    }
   ];
 
   useEffect(() => {
@@ -45,13 +41,13 @@ function Register() {
 
   return (
     <div>
-      <MobileHeader name="Registrieren" />
+      <MobileHeader name="Login" />
       <MobileBody
         main={
           <MobileForm
             background={true}
             fields={fields}
-            submit="Bestätigen"
+            submit="anmmelden"
           />
         }
         marginToFooter="15vh"
@@ -61,4 +57,4 @@ function Register() {
   );
 }
 
-export default Register;
+export default Login;

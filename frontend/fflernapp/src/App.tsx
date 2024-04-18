@@ -10,6 +10,7 @@ import Exercise from "./pages/Exercise";
 import Regulations from "./pages/Regulations";
 import Courses from "./pages/Courses";
 import Register from "./pages/Register";
+import Login from "./pages/Login";
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
         <Route path="/learn/courses" element={<Courses />} />
         <Route path="/vehicle/view" element={<Vehicle />} />
         <Route path="/profile/register" element={<Register />} />
+        <Route path="/profile/login" element={<Login />} />
         <Route path="*" element={<Navigate replace to="/home" />} />
       </Routes>
     </Router>
