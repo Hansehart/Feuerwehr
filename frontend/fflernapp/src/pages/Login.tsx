@@ -47,7 +47,7 @@ function Login() {
           <MobileForm
             background={true}
             fields={fields}
-            submit="anmmelden"
+            submit="Anmelden"
           />
         }
         marginToFooter="15vh"
