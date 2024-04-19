@@ -5,6 +5,7 @@ interface InputField {
   label?: string;
   type: string;
   value?: string;
+  function?: () => void;
 }
 
 interface MobileFormProps {
@@ -12,10 +13,7 @@ interface MobileFormProps {
   fields: InputField[];
 }
 
-export default function MobileForm({
-  background,
-  fields,
-}: MobileFormProps) {
+export default function MobileForm({ background, fields }: MobileFormProps) {
   return (
     <section
       className="form-section"
@@ -33,6 +31,7 @@ export default function MobileForm({
               id={`input-${index}`}
               type={field.type}
               value={field.value}
+              onClick={field.function}
             />
           </div>
         ))}
