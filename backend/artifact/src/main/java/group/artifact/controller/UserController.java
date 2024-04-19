@@ -18,7 +18,7 @@ public class UserController {
     @Autowired
     UserService userService;
 
-    @PostMapping("/receive/user")
+    @PostMapping("/save/user")
     public ResponseEntity<String> saveUser(@RequestBody User u) {
         try {
             userService.save(u);
