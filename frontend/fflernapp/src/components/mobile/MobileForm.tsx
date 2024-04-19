@@ -2,7 +2,7 @@ import "./MobileFormStyle.css";
 import drivingFirefighters from "/src/assets/driving-firefighters-filter.jpg";
 
 interface InputField {
-  label: string;
+  label?: string;
   type: string;
   value?: string;
 }
@@ -10,13 +10,11 @@ interface InputField {
 interface MobileFormProps {
   background: boolean;
   fields: InputField[];
-  submit: string;
 }
 
 export default function MobileForm({
   background,
   fields,
-  submit,
 }: MobileFormProps) {
   return (
     <section
@@ -38,7 +36,6 @@ export default function MobileForm({
             />
           </div>
         ))}
-        <input id="submit" type="submit" value={submit}></input>
       </form>
     </section>
   );

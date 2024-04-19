@@ -23,6 +23,9 @@ function Register() {
       label: "Passwort wiederholen",
       type: "password",
     },
+    { value: "Bestätigen",
+      type: "submit"
+    }
   ];
 
   useEffect(() => {
@@ -51,7 +54,6 @@ function Register() {
           <MobileForm
             background={true}
             fields={fields}
-            submit="Bestätigen"
           />
         }
         marginToFooter="15vh"
