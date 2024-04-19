@@ -10,18 +10,16 @@ function Register() {
   const navigate = useNavigate();
   const [select, setSelect] = useState("");
 
-  function collectFormData() {
+  function register() {
+    // Prevent the default form submission behavior
     const inputFields = document.querySelectorAll("input");
 
     // create an object to store input values
     const formData: { [key: string]: string } = {};
-    // iterate through input fields and store their values in the formData object
-    inputFields.forEach((input) => {
-      formData[input.id] = input.value;
-    });
+    formData["email"] = inputFields[0].value;
+    formData["password"] = inputFields[1].value;
     const jsonData = JSON.stringify(formData);
-    console.log(jsonData);
-    fetch("https://fflernapp.hansehart.de/api/service/receive/user", {
+    fetch("https://fflernapp.hansehart.de/api/service/save/user", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -43,7 +41,7 @@ function Register() {
       label: "Passwort wiederholen",
       type: "password",
     },
-    { value: "Bestätigen", type: "submit", function: collectFormData },
+    { value: "Bestätigen", type: "submit", function: register },
   ];
 
   useEffect(() => {
