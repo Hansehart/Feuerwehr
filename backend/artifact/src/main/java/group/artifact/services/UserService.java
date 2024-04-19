@@ -19,6 +19,7 @@ public class UserService {
         String hashedPW = DigestUtils.sha256Hex(u.getPassword());
         u.setPassword(hashedPW);
         u.setSalt(generateSalt());
+        userRepository.save(u);
     }
 
     /*
