@@ -24,6 +24,7 @@ public class UserService {
 
     /*
      * generates a random string with a length of 10
+     * 
      * @return: salt
      */
     private String generateSalt() {
