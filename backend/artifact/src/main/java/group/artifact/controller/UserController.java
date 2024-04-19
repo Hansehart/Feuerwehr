@@ -24,6 +24,7 @@ public class UserController {
             userService.save(u);
             return ResponseEntity.ok("user successfully created");
         } catch (Exception e) {
+            System.out.println(e);
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);
         } 
     }
