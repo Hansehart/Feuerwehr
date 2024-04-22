@@ -23,5 +23,5 @@ public class User {
     private String name;
 
     @OneToMany(mappedBy = "user")
-    private List<Selection> users;
+    private List<Session> sessions;
 }
