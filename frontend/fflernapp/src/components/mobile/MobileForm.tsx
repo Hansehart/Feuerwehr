@@ -7,6 +7,7 @@ interface InputField {
   value?: string; // text inside inputs i. e buttons
   inline?: boolean; // determines if elements should be displayed in a row (against the default: column)
   reverse?: boolean; // true means first input, then label
+  selectOptions?: string[];
   function?: () => void;
 }
 
@@ -26,35 +27,49 @@ export default function MobileForm({ background, fields }: MobileFormProps) {
       }
     >
       <form>
-        {fields.map((field, index) => [
-          field.reverse ? (
-            <div
-              key={index}
-              className={`field-container${field.inline ? "-inline" : ""}`} // ether field-container-inline or just field-container
-            >
-              <input
-                id={`input-${index}`}
-                type={field.type}
-                value={field.value}
-                onClick={field.function}
-              />
-              <label htmlFor={`input-${index}`}>{field.label}</label>
-            </div>
-          ) : (
-            <div
-              key={index}
-              className={`field-container${field.inline ? "-inline" : ""}`} // ether field-container-inline or just field-container
-            >
-              <label htmlFor={`input-${index}`}>{field.label}</label>
-              <input
-                id={`input-${index}`}
-                type={field.type}
-                value={field.value}
-                onClick={field.function}
-              />
-            </div>
-          ),
-        ])}
+        {fields.map((field, index) => (
+          <div
+            key={index}
+            className={`field-container${field.inline ? "-inline" : ""}`}
+          >
+            {field.type === "select" ? (
+              <>
+                <label htmlFor={`input-${index}`}>{field.label}</label>
+                <select id={`input-${index}`}>
+                  {field.selectOptions?.map((option, optionIndex) => (
+                    <option key={`option-${index}-${optionIndex}`}>
+                      {option}
+                    </option>
+                  ))}
+                </select>
+              </>
+            ) : (
+              <>
+                {field.reverse ? (
+                  <>
+                    <input
+                      id={`input-${index}`}
+                      type={field.type}
+                      value={field.value}
+                      onClick={field.function}
+                    />
+                    <label htmlFor={`input-${index}`}>{field.label}</label>
+                  </>
+                ) : (
+                  <>
+                    <label htmlFor={`input-${index}`}>{field.label}</label>
+                    <input
+                      id={`input-${index}`}
+                      type={field.type}
+                      value={field.value}
+                      onClick={field.function}
+                    />
+                  </>
+                )}
+              </>
+            )}
+          </div>
+        ))}
       </form>
     </section>
   );

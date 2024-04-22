@@ -35,8 +35,8 @@ function RegisterAccount() {
 
   const fields = [
     {
-      label: "E-Mail",
-      type: "email",
+      label: "Name",
+      type: "text",
     },
     {
       label: "Passwort",

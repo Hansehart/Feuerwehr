@@ -38,12 +38,9 @@ function RegisterProfile() {
       type: "name",
     },
     {
-      label: "Passwort",
-      type: "password",
-    },
-    {
-      label: "Passwort wiederholen",
-      type: "password",
+      label: "Feuerwehr auswählen",
+      type: "select",
+      selectOptions: ["a", "b", "c"]
     },
     { value: "Bestätigen", type: "button", function: register },
   ];
