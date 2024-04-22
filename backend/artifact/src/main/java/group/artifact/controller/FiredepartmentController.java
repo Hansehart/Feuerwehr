@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import group.artifact.dtos.MessageDTO;
 import group.artifact.models.Firedepartment;
 import group.artifact.services.FiredepartmentService;
 
@@ -23,9 +24,9 @@ public class FiredepartmentController {
     FiredepartmentService firedepartmentService;
 
     @GetMapping("/receive/firedepartments")
-    public ResponseEntity<List<String>> receiveAttributes(@RequestParam(required = true) String attr) { // attribute
+    public ResponseEntity<List<MessageDTO>> receiveAttributes(@RequestParam(required = true) String attr) { // attribute
         try {
-            List<String> attributes = firedepartmentService.receiveAllByAttribute(attr);
+            List<MessageDTO> attributes = firedepartmentService.receiveAllByAttribute(attr);
             return ResponseEntity.ok(attributes);
         } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);
