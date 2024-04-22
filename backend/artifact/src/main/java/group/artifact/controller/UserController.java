@@ -27,6 +27,7 @@ public class UserController {
             response.addCookie(cookie);
             return ResponseEntity.ok("account successfully created");
         } catch (Exception e) {
+            System.out.println("ERROR: while account " + e + " occured");
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);
         } 
     }
