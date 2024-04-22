@@ -3,6 +3,7 @@ package group.artifact.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CookieValue;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -30,16 +31,16 @@ public class UserController {
         } catch (Exception e) {
             System.out.println("ERROR: " + e);
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);
-        } 
+        }
     }
 
     @PostMapping("/save/profile")
-    public ResponseEntity<String> saveProfile(@RequestBody ProfileDTO u) {
+    public ResponseEntity<String> saveProfile(@CookieValue(value = "sid") String sid, @RequestBody ProfileDTO profile) {
         try {
-            userService.saveProfile(u);
+            userService.saveProfile(sid, profile);
             return ResponseEntity.ok("profile successfully created");
         } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);
-        } 
+        }
     }
 }

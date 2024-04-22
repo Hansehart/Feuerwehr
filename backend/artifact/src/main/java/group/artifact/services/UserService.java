@@ -34,7 +34,8 @@ public class UserService {
     }
 
 
-    public void saveProfile(ProfileDTO u) {
+    public void saveProfile(String sid, ProfileDTO p) { // profile
+        System.out.println(sid);
     }
 
     /*
