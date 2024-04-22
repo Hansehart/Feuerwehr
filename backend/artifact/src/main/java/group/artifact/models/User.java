@@ -1,9 +1,12 @@
 package group.artifact.models;
 
+import java.util.List;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import lombok.Data;
 
@@ -17,4 +20,7 @@ public class User {
     private String email;
     private String password;
     private String Salt;
+
+    @OneToMany(mappedBy = "user")
+    private List<Selection> users;
 }
