@@ -40,6 +40,7 @@ public class UserController {
             userService.saveProfile(sid, profile);
             return ResponseEntity.ok("profile successfully created");
         } catch (Exception e) {
+            System.out.println("ERROR: " + e);
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);
         }
     }
