@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import group.artifact.models.User;
 import group.artifact.services.UserService;
+import jakarta.servlet.http.Cookie;
+import jakarta.servlet.http.HttpServletResponse;
 
 @RestController
 @RequestMapping("/api/service")
@@ -18,11 +20,22 @@ public class UserController {
     @Autowired
     UserService userService;
 
-    @PostMapping("/save/user")
-    public ResponseEntity<String> saveUser(@RequestBody User u) {
+    @PostMapping("/save/account")
+    public ResponseEntity<String> saveAccount(@RequestBody User u, HttpServletResponse response) {
         try {
-            userService.save(u);
-            return ResponseEntity.ok("user successfully created");
+            Cookie cookie = userService.saveAccount(u);
+            response.addCookie(cookie);
+            return ResponseEntity.ok("account successfully created");
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);
+        } 
+    }
+
+    @PostMapping("/save/profile")
+    public ResponseEntity<String> saveProfile(@RequestBody User u) {
+        try {
+            userService.saveProfile(u);
+            return ResponseEntity.ok("account successfully created");
         } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);
         } 

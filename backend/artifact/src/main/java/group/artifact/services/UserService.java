@@ -9,27 +9,40 @@ import org.apache.commons.codec.digest.DigestUtils;
 
 import group.artifact.models.User;
 import group.artifact.repositories.UserRepository;
+import jakarta.servlet.http.Cookie;
 
 @Service
 public class UserService {
     @Autowired
     UserRepository userRepository;
 
-    public void save(User u) {
+    public Cookie saveAccount(User u) {
         String hashedPW = DigestUtils.sha256Hex(u.getPassword());
         u.setPassword(hashedPW);
-        u.setSalt(generateSalt());
+        u.setSalt(generateSalt(10));
         userRepository.save(u);
+
+        String sid = generateSalt(20);
+        Cookie cookie = new Cookie("sid", sid);
+        return cookie;
+    }
+
+
+    public void saveProfile(User u) {
     }
 
     /*
-     * generates a random string with a length of 10
+     * generates a random string
      * 
+     * @value: length
      * @return: salt
      */
-    private String generateSalt() {
+    private String generateSalt(Integer length) {
         String randomString = UUID.randomUUID().toString();
         String salt = DigestUtils.sha256Hex(randomString);
-        return salt.substring(0, 10);
+        if (length > salt.length()) {
+            throw new IndexOutOfBoundsException();
+        }
+        return salt.substring(0, length);
     }
 }
