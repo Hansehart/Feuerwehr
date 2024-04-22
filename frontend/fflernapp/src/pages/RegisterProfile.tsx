@@ -15,21 +15,37 @@ function RegisterProfile() {
     fetch("https://fflernapp.hansehart.de/api/service/receive/firedepartments")
       .then((response) => response.json())
       .then((data: { locationNumber: string[], name: string }[]) => {
-        const fd = data.map((item) => `${item.locationNumber} - ${item.name}`);
+        const fd = data.map((item) => `${item.name} (${item.locationNumber})`);
         setFiredepartments(fd);
       });
   }, []);
 
   function register() {
-    // Prevent the default form submission behavior
-    const inputFields = document.querySelectorAll("input");
+    const username = document.getElementById("input-0") as HTMLInputElement;
+    const fd = document.getElementById("input-1") as HTMLInputElement;
+    const fdKey = fd.value.trim();
+    
+    // split the value into name and number parts
+    const match = fdKey.match(/^(.*?) \((\d+)\)$/);
+
+    var fdName =  "";
+    var fdLocationNumber = "";
+    
+    if (match) { 
+      fdName = match[1];
+      fdLocationNumber = match[2];
+    } else {
+      console.error("ERROR: problems with profile creation");
+    }
+
 
     // create an object to store input values
     const formData: { [key: string]: string } = {};
-    formData["email"] = inputFields[0].value;
-    formData["password"] = inputFields[1].value;
+    formData["username"] = username.value;
+    formData["firedepatmentName"] = fdName;
+    formData["firedepartmentLocationNumber"] = fdLocationNumber;
     const jsonData = JSON.stringify(formData);
-    fetch("https://fflernapp.hansehart.de/api/service/save/user", {
+    fetch("https://fflernapp.hansehart.de/api/service/save/profile", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -37,7 +53,7 @@ function RegisterProfile() {
       body: jsonData,
     }).then((response) => {
       if (response.ok) {
-        navigate("/profile/register/account");
+        navigate("/home");
       }
     });
   }

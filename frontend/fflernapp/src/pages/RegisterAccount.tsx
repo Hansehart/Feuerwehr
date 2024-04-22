@@ -11,7 +11,7 @@ function RegisterAccount() {
   const [select, setSelect] = useState("");
 
   function register() {
-    // Prevent the default form submission behavior
+    // prevent the default form submission behavior
     const inputFields = document.querySelectorAll("input");
 
     // create an object to store input values

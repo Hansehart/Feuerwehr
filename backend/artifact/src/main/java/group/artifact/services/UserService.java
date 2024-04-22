@@ -7,6 +7,7 @@ import java.util.UUID;
 
 import org.apache.commons.codec.digest.DigestUtils;
 
+import group.artifact.dtos.ProfileDTO;
 import group.artifact.models.User;
 import group.artifact.repositories.UserRepository;
 import jakarta.servlet.http.Cookie;
@@ -33,7 +34,7 @@ public class UserService {
     }
 
 
-    public void saveProfile(User u) {
+    public void saveProfile(ProfileDTO u) {
     }
 
     /*

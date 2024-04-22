@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import group.artifact.dtos.ProfileDTO;
 import group.artifact.models.User;
 import group.artifact.services.UserService;
 import jakarta.servlet.http.Cookie;
@@ -33,10 +34,10 @@ public class UserController {
     }
 
     @PostMapping("/save/profile")
-    public ResponseEntity<String> saveProfile(@RequestBody User u) {
+    public ResponseEntity<String> saveProfile(@RequestBody ProfileDTO u) {
         try {
             userService.saveProfile(u);
-            return ResponseEntity.ok("account successfully created");
+            return ResponseEntity.ok("profile successfully created");
         } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);
         } 
