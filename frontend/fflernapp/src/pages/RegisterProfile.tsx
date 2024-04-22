@@ -12,11 +12,11 @@ function RegisterProfile() {
   const [firedepartments, setFiredepartments] = useState<string[]>([]);
 
   useEffect(() => {
-    fetch("https://fflernapp.hansehart.de/api/service/receive/firedepartments?attr=name")
+    fetch("https://fflernapp.hansehart.de/api/service/receive/firedepartments")
       .then((response) => response.json())
-      .then((data: { msg: string }[]) => {
-        const names = data.map((item) => item.msg);
-        setFiredepartments(names);
+      .then((data: { locationNumber: string[], name: string }[]) => {
+        const fd = data.map((item) => `${item.locationNumber} - ${item.name}`);
+        setFiredepartments(fd);
       });
   }, []);
 
