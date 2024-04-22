@@ -9,7 +9,8 @@ import Vehicle from "./pages/Vehicle";
 import Exercise from "./pages/Exercise";
 import Regulations from "./pages/Regulations";
 import Courses from "./pages/Courses";
-import Register from "./pages/Register";
+import RegisterAccount from "./pages/RegisterAccount";
+import RegisterProfiel from "./pages/RegisterProfile";
 import Login from "./pages/Login";
 
 function App() {
@@ -21,7 +22,8 @@ function App() {
         <Route path="/learn/regulations" element={<Regulations />} />
         <Route path="/learn/courses" element={<Courses />} />
         <Route path="/vehicle/view" element={<Vehicle />} />
-        <Route path="/profile/register" element={<Register />} />
+        <Route path="/profile/register/account" element={<RegisterAccount />} />
+        <Route path="/profile/register/profile" element={<RegisterProfiel />} />
         <Route path="/profile/login" element={<Login />} />
         <Route path="*" element={<Navigate replace to="/home" />} />
       </Routes>

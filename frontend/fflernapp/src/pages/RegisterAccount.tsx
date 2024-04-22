@@ -6,7 +6,7 @@ import MobileHeader from "../components/mobile/MobileHeader";
 import MobileNavBar from "../components/mobile/MobileNavBar";
 import MobileForm from "../components/mobile/MobileForm";
 
-function Register() {
+function RegisterAccount() {
   const navigate = useNavigate();
   const [select, setSelect] = useState("");
 
@@ -25,6 +25,11 @@ function Register() {
         "Content-Type": "application/json",
       },
       body: jsonData,
+    }).then((response) => {
+      if (response.ok) {
+        console.log("HO)");
+        navigate("/profile/register/profile");
+      }
     });
   }
 
@@ -74,4 +79,4 @@ function Register() {
   );
 }
 
-export default Register;
+export default RegisterAccount;
