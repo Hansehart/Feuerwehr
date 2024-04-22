@@ -48,7 +48,12 @@ public class UserService {
     }
 
     public void saveProfile(String sid, ProfileDTO p) { // profile
-        User u = sessionRepository.findUserBySid(sid);
+        Session s = sessionRepository.findById(sid).orElse(null);
+        if (s.equals(null)) {
+            System.out.println("ERROR: provided sid is not suitable during profile creation");
+            throw new IllegalArgumentException();
+        }
+        User u = s.getUser();
         u.setName(p.getUsername());
         System.out.println(u);
         userRepository.save(u);

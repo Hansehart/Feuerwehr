@@ -7,6 +7,6 @@ import group.artifact.models.Session;
 import group.artifact.models.User;
 
 @Repository
-public interface SessionRepository extends JpaRepository<Session, Integer> {
+public interface SessionRepository extends JpaRepository<Session, String> {
     User findUserBySid(String sid);   
 }
