@@ -10,6 +10,10 @@ function Login() {
   const navigate = useNavigate();
   const [select, setSelect] = useState("");
 
+  function login() {
+
+  }
+
   const fields = [
     {
       label: "E-Mail",
@@ -18,7 +22,8 @@ function Login() {
     {
       label: "Passwort",
       type: "password",
-    }
+    },
+    { value: "Bestätigen", type: "button", function: login }
   ];
 
   useEffect(() => {
@@ -47,7 +52,6 @@ function Login() {
           <MobileForm
             background={true}
             fields={fields}
-            submit="Anmelden"
           />
         }
         marginToFooter="15vh"

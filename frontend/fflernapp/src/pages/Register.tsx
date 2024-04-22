@@ -41,7 +41,7 @@ function Register() {
       label: "Passwort wiederholen",
       type: "password",
     },
-    { value: "Bestätigen", type: "submit", function: register },
+    { value: "Bestätigen", type: "button", function: register },
   ];
 
   useEffect(() => {
