@@ -20,6 +20,7 @@ function RegisterAccount() {
     formData["password"] = inputFields[1].value;
     const jsonData = JSON.stringify(formData);
     fetch("https://fflernapp.hansehart.de/api/service/save/account", {
+      credentials: "include",
       method: "POST",
       headers: {
         "Content-Type": "application/json",
