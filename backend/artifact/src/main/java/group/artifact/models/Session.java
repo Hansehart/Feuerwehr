@@ -1,6 +1,9 @@
 package group.artifact.models;
 
+import org.hibernate.annotations.NaturalId;
+
 import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import lombok.Data;
@@ -10,6 +13,8 @@ import lombok.NoArgsConstructor;
 @Entity
 @NoArgsConstructor
 public class Session {
+    @Id
+    @NaturalId
     private String sid;
     
     @ManyToOne
