@@ -25,6 +25,7 @@ public class UserService {
         String sid = generateSalt(32);
         Cookie cookie = new Cookie("sid", sid);
         cookie.setAttribute("SameSite", "None");
+        cookie.setDomain("http://127.0.0.1");
         cookie.setHttpOnly(true);
         cookie.setSecure(true);
         cookie.setPath("/");
