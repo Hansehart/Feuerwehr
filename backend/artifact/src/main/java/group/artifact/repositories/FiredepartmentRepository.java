@@ -10,6 +10,6 @@ import group.artifact.models.Firedepartment;
 
 @Repository
 public interface FiredepartmentRepository extends JpaRepository<Firedepartment, Integer> {
-    @Query("SELECT fd FROM Firedepartment fd ORDER BY fd.name")
-    List<Firedepartment> findAllOrderedByName();
+    @Query("SELECT fd FROM Firedepartment fd ORDER BY fd.locationNumber")
+    List<Firedepartment> findAllOrderedByLocationNumber();
 }

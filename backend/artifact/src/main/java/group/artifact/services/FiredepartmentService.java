@@ -19,7 +19,7 @@ public class FiredepartmentService {
     }
 
     public List<Firedepartment> receiveAll() {
-        return firedepartmentRepository.findAllOrderedByName();
+        return firedepartmentRepository.findAllOrderedByLocationNumber();
     }
 
     public void save(Firedepartment fd) {
