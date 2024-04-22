@@ -11,6 +11,9 @@ form {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+
+    margin-top: 2em;
+    margin-bottom: 2em;
 }
 
 form input[type="button"] {
