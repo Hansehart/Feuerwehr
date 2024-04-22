@@ -27,7 +27,6 @@ function RegisterAccount() {
       body: jsonData,
     }).then((response) => {
       if (response.ok) {
-        console.log("HO)");
         navigate("/profile/register/profile");
       }
     });
@@ -46,7 +45,12 @@ function RegisterAccount() {
       label: "Passwort wiederholen",
       type: "password",
     },
-    { label: "Ich akzeptiere die AGB", type: "checkbox", inline: true, reverse: true },
+    {
+      label: "Ich akzeptiere die AGB",
+      type: "checkbox",
+      inline: true,
+      reverse: true,
+    },
 
     { value: "Bestätigen", type: "button", function: register },
   ];

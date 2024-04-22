@@ -9,6 +9,16 @@ import MobileForm from "../components/mobile/MobileForm";
 function RegisterProfile() {
   const navigate = useNavigate();
   const [select, setSelect] = useState("");
+  const [firedepartments, setFiredepartments] = useState<string[]>([]);
+
+  useEffect(() => {
+    fetch("https://fflernapp.hansehart.de/api/service/receive/firedepartments?attr=name")
+      .then((response) => response.json())
+      .then((data: { msg: string }[]) => {
+        const names = data.map((item) => item.msg);
+        setFiredepartments(names);
+      });
+  }, []);
 
   function register() {
     // Prevent the default form submission behavior
@@ -27,7 +37,7 @@ function RegisterProfile() {
       body: jsonData,
     }).then((response) => {
       if (response.ok) {
-        navigate("/profile/register/account")
+        navigate("/profile/register/account");
       }
     });
   }
@@ -40,7 +50,7 @@ function RegisterProfile() {
     {
       label: "Feuerwehr auswählen",
       type: "select",
-      selectOptions: ["a", "b", "c"]
+      selectOptions: firedepartments,
     },
     { value: "Bestätigen", type: "button", function: register },
   ];
