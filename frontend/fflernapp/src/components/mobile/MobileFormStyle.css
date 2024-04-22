@@ -25,7 +25,6 @@ form input[type="button"] {
     letter-spacing: .2vw;
     color: white;
 
-    padding: .5em;
     margin: .5em .2em .2em .2em;
 }
 
@@ -49,4 +48,14 @@ form input[type="button"] {
 
     font-size: 1.5em;
     border-radius: .5em;
+}
+
+
+.field-container-inline {
+    display: flex;
+    align-items: baseline;
+}
+
+.field-container-inline label {
+    color: white;
 }

@@ -46,6 +46,8 @@ function RegisterAccount() {
       label: "Passwort wiederholen",
       type: "password",
     },
+    { label: "Ich akzeptiere die AGB", type: "checkbox", inline: true, reverse: true },
+
     { value: "Bestätigen", type: "button", function: register },
   ];
 
