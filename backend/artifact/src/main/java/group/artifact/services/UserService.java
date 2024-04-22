@@ -22,8 +22,10 @@ public class UserService {
         u.setSalt(generateSalt(10));
         userRepository.save(u);
 
-        String sid = generateSalt(20);
+        String sid = generateSalt(32);
         Cookie cookie = new Cookie("sid", sid);
+        cookie.setDomain("http://127.0.0.1");
+
         return cookie;
     }
 
