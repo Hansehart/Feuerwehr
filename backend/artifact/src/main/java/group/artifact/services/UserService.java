@@ -3,7 +3,7 @@ package group.artifact.services;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.UUID;
+import java.security.SecureRandom;
 
 import org.apache.commons.codec.digest.DigestUtils;
 
@@ -16,6 +16,8 @@ import jakarta.servlet.http.Cookie;
 public class UserService {
     @Autowired
     UserRepository userRepository;
+
+    private final String CHARACTERS = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!?=";
 
     public Cookie saveAccount(User u) {
         String hashedPW = DigestUtils.sha256Hex(u.getPassword());
@@ -33,7 +35,6 @@ public class UserService {
         return cookie;
     }
 
-
     public void saveProfile(String sid, ProfileDTO p) { // profile
         System.out.println(sid);
     }
@@ -42,14 +43,22 @@ public class UserService {
      * generates a random string
      * 
      * @value: length
+     * 
      * @return: salt
      */
-    private String generateSalt(Integer length) {
-        String randomString = UUID.randomUUID().toString();
-        String salt = DigestUtils.sha256Hex(randomString);
-        if (length > salt.length()) {
-            throw new IndexOutOfBoundsException();
+    private String generateSalt(int length) {
+        if (length <= 0) {
+            System.out.println("ERROR: creating salt requires a minimum length of 1");
+            throw new IllegalArgumentException();
         }
-        return salt.substring(0, length);
+
+        SecureRandom random = new SecureRandom();
+        StringBuilder salt = new StringBuilder(length);
+
+        for (int i = 0; i < length; i++) {
+            salt.append(CHARACTERS.charAt(random.nextInt(CHARACTERS.length())));
+        }
+
+        return salt.toString();
     }
 }
