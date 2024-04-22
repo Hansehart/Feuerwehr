@@ -10,6 +10,6 @@ import group.artifact.models.Firedepartment;
 
 @Repository
 public interface FiredepartmentRepository extends JpaRepository<Firedepartment, Integer> {
-    @Query("SELECT fd.name FROM firedepartment fd")
+    @Query("SELECT fd.name FROM Firedepartment fd")
     List<String> findAllNames();
 }
