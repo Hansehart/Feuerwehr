@@ -48,7 +48,10 @@ public class UserService {
     }
 
     public void saveProfile(String sid, ProfileDTO p) { // profile
-
+        User u = sessionRepository.findUserBySid(sid);
+        u.setName(p.getUsername());
+        System.out.println(u);
+        userRepository.save(u);
     }
 
     /*

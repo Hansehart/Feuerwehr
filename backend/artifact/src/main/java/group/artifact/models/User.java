@@ -20,6 +20,7 @@ public class User {
     private String email;
     private String password;
     private String Salt;
+    private String name;
 
     @OneToMany(mappedBy = "user")
     private List<Selection> users;
