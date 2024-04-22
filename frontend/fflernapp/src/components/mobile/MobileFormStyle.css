@@ -50,6 +50,14 @@ form input[type="button"] {
     border-radius: .5em;
 }
 
+.field-container select {
+    font-size: 1.5em;
+}
+
+.field-container option {
+    font-size: 1.5rem;
+}
+
 .field-container-inline {
     display: flex;
     align-items: baseline;
