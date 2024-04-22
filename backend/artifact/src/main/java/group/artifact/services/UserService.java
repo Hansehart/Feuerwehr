@@ -27,6 +27,7 @@ public class UserService {
         cookie.setAttribute("SameSite", "None");
         cookie.setHttpOnly(true);
         cookie.setSecure(true);
+        cookie.setPath("/");
 
         return cookie;
     }
