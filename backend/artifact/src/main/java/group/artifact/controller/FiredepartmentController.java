@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import group.artifact.dtos.MessageDTO;
 import group.artifact.models.Firedepartment;
 import group.artifact.services.FiredepartmentService;
 
@@ -24,10 +23,10 @@ public class FiredepartmentController {
     FiredepartmentService firedepartmentService;
 
     @GetMapping("/receive/firedepartments")
-    public ResponseEntity<List<MessageDTO>> receiveAttributes(@RequestParam(required = true) String attr) { // attribute
+    public ResponseEntity<List<Firedepartment>> receiveFiredepartments() {
         try {
-            List<MessageDTO> attributes = firedepartmentService.receiveAllByAttribute(attr);
-            return ResponseEntity.ok(attributes);
+            List<Firedepartment> fd = firedepartmentService.receiveAll();
+            return ResponseEntity.ok(fd);
         } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);
         } 
@@ -36,17 +35,17 @@ public class FiredepartmentController {
     @GetMapping("/receive/firedepartment")
     public ResponseEntity<Firedepartment> receiveFiredepartment(@RequestParam(required = true) Integer fid) { // firedepartment id
         try {
-            Firedepartment f = firedepartmentService.receiveById(fid);
-            return ResponseEntity.ok(f);
+            Firedepartment fd = firedepartmentService.receiveById(fid);
+            return ResponseEntity.ok(fd);
         } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);
         } 
     }
 
     @PostMapping("/save/firedepartment")
-    public ResponseEntity<String> saveFiredepartment(@RequestBody Firedepartment f) {
+    public ResponseEntity<String> saveFiredepartment(@RequestBody Firedepartment fd) {
         try {
-            firedepartmentService.save(f);
+            firedepartmentService.save(fd);
             return ResponseEntity.ok("firedepartment successfully created");
         } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);
