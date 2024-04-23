@@ -21,12 +21,12 @@ public class UsersInFiredepartments {
     UsersInFiredepartmentsKey id = new UsersInFiredepartmentsKey();
 
     @ManyToOne
-    @MapsId("id")
+    @MapsId("fkUser")
     @JoinColumn(name = "fk_user")
     User user;
 
     @ManyToOne
-    @MapsId("id")
+    @MapsId("fkFiredepartment")
     @JoinColumn(name = "fk_firedepartment")
     Firedepartment firedepartment;
 }
