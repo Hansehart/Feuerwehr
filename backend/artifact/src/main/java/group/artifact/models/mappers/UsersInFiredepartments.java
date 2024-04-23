@@ -7,6 +7,7 @@ import jakarta.persistence.EmbeddedId;
 import jakarta.persistence.Entity;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.MapsId;
 import jakarta.persistence.Table;
 import lombok.NoArgsConstructor;
 import lombok.Data;
@@ -20,10 +21,12 @@ public class UsersInFiredepartments {
     UsersInFiredepartmentsKey id = new UsersInFiredepartmentsKey();
 
     @ManyToOne
+    @MapsId("fkUser")
     @JoinColumn(name = "fk_user")
     User user;
 
     @ManyToOne
+    @MapsId("fkFiredepartment")
     @JoinColumn(name = "fk_firedepartment")
     Firedepartment firedepartment;
 }
