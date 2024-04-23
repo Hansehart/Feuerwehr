@@ -25,9 +25,10 @@ public class UserService {
 
     public Cookie saveAccount(User u) {
         // save user
-        String hashedPW = DigestUtils.sha256Hex(u.getPassword());
+        String salt = generateSalt(16);
+        String hashedPW = DigestUtils.sha256Hex(u.getPassword() + salt);
         u.setPassword(hashedPW);
-        u.setSalt(generateSalt(10));
+        u.setSalt(salt);
         userRepository.save(u);
 
         // generate session cookie
@@ -49,13 +50,13 @@ public class UserService {
 
     public void saveProfile(String sid, ProfileDTO p) { // profile
         Session s = sessionRepository.findById(sid).orElse(null);
+        System.out.println(s);
         if (s.equals(null)) {
             System.out.println("ERROR: provided sid is not suitable during profile creation");
             throw new IllegalArgumentException();
         }
         User u = s.getUser();
         u.setName(p.getUsername());
-        System.out.println(u);
         userRepository.save(u);
     }
 
