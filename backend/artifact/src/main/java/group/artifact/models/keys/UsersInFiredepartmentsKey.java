@@ -8,14 +8,14 @@ import jakarta.persistence.Embeddable;
 @Embeddable
 public class UsersInFiredepartmentsKey implements Serializable {
     @Column(name = "fk_user")
-    private Integer fkUsers;
+    private Integer fkUser;
 
     @Column(name = "fk_firedepartment")
     private Integer fkFiredepartment;
 
     @Override
     public int hashCode() {
-        return (int) (fkUsers.hashCode() * fkFiredepartment.hashCode());
+        return (int) (fkUser.hashCode() * fkFiredepartment.hashCode());
     }
 
     @Override
@@ -27,7 +27,7 @@ public class UsersInFiredepartmentsKey implements Serializable {
             return false;
         }
         UsersInFiredepartmentsKey other = (UsersInFiredepartmentsKey) o;
-        boolean equalsForeignKeys = (fkUsers == null && other.fkUsers == null) || (fkUsers != null && this.fkUsers.equals(other.fkUsers))
+        boolean equalsForeignKeys = (fkUser == null && other.fkUser == null) || (fkUser != null && this.fkUser.equals(other.fkUser))
          || (fkFiredepartment == null && other.fkFiredepartment == null) || (fkFiredepartment != null && this.fkFiredepartment.equals(other.fkFiredepartment));
         return equalsForeignKeys;
     }
