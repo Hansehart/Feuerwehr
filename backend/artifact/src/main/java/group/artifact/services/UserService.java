@@ -8,10 +8,13 @@ import java.security.SecureRandom;
 import org.apache.commons.codec.digest.DigestUtils;
 
 import group.artifact.dtos.ProfileDTO;
+import group.artifact.models.Firedepartment;
 import group.artifact.models.Session;
 import group.artifact.models.User;
+import group.artifact.models.mappers.UsersInFiredepartments;
 import group.artifact.repositories.SessionRepository;
 import group.artifact.repositories.UserRepository;
+import group.artifact.repositories.UsersInFiredepartmentRepository;
 import jakarta.servlet.http.Cookie;
 
 @Service
@@ -20,6 +23,11 @@ public class UserService {
     UserRepository userRepository;
     @Autowired
     SessionRepository sessionRepository;
+    @Autowired
+    UsersInFiredepartmentRepository usersInFiredepartmentRepository;
+
+    @Autowired
+    FiredepartmentService firedepartmentService;
 
     private final String CHARACTERS = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!?=";
 
@@ -52,15 +60,24 @@ public class UserService {
 
     public void saveProfile(String sid, ProfileDTO p) { // profile
         Session s = sessionRepository.findById(sid).orElse(null);
-        System.out.println(1);
         if (s.equals(null)) {
             System.out.println("ERROR: provided sid is not suitable during profile creation");
             throw new IllegalArgumentException();
         }
-        System.out.println(2);
+        // update user
         User u = s.getUser();
         u.setName(p.getUsername());
-        System.out.println(3);
+
+        // convert profileDTO fid to firedepartment 
+        Firedepartment f = firedepartmentService.receiveById(p.getFid());
+        
+        // create membership
+        UsersInFiredepartments membership = new UsersInFiredepartments();
+        membership.setUser(u);
+        membership.setFiredepartment(f);
+
+        // save entities
+        usersInFiredepartmentRepository.save(membership);
         userRepository.save(u);
     }
 

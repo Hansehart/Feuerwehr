@@ -1,7 +1,7 @@
 package group.artifact.models.mappers;
 
-import group.artifact.models.Material;
-import group.artifact.models.StorageLocation;
+import group.artifact.models.Firedepartment;
+import group.artifact.models.User;
 import group.artifact.models.keys.UsersInFiredepartmentsKey;
 import jakarta.persistence.EmbeddedId;
 import jakarta.persistence.Entity;
@@ -20,12 +20,10 @@ public class UsersInFiredepartments {
     UsersInFiredepartmentsKey id = new UsersInFiredepartmentsKey();
 
     @ManyToOne
-    @JoinColumn(name = "fk_storagelocation", insertable = false, updatable = false)
-    StorageLocation storageLocation;
+    @JoinColumn(name = "fk_user")
+    User user;
 
     @ManyToOne
-    @JoinColumn(name = "fk_material", insertable = false, updatable = false)
-    Material material;
-
-    Short quantity;
+    @JoinColumn(name = "fk_firedepartment")
+    Firedepartment firedepartment;
 }

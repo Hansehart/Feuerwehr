@@ -4,7 +4,6 @@ import lombok.Data;
 
 @Data
 public class ProfileDTO {
+    private Integer fid; // firedepartment id
     private String username;
-    private String fdName; // firedepartment name
-    private String fdLocationNumber; // firedepartment location number
 }

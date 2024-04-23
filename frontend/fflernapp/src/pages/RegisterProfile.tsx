@@ -6,45 +6,55 @@ import MobileHeader from "../components/mobile/MobileHeader";
 import MobileNavBar from "../components/mobile/MobileNavBar";
 import MobileForm from "../components/mobile/MobileForm";
 
+interface Firedepartment {
+  id: number;
+  name: string;
+  locationNumber: string;
+}
+
 function RegisterProfile() {
   const navigate = useNavigate();
   const [select, setSelect] = useState("");
-  const [firedepartments, setFiredepartments] = useState<string[]>([]);
+  const [firedepartments, setFiredepartments] = useState<Firedepartment[]>([]);
 
   useEffect(() => {
     fetch("https://fflernapp.hansehart.de/api/service/receive/firedepartments")
       .then((response) => response.json())
-      .then((data: { locationNumber: string[], name: string }[]) => {
-        const fd = data.map((item) => `${item.name} (${item.locationNumber})`);
-        setFiredepartments(fd);
+      .then((data: Firedepartment[]) => {
+        // direct type casting to Firedepartment[]
+        setFiredepartments(data);
       });
   }, []);
 
   function register() {
     const username = document.getElementById("input-0") as HTMLInputElement;
     const fd = document.getElementById("input-1") as HTMLInputElement;
-    const fdKey = fd.value.trim();
-    
-    // split the value into name and number parts
-    const match = fdKey.match(/^(.*?) \((\d+)\)$/);
+    const selectedFd = fd.value.trim();
 
-    var fdName =  "";
+    // split the value into name and number parts
+    const match = selectedFd.match(/^(.*?) \((\d+)\)$/);
+
+    var fdName = "";
     var fdLocationNumber = "";
-    
-    if (match) { 
+
+    if (match) {
       fdName = match[1];
       fdLocationNumber = match[2];
     } else {
       console.error("ERROR: problems with profile creation");
+      return;
     }
 
-
     // create an object to store input values
-    const formData: { [key: string]: string } = {};
-    formData["username"] = username.value;
-    formData["firedepatmentName"] = fdName;
-    formData["firedepartmentLocationNumber"] = fdLocationNumber;
-    const jsonData = JSON.stringify(formData);
+    const payload: { [key: string]: string | number } = {};
+    const target = firedepartments.find(fd => fd.name === fdName && fd.locationNumber === fdLocationNumber)
+    if (!target) {
+      console.error("ERROR: problems with profile creation");
+      return;
+    }
+    payload["fid"] = target.id;
+    payload["username"] = username.value;
+    const jsonData = JSON.stringify(payload);
     fetch("https://fflernapp.hansehart.de/api/service/save/profile", {
       method: "POST",
       headers: {
@@ -66,7 +76,7 @@ function RegisterProfile() {
     {
       label: "Feuerwehr auswählen",
       type: "select",
-      selectOptions: firedepartments,
+      selectOptions: firedepartments.map(fd => fd.name + " (" + fd.locationNumber + ")"),
     },
     { value: "Bestätigen", type: "button", function: register },
   ];
