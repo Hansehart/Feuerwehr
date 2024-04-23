@@ -45,9 +45,9 @@ public class UserService {
 
         // save entities
         System.out.println("111");
+        userRepository.save(u);
         sessionRepository.save(s);
         System.out.println("222");
-        userRepository.save(u);
 
         return cookie;
     }
