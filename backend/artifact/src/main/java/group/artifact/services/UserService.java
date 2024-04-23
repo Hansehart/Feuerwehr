@@ -24,12 +24,11 @@ public class UserService {
     private final String CHARACTERS = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!?=";
 
     public Cookie saveAccount(User u) {
-        // save user
+        // update user
         String salt = generateSalt(16);
         String hashedPW = DigestUtils.sha256Hex(u.getPassword() + salt);
         u.setPassword(hashedPW);
         u.setSalt(salt);
-        userRepository.save(u);
 
         // generate session cookie
         String sid = generateSalt(32);
@@ -43,7 +42,12 @@ public class UserService {
         Session s = new Session();
         s.setSid(sid);
         s.setUser(u);
+
+        // save entities
+        System.out.println("111");
         sessionRepository.save(s);
+        System.out.println("222");
+        userRepository.save(u);
 
         return cookie;
     }
