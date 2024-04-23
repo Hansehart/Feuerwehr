@@ -75,9 +75,6 @@ public class UserService {
         UsersInFiredepartments membership = new UsersInFiredepartments();
         membership.setUser(u);
         membership.setFiredepartment(f);
-        System.out.println(u);
-        System.out.println(s);
-        System.out.println(membership);
 
         // save entities
         usersInFiredepartmentRepository.save(membership);
