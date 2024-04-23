@@ -14,7 +14,7 @@ import lombok.Data;
 @Data
 @Entity
 @NoArgsConstructor
-@Table(name="storagelocations_contains_materials")
+@Table(name="users_in_firedepartments")
 public class UsersInFiredepartments {
     @EmbeddedId
     UsersInFiredepartmentsKey id = new UsersInFiredepartmentsKey();
