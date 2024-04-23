@@ -7,7 +7,7 @@ import jakarta.persistence.JoinColumn;
 
 @Embeddable
 public class UsersInFiredepartmentsKey implements Serializable {
-    @JoinColumn(name = "fk_users")
+    @JoinColumn(name = "fk_user")
     private Integer fkUsers;
 
     @JoinColumn(name = "fk_firedepartment")
