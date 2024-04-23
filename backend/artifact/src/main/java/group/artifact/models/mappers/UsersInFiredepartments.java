@@ -20,10 +20,10 @@ public class UsersInFiredepartments {
     UsersInFiredepartmentsKey id = new UsersInFiredepartmentsKey();
 
     @ManyToOne
-    @JoinColumn(name = "fkUser")
+    @JoinColumn(name = "fk_user")
     User user;
 
     @ManyToOne
-    @JoinColumn(name = "fkFiredepartment")
+    @JoinColumn(name = "fk_firedepartment")
     Firedepartment firedepartment;
 }
