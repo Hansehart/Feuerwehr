@@ -2,15 +2,15 @@ package group.artifact.models.keys;
 
 import java.io.Serializable;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Embeddable;
-import jakarta.persistence.JoinColumn;
 
 @Embeddable
 public class UsersInFiredepartmentsKey implements Serializable {
-    @JoinColumn(name = "fk_user")
+    @Column(name = "fk_user")
     private Integer fkUsers;
 
-    @JoinColumn(name = "fk_firedepartment")
+    @Column(name = "fk_firedepartment")
     private Integer fkFiredepartment;
 
     @Override
