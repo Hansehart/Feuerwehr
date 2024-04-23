@@ -44,23 +44,23 @@ public class UserService {
         s.setUser(u);
 
         // save entities
-        System.out.println("111");
         userRepository.save(u);
         sessionRepository.save(s);
-        System.out.println("222");
 
         return cookie;
     }
 
     public void saveProfile(String sid, ProfileDTO p) { // profile
         Session s = sessionRepository.findById(sid).orElse(null);
-        System.out.println(s);
+        System.out.println(1);
         if (s.equals(null)) {
             System.out.println("ERROR: provided sid is not suitable during profile creation");
             throw new IllegalArgumentException();
         }
+        System.out.println(2);
         User u = s.getUser();
         u.setName(p.getUsername());
+        System.out.println(3);
         userRepository.save(u);
     }
 
