@@ -35,7 +35,7 @@ export default function MobileForm({ background, fields }: MobileFormProps) {
             {field.type === "select" ? (
               <>
                 <label htmlFor={`input-${index}`}>{field.label}</label>
-                <select id={`input-${index}`} size={1} multiple>
+                <select id={`input-${index}`} size={1}>
                   {field.selectOptions?.map((option, optionIndex) => (
                     <option key={`option-${index}-${optionIndex}`}>
                       {option}
