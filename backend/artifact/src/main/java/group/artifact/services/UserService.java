@@ -90,6 +90,8 @@ public class UserService {
             throw new IllegalArgumentException();
         }
         s.setFiredepartment(f);
+        System.out.println(f.getName());
+        System.out.println(s);
         System.out.println(s.getFiredepartment().getName());
 
         // save entities
