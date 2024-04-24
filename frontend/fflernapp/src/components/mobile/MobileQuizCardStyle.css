@@ -19,8 +19,8 @@
 }
 
 .select {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  display: flex;
+  flex-wrap: wrap;
   justify-content: center;
   
   gap: 1em;
@@ -31,12 +31,19 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  flex: 1;  
+
   text-align: center;
   margin-bottom: 1vh;
+  padding: 1em;
 
   border: 5px solid #05192a;
   border-radius: 1em;
   color: #05192a;
+}
+
+.select p {
+  margin: 0;
 }
 
 .continue {
