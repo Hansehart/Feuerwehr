@@ -16,7 +16,7 @@ function MobileQuizCard() {
 
   useEffect(() => {
     fetchQuizData();
-  })
+  }, [])
 
   useEffect(() => {
     let timer: number | null = null;
