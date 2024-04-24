@@ -7,6 +7,7 @@ import java.security.SecureRandom;
 
 import org.apache.commons.codec.digest.DigestUtils;
 
+import group.artifact.dtos.MessageDTO;
 import group.artifact.dtos.ProfileDTO;
 import group.artifact.models.Firedepartment;
 import group.artifact.models.Session;
@@ -30,6 +31,17 @@ public class UserService {
     FiredepartmentService firedepartmentService;
 
     private final String CHARACTERS = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!?=";
+
+    public MessageDTO receiveUserAttr(String sid, String attr) {
+        User u = auth(sid);
+        MessageDTO msg = new MessageDTO();
+
+        if (attr.equals("name")) {
+            msg.setMsg(u.getName());
+        }
+        
+        return msg;
+    }
 
     public Cookie saveAccount(User u) {
         // update user
@@ -59,18 +71,12 @@ public class UserService {
     }
 
     public void saveProfile(String sid, ProfileDTO p) { // profile
-        Session s = sessionRepository.findById(sid).orElse(null);
-        if (s.equals(null)) {
-            System.out.println("ERROR: provided sid is not suitable during profile creation");
-            throw new IllegalArgumentException();
-        }
-        // update user
-        User u = s.getUser();
+        User u = auth(sid);
         u.setName(p.getUsername());
 
-        // convert profileDTO fid to firedepartment 
+        // convert profileDTO fid to firedepartment
         Firedepartment f = firedepartmentService.receiveById(p.getFid());
-        
+
         // create membership
         UsersInFiredepartments membership = new UsersInFiredepartments();
         membership.setUser(u);
@@ -79,6 +85,16 @@ public class UserService {
         // save entities
         usersInFiredepartmentRepository.save(membership);
         userRepository.save(u);
+    }
+
+    private User auth(String sid) {
+        Session s = sessionRepository.findById(sid).orElse(null);
+        if (s.equals(null)) { // sid not known in db
+            System.out.println("ERROR: provided sid is not known during authentication");
+            throw new IllegalArgumentException();
+        }
+        User u = s.getUser();
+        return u;
     }
 
     /*
