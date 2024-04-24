@@ -33,10 +33,13 @@ public class UserService {
     private final String CHARACTERS = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!?=";
 
     public MessageDTO receiveUserAttr(String sid, String attr) {
-        User u = auth(sid);
-        MessageDTO msg = new MessageDTO();
-        System.out.println(u);
+        User u = userRepository.findById(auth(sid)).orElse(null);
+        if (u == null) { // user id not known in db
+            System.out.println("ERROR: provided user id is not known during searching user attr");
+            throw new IllegalArgumentException();
+        }
 
+        MessageDTO msg = new MessageDTO(u.getName());
         if (attr.equals("name")) {
             msg.setMsg(u.getName());
         }
@@ -72,7 +75,12 @@ public class UserService {
     }
 
     public void saveProfile(String sid, ProfileDTO p) { // profile
-        User u = auth(sid);
+        User u = userRepository.findById(auth(sid)).orElse(null);
+        if (u == null) { // user id not known in db
+            System.out.println("ERROR: provided user id is not known during saving profile");
+            throw new IllegalArgumentException();
+        }
+
         u.setName(p.getUsername());
 
         // convert profileDTO fid to firedepartment
@@ -88,15 +96,14 @@ public class UserService {
         userRepository.save(u);
     }
 
-    private User auth(String sid) {
+    private Integer auth(String sid) {
         Session s = sessionRepository.findById(sid).orElse(null);
-        if (s.equals(null)) { // sid not known in db
+        if (s == null) { // sid not known in db
             System.out.println("ERROR: provided sid is not known during authentication");
             throw new IllegalArgumentException();
         }
         User u = s.getUser();
-        System.out.println(u.getEmail());
-        return u;
+        return u.getId();
     }
 
     /*
