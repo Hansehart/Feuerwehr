@@ -23,7 +23,7 @@ function MobileQuizCard() {
     setTimerStarted(false);
     setMultipleChoice([]);
     setCount(3);
-    fetch(`https://fflernapp.hansehart.de/api/service/receive/quiz`)
+    fetch(`https://page.de/api/service/receive/quiz`)
       .then((response) => response.json())
       .then((data) => setQuizData(data))
       .catch((error) => console.error("Error fetching data: ", error));
@@ -41,9 +41,8 @@ function MobileQuizCard() {
             return prevCount - 1; // decrement the count
           } else {
             clearInterval(countdown); // stop the countdown
-
             fetchQuizData();
-            return prevCount;
+            return 3;
           }
         });
       }, 1000); // update every second (1000 milliseconds)
