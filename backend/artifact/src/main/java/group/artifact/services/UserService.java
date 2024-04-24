@@ -38,8 +38,8 @@ public class UserService {
             System.out.println("ERROR: provided user id is not known during searching user attr");
             throw new IllegalArgumentException();
         }
-
-        MessageDTO msg = new MessageDTO(u.getName());
+        System.out.println(u.toString());
+        MessageDTO msg = new MessageDTO();
         if (attr.equals("name")) {
             msg.setMsg(u.getName());
         }
