@@ -13,6 +13,7 @@ import group.artifact.models.Firedepartment;
 import group.artifact.models.Session;
 import group.artifact.models.User;
 import group.artifact.models.mappers.UsersInFiredepartments;
+import group.artifact.repositories.FiredepartmentRepository;
 import group.artifact.repositories.SessionRepository;
 import group.artifact.repositories.UserRepository;
 import group.artifact.repositories.UsersInFiredepartmentRepository;
@@ -25,10 +26,9 @@ public class UserService {
     @Autowired
     SessionRepository sessionRepository;
     @Autowired
-    UsersInFiredepartmentRepository usersInFiredepartmentRepository;
-
+    FiredepartmentRepository firedepartmentRepository;
     @Autowired
-    FiredepartmentService firedepartmentService;
+    UsersInFiredepartmentRepository usersInFiredepartmentRepository;
 
     private final String CHARACTERS = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!?=";
 
@@ -75,21 +75,23 @@ public class UserService {
         u.setName(p.getUsername());
 
         // convert profileDTO fid to firedepartment
-        Firedepartment f = firedepartmentService.receiveById(p.getFid());
+        Firedepartment f = firedepartmentRepository.findById(p.getFid()).orElse(null);
+        if (f == null) {
+            System.out.println("ERROR: firedepartment was not found and could not be corresponded to a membership with a user");
+            throw new IllegalArgumentException();
+        }
 
         // create membership
         UsersInFiredepartments membership = new UsersInFiredepartments();
         membership.setUser(u);
         membership.setFiredepartment(f);
 
-        System.out.println("HERE1");
         // update session
         Session s = sessionRepository.findById(sid).orElse(null);
         if (s == null) {
             System.out.println("ERROR: session was not found and could not be corresponded to a firedepartment");
             throw new IllegalArgumentException();
         }
-        System.out.println("HERE2");
         s.setFiredepartment(f);
 
         // save entities
