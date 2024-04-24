@@ -10,16 +10,22 @@ import MobileAuthPreview from "../components/mobile/MobileAuthPreview";
 function Home() {
   const location = useLocation();
   const [select, setSelect] = useState("department");
+  const [username, setUsername] = useState("");
 
   const changeView = (view: string) => {
     setSelect(view);
   };
 
+  // init values
   useEffect(() => {
     // check if there's state and a select value in the state
     if (location.state && location.state.select) {
       setSelect(location.state.select);
     }
+
+    fetch("https://fflernapp.hansehart.de/api/service/receive/user?attr=name")
+      .then((response) => response.json())
+      .then((data) => setUsername(data.msg));
   }, []);
 
   // decide which body to display
@@ -46,7 +52,7 @@ function Home() {
         <MobileBody
           before={
             <div style={{ textAlign: "center", margin: "2em" }}>
-              <h3>Moin, Username!</h3>
+              <h3>{username? `Moin ${username}!` : "Moin!"}</h3>
             </div>
           }
           type="vehicle"
@@ -57,12 +63,7 @@ function Home() {
       break;
     case "profile":
       displayComponent = (
-        <MobileBody
-          before={
-            <MobileAuthPreview/>
-          }
-          type="profile"
-        />
+        <MobileBody before={<MobileAuthPreview />} type="profile" />
       );
       window.history.replaceState({}, "");
       break;
