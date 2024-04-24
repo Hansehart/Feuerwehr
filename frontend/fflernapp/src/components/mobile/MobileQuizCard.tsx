@@ -42,7 +42,7 @@ function MobileQuizCard() {
           } else {
             clearInterval(countdown); // stop the countdown
             fetchQuizData();
-            return 3;
+            return count;
           }
         });
       }, 1000); // update every second (1000 milliseconds)
