@@ -30,9 +30,7 @@ function MobileQuizCard() {
   };
 
   const startTimer = () => {
-    const timer = document.getElementById("timer");
-    if (timer && !timerStarted) {
-      timer.style.display = "block";
+    if (!timerStarted) {
       setTimerStarted(true);
 
       const countdown = setInterval(() => {
@@ -41,9 +39,8 @@ function MobileQuizCard() {
             return prevCount - 1; // decrement the count
           } else {
             clearInterval(countdown); // stop the countdown
-
-            fetchQuizData();
-            return count;
+            fetchQuizData(); // fetch new quiz data
+            return 3; // reset the count to the initial value
           }
         });
       }, 1000); // update every second (1000 milliseconds)
@@ -144,10 +141,7 @@ function MobileQuizCard() {
               </div>
             ))}
           </section>
-          <section
-            className="continue"
-            onClick={fetchQuizData}
-          >
+          <section className="continue" onClick={fetchQuizData}>
             <h4 id="timer" style={{ display: "none" }}>
               <u>Weiter</u> in {count}...
             </h4>
