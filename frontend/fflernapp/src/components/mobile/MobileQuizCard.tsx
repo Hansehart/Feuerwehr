@@ -20,7 +20,9 @@ function MobileQuizCard() {
 
   useEffect(() => {
     let timer: number | null = null;
-    if (timerStarted) {
+    const countdown = document.getElementById("timer");
+    if (countdown && timerStarted) {
+      countdown.style.display = "block";
       timer = setInterval(() => {
         setCount((prevSeconds) => {
           const newSeconds = prevSeconds - 1;
