@@ -82,17 +82,15 @@ public class UserService {
         membership.setUser(u);
         membership.setFiredepartment(f);
 
-
+        System.out.println("HERE1");
         // update session
         Session s = sessionRepository.findById(sid).orElse(null);
         if (s == null) {
             System.out.println("ERROR: session was not found and could not be corresponded to a firedepartment");
             throw new IllegalArgumentException();
         }
+        System.out.println("HERE2");
         s.setFiredepartment(f);
-        System.out.println(f.getName());
-        System.out.println(s);
-        System.out.println(s.getFiredepartment().getName());
 
         // save entities
         usersInFiredepartmentRepository.save(membership);
