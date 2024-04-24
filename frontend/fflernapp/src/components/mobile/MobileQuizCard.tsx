@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import "./MobileQuizCardStyle.css";
 import drivingFirefighters from "/src/assets/driving-firefighters-filter.jpg";
 
@@ -10,17 +10,29 @@ interface QuizData {
 
 function MobileQuizCard() {
   const [count, setCount] = useState(3);
-  const [multipleChoice, setMultipleChoice] = useState<string[]>([]);
   const [timerStarted, setTimerStarted] = useState(false);
+  const [multipleChoice, setMultipleChoice] = useState<string[]>([]);
   const [quizData, setQuizData] = useState<QuizData | null>(null);
-  const countdownRef = useRef<number | null>(null);
 
   useEffect(() => {
-    fetchQuizData();
-    if (countdownRef.current) {
-      clearInterval(countdownRef.current);
+    let timer: number | null = null;
+    if (timerStarted) {
+      timer = setInterval(() => {
+        setCount((prevSeconds) => {
+          const newSeconds = prevSeconds - 1;
+          if (newSeconds === 0) {
+            fetchQuizData();
+          }
+          return newSeconds;
+        });
+      }, 1000);
     }
-  }, []);
+    return () => {
+      if (timer) {
+        clearInterval(timer);
+      }
+    };
+  }, [timerStarted]);
 
   const fetchQuizData = () => {
     setQuizData(null);
@@ -38,7 +50,7 @@ function MobileQuizCard() {
     if (timer && !timerStarted) {
       timer.style.display = "block";
       setTimerStarted(true);
-      countdownRef.current = setInterval(() => {
+      const countdown = setInterval(() => {
         setCount((prevCount) => {
           if (prevCount > 0) {
             return prevCount - 1; // decrement the count
@@ -67,7 +79,7 @@ function MobileQuizCard() {
             // wrong answer selected
             selectedElement.style.borderColor = "red";
           }
-          startTimer();
+          setTimerStarted(true);
         }
       } else {
         // multiple choice
@@ -106,7 +118,7 @@ function MobileQuizCard() {
                   }
                 }
               });
-              startTimer();
+              setTimerStarted(true);
             }
           }
         }
