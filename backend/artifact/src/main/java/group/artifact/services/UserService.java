@@ -37,7 +37,6 @@ public class UserService {
         MessageDTO msg = new MessageDTO();
         if (attr.equals("name")) {
             msg.setMsg(u.getName());
-        } else if (attr.equals("fid")) { // firedepartment id
         }
         return msg;
     }

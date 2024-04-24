@@ -8,14 +8,14 @@ import org.springframework.stereotype.Service;
 import group.artifact.dtos.MessageDTO;
 import group.artifact.models.Firedepartment;
 import group.artifact.repositories.FiredepartmentRepository;
+import group.artifact.repositories.SessionRepository;
 
 @Service
 public class FiredepartmentService {
-
     @Autowired
     FiredepartmentRepository firedepartmentRepository;
-    @Autowired 
-    UserService userService;
+    @Autowired
+    SessionRepository sessionRepository;
 
     public Firedepartment receiveById(Integer fid) { // firedepartment id
         Firedepartment f = firedepartmentRepository.findById(fid).orElse(null);
@@ -23,8 +23,12 @@ public class FiredepartmentService {
     }   
 
     public MessageDTO receiveAttribute(String sid, String attr) {
-        MessageDTO msg = userService.receiveUserAttr(sid, attr);
-        return msg;
+        MessageDTO m = new MessageDTO(); // message
+        if (attr.equals("name")) {
+            Firedepartment f = sessionRepository.findFiredepartmentBySid(sid);
+            m.setMsg(f.getName());
+        }
+        return m;
     }   
 
     public List<Firedepartment> receiveAll() {
