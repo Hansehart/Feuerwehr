@@ -30,6 +30,7 @@ public class FiredepartmentController {
             List<Firedepartment> fd = firedepartmentService.receiveAll();
             return ResponseEntity.ok(fd);
         } catch (Exception e) {
+            System.out.println("ERROR: " + e);
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);
         } 
     }
@@ -40,6 +41,7 @@ public class FiredepartmentController {
             MessageDTO msg = firedepartmentService.receiveAttribute(sid, attr);
             return ResponseEntity.ok(msg);
         } catch (Exception e) {
+            System.out.println("ERROR: " + e);
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);
         } 
     }
@@ -50,6 +52,7 @@ public class FiredepartmentController {
             firedepartmentService.save(fd);
             return ResponseEntity.ok("firedepartment successfully created");
         } catch (Exception e) {
+            System.out.println("ERROR: " + e);
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);
         } 
     }
