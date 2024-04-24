@@ -35,11 +35,12 @@ public class UserService {
     public MessageDTO receiveUserAttr(String sid, String attr) {
         User u = auth(sid);
         MessageDTO msg = new MessageDTO();
-        
+        System.out.println(attr);
         if (attr.equals("name")) {
+            System.out.println("11111");
             msg.setMsg(u.getName());
         }
-
+        System.out.println(u.getName());
         return msg;
     }
 
