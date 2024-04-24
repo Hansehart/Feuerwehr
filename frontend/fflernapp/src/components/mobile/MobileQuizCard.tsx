@@ -40,7 +40,7 @@ function MobileQuizCard() {
           } else {
             clearInterval(countdown); // stop the countdown
             fetchQuizData(); // fetch new quiz data
-            return 3; // reset the count to the initial value
+            return count; // reset the count to the initial value
           }
         });
       }, 1000); // update every second (1000 milliseconds)
