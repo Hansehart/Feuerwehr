@@ -95,6 +95,7 @@ public class UserService {
             throw new IllegalArgumentException();
         }
         User u = s.getUser();
+        System.out.println(u.getEmail());
         return u;
     }
 
