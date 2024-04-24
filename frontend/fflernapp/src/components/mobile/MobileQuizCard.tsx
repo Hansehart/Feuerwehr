@@ -10,9 +10,8 @@ interface QuizData {
 
 function MobileQuizCard() {
   const [count, setCount] = useState(3);
-  const [timer, setTimer] = useState<number | null>(null);
-  const [multipleChoice, setMultipleChoice] = useState<string[]>([]);
   const [timerStarted, setTimerStarted] = useState(false);
+  const [multipleChoice, setMultipleChoice] = useState<string[]>([]);
   const [quizData, setQuizData] = useState<QuizData | null>(null);
 
   useEffect(() => {
@@ -30,31 +29,29 @@ function MobileQuizCard() {
       .catch((error) => console.error("Error fetching data: ", error));
   };
 
-  const startTimer = () => {
-    const timerElement = document.getElementById("timer");
-    if (timerElement && !timerStarted) {
-      timerElement.style.display = "block";
-      setTimerStarted(true);
-      const newTimer = setInterval(() => {
-        setCount((prevCount) => {
-          if (prevCount > 0) {
-            return prevCount - 1; // decrement the count
-          } else {
-            clearInterval(newTimer); // stop the countdown
-            fetchQuizData();
-            return count;
-          }
-        });
-      }, 1000); // update every second (1000 milliseconds)
+  function countdown(seconds: number) {
+    // initialize timeLeft with the seconds prop
+    const [timeLeft, setTimeLeft] = useState(seconds);
 
-      setTimer(newTimer); // store the new timer in state
-      return () => {
-        if (timer) {
-          clearInterval(timer); // cleanup the interval when component unmounts
-        }
+    useEffect(() => {
+      // exit early when we reach 0
+      if (!timeLeft) {
+        fetchQuizData();
+        return;
       };
-    }
-  };
+
+      // save intervalId to clear the interval when the
+      // component re-renders
+      const intervalId = setInterval(() => {
+        setTimeLeft(timeLeft - 1);
+      }, 1000);
+
+      // clear interval on re-render to avoid memory leaks
+      return () => clearInterval(intervalId);
+      // add timeLeft as a dependency to re-rerun the effect
+      // when we update it
+    }, [timeLeft]);
+  }
 
   const handleAnswerClick = (answerID: string) => {
     if (quizData) {
@@ -72,7 +69,7 @@ function MobileQuizCard() {
             // wrong answer selected
             selectedElement.style.borderColor = "red";
           }
-          startTimer();
+          countdown(3);
         }
       } else {
         // multiple choice
@@ -111,7 +108,7 @@ function MobileQuizCard() {
                   }
                 }
               });
-              startTimer();
+              countdown(3);
             }
           }
         }
