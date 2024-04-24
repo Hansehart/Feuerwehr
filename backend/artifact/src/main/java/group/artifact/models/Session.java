@@ -20,4 +20,8 @@ public class Session {
     @ManyToOne
     @JoinColumn(name = "fk_user")
     private User user;
+
+    @ManyToOne
+    @JoinColumn(name="fk_firedepartment")
+    private Firedepartment firedepartment;
 }

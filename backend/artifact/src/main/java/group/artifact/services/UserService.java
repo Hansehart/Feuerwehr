@@ -37,6 +37,7 @@ public class UserService {
         MessageDTO msg = new MessageDTO();
         if (attr.equals("name")) {
             msg.setMsg(u.getName());
+        } else if (attr.equals("fid")) { // firedepartment id
         }
         return msg;
     }
@@ -51,7 +52,7 @@ public class UserService {
         // generate session cookie
         String sid = generateSalt(32);
         Cookie cookie = new Cookie("sid", sid);
-        cookie.setAttribute("SameSite", "Lax");
+        cookie.setAttribute("SameSite", "Strict");
         cookie.setHttpOnly(true);
         cookie.setSecure(true);
         cookie.setPath("/");
@@ -69,6 +70,7 @@ public class UserService {
     }
 
     public void saveProfile(String sid, ProfileDTO p) { // profile
+        // update user
         User u = auth(sid);
         u.setName(p.getUsername());
 
@@ -80,9 +82,19 @@ public class UserService {
         membership.setUser(u);
         membership.setFiredepartment(f);
 
+
+        // update session
+        Session s = sessionRepository.findById(sid).orElse(null);
+        if (s == null) {
+            System.out.println("ERROR: session was not found and could not be corresponded to a firedepartment");
+            throw new IllegalArgumentException();
+        }
+        s.setFiredepartment(f);
+
         // save entities
         usersInFiredepartmentRepository.save(membership);
         userRepository.save(u);
+        sessionRepository.save(s);
     }
 
     private User auth(String sid) {

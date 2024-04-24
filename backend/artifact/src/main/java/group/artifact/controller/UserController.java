@@ -26,7 +26,7 @@ public class UserController {
     UserService userService;
 
     @GetMapping("/receive/user")
-    public ResponseEntity<MessageDTO> receiveUser(@CookieValue(value = "sid") String sid, @RequestParam(required = true) String attr) { // attribute
+    public ResponseEntity<MessageDTO> receiveUserInformation(@CookieValue(value = "sid") String sid, @RequestParam(required = true) String attr) { // attribute
         try {
             MessageDTO msg = userService.receiveUserAttr(sid, attr);
             return ResponseEntity.ok(msg);

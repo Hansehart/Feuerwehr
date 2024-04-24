@@ -8,7 +8,7 @@ interface MobileHeaderProps {
 export default function MobileHeader({ department, name }: MobileHeaderProps) {
   return (
     <header style={{ minHeight: department ? "20vh" : "15vh" }}>
-      <div id="title">
+      <section id="header-title">
         {" "}
         {department ? (
           <h1 data-text={"Feuerwehr " + name}>
@@ -18,7 +18,7 @@ export default function MobileHeader({ department, name }: MobileHeaderProps) {
         ) : (
           <h1 data-text={name}>{name}</h1>
         )}
-      </div>
+      </section>
     </header>
   );
 }

@@ -11,6 +11,7 @@ function Home() {
   const location = useLocation();
   const [select, setSelect] = useState("department");
   const [username, setUsername] = useState("");
+  const [firedepartment, setFiredepartment] = useState("");
 
   const changeView = (view: string) => {
     setSelect(view);
@@ -26,6 +27,10 @@ function Home() {
     fetch("https://fflernapp.hansehart.de/api/service/receive/user?attr=name")
       .then((response) => response.json())
       .then((data) => setUsername(data.msg));
+
+    fetch("https://fflernapp.hansehart.de/api/service/receive/firedepartment?attr=name")
+      .then((response) => response.json())
+      .then((data) => setFiredepartment(data.msg));
   }, []);
 
   // decide which body to display
@@ -73,7 +78,7 @@ function Home() {
 
   return (
     <div>
-      <MobileHeader department={true} name="Mollhagen" />
+      <MobileHeader department={true} name={firedepartment} />
       {displayComponent}
       <MobileNavBar changeView={changeView} preset={`${select}`} />
     </div>
