@@ -15,6 +15,10 @@ function MobileQuizCard() {
   const [quizData, setQuizData] = useState<QuizData | null>(null);
 
   useEffect(() => {
+    fetchQuizData();
+  })
+
+  useEffect(() => {
     let timer: number | null = null;
     if (timerStarted) {
       timer = setInterval(() => {
