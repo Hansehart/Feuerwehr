@@ -10,6 +10,7 @@ interface QuizData {
 
 function MobileQuizCard() {
   const [count, setCount] = useState(3);
+  const [timer, setTimer] = useState<number | null>(null);
   const [multipleChoice, setMultipleChoice] = useState<string[]>([]);
   const [timerStarted, setTimerStarted] = useState(false);
   const [quizData, setQuizData] = useState<QuizData | null>(null);
@@ -30,24 +31,28 @@ function MobileQuizCard() {
   };
 
   const startTimer = () => {
-    const timer = document.getElementById("timer");
-    if (timer && !timerStarted) {
-      timer.style.display = "block";
+    const timerElement = document.getElementById("timer");
+    if (timerElement && !timerStarted) {
+      timerElement.style.display = "block";
       setTimerStarted(true);
-
-      const countdown = setInterval(() => {
+      const newTimer = setInterval(() => {
         setCount((prevCount) => {
           if (prevCount > 0) {
             return prevCount - 1; // decrement the count
           } else {
+            clearInterval(newTimer); // stop the countdown
             fetchQuizData();
-            clearInterval(countdown); // stop the countdown
             return count;
           }
         });
       }, 1000); // update every second (1000 milliseconds)
 
-      return () => clearInterval(countdown); // cleanup the interval when component unmounts
+      setTimer(newTimer); // store the new timer in state
+      return () => {
+        if (timer) {
+          clearInterval(timer); // cleanup the interval when component unmounts
+        }
+      };
     }
   };
 
@@ -143,10 +148,7 @@ function MobileQuizCard() {
               </div>
             ))}
           </section>
-          <section
-            className="continue"
-            onClick={fetchQuizData}
-          >
+          <section className="continue" onClick={fetchQuizData}>
             <h4 id="timer" style={{ display: "none" }}>
               <u>Weiter</u> in {count}...
             </h4>
