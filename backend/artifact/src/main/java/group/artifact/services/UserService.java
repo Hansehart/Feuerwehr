@@ -33,7 +33,9 @@ public class UserService {
     private final String CHARACTERS = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!?=";
 
     public MessageDTO receiveUserAttr(String sid, String attr) {
-        User u = userRepository.findById(auth(sid)).orElse(null);
+        Integer uid = auth(sid);
+        User u = userRepository.findById(uid).orElse(null);
+        System.out.println("uid" + uid);
         if (u == null) { // user id not known in db
             System.out.println("ERROR: provided user id is not known during searching user attr");
             throw new IllegalArgumentException();
