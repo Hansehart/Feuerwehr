@@ -146,7 +146,7 @@ function MobileQuizCard() {
           </section>
           <section
             className="continue"
-            onClick={() => window.location.reload()}
+            onClick={fetchQuizData}
           >
             <h4 id="timer" style={{ display: "none" }}>
               <u>Weiter</u> in {count}...
