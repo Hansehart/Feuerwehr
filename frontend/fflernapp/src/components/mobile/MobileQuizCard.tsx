@@ -40,8 +40,8 @@ function MobileQuizCard() {
           if (prevCount > 0) {
             return prevCount - 1; // decrement the count
           } else {
-            clearInterval(countdown); // stop the countdown
             fetchQuizData();
+            clearInterval(countdown); // stop the countdown
             return count;
           }
         });
