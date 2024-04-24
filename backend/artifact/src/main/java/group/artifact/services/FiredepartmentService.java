@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import group.artifact.dtos.MessageDTO;
 import group.artifact.models.Firedepartment;
+import group.artifact.models.Session;
 import group.artifact.repositories.FiredepartmentRepository;
 import group.artifact.repositories.SessionRepository;
 
@@ -25,7 +26,12 @@ public class FiredepartmentService {
     public MessageDTO receiveAttribute(String sid, String attr) {
         MessageDTO m = new MessageDTO(); // message
         if (attr.equals("name")) {
-            Firedepartment f = sessionRepository.findFiredepartmentBySid(sid);
+            Session s = sessionRepository.findById(sid).orElse(null);
+            if (s == null) {
+                System.out.println("ERROR: corresponding firedepartment for sid not found whereby firedepartment can't provide further information");
+                m.setMsg(null);
+            }
+            Firedepartment f = s.getFiredepartment();
             m.setMsg(f.getName());
         }
         return m;
