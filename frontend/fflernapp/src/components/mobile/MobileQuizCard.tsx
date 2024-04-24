@@ -45,24 +45,6 @@ function MobileQuizCard() {
       .catch((error) => console.error("Error fetching data: ", error));
   };
 
-  const startTimer = () => {
-    const timer = document.getElementById("timer");
-    if (timer && !timerStarted) {
-      timer.style.display = "block";
-      setTimerStarted(true);
-      const countdown = setInterval(() => {
-        setCount((prevCount) => {
-          if (prevCount > 0) {
-            return prevCount - 1; // decrement the count
-          } else {
-            fetchQuizData();
-            return prevCount;
-          }
-        });
-      }, 1000); // update every second (1000 milliseconds)
-    }
-  };
-
   const handleAnswerClick = (answerID: string) => {
     if (quizData) {
       if (quizData.solutionIndexes.length === 1) {
