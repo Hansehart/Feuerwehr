@@ -50,7 +50,7 @@ export default function MobileBody({
           });
       } else if (type === "learn") {
         fetch(
-          `https://fflernapp.hansehart.de/api/service/receive/contentpages?type=learn`
+          `https://fflernapp.hansehart.de/api/service/receive/previews?type=learn`
         )
           .then((response) => response.json())
           .then((data) => setPreview(data))
