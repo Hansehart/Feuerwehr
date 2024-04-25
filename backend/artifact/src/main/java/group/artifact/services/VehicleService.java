@@ -1,6 +1,7 @@
 package group.artifact.services;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -44,11 +45,23 @@ public class VehicleService {
         return vehicleRepository.findById(cs).orElse(null);
     }
 
-    public List<Vehicle> receiveVehiclesFromFiredepartment(String sid) {
+    public List<VehicleDTO> receiveVehiclesFromFiredepartment(String sid) {
         Session s = sessionService.auth(sid);
         Firedepartment f = s.getFiredepartment();
 
         List<Vehicle> vehicles = vehicleRepository.findAllByFiredepartment(f);
-        return vehicles;  
+        List <VehicleDTO> dto = vehicles.stream().map(v -> createVehicleDTO(v)).collect(Collectors.toList());
+        return dto;  
+    }
+
+    private VehicleDTO createVehicleDTO(Vehicle vehicle) {
+        VehicleDTO v = new VehicleDTO();
+        v.setFid(vehicle.getFiredepartment().getId());
+        v.setName(vehicle.getName());
+        v.setShortcut(vehicle.getShortcut());
+        v.setRadioVehicleType(vehicle.getRadioVehicleType());
+        v.setRadioVehicleNumber(vehicle.getRadioVehicleNumber());
+        return v;
+
     }
 }
