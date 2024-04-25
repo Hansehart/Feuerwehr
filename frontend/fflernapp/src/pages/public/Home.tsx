@@ -10,8 +10,6 @@ import MobileAuthPreview from "../../components/mobile/MobileAuthPreview";
 function Home() {
   const location = useLocation();
   const [select, setSelect] = useState("department");
-  const [username, setUsername] = useState("");
-  const [firedepartment, setFiredepartment] = useState("");
 
   const changeView = (view: string) => {
     setSelect(view);
@@ -23,14 +21,6 @@ function Home() {
     if (location.state && location.state.select) {
       setSelect(location.state.select);
     }
-
-    fetch("https://fflernapp.hansehart.de/api/service/receive/user?attr=name")
-      .then((response) => response.json())
-      .then((data) => setUsername(data.msg));
-
-    fetch("https://fflernapp.hansehart.de/api/service/receive/firedepartment?attr=name")
-      .then((response) => response.json())
-      .then((data) => setFiredepartment(data.msg));
   }, []);
 
   // decide which body to display
@@ -57,7 +47,7 @@ function Home() {
         <MobileBody
           before={
             <div style={{ textAlign: "center", margin: "2em" }}>
-              <h3>{username? `Moin ${username}!` : "Moin!"}</h3>
+              <h3>Moin!</h3>
             </div>
           }
           type="main"
@@ -78,7 +68,7 @@ function Home() {
 
   return (
     <div>
-      <MobileHeader department={true} name={firedepartment} />
+      <MobileHeader name="Feuerwehr"/>
       {displayComponent}
       <MobileNavBar changeView={changeView} preset={`${select}`} />
     </div>
