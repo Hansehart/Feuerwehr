@@ -19,7 +19,7 @@ public class VehicleService {
 
     public void save(VehicleDTO vehicle) {
         Vehicle v = new Vehicle();
-        Firedepartment fd = firedepartmentRepository.findById(vehicle.getFiredepartmentID()).orElse(null);
+        Firedepartment fd = firedepartmentRepository.findById(vehicle.getFid()).orElse(null);
 
         if (fd == null) {
             System.out.println("ERROR: saving vehicle was not possible, because provided firedepartment can't be found");
