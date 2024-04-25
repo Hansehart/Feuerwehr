@@ -9,11 +9,18 @@ interface MobileBodyProps {
   marginToFooter?: string;
 }
 
-interface ContentData {
+interface Preview {
   title: string;
   subtitle: string;
   path: string;
-  content: string;
+}
+
+interface Vehicle {
+  fid: number;
+  name: string;
+  shortcut: string;
+  radioVehicleType: string;
+  radioVehicleNumber: string;
 }
 
 export default function MobileBody({
@@ -23,17 +30,30 @@ export default function MobileBody({
   after,
   marginToFooter,
 }: MobileBodyProps) {
-  const [contentData, setContentData] = useState<ContentData[]>([]);
+  const [preview, setPreview] = useState<Preview[]>([]);
 
   useEffect(() => {
     // clear old cards from another tab
-    setContentData([]);
+    setPreview([]);
     if (type) {
+      if (type === "vehicle") {
+        fetch(`https://fflernapp.hansehart.de/api/service/receive/vehicles`)
+          .then((response) => response.json())
+          .then((data) => {
+            // map and extract shortcut and name fields
+            const previews = data.map((item: Vehicle) => ({
+              title: item.shortcut,
+              subtitle: item.name,
+              path: `/vehicles&rvt=${item.radioVehicleType}&rvn=${item.radioVehicleNumber}`,
+            }));
+            setPreview((prevPreview) => [...prevPreview, ...previews]);
+          });
+      }
       fetch(
         `https://fflernapp.hansehart.de/api/service/receive/contentpages?type=${type}`
       )
         .then((response) => response.json())
-        .then((data) => setContentData(data))
+        .then((data) => setPreview(data))
         .catch((error) => console.error("Error fetching data: ", error));
     }
   }, [type]);
@@ -42,7 +62,7 @@ export default function MobileBody({
     return title.replace(/&shy;/g, "\u00AD");
   };
 
-  const cards = contentData.map((data, index) => (
+  const cards = preview.map((data, index) => (
     <MobileContentCard
       key={index}
       title={convertSoftHyphen(data.title)}
@@ -54,7 +74,7 @@ export default function MobileBody({
   return (
     <main style={{ marginBottom: marginToFooter }}>
       {before}
-      {cards.length > 0 ? cards: main} 
+      {cards.length > 0 ? cards : main}
       {after}
     </main>
   );
