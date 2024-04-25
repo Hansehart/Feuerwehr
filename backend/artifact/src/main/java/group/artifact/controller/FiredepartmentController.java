@@ -36,9 +36,9 @@ public class FiredepartmentController {
     }
 
     @GetMapping("/receive/firedepartment")
-    public ResponseEntity<MessageDTO> receiveFiredepartmentInformation(@CookieValue(value = "sid") String sid, @RequestParam(required = true) String attr) { // attribute
+    public ResponseEntity<MessageDTO<String>> receiveFiredepartmentInformation(@CookieValue(value = "sid") String sid, @RequestParam(required = true) String attr) { // attribute
         try {
-            MessageDTO msg = firedepartmentService.receiveAttribute(sid, attr);
+            MessageDTO<String> msg = firedepartmentService.receiveAttribute(sid, attr);
             return ResponseEntity.ok(msg);
         } catch (Exception e) {
             System.out.println("ERROR: " + e);
