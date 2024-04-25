@@ -41,7 +41,6 @@ function RegisterProfile() {
       fdName = match[1];
       fdLocationNumber = match[2];
     } else {
-      console.log("HERE" + fdName + " " + fdLocationNumber);
       console.error("ERROR: problems with profile creation");
       return;
     }
@@ -52,7 +51,6 @@ function RegisterProfile() {
       (fd) => fd.name === fdName && fd.locationNumber === fdLocationNumber
     );
     if (!target) {
-      firedepartments.forEach((f) => console.log(f.name + " " + fdName + " " + f.locationNumber + " "+ fdLocationNumber))
       console.error("ERROR: problems with profile creation");
       return;
     }
