@@ -20,7 +20,6 @@ function Home() {
     if (location.state && location.state.select) {
       setSelect(location.state.select);
     }
-    window.location.reload();
   }, []);
 
   // decide which body to display
