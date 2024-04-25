@@ -25,7 +25,7 @@ public class UserController {
     @Autowired
     UserService userService;
 
-    @GetMapping
+    @GetMapping("/auth")
     public ResponseEntity<MessageDTO<Boolean>> authenticate(@CookieValue(value = "sid", required = false) String sid) {
         MessageDTO<Boolean> msg = new MessageDTO<>();
         try {
