@@ -30,12 +30,6 @@ function Home() {
     case "learn":
       displayComponent = (
         <MobileBody
-          before={
-            <div style={{ textAlign: "center" }}>
-              <ProgressBall></ProgressBall>
-              <h3>Lernfortschritt</h3>
-            </div>
-          }
           type="learn"
           marginToFooter="18vh"
         />

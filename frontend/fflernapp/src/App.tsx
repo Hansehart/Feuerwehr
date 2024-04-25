@@ -29,30 +29,32 @@ function App() {
 
   return (
     <Router>
-      {auth ? (
-        <Routes>
-          <Route path="/home" element={<Home />} />
-          <Route path="*" element={<Navigate replace to="/home" />} />
-        </Routes>
-      ) : (
-        <Routes>
-          <Route path="/home" element={<PublicHome />} />
-          <Route path="/learn/exercise" element={<Exercise />} />
-          <Route path="/learn/regulations" element={<Regulations />} />
-          <Route path="/learn/courses" element={<Courses />} />
-          <Route path="/vehicle/view" element={<Vehicle />} />
-          <Route
-            path="/profile/register/account"
-            element={<RegisterAccount />}
-          />
-          <Route
-            path="/profile/register/profile"
-            element={<RegisterProfile />}
-          />
-          <Route path="/profile/login" element={<Login />} />
-          <Route path="*" element={<Navigate replace to="/home" />} />
-        </Routes>
-      )}
+      <Routes>
+        {auth ? (
+          <>
+            <Route path="/home" element={<Home />} />
+            <Route path="*" element={<Navigate replace to="/home" />} />
+          </>
+        ) : (
+          <>
+            <Route path="/home" element={<PublicHome />} />
+            <Route path="/learn/exercise" element={<Exercise />} />
+            <Route path="/learn/regulations" element={<Regulations />} />
+            <Route path="/learn/courses" element={<Courses />} />
+            <Route path="/vehicle/view" element={<Vehicle />} />
+            <Route
+              path="/profile/register/account"
+              element={<RegisterAccount />}
+            />
+            <Route
+              path="/profile/register/profile"
+              element={<RegisterProfile />}
+            />
+            <Route path="/profile/login" element={<Login />} />
+            <Route path="*" element={<Navigate replace to="/home" />} />
+          </>
+        )}
+      </Routes>
     </Router>
   );
 }
