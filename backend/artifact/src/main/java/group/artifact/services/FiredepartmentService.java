@@ -23,8 +23,8 @@ public class FiredepartmentService {
         return f;
     }   
 
-    public MessageDTO receiveAttribute(String sid, String attr) {
-        MessageDTO m = new MessageDTO(); // message
+    public MessageDTO<String> receiveAttribute(String sid, String attr) {
+        MessageDTO<String> m = new MessageDTO<>(); // message
         if (attr.equals("name")) {
             Session s = sessionRepository.findById(sid).orElse(null);
             if (s == null) {

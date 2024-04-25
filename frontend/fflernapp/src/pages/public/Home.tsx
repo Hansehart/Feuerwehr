@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 
-import MobileBody from "../components/mobile/MobileBody";
-import MobileHeader from "../components/mobile/MobileHeader";
-import MobileNavBar from "../components/mobile/MobileNavBar";
-import ProgressBall from "../components/ProgressBall";
-import MobileAuthPreview from "../components/mobile/MobileAuthPreview";
+import MobileBody from "../../components/mobile/MobileBody";
+import MobileHeader from "../../components/mobile/MobileHeader";
+import MobileNavBar from "../../components/mobile/MobileNavBar";
+import ProgressBall from "../../components/ProgressBall";
+import MobileAuthPreview from "../../components/mobile/MobileAuthPreview";
 
 function Home() {
   const location = useLocation();

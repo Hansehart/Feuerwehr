@@ -1,11 +1,12 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
-import MobileBody from "../components/mobile/MobileBody";
-import MobileHeader from "../components/mobile/MobileHeader";
-import MobileNavBar from "../components/mobile/MobileNavBar";
+import MobileBody from "../../components/mobile/MobileBody";
+import MobileHeader from "../../components/mobile/MobileHeader";
+import MobileNavBar from "../../components/mobile/MobileNavBar";
+import MobileQuizCard from "../../components/mobile/MobileQuizCard";
 
-function Courses() {
+function Exercise() {
   const navigate = useNavigate();
   const [select, setSelect] = useState("");
 
@@ -29,11 +30,11 @@ function Courses() {
 
   return (
     <div>
-      <MobileHeader name="Lehrgänge" />
-      <MobileBody/>
+      <MobileHeader name="Übung" />
+      <MobileBody before={<MobileQuizCard />} marginToFooter="16vh" />
       <MobileNavBar changeView={changeView} preset="learn" />
     </div>
   );
 }
 
-export default Courses;
+export default Exercise;

@@ -34,10 +34,22 @@ public class UserService {
 
     private final String CHARACTERS = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!?=";
 
-    public MessageDTO receiveUserAttr(String sid, String attr) {
+    public MessageDTO<Boolean> authUser(String sid) {
+        Session s = sessionService.auth(sid);
+        MessageDTO<Boolean> msg = new MessageDTO<>();
+        if (s != null) {
+            msg.setMsg(true);
+            return msg;
+        }
+        msg.setMsg(false);
+        return msg;
+
+    }
+
+    public MessageDTO<String> receiveUserAttr(String sid, String attr) {
         Session s = sessionService.auth(sid);
         User u = s.getUser();
-        MessageDTO msg = new MessageDTO();
+        MessageDTO<String> msg = new MessageDTO<>();
         if (attr.equals("name")) {
             msg.setMsg(u.getName());
         }

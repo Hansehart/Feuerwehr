@@ -25,10 +25,23 @@ public class UserController {
     @Autowired
     UserService userService;
 
-    @GetMapping("/receive/user")
-    public ResponseEntity<MessageDTO> receiveUserInformation(@CookieValue(value = "sid") String sid, @RequestParam(required = true) String attr) { // attribute
+    @GetMapping
+    public ResponseEntity<MessageDTO<Boolean>> authenticate(@CookieValue(value = "sid", required = false) String sid) {
+        MessageDTO<Boolean> msg = new MessageDTO<>();
         try {
-            MessageDTO msg = userService.receiveUserAttr(sid, attr);
+
+            return ResponseEntity.ok(msg);
+        } catch (Exception e) {
+            System.out.println("ERROR: " + e);
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);
+        }
+    }
+
+    @GetMapping("/receive/user")
+    public ResponseEntity<MessageDTO<String>> receiveUserInformation(@CookieValue(value = "sid") String sid,
+            @RequestParam(required = true) String attr) { // attribute
+        try {
+            MessageDTO<String> msg = userService.receiveUserAttr(sid, attr);
             return ResponseEntity.ok(msg);
         } catch (Exception e) {
             System.out.println("ERROR: " + e);

@@ -1,10 +1,10 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
-import MobileBody from "../components/mobile/MobileBody";
-import MobileHeader from "../components/mobile/MobileHeader";
-import MobileNavBar from "../components/mobile/MobileNavBar";
-import MobileForm from "../components/mobile/MobileForm";
+import MobileBody from "../../components/mobile/MobileBody";
+import MobileHeader from "../../components/mobile/MobileHeader";
+import MobileNavBar from "../../components/mobile/MobileNavBar";
+import MobileForm from "../../components/mobile/MobileForm";
 
 function RegisterAccount() {
   const navigate = useNavigate();
