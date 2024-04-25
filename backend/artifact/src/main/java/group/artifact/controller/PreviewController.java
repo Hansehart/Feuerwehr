@@ -32,7 +32,7 @@ public class PreviewController {
         } 
     }
 
-    @PostMapping("/save/previews")
+    @PostMapping("/save/preview")
     public ResponseEntity<String> saveContentpage(@RequestBody Preview cp) {
         try {
             contentpageService.save(cp);

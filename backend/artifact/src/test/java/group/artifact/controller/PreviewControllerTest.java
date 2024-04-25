@@ -14,7 +14,7 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 
 @SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT)
-class ContentpageControllerTest {
+class PreviewControllerTest {
 
     @LocalServerPort
     private int port;
@@ -23,9 +23,9 @@ class ContentpageControllerTest {
     private TestRestTemplate restTemplate;
 
     @Test
-    void postRequestForContentpageCreation() throws Exception {
+    void postRequestForPreviewCreation() throws Exception {
         // prepare the request body
-        String jsonBody = "{\"title\": \"LF 10\", \"subtitle\": \"Löschgruppenfahrzeug\", \"content\": \"Hierbei handelt es sich um ein Feuerwehrfahrzeug\"}";
+        String jsonBody = "{\"title\": \"LF 10\", \"subtitle\": \"Löschgruppenfahrzeug\"}";
         // set the content type to JSON
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON);
@@ -35,7 +35,7 @@ class ContentpageControllerTest {
 
         // send the POST request
         ResponseEntity<String> responseEntity = restTemplate.postForEntity(
-                "http://localhost:" + port + "/api/service/save/contentpage",
+                "http://localhost:" + port + "/api/service/save/preview",
                 requestEntity,
                 String.class);
 
