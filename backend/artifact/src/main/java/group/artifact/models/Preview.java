@@ -11,13 +11,12 @@ import lombok.NoArgsConstructor;
 @Data
 @Entity
 @NoArgsConstructor
-@Table(name = "contentpage")
-public class Contentpage {
+@Table(name = "preview")
+public class Preview {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private String title;
     private String subtitle;
     private String path;
-    private String content;
 }

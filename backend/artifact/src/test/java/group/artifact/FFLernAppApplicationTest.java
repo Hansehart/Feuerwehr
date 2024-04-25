@@ -6,17 +6,17 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import group.artifact.controller.ContentpageController;
+import group.artifact.controller.PreviewController;
 
 @SpringBootTest
 class FFLernAppApplicationTest {
 
     @Autowired
-    ContentpageController contentpageController;
+    PreviewController previewController;
 
     // sanity check for running application
     @Test
     void contextLoads() {
-        assertNotNull(contentpageController);
+        assertNotNull(previewController);
     }
 }

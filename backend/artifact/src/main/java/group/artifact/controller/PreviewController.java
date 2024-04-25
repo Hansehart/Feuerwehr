@@ -12,31 +12,31 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import group.artifact.models.Contentpage;
-import group.artifact.services.ContentpageService;
+import group.artifact.models.Preview;
+import group.artifact.services.PreviewService;
 
 @RestController
 @RequestMapping("/api/service")
-public class ContentpageController {
+public class PreviewController {
 
     @Autowired
-    ContentpageService contentpageService;
+    PreviewService contentpageService;
 
-    @GetMapping("/receive/contentpages")
-    public ResponseEntity<List<Contentpage>> receiveContentpage(@RequestParam(required = true) String type) {
+    @GetMapping("/receive/previews")
+    public ResponseEntity<List<Preview>> receiveContentpage(@RequestParam(required = true) String type) {
         try {
-            List<Contentpage> cp = contentpageService.receive(type);
+            List<Preview> cp = contentpageService.receive(type);
             return ResponseEntity.ok(cp);
         } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);
         } 
     }
 
-    @PostMapping("/save/contentpage")
-    public ResponseEntity<String> saveContentpage(@RequestBody Contentpage cp) {
+    @PostMapping("/save/previews")
+    public ResponseEntity<String> saveContentpage(@RequestBody Preview cp) {
         try {
             contentpageService.save(cp);
-            return ResponseEntity.ok("contentpage successfully created");
+            return ResponseEntity.ok("preview successfully created");
         } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);
         } 
