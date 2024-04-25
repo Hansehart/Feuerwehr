@@ -23,7 +23,7 @@ function Login() {
       label: "Passwort",
       type: "password",
     },
-    { value: "Bestätigen", type: "button", function: login }
+    { value: "Anmelden", type: "button", function: login }
   ];
 
   useEffect(() => {

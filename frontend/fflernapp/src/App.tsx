@@ -51,7 +51,7 @@ function App() {
             <Route path="*" element={<Navigate replace to="/home" />} />
           </>
         )}
-        <Route path="/learn/exercise" element={<Exercise />} />
+        <Route path="/learn/exercises" element={<Exercise />} />
         <Route path="/learn/regulations" element={<Regulations />} />
         <Route path="/learn/courses" element={<Courses />} />
         <Route path="/main/vehicle" element={<Vehicle />} />
