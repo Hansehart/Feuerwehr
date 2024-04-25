@@ -51,7 +51,7 @@ export default function MobileBody({
       }
       else {
         fetch(
-          `https://fflernapp.hansehart.de/api/service/receive/contentpages?type=${type}`
+          `https://fflernapp.hansehart.de/api/service/receive/previews?type=${type}`
         )
           .then((response) => response.json())
           .then((data) => setPreview(data))
