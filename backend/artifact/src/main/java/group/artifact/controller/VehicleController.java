@@ -1,8 +1,11 @@
 package group.artifact.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CookieValue;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -22,13 +25,25 @@ public class VehicleController {
     VehicleService vehicleService;
 
     @GetMapping("/receive/vehicle")
-    public ResponseEntity<Vehicle> receiveVehicle(@RequestParam(required = true) Integer cs) { // call sign i. e. 40-47-01 (place, type, count)
+    public ResponseEntity<Vehicle> receiveVehicle(@RequestParam(required = true) Integer cs) { // call sign i. e.
+                                                                                               // 40-47-01 (place, type,
+                                                                                               // count)
         try {
             Vehicle v = vehicleService.receive(cs);
             return ResponseEntity.ok(v);
         } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);
-        } 
+        }
+    }
+
+    @GetMapping("/receive/vehicles")
+    public ResponseEntity<List<Vehicle>> receiveVehicles(@CookieValue(value = "sid") String sid) {
+        try {
+            List<Vehicle> v = vehicleService.receiveVehiclesFromFiredepartment(sid);
+            return ResponseEntity.ok(v);
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);
+        }
     }
 
     @PostMapping("/save/vehicle")
@@ -38,6 +53,6 @@ public class VehicleController {
             return ResponseEntity.ok("vehicle and radio call sign successfully created");
         } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);
-        } 
+        }
     }
 }

@@ -22,6 +22,8 @@ import jakarta.servlet.http.Cookie;
 @Service
 public class UserService {
     @Autowired
+    SessionService sessionService;
+    @Autowired
     UserRepository userRepository;
     @Autowired
     SessionRepository sessionRepository;
@@ -33,7 +35,8 @@ public class UserService {
     private final String CHARACTERS = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!?=";
 
     public MessageDTO receiveUserAttr(String sid, String attr) {
-        User u = auth(sid);
+        Session s = sessionService.auth(sid);
+        User u = s.getUser();
         MessageDTO msg = new MessageDTO();
         if (attr.equals("name")) {
             msg.setMsg(u.getName());
@@ -70,7 +73,8 @@ public class UserService {
 
     public void saveProfile(String sid, ProfileDTO p) { // profile
         // update user
-        User u = auth(sid);
+        Session session = sessionService.auth(sid);
+        User u = session.getUser();
         u.setName(p.getUsername());
 
         // convert profileDTO fid to firedepartment
@@ -97,20 +101,6 @@ public class UserService {
         usersInFiredepartmentRepository.save(membership);
         userRepository.save(u);
         sessionRepository.save(s);
-    }
-
-    private User auth(String sid) {
-        Session s = sessionRepository.findById(sid).orElse(null);
-        if (s == null) { // sid not known in db
-            System.out.println("ERROR: provided session id is not known during authentication");
-            throw new IllegalArgumentException();
-        }
-        User u = s.getUser();
-        if (u == null) { // user id not known in db
-            System.out.println("ERROR: provided user id is not known during authentication");
-            throw new IllegalArgumentException();
-        }
-        return u;
     }
 
     /*
