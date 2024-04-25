@@ -26,7 +26,7 @@ function App() {
       .then((data) => {
         setAuth(data.msg);
       });
-  }, []);
+  }, [auth]);
 
   return (
     <Router>

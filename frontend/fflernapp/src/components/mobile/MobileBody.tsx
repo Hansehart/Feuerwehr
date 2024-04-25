@@ -44,7 +44,7 @@ export default function MobileBody({
             const previews = data.map((item: Vehicle) => ({
               title: item.shortcut,
               subtitle: item.name,
-              path: `/vehicles&rvt=${item.radioVehicleType}&rvn=${item.radioVehicleNumber}`,
+              path: `/main/vehicles&rvt=${item.radioVehicleType}&rvn=${item.radioVehicleNumber}`,
             }));
             setPreview((prevPreview) => [...prevPreview, ...previews]);
           });
@@ -57,7 +57,6 @@ export default function MobileBody({
           .then((data) => setPreview(data))
           .catch((error) => console.error("Error fetching data: ", error));
       }
-      
     }
   }, [type]);
 
