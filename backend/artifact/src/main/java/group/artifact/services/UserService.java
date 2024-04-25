@@ -35,13 +35,14 @@ public class UserService {
     private final String CHARACTERS = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!?=";
 
     public MessageDTO<Boolean> authUser(String sid) {
-        Session s = sessionService.auth(sid);
-        MessageDTO<Boolean> msg = new MessageDTO<>();
-        if (s != null) {
-            msg.setMsg(true);
+        MessageDTO<Boolean> msg = new MessageDTO<>(false);
+        if (sid == null) {
             return msg;
         }
-        msg.setMsg(false);
+        Session s = sessionService.auth(sid);
+        if (s != null) {
+            msg.setMsg(true);
+        }
         return msg;
 
     }
@@ -92,7 +93,8 @@ public class UserService {
         // convert profileDTO fid to firedepartment
         Firedepartment f = firedepartmentRepository.findById(p.getFid()).orElse(null);
         if (f == null) {
-            System.out.println("ERROR: firedepartment was not found and could not be corresponded to a membership with a user");
+            System.out.println(
+                    "ERROR: firedepartment was not found and could not be corresponded to a membership with a user");
             throw new IllegalArgumentException();
         }
 
