@@ -41,14 +41,18 @@ function RegisterProfile() {
       fdName = match[1];
       fdLocationNumber = match[2];
     } else {
+      console.log("HERE" + fdName + " " + fdLocationNumber);
       console.error("ERROR: problems with profile creation");
       return;
     }
 
     // create an object to store input values
     const payload: { [key: string]: string | number } = {};
-    const target = firedepartments.find(fd => fd.name === fdName && fd.locationNumber === fdLocationNumber)
+    const target = firedepartments.find(
+      (fd) => fd.name === fdName && fd.locationNumber === fdLocationNumber
+    );
     if (!target) {
+      console.log(payload)
       console.error("ERROR: problems with profile creation");
       return;
     }
@@ -76,7 +80,9 @@ function RegisterProfile() {
     {
       label: "Feuerwehr auswählen",
       type: "select",
-      selectOptions: firedepartments.map(fd => fd.name + " (" + fd.locationNumber + ")"),
+      selectOptions: firedepartments.map(
+        (fd) => fd.name + " (" + fd.locationNumber + ")"
+      ),
     },
     { value: "Bestätigen", type: "button", function: register },
   ];
