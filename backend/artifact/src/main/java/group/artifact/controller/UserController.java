@@ -29,7 +29,7 @@ public class UserController {
     public ResponseEntity<MessageDTO<Boolean>> authenticate(@CookieValue(value = "sid", required = false) String sid) {
         MessageDTO<Boolean> msg = new MessageDTO<>();
         try {
-
+            msg = userService.authUser(sid);
             return ResponseEntity.ok(msg);
         } catch (Exception e) {
             System.out.println("ERROR: " + e);
