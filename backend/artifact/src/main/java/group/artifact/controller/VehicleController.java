@@ -32,16 +32,18 @@ public class VehicleController {
             Vehicle v = vehicleService.receive(cs);
             return ResponseEntity.ok(v);
         } catch (Exception e) {
+            System.out.println("ERROR: " + e);
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);
         }
     }
 
     @GetMapping("/receive/vehicles")
-    public ResponseEntity<List<Vehicle>> receiveVehicles(@CookieValue(value = "sid") String sid) {
+    public ResponseEntity<List<VehicleDTO>> receiveVehicles(@CookieValue(value = "sid") String sid) {
         try {
-            List<Vehicle> v = vehicleService.receiveVehiclesFromFiredepartment(sid);
+            List<VehicleDTO> v = vehicleService.receiveVehiclesFromFiredepartment(sid);
             return ResponseEntity.ok(v);
         } catch (Exception e) {
+            System.out.println("ERROR: " + e);
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);
         }
     }
@@ -52,6 +54,7 @@ public class VehicleController {
             vehicleService.save(v);
             return ResponseEntity.ok("vehicle and radio call sign successfully created");
         } catch (Exception e) {
+            System.out.println("ERROR: " + e);
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);
         }
     }
