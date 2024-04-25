@@ -28,8 +28,8 @@ function RegisterProfile() {
 
   function register() {
     const username = document.getElementById("input-0") as HTMLInputElement;
-    const fd = document.getElementById("input-1") as HTMLInputElement;
-    const selectedFd = fd.value.trim();
+    const element = document.getElementById("input-1") as HTMLInputElement;
+    const selectedFd = element.value.trim();
 
     // split the value into name and number parts
     const match = selectedFd.match(/^(.*?) \((\d+)\)$/);
@@ -52,7 +52,7 @@ function RegisterProfile() {
       (fd) => fd.name === fdName && fd.locationNumber === fdLocationNumber
     );
     if (!target) {
-      console.log(payload)
+      firedepartments.forEach((f) => console.log(f.name + " " + fdName + " " + f.locationNumber + " "+ fdLocationNumber))
       console.error("ERROR: problems with profile creation");
       return;
     }
