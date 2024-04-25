@@ -15,7 +15,7 @@ public class SessionService {
         Session s = sessionRepository.findById(sid).orElse(null);
         if (s == null) { // sid not known in db
             System.out.println("ERROR: provided session id is not known during authentication");
-            throw new IllegalArgumentException();
+            return null;
         }
         return s;
     }
