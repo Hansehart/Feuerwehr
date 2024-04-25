@@ -48,14 +48,16 @@ export default function MobileBody({
             }));
             setPreview((prevPreview) => [...prevPreview, ...previews]);
           });
-      } else if (type === "learn") {
+      }
+      else {
         fetch(
-          `https://fflernapp.hansehart.de/api/service/receive/previews?type=learn`
+          `https://fflernapp.hansehart.de/api/service/receive/contentpages?type=${type}`
         )
           .then((response) => response.json())
           .then((data) => setPreview(data))
           .catch((error) => console.error("Error fetching data: ", error));
       }
+      
     }
   }, [type]);
 

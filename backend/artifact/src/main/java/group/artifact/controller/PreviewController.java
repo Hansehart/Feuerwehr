@@ -20,14 +20,15 @@ import group.artifact.services.PreviewService;
 public class PreviewController {
 
     @Autowired
-    PreviewService contentpageService;
+    PreviewService previewService;
 
     @GetMapping("/receive/previews")
     public ResponseEntity<List<Preview>> receiveContentpage(@RequestParam(required = true) String type) {
         try {
-            List<Preview> cp = contentpageService.receive(type);
+            List<Preview> cp = previewService.receive(type);
             return ResponseEntity.ok(cp);
         } catch (Exception e) {
+            System.out.println("ERROR: " + e);
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);
         } 
     }
@@ -35,9 +36,10 @@ public class PreviewController {
     @PostMapping("/save/preview")
     public ResponseEntity<String> saveContentpage(@RequestBody Preview cp) {
         try {
-            contentpageService.save(cp);
+            previewService.save(cp);
             return ResponseEntity.ok("preview successfully created");
         } catch (Exception e) {
+            System.out.println("ERROR: " + e);
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);
         } 
     }
