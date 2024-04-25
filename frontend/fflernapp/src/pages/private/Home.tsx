@@ -60,7 +60,7 @@ function Home() {
               <h3>{username? `Moin ${username}!` : "Moin!"}</h3>
             </div>
           }
-          type="main"
+          type="vehicle"
           marginToFooter="18vh"
         />
       );

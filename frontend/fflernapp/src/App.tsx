@@ -4,7 +4,7 @@ import {
   Route,
   Navigate,
 } from "react-router-dom";
-import Home from "./pages/public/Home";
+import PublicHome from "./pages/public/Home";
 import Vehicle from "./pages/public/Vehicle";
 import Exercise from "./pages/public/Exercise";
 import Regulations from "./pages/public/Regulations";
@@ -12,6 +12,8 @@ import Courses from "./pages/public/Courses";
 import RegisterAccount from "./pages/public/RegisterAccount";
 import RegisterProfile from "./pages/public/RegisterProfile";
 import Login from "./pages/public/Login";
+
+import Home from "./pages/private/Home";
 import { useEffect, useState } from "react";
 
 function App() {
@@ -34,7 +36,7 @@ function App() {
         </Routes>
       ) : (
         <Routes>
-          <Route path="/home" element={<Home />} />
+          <Route path="/home" element={<PublicHome />} />
           <Route path="/learn/exercise" element={<Exercise />} />
           <Route path="/learn/regulations" element={<Regulations />} />
           <Route path="/learn/courses" element={<Courses />} />
