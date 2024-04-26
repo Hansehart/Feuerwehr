@@ -1,3 +1,4 @@
+import Table from "../Table";
 import "./MobileVehicleViewStyle.css";
 import fireEngine from "/src/assets/fire-engine.png";
 
@@ -18,7 +19,7 @@ export default function MobileVehicleView({ title }: MobileVehicleView) {
         <h3>Material</h3>
       </section>
       <section className="material">
-
+        <Table header={["Gerät", "Stk"]} data={["Axt", "2"]}/>
       </section>
     </div>
   );
