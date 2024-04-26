@@ -35,7 +35,7 @@ function Home() {
         <MobileBody
           before={
             <div style={{ textAlign: "center", margin: "2em" }}>
-              <h3>Moin!</h3>
+              <h3>Moin!1</h3>
             </div>
           }
           type="main"
