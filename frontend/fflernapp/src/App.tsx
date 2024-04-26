@@ -34,37 +34,29 @@ function App() {
       });
   };
 
-  // routes only accessible with sid
-  function AuthenticatedRoutes() {
-    return (
-      <Routes>
-        <Route path="/home" element={<Home />} />
-        <Route path="/profile/register/profile" element={<RegisterProfile />} />
-        <Route path="*" element={<Navigate replace to="/home" />} />
-      </Routes>
-    );
-  }
-
-  // routes only accessible without sid
-  function PublicRoutes() {
-    return (
-      <Routes>
-        <Route path="/home" element={<PublicHome />} />
-        <Route
-          path="/profile/register/account"
-          element={<RegisterAccount updateAuthStatus={updateAuthStatus} />}
-        />
-        <Route path="/profile/login" element={<Login />} />
-        <Route path="*" element={<Navigate replace to="/home" />} />
-      </Routes>
-    );
-  }
-
-  // shared routes for public and authenticated access
   return (
     <Router>
       <Routes>
-        {auth ? <AuthenticatedRoutes /> : <PublicRoutes />}
+        {auth ? (
+          <>
+            <Route path="/home" element={<Home />} />
+            <Route
+              path="/profile/register/profile"
+              element={<RegisterProfile />}
+            />
+            <Route path="*" element={<Navigate replace to="/home" />} />
+          </>
+        ) : (
+          <>
+            <Route path="/home" element={<PublicHome />} />
+            <Route
+              path="/profile/register/account"
+              element={<RegisterAccount updateAuthStatus={updateAuthStatus} />}
+            />
+            <Route path="/profile/login" element={<Login />} />
+            <Route path="*" element={<Navigate replace to="/home" />} />
+          </>
+        )}
         <Route path="/learn/exercises" element={<Exercise />} />
         <Route path="/learn/regulations" element={<Regulations />} />
         <Route path="/learn/courses" element={<Courses />} />
