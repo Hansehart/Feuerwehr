@@ -13,8 +13,8 @@ import lombok.NoArgsConstructor;
 @Data
 @Entity
 @NoArgsConstructor
-@Table(name="storagelocation")
-public class StorageLocation {
+@Table(name="storage")
+public class Storage {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
