@@ -53,8 +53,10 @@ public class VehicleService {
 
     public List<VehicleDTO> receiveVehiclesFromFiredepartment(String sid) {
         Session s = sessionService.auth(sid);
+        if (s == null) {
+            return null;
+        }
         Firedepartment f = s.getFiredepartment();
-
         List<Vehicle> vehicles = vehicleRepository.findAllByFiredepartment(f);
         List<VehicleDTO> dto = vehicles.stream().map(v -> createVehicleDTO(v)).collect(Collectors.toList());
         return dto;

@@ -30,7 +30,7 @@ public class VehicleController {
         try {
             VehicleDTO v = vehicleService.receiveVehicleFromCallSign(sid, rvt, rvn);
             if (v == null) { // no user found for sid
-                return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(null);
+                return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null);
             }
             return ResponseEntity.ok(v);
         } catch (Exception e) {
@@ -43,6 +43,9 @@ public class VehicleController {
     public ResponseEntity<List<VehicleDTO>> receiveVehicles(@CookieValue(value = "sid") String sid) {
         try {
             List<VehicleDTO> v = vehicleService.receiveVehiclesFromFiredepartment(sid);
+            if (v == null) { // no user found for sid
+                return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null);
+            }
             return ResponseEntity.ok(v);
         } catch (Exception e) {
             System.out.println("ERROR: " + e);

@@ -43,7 +43,7 @@ public class UserController {
         try {
             MessageDTO<String> msg = userService.receiveUserAttr(sid, attr);
             if (msg == null) { // no user found for sid
-                return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(null);
+                return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null);
             }
             return ResponseEntity.ok(msg);
         } catch (Exception e) {
