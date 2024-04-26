@@ -22,16 +22,16 @@ function App() {
 
   // on render set auth status
   useEffect(() => {
-    updateAuthStatus();
-  }, []);
-
-  // after setting sid, update auth status
-  const updateAuthStatus = () => {
     fetch("https://fflernapp.hansehart.de/api/service/auth")
       .then((response) => response.json())
       .then((data) => {
         setAuth(data.msg);
       });
+  }, []);
+
+  // after setting sid, update auth status
+  const updateAuthStatus = (auth: boolean) => {
+    setAuth(auth);
   };
 
   return (
@@ -40,12 +40,10 @@ function App() {
         {auth ? (
           <>
             <Route path="/home" element={<Home />} />
-            {console.log(auth)}
             <Route
               path="/profile/register/profile"
               element={<RegisterProfile />}
             />
-            {console.log(1)}
             <Route path="*" element={<Navigate replace to="/home" />} />
           </>
         ) : (

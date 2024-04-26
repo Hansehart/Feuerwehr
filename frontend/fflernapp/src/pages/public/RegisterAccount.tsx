@@ -6,7 +6,11 @@ import MobileHeader from "../../components/mobile/MobileHeader";
 import MobileNavBar from "../../components/mobile/MobileNavBar";
 import MobileForm from "../../components/mobile/MobileForm";
 
-function RegisterAccount({ updateAuthStatus } : {updateAuthStatus: () => void }) {
+function RegisterAccount({
+  updateAuthStatus,
+}: {
+  updateAuthStatus: (auth: boolean) => void;
+}) {
   const navigate = useNavigate();
   const [select, setSelect] = useState("");
 
@@ -28,7 +32,11 @@ function RegisterAccount({ updateAuthStatus } : {updateAuthStatus: () => void })
       body: jsonData,
     }).then((response) => {
       if (response.ok) {
-        updateAuthStatus();
+        fetch("https://de/api/service/auth")
+          .then((response) => response.json())
+          .then((data) => {
+            updateAuthStatus(data.msg);
+          });
         navigate("/profile/register/profile");
       }
     });
