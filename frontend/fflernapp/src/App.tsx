@@ -36,7 +36,6 @@ function App() {
           <>
             <Route path="/home" element={<Home />} />
             <Route path="/main/vehicle/*" element={<Vehicle />} />
-
             <Route
               path="/profile/register/profile"
               element={<RegisterProfile />}
