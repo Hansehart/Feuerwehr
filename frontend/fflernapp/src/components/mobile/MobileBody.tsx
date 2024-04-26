@@ -44,7 +44,7 @@ export default function MobileBody({
             const previews = data.map((item: Vehicle) => ({
               title: item.shortcut,
               subtitle: item.name,
-              path: `/main/vehicle/rvt=${item.radioVehicleType}/rvn=${item.radioVehicleNumber}`,
+              path: `/main/vehicle/${item.radioVehicleType}/${item.radioVehicleNumber}`,
             }));
             setPreview((prevPreview) => [...prevPreview, ...previews]);
           });
