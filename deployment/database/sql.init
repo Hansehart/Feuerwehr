@@ -1,0 +1,310 @@
+--
+-- PostgreSQL database dump
+--
+
+-- Dumped from database version 16.2 (Debian 16.2-1.pgdg120+2)
+-- Dumped by pg_dump version 16.2
+
+-- Started on 2024-04-26 10:20:58 UTC
+
+SET statement_timeout = 0;
+SET lock_timeout = 0;
+SET idle_in_transaction_session_timeout = 0;
+SET client_encoding = 'UTF8';
+SET standard_conforming_strings = on;
+SELECT pg_catalog.set_config('search_path', '', false);
+SET check_function_bodies = false;
+SET xmloption = content;
+SET client_min_messages = warning;
+SET row_security = off;
+
+--
+-- TOC entry 3469 (class 0 OID 24726)
+-- Dependencies: 233
+-- Data for Name: firedepartment; Type: TABLE DATA; Schema: public; Owner: fflernapp
+--
+
+COPY public.firedepartment (id, name, organisation, area, location_number) FROM stdin;
+6	Lasbek	Florian	Stormarn	42
+7	Barkhorst	Florian	Stormarn	43
+8	Rümpel	Florian	Stormarn	44
+9	Rolfshagen	Florian	Stormarn	45
+10	Neritz	Florian	Stormarn	46
+11	Schulenburg	Florian	Stormarn	38
+12	Pölitz	Florian	Stormarn	37
+3	Mollhagen	Florian	Stormarn	40
+4	Sprenge	Florian	Stormarn	41
+5	Eichede	Florian	Stormarn	39
+\.
+
+
+--
+-- TOC entry 3461 (class 0 OID 16483)
+-- Dependencies: 225
+-- Data for Name: image; Type: TABLE DATA; Schema: public; Owner: fflernapp
+--
+
+COPY public.image (id, path, width, height) FROM stdin;
+\.
+
+
+--
+-- TOC entry 3463 (class 0 OID 16518)
+-- Dependencies: 227
+-- Data for Name: images_for_materials; Type: TABLE DATA; Schema: public; Owner: fflernapp
+--
+
+COPY public.images_for_materials (fk_image, fk_material) FROM stdin;
+\.
+
+
+--
+-- TOC entry 3462 (class 0 OID 16488)
+-- Dependencies: 226
+-- Data for Name: images_for_vehicles; Type: TABLE DATA; Schema: public; Owner: fflernapp
+--
+
+COPY public.images_for_vehicles (fk_image, fk_vehicle) FROM stdin;
+\.
+
+
+--
+-- TOC entry 3457 (class 0 OID 16434)
+-- Dependencies: 221
+-- Data for Name: material; Type: TABLE DATA; Schema: public; Owner: fflernapp
+--
+
+COPY public.material (id, name, decription) FROM stdin;
+\.
+
+
+--
+-- TOC entry 3459 (class 0 OID 16460)
+-- Dependencies: 223
+-- Data for Name: preview; Type: TABLE DATA; Schema: public; Owner: fflernapp
+--
+
+COPY public.preview (id, title, subtitle, path) FROM stdin;
+9	Vorschriften		/learn/regulations
+8	Übung		/learn/exercises
+10	Lehrgänge		/learn/courses
+12	Mitglied werden?	Finde passende Feuerwehren bei dir!	/main/map
+\.
+
+
+--
+-- TOC entry 3464 (class 0 OID 24581)
+-- Dependencies: 228
+-- Data for Name: question; Type: TABLE DATA; Schema: public; Owner: fflernapp
+--
+
+COPY public.question (text, id) FROM stdin;
+Welche dieser Städte haben eine Berufsfeuerwehr?	8
+Wofür steht die Fahrzeugabkürzung LF?	9
+Wie viele Liter passen in einen 20m B-Schlauch?	11
+Was gilt nicht für eine Feuerwehrleine?	12
+Wozu dient die Feuerwehrleine?	13
+Welcher der Knoten und Stiche ist auch als Rettungsknoten bekannt?	14
+Dient der Spierenstich zur Sicherung von Knoten?	15
+Was trifft auf den Mastwurf zu?	16
+Wobei findet der doppelte Ankerstich Awendung?	17
+Welcher Knoten kann zum Verbinden zweier (auch unterschiedlich dicker) Seile verwendet werden?	18
+\.
+
+
+--
+-- TOC entry 3465 (class 0 OID 24588)
+-- Dependencies: 229
+-- Data for Name: selection; Type: TABLE DATA; Schema: public; Owner: fflernapp
+--
+
+COPY public.selection (id, solution, answer, fk_question) FROM stdin;
+29	t	Lübeck	8
+30	f	Ahrensburg	8
+31	f	Bad Oldesloe	8
+32	t	Neumünster	8
+33	t	Löschfahrzeug	9
+34	f	Leichtes Fahrzeug	9
+35	f	Leichter Feuerwehrzug	9
+40	t	88 l	11
+41	f	66 l	11
+42	f	40 l	11
+43	f	100 l	11
+44	t	Sie dient der Absturzsicherung im Sinne der DIN EN 354	12
+45	f	Sie ist 30m lang.	12
+46	f	Sie ist mit einem Karabinerhaken versehen	12
+47	f	Nach jedem Gebrauch muss eine Sichtprüfung durchgeführt werden	12
+48	t	Retten von Menschen	13
+49	t	Selbstretten	13
+50	t	Sichern von Trupps	13
+51	t	Zum Hochziehen und Sichern von Geräten	13
+52	t	Pfahlstich	14
+53	f	Mastwurf	14
+54	f	Doppelter Ankerstich	14
+55	f	Zimmermannsschlag	14
+56	t	Ja	15
+57	f	Nein	15
+58	t	Er ist ein Befestigungsknoten	16
+59	t	Er kann gelegt oder gebunden werden	16
+60	t	Er dient zum Anschlagen beim Selbstretten	16
+61	f	Er muss nicht durch einen weiteren Knoten gesichert werden	16
+62	t	Beim Befestigen von Geräten beim Hochziehen	17
+63	f	Bei der Sicherung von Personen	17
+64	f	Beim Verbinden von zwei Seilen	17
+65	f	Bei der Selbstrettung	17
+66	t	Schotenstich	18
+67	f	Spierenstich	18
+68	f	Mastwurf	18
+69	f	Halbschlag	18
+\.
+
+
+--
+-- TOC entry 3473 (class 0 OID 24783)
+-- Dependencies: 237
+-- Data for Name: session; Type: TABLE DATA; Schema: public; Owner: fflernapp
+--
+
+COPY public.session (sid, fk_user, fk_firedepartment) FROM stdin;
+\.
+
+
+--
+-- TOC entry 3454 (class 0 OID 16418)
+-- Dependencies: 218
+-- Data for Name: storagelocation; Type: TABLE DATA; Schema: public; Owner: fflernapp
+--
+
+COPY public.storagelocation (id, fk_vehicle, name) FROM stdin;
+\.
+
+
+--
+-- TOC entry 3455 (class 0 OID 16428)
+-- Dependencies: 219
+-- Data for Name: storagelocations_contains_materials; Type: TABLE DATA; Schema: public; Owner: fflernapp
+--
+
+COPY public.storagelocations_contains_materials (fk_storagelocation, fk_material, quantitiy) FROM stdin;
+\.
+
+
+--
+-- TOC entry 3471 (class 0 OID 24734)
+-- Dependencies: 235
+-- Data for Name: users; Type: TABLE DATA; Schema: public; Owner: fflernapp
+--
+
+COPY public.users (id, email, password, salt, name) FROM stdin;
+\.
+
+
+--
+-- TOC entry 3472 (class 0 OID 24755)
+-- Dependencies: 236
+-- Data for Name: users_in_firedepartments; Type: TABLE DATA; Schema: public; Owner: fflernapp
+--
+
+COPY public.users_in_firedepartments (fk_user, fk_firedepartment) FROM stdin;
+\.
+
+
+--
+-- TOC entry 3452 (class 0 OID 16407)
+-- Dependencies: 216
+-- Data for Name: vehicle; Type: TABLE DATA; Schema: public; Owner: fflernapp
+--
+
+COPY public.vehicle (id, fk_firedepartment, shortcut, name, radio_vehicle_type, radio_vehicle_number) FROM stdin;
+4	3	LF 10	Lösch&shy;gruppen&shy;fahrzeug	47	01
+5	3	MLF	Mittleres Lösch&shy;fahrzeug	40	01
+\.
+
+
+--
+-- TOC entry 3483 (class 0 OID 0)
+-- Dependencies: 232
+-- Name: Firedepartment_id_seq; Type: SEQUENCE SET; Schema: public; Owner: fflernapp
+--
+
+SELECT pg_catalog.setval('public."Firedepartment_id_seq"', 12, true);
+
+
+--
+-- TOC entry 3484 (class 0 OID 0)
+-- Dependencies: 230
+-- Name: answer_id_seq; Type: SEQUENCE SET; Schema: public; Owner: fflernapp
+--
+
+SELECT pg_catalog.setval('public.answer_id_seq', 69, true);
+
+
+--
+-- TOC entry 3485 (class 0 OID 0)
+-- Dependencies: 222
+-- Name: contentpage_id_seq; Type: SEQUENCE SET; Schema: public; Owner: fflernapp
+--
+
+SELECT pg_catalog.setval('public.contentpage_id_seq', 12, true);
+
+
+--
+-- TOC entry 3486 (class 0 OID 0)
+-- Dependencies: 224
+-- Name: image_id_seq; Type: SEQUENCE SET; Schema: public; Owner: fflernapp
+--
+
+SELECT pg_catalog.setval('public.image_id_seq', 7, true);
+
+
+--
+-- TOC entry 3487 (class 0 OID 0)
+-- Dependencies: 220
+-- Name: material_id_seq; Type: SEQUENCE SET; Schema: public; Owner: fflernapp
+--
+
+SELECT pg_catalog.setval('public.material_id_seq', 1, true);
+
+
+--
+-- TOC entry 3488 (class 0 OID 0)
+-- Dependencies: 231
+-- Name: question_id_seq; Type: SEQUENCE SET; Schema: public; Owner: fflernapp
+--
+
+SELECT pg_catalog.setval('public.question_id_seq', 18, true);
+
+
+--
+-- TOC entry 3489 (class 0 OID 0)
+-- Dependencies: 217
+-- Name: storageLocation_id_seq; Type: SEQUENCE SET; Schema: public; Owner: fflernapp
+--
+
+SELECT pg_catalog.setval('public."storageLocation_id_seq"', 1, true);
+
+
+--
+-- TOC entry 3490 (class 0 OID 0)
+-- Dependencies: 234
+-- Name: user_id_seq; Type: SEQUENCE SET; Schema: public; Owner: fflernapp
+--
+
+SELECT pg_catalog.setval('public.user_id_seq', 143, true);
+
+
+--
+-- TOC entry 3491 (class 0 OID 0)
+-- Dependencies: 215
+-- Name: vehicle_id_seq; Type: SEQUENCE SET; Schema: public; Owner: fflernapp
+--
+
+SELECT pg_catalog.setval('public.vehicle_id_seq', 5, true);
+
+
+-- Completed on 2024-04-26 10:20:58 UTC
+
+--
+-- PostgreSQL database dump complete
+--
+
