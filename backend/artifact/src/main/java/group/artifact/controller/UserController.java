@@ -42,6 +42,9 @@ public class UserController {
             @RequestParam(required = true) String attr) { // attribute
         try {
             MessageDTO<String> msg = userService.receiveUserAttr(sid, attr);
+            if (msg == null) { // no user found for sid
+                return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(null);
+            }
             return ResponseEntity.ok(msg);
         } catch (Exception e) {
             System.out.println("ERROR: " + e);

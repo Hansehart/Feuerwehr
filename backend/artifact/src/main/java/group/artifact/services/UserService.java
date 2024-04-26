@@ -49,6 +49,9 @@ public class UserService {
 
     public MessageDTO<String> receiveUserAttr(String sid, String attr) {
         Session s = sessionService.auth(sid);
+        if (s == null) { // no user for provided sid
+            return null;
+        }
         User u = s.getUser();
         MessageDTO<String> msg = new MessageDTO<>();
         if (attr.equals("name")) {

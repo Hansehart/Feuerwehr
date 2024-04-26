@@ -29,6 +29,9 @@ public class VehicleController {
             @RequestParam(required = true) String rvn) { // radio vehicle number
         try {
             VehicleDTO v = vehicleService.receiveVehicleFromCallSign(sid, rvt, rvn);
+            if (v == null) { // no user found for sid
+                return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(null);
+            }
             return ResponseEntity.ok(v);
         } catch (Exception e) {
             System.out.println("ERROR: " + e);
