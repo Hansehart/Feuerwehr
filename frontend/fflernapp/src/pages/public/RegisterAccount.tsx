@@ -32,7 +32,7 @@ function RegisterAccount({
       body: jsonData,
     }).then((response) => {
       if (response.ok) {
-        fetch("https://de/api/service/auth")
+        fetch("https://fflernapp.hansehart.de/api/service/auth")
           .then((response) => response.json())
           .then((data) => {
             updateAuthStatus(data.msg);
