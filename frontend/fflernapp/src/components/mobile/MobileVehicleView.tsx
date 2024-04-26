@@ -1,5 +1,5 @@
 import "./MobileVehicleViewStyle.css";
-import fireEngine from "/src/assets/driving-firefighters-filter.jpg";
+import fireEngine from "/src/assets/fire-engine.jpg";
 
 interface MobileVehicleView {
   title: string;
@@ -10,6 +10,7 @@ export default function MobileVehicleView({ title }: MobileVehicleView) {
     <section className="vehicle-view">
       <h2>{title}</h2>
       <img src={fireEngine} alt="fire engine"></img>
+      <h3></h3>
     </section>
   );
 }

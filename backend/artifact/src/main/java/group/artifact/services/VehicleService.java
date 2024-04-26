@@ -44,6 +44,9 @@ public class VehicleService {
 
     public VehicleDTO receiveVehicleFromCallSign(String sid, String rvt, String rvn) {
         List<VehicleDTO> vehicles = receiveVehiclesFromFiredepartment(sid);
+        if (vehicles == null) {
+            return null;
+        }
         VehicleDTO dto = vehicles.stream()
                 .filter(v -> v.getRadioVehicleType().equals(rvt) && v.getRadioVehicleNumber().equals(rvn))
                 .findFirst()

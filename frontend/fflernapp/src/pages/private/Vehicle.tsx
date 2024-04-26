@@ -15,7 +15,7 @@ function Vehicle() {
   const navigate = useNavigate();
   const [select, setSelect] = useState("");
   const [vehicle, setVehicle] = useState<Vehicle | null>(null);
-  let { rvt, rvn } = useParams();
+  const { rvt, rvn } = useParams();
 
   useEffect(() => {
     fetch(
