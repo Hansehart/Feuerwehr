@@ -3,7 +3,6 @@ import {
   Routes,
   Route,
   Navigate,
-  useNavigate,
 } from "react-router-dom";
 import PublicHome from "./pages/public/Home";
 import Map from "./pages/public/Map";
@@ -19,45 +18,52 @@ import Home from "./pages/private/Home";
 import { useEffect, useState } from "react";
 
 function App() {
-  const navigate = useNavigate();
   const [auth, setAuth] = useState<boolean>(false);
 
+  // on render set auth status
   useEffect(() => {
-    updateAuthStatus("/home");
+    updateAuthStatus();
   }, []);
 
-  const updateAuthStatus = (path: string) => {
+  // after setting sid, update auth status
+  const updateAuthStatus = () => {
     fetch("https://fflernapp.hansehart.de/api/service/auth")
       .then((response) => response.json())
       .then((data) => {
         setAuth(data.msg);
-        navigate(path)
       });
   };
+
+  // routes only accessible with sid
+  function AuthenticatedRoutes() {
+    return (
+      <>
+        <Route path="/home" element={<Home />} />
+        <Route path="/profile/register/profile" element={<RegisterProfile />} />
+        <Route path="*" element={<Navigate replace to="/home" />} />
+      </>
+    );
+  }
+
+  // routes only accessible without sid
+  function PublicRoutes() {
+    return (
+      <>
+        <Route path="/home" element={<PublicHome />} />
+        <Route
+          path="/profile/register/account"
+          element={<RegisterAccount updateAuthStatus={updateAuthStatus} />}
+        />
+        <Route path="/profile/login" element={<Login />} />
+        <Route path="*" element={<Navigate replace to="/home" />} />
+      </>
+    );
+  }
 
   return (
     <Router>
       <Routes>
-        {auth ? (
-          <>
-            <Route path="/home" element={<Home />} />
-            <Route
-              path="/profile/register/profile"
-              element={<RegisterProfile />}
-            />
-            <Route path="*" element={<Navigate replace to="/home" />} />
-          </>
-        ) : (
-          <>
-            <Route path="/home" element={<PublicHome />} />
-            <Route
-              path="/profile/register/account"
-              element={<RegisterAccount updateAuthStatus={updateAuthStatus} />}
-            />
-            <Route path="/profile/login" element={<Login />} />
-            <Route path="*" element={<Navigate replace to="/home" />} />
-          </>
-        )}
+        {auth ? <AuthenticatedRoutes /> : <PublicRoutes />}
         <Route path="/learn/exercises" element={<Exercise />} />
         <Route path="/learn/regulations" element={<Regulations />} />
         <Route path="/learn/courses" element={<Courses />} />
