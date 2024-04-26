@@ -16,6 +16,15 @@ function Home() {
 
   // init values
   useEffect(() => {
+    // check if user is authenticated (so he should go to the private homepage)
+    fetch("https://fflernapp.hansehart.de/api/service/auth")
+      .then((response) => response.json())
+      .then((data) => {
+        if (data.msg) {
+          window.location.reload();
+        }
+      });
+
     // check if there's state and a select value in the state
     if (location.state && location.state.select) {
       setSelect(location.state.select);
@@ -27,12 +36,7 @@ function Home() {
 
   switch (select) {
     case "learn":
-      displayComponent = (
-        <MobileBody
-          type="learn"
-          marginToFooter="18vh"
-        />
-      );
+      displayComponent = <MobileBody type="learn" marginToFooter="18vh" />;
       window.history.replaceState({}, "");
       break;
     case "department":
@@ -61,7 +65,7 @@ function Home() {
 
   return (
     <div>
-      <MobileHeader name="Feuerwehr"/>
+      <MobileHeader name="Feuerwehr" />
       {displayComponent}
       <MobileNavBar changeView={changeView} preset={`${select}`} />
     </div>
