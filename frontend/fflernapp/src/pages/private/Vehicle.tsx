@@ -49,6 +49,7 @@ function Vehicle() {
       <MobileHeader name={vehicle?.shortcut || "Fahrzeug"} />
       <MobileBody
         main={<MobileVehicleView title={vehicle?.name || "lädt..."} />}
+        marginToFooter="18vh"
       />
       <MobileNavBar changeView={changeView} preset="department" />
     </div>

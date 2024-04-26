@@ -1,0 +1,10 @@
+.vehicle {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.vehicle img {
+    max-width: 100vw;
+}
