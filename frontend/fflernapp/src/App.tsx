@@ -35,7 +35,7 @@ function App() {
         {auth ? (
           <>
             <Route path="/home" element={<Home />} />
-            <Route path="/main/vehicle/*" element={<Vehicle />} />
+            <Route path="/main/vehicle" element={<Vehicle />} />
             <Route
               path="/profile/register/profile"
               element={<RegisterProfile />}
