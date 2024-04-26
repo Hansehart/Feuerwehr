@@ -21,12 +21,8 @@ function App() {
   const [auth, setAuth] = useState<boolean>(false);
 
   useEffect(() => {
-    fetch("https://fflernapp.hansehart.de/api/service/auth")
-      .then((response) => response.json())
-      .then((data) => {
-        setAuth(data.msg);
-      });
-  }, [auth]);
+    updateAuthStatus();
+  }, []);
 
   const updateAuthStatus = () => {
     fetch("https://fflernapp.hansehart.de/api/service/auth")
