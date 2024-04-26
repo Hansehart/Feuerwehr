@@ -18,7 +18,7 @@ import Home from "./pages/private/Home";
 import { useEffect, useState } from "react";
 
 function App() {
-  const [auth, setAuth] = useState(null);
+  const [auth, setAuth] = useState<boolean>(false);
 
   useEffect(() => {
     fetch("https://fflernapp.hansehart.de/api/service/auth")
@@ -28,6 +28,14 @@ function App() {
       });
   }, [auth]);
 
+  const updateAuthStatus = () => {
+    fetch("https://fflernapp.hansehart.de/api/service/auth")
+      .then((response) => response.json())
+      .then((data) => {
+        setAuth(data.msg);
+      });
+  };
+
   return (
     <Router>
       <Routes>
@@ -35,17 +43,17 @@ function App() {
           <>
             <Route path="/home" element={<Home />} />
             <Route path="*" element={<Navigate replace to="/home" />} />
+            <Route
+              path="/profile/register/profile"
+              element={<RegisterProfile />}
+            />
           </>
         ) : (
           <>
             <Route path="/home" element={<PublicHome />} />
             <Route
               path="/profile/register/account"
-              element={<RegisterAccount />}
-            />
-            <Route
-              path="/profile/register/profile"
-              element={<RegisterProfile />}
+              element={<RegisterAccount updateAuthStatus={updateAuthStatus} />}
             />
             <Route path="/profile/login" element={<Login />} />
             <Route path="*" element={<Navigate replace to="/home" />} />

@@ -16,15 +16,6 @@ function Home() {
 
   // init values
   useEffect(() => {
-    // check if user is authenticated (so he should go to the private homepage)
-    fetch("https://fflernapp.hansehart.de/api/service/auth")
-      .then((response) => response.json())
-      .then((data) => {
-        if (data.msg) {
-          window.location.reload();
-        }
-      });
-
     // check if there's state and a select value in the state
     if (location.state && location.state.select) {
       setSelect(location.state.select);

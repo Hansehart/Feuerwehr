@@ -6,7 +6,7 @@ import MobileHeader from "../../components/mobile/MobileHeader";
 import MobileNavBar from "../../components/mobile/MobileNavBar";
 import MobileForm from "../../components/mobile/MobileForm";
 
-function RegisterAccount() {
+function RegisterAccount({ updateAuthStatus } : {updateAuthStatus: () => void }) {
   const navigate = useNavigate();
   const [select, setSelect] = useState("");
 
@@ -28,6 +28,7 @@ function RegisterAccount() {
       body: jsonData,
     }).then((response) => {
       if (response.ok) {
+        updateAuthStatus();
         navigate("/profile/register/profile");
       }
     });
