@@ -3,6 +3,7 @@ import {
   Routes,
   Route,
   Navigate,
+  useNavigate,
 } from "react-router-dom";
 import PublicHome from "./pages/public/Home";
 import Map from "./pages/public/Map";
@@ -18,17 +19,19 @@ import Home from "./pages/private/Home";
 import { useEffect, useState } from "react";
 
 function App() {
+  const navigate = useNavigate();
   const [auth, setAuth] = useState<boolean>(false);
 
   useEffect(() => {
-    updateAuthStatus();
+    updateAuthStatus("/home");
   }, []);
 
-  const updateAuthStatus = () => {
+  const updateAuthStatus = (path: string) => {
     fetch("https://fflernapp.hansehart.de/api/service/auth")
       .then((response) => response.json())
       .then((data) => {
         setAuth(data.msg);
+        navigate(path)
       });
   };
 
