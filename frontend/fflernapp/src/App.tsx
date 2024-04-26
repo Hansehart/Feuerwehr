@@ -22,7 +22,7 @@ function App() {
 
   // on render set auth status
   useEffect(() => {
-    fetch("https://page.de/api/service/auth")
+    fetch("https://fflernapp.hansehart.de/api/service/auth")
       .then((response) => response.json())
       .then((data) => {
         setAuth(data.msg);
