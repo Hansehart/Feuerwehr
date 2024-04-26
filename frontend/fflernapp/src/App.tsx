@@ -27,7 +27,7 @@ function App() {
 
   // after setting sid, update auth status
   const updateAuthStatus = () => {
-    fetch("https://fflernapp.hansehart.de/api/service/auth")
+    fetch("https://page.de/api/service/auth")
       .then((response) => response.json())
       .then((data) => {
         setAuth(data.msg);
@@ -37,18 +37,18 @@ function App() {
   // routes only accessible with sid
   function AuthenticatedRoutes() {
     return (
-      <>
+      <Routes>
         <Route path="/home" element={<Home />} />
         <Route path="/profile/register/profile" element={<RegisterProfile />} />
         <Route path="*" element={<Navigate replace to="/home" />} />
-      </>
+      </Routes>
     );
   }
 
   // routes only accessible without sid
   function PublicRoutes() {
     return (
-      <>
+      <Routes>
         <Route path="/home" element={<PublicHome />} />
         <Route
           path="/profile/register/account"
@@ -56,10 +56,11 @@ function App() {
         />
         <Route path="/profile/login" element={<Login />} />
         <Route path="*" element={<Navigate replace to="/home" />} />
-      </>
+      </Routes>
     );
   }
 
+  // shared routes for public and authenticated access
   return (
     <Router>
       <Routes>
