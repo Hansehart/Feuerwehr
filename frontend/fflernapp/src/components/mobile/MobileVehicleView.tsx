@@ -19,7 +19,7 @@ export default function MobileVehicleView({ title }: MobileVehicleView) {
         <h3>Material</h3>
       </section>
       <section className="material">
-        <Table header={["Gerät", "Stk"]} data={["Axt", "2"]}/>
+        <Table header={["Gerät", "Stk"]} data={[["Axt", "2"], ["Feuerlöscher", "3"]]}/>
       </section>
     </div>
   );

@@ -2,7 +2,7 @@ import "./TableStyle.css";
 
 interface TableProps {
   header: string[];
-  data: string[];
+  data: string[][];
 }
 
 export default function Table({ header, data }: TableProps) {
@@ -10,14 +10,17 @@ export default function Table({ header, data }: TableProps) {
     return <th key={index}>{h}</th>;
   });
 
-  const tableData = data.map((d, index) => {
-    return <td key={index}>{d}</td>;
+  const tableRows = data.map((row, rowIndex) => {
+    const rowData = row.map((entry, columnIndex) => {
+      return <td key={columnIndex}>{entry}</td>;
+    });
+    return <tr key={rowIndex}>{rowData}</tr>;
   });
 
   return (
     <table>
-      <tr>{tableHeader}</tr>
-      <tr>{tableData}</tr>
+      <tr id="tr-head">{tableHeader}</tr>
+      <>{tableRows}</>
     </table>
   );
 }

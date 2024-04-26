@@ -8,3 +8,10 @@
 .vehicle img {
     width: 100vw;
 }
+
+.material {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}

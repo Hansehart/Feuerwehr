@@ -45,6 +45,7 @@ function App() {
         ) : (
           <>
             <Route path="/home" element={<PublicHome />} />
+            <Route path="/main/vehicle/:rvt/:rvn" element={<Vehicle />} />
             <Route
               path="/profile/register/account"
               element={<RegisterAccount updateAuthStatus={setAuth} />}
