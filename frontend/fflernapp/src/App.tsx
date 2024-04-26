@@ -25,7 +25,7 @@ function App() {
   }, []);
 
   const updateAuthStatus = () => {
-    fetch("https://fflernapp.hansehart.de/api/service/auth")
+    fetch("https://page.de/api/service/auth")
       .then((response) => response.json())
       .then((data) => {
         setAuth(data.msg);
@@ -38,11 +38,11 @@ function App() {
         {auth ? (
           <>
             <Route path="/home" element={<Home />} />
-            <Route path="*" element={<Navigate replace to="/home" />} />
             <Route
               path="/profile/register/profile"
               element={<RegisterProfile />}
             />
+            <Route path="*" element={<Navigate replace to="/home" />} />
           </>
         ) : (
           <>
