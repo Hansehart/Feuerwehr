@@ -32,6 +32,7 @@ function RegisterAccount({
       body: jsonData,
     }).then((response) => {
       if (response.ok) {
+        // authenticate the user
         fetch("https://fflernapp.hansehart.de/api/service/auth")
           .then((response) => response.json())
           .then((data) => {

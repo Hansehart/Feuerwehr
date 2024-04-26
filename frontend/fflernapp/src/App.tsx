@@ -22,17 +22,12 @@ function App() {
 
   // on render set auth status
   useEffect(() => {
-    fetch("https://fflernapp.hansehart.de/api/service/auth")
+    fetch("https://page.de/api/service/auth")
       .then((response) => response.json())
       .then((data) => {
         setAuth(data.msg);
       });
   }, []);
-
-  // after setting sid, update auth status
-  const updateAuthStatus = (auth: boolean) => {
-    setAuth(auth);
-  };
 
   return (
     <Router>
@@ -51,7 +46,7 @@ function App() {
             <Route path="/home" element={<PublicHome />} />
             <Route
               path="/profile/register/account"
-              element={<RegisterAccount updateAuthStatus={updateAuthStatus} />}
+              element={<RegisterAccount updateAuthStatus={setAuth} />}
             />
             <Route path="/profile/login" element={<Login />} />
             <Route path="*" element={<Navigate replace to="/home" />} />
