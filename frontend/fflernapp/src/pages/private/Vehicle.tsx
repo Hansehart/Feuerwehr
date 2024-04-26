@@ -15,11 +15,11 @@ function Vehicle() {
   const navigate = useNavigate();
   const [select, setSelect] = useState("");
   const [vehicle, setVehicle] = useState<Vehicle | null>(null);
-  let { rnt, rnv } = useParams();
+  let { rvt, rvn } = useParams();
 
   useEffect(() => {
     fetch(
-      `https://fflernapp.hansehart.de/api/service/receive/vehicle?rnt=${rnt}&rnv=${rnv}`
+      `https://fflernapp.hansehart.de/api/service/receive/vehicle?rvt=${rvt}&rvn=${rvn}`
     )
       .then((response) => response.json())
       .then((data) => setVehicle(data))
