@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
 import MobileBody from "../../components/mobile/MobileBody";
 import MobileHeader from "../../components/mobile/MobileHeader";
@@ -8,15 +8,19 @@ import MobileVehicleView from "../../components/mobile/MobileVehicleView";
 
 interface Vehicle {
   name: string;
+  shortcut: string;
 }
 
 function Vehicle() {
   const navigate = useNavigate();
   const [select, setSelect] = useState("");
   const [vehicle, setVehicle] = useState<Vehicle | null>(null);
+  let { rnt, rnv } = useParams();
 
   useEffect(() => {
-    fetch(`https://fflernapp.hansehart.de/api/service/receive/vehicle`)
+    fetch(
+      `https://fflernapp.hansehart.de/api/service/receive/vehicle?rnt=${rnt}&rnv=${rnv}`
+    )
       .then((response) => response.json())
       .then((data) => setVehicle(data))
       .catch((error) => console.error("Error fetching data: ", error));
@@ -42,8 +46,10 @@ function Vehicle() {
 
   return (
     <div>
-      <MobileHeader name={vehicle?.name || "Fahrzeug"} />
-      <MobileBody main={<MobileVehicleView title={vehicle?.name || "lädt..."}/>}/>
+      <MobileHeader name={vehicle?.shortcut || "Fahrzeug"} />
+      <MobileBody
+        main={<MobileVehicleView title={vehicle?.name || "lädt..."} />}
+      />
       <MobileNavBar changeView={changeView} preset="department" />
     </div>
   );
