@@ -1,5 +1,5 @@
 import "./MobileVehicleViewStyle.css";
-import fireEngine from "/src/assets/fire-engine.jpg";
+import fireEngine from "/src/assets/fire-engine.png";
 
 interface MobileVehicleView {
   title: string;
