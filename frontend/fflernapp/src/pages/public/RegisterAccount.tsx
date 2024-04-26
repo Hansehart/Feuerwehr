@@ -36,8 +36,8 @@ function RegisterAccount({
           .then((response) => response.json())
           .then((data) => {
             updateAuthStatus(data.msg);
+            navigate("/profile/register/profile");
           });
-        navigate("/profile/register/profile");
       }
     });
   }
