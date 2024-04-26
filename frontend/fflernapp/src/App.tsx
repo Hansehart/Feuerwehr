@@ -35,6 +35,8 @@ function App() {
         {auth ? (
           <>
             <Route path="/home" element={<Home />} />
+            <Route path="/main/vehicle/*" element={<Vehicle />} />
+
             <Route
               path="/profile/register/profile"
               element={<RegisterProfile />}
@@ -55,7 +57,6 @@ function App() {
         <Route path="/learn/exercises" element={<Exercise />} />
         <Route path="/learn/regulations" element={<Regulations />} />
         <Route path="/learn/courses" element={<Courses />} />
-        <Route path="/main/vehicle" element={<Vehicle />} />
         <Route path="/main/map" element={<Map />} />
       </Routes>
     </Router>
