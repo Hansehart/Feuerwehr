@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import group.artifact.dtos.VehicleDTO;
-import group.artifact.models.Vehicle;
 import group.artifact.services.VehicleService;
 
 @RestController
@@ -25,11 +24,11 @@ public class VehicleController {
     VehicleService vehicleService;
 
     @GetMapping("/receive/vehicle")
-    public ResponseEntity<Vehicle> receiveVehicle(@RequestParam(required = true) Integer cs) { // call sign i. e.
-                                                                                               // 40-47-01 (place, type,
-                                                                                               // count)
+    public ResponseEntity<VehicleDTO> receiveVehicle(@CookieValue(value = "sid") String sid,
+            @RequestParam(required = true) String rvt, // radio vehicle type 
+            @RequestParam(required = true) String rvn) { // radio vehicle number
         try {
-            Vehicle v = vehicleService.receive(cs);
+            VehicleDTO v = vehicleService.receiveVehicleFromCallSign(sid, rvt, rvn);
             return ResponseEntity.ok(v);
         } catch (Exception e) {
             System.out.println("ERROR: " + e);

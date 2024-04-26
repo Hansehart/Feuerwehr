@@ -28,7 +28,8 @@ public class VehicleService {
         Firedepartment fd = firedepartmentRepository.findById(vehicle.getFid()).orElse(null);
 
         if (fd == null) {
-            System.out.println("ERROR: saving vehicle was not possible, because provided firedepartment can't be found");
+            System.out
+                    .println("ERROR: saving vehicle was not possible, because provided firedepartment can't be found");
             return;
         }
 
@@ -41,8 +42,13 @@ public class VehicleService {
         vehicleRepository.save(v);
     }
 
-    public Vehicle receive(Integer cs) { // call sign
-        return vehicleRepository.findById(cs).orElse(null);
+    public VehicleDTO receiveVehicleFromCallSign(String sid, String rvt, String rvn) {
+        List<VehicleDTO> vehicles = receiveVehiclesFromFiredepartment(sid);
+        VehicleDTO dto = vehicles.stream()
+                .filter(v -> v.getRadioVehicleType().equals(rvt) && v.getRadioVehicleNumber().equals(rvn))
+                .findFirst()
+                .orElse(null);
+        return dto;
     }
 
     public List<VehicleDTO> receiveVehiclesFromFiredepartment(String sid) {
@@ -50,8 +56,8 @@ public class VehicleService {
         Firedepartment f = s.getFiredepartment();
 
         List<Vehicle> vehicles = vehicleRepository.findAllByFiredepartment(f);
-        List <VehicleDTO> dto = vehicles.stream().map(v -> createVehicleDTO(v)).collect(Collectors.toList());
-        return dto;  
+        List<VehicleDTO> dto = vehicles.stream().map(v -> createVehicleDTO(v)).collect(Collectors.toList());
+        return dto;
     }
 
     private VehicleDTO createVehicleDTO(Vehicle vehicle) {
