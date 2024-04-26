@@ -40,10 +40,12 @@ function App() {
         {auth ? (
           <>
             <Route path="/home" element={<Home />} />
+            {console.log(auth)}
             <Route
               path="/profile/register/profile"
               element={<RegisterProfile />}
             />
+            {console.log(1)}
             <Route path="*" element={<Navigate replace to="/home" />} />
           </>
         ) : (
