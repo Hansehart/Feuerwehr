@@ -146,7 +146,7 @@ function MobileQuizCard() {
           <section className="continue" onClick={fetchQuizData}>
             <h4>
             {timerStarted
-                ? "Weiter in" 
+                ? "Weiter in " 
                 : "skip"}
             </h4>
             <h4 id="timer" style={{ display: "none" }}>
