@@ -144,13 +144,12 @@ function MobileQuizCard() {
             ))}
           </section>
           <section className="continue" onClick={fetchQuizData}>
-            <h4 id="skip">
-              skip
-            </h4>
-            <h4 id="timer" style={{ display: "block" }}>
-              {timerStarted
-                ? "Weiter in"
+            <h4>
+            {timerStarted
+                ? "Weiter in" 
                 : "skip"}
+            </h4>
+            <h4 id="timer" style={{ display: "none" }}>
               {count}...
             </h4>
           </section>
