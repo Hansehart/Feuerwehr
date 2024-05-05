@@ -1,5 +1,8 @@
 package group.artifact.services;
 
+import java.util.Collection;
+import java.util.Collections;
+import java.util.LinkedHashSet;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Random;
@@ -47,6 +50,57 @@ public class QuizService {
         List<Integer> indexes = new LinkedList<>();
         for (int i = 0; i < selections.size(); i++) {
             if (selections.get(i).isSolution()) {
+                indexes.add(i);
+            }
+        }
+        quiz.setSolutionIndexes(indexes);
+        return quiz;
+    }
+
+    public QuizDTO receiveRand(Integer qid) { // question id
+        Question question;
+        if (qid == null) { // choose a random question
+            List<Question> allQuestions = questionRepository.findAll();
+            Random random = new Random();
+            question = allQuestions.get(random.nextInt(allQuestions.size()));
+        } else { // select question by id
+            question = questionRepository.findById(qid).orElse(null);
+        }
+
+        if (question == null) {
+            System.out.println("ERROR: no question found when searching by id or selecting a random one");
+            return null;
+        }
+        QuizDTO quiz = new QuizDTO();
+        quiz.setText(question.getText());
+
+        List<Selection> selections = selectionRepository.findByQuestion(question);
+
+        List<Integer> randomListHelper = new LinkedList<>();
+        for (int i = 0; i < selections.size(); i++) 
+        {
+            randomListHelper.add(i);
+        }
+        
+        Collections.shuffle(randomListHelper);
+
+        List<Selection> newSelections = new LinkedList<>();
+        for (Integer index : randomListHelper) {
+            boolean insertSuccess = newSelections.add(selections.get(index));
+            if (!insertSuccess) {
+                System.out.println("ERROR: Selection could not be inserted as part of randomization.");
+            }
+        }
+
+
+        String[] s = newSelections.stream()
+                .map(Selection::getAnswer)
+                .toArray(String[]::new);
+        quiz.setSelections(s);
+
+        List<Integer> indexes = new LinkedList<>();
+        for (int i = 0; i < newSelections.size(); i++) {
+            if (newSelections.get(i).isSolution()) {
                 indexes.add(i);
             }
         }

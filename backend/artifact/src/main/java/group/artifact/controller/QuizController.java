@@ -23,7 +23,7 @@ public class QuizController {
     @GetMapping("/receive/quiz")
     public ResponseEntity<QuizDTO> receiveQuiz(@RequestParam(required = false) Integer qid) { // question id
         try {
-            QuizDTO q = learnService.receive(qid);
+            QuizDTO q = learnService.receiveRand(qid);
             return ResponseEntity.ok(q);
         } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);
