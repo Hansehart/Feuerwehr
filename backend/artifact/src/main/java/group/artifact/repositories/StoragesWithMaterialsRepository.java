@@ -12,5 +12,5 @@ import group.artifact.models.mappers.StoragesWithMaterials;
 
 @Repository
 public interface StoragesWithMaterialsRepository extends JpaRepository<StoragesWithMaterials, Integer>{
-    List<Material> findAllByStorage(Storage s);
+    List<Material> findByStorage(Storage s);
 }
