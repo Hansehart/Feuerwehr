@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import group.artifact.dtos.VehicleDTO;
+import group.artifact.dtos.VehicleWithStoragesDTO;
 import group.artifact.services.VehicleService;
 
 @RestController
@@ -54,7 +55,7 @@ public class VehicleController {
     }
 
     @PostMapping("/save/vehicle")
-    public ResponseEntity<String> saveVehicle(@RequestBody VehicleDTO v) {
+    public ResponseEntity<String> saveVehicle(@RequestBody VehicleWithStoragesDTO v) {
         try {
             vehicleService.save(v);
             return ResponseEntity.ok("vehicle and radio call sign successfully created");
