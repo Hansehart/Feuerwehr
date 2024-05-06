@@ -68,6 +68,7 @@ public class VehicleService {
             return null;
         }
         System.out.println(2);
+        System.out.println(vehicles);
         VehicleDTO vehicle = vehicles.stream()
                 .filter(v -> v.getRadioVehicleType().equals(rvt) && v.getRadioVehicleNumber().equals(rvn))
                 .findFirst()
