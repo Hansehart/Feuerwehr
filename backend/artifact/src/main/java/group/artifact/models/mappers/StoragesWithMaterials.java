@@ -2,7 +2,7 @@ package group.artifact.models.mappers;
 
 import group.artifact.models.Material;
 import group.artifact.models.Storage;
-import group.artifact.models.keys.UsersInFiredepartmentsKey;
+import group.artifact.models.keys.StoragesWithMaterialsKey;
 import jakarta.persistence.EmbeddedId;
 import jakarta.persistence.Entity;
 import jakarta.persistence.JoinColumn;
@@ -16,7 +16,7 @@ import lombok.Data;
 @Table(name = "storages_with_materials")
 public class StoragesWithMaterials {
     @EmbeddedId
-    private UsersInFiredepartmentsKey id = new UsersInFiredepartmentsKey();
+    private StoragesWithMaterialsKey id = new StoragesWithMaterialsKey();
 
     @ManyToOne
     @MapsId("fkStorage")
