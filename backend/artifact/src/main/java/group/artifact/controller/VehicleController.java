@@ -26,7 +26,7 @@ public class VehicleController {
 
     @GetMapping("/receive/vehicle")
     public ResponseEntity<VehicleDTO> receiveVehicle(@CookieValue(value = "sid") String sid,
-            @RequestParam(required = true) String rvt, // radio vehicle type 
+            @RequestParam(required = true) String rvt, // radio vehicle type
             @RequestParam(required = true) String rvn) { // radio vehicle number
         try {
             VehicleDTO v = vehicleService.receiveVehicleFromCallSign(sid, rvt, rvn);
@@ -58,7 +58,8 @@ public class VehicleController {
     public ResponseEntity<String> saveVehicle(@RequestBody VehicleWithStoragesDTO v) {
         try {
             vehicleService.save(v);
-            return ResponseEntity.ok("vehicle and radio call sign successfully created");
+            return ResponseEntity.ok(
+                    "vehicle and its corresponding storages successfully created and assigned to the fire department");
         } catch (Exception e) {
             System.out.println("ERROR: " + e);
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);
