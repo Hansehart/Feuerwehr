@@ -47,10 +47,9 @@ public class VehicleService {
         Vehicle newVehicle = vehicleRepository.save(v);
 
         // extract storages
-        Integer vid = newVehicle.getId(); // vehicle id
         Storage[] storages = vehicleDTO.getStorages();
         for (Storage storage : storages) {
-            storage.setId(vid);
+            storage.setVehicle(newVehicle);
             storageRepository.save(storage);
         }
 
