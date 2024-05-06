@@ -29,7 +29,6 @@ public class MaterialService {
 
         // find corresponding storage
         Storage s = storageRepository.findById(mat.getStid()).orElse(null);
-        System.out.println(s);
         // fill the storage
         StoragesWithMaterials filledStorage = new StoragesWithMaterials();
         filledStorage.setStorage(s);
