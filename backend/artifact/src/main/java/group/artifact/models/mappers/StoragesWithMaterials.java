@@ -19,7 +19,7 @@ public class StoragesWithMaterials {
     private UsersInFiredepartmentsKey id = new UsersInFiredepartmentsKey();
 
     @ManyToOne
-    @MapsId("fkUser")
+    @MapsId("fkStorage")
     @JoinColumn(name = "fk_storage")
     private Storage storage;
 
