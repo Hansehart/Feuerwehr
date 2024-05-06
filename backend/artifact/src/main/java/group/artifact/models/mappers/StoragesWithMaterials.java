@@ -14,7 +14,7 @@ import lombok.Data;
 @Data
 @Entity
 @Table(name = "storages_with_materials")
-public class StoragesForMaterials {
+public class StoragesWithMaterials {
     @EmbeddedId
     private UsersInFiredepartmentsKey id = new UsersInFiredepartmentsKey();
 
