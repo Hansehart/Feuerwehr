@@ -2,7 +2,6 @@ package group.artifact.dtos;
 
 import java.util.List;
 
-import group.artifact.models.Material;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 
@@ -10,5 +9,5 @@ import lombok.Data;
 @AllArgsConstructor
 public class StorageWithMaterialsDTO {
     String storageName;
-    List<Material> material;
+    List<MaterialDTO> material;
 }
