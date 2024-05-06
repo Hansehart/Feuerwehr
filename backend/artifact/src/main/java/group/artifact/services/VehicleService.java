@@ -84,15 +84,18 @@ public class VehicleService {
     public List<StorageWithMaterialsDTO> receiveStoragesFromVehicle(String sid, String rvt, String rvn) {
         // find vehicle
         List<Vehicle> vehicles = receiveVehiclesFromSid(sid);
+        System.out.println(vehicles);
         Vehicle vehicle = vehicles.stream()
                 .filter(v -> v.getRadioVehicleType().equals(rvt) && v.getRadioVehicleNumber().equals(rvn)).findFirst()
                 .orElse(null);
     
         // find corresponding storages
         List<Storage> storages = storageRepository.findByVehicle(vehicle);
+        System.out.println(storages);
         List<StorageWithMaterialsDTO> result = new LinkedList<>();
         // iterate through every storage and get all materials in it
         for (Storage s: storages) {
+            System.out.println(s);
             // find material in a storage
             List<Material> material = storagesWithMaterialsRepository.findAllMaterialsByStorage(s);
             // create dto
