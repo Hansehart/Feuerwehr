@@ -97,7 +97,7 @@ public class VehicleService {
             List<Material> materials = storagesWithMaterialsRepository.findByStorage(s).stream()
                     .map(StoragesWithMaterials::getMaterial).toList();
             // create dto
-            StorageWithMaterialsDTO swmDTO = new StorageWithMaterialsDTO(s, materials);
+            StorageWithMaterialsDTO swmDTO = new StorageWithMaterialsDTO(s.getName(), materials);
             // append created dto to result
             result.add(swmDTO);
 
