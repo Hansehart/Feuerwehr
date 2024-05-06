@@ -34,6 +34,7 @@ public class MaterialService {
         StoragesWithMaterials filledStorage = new StoragesWithMaterials();
         filledStorage.setStorage(s);
         filledStorage.setMaterial(newMaterial);
+        filledStorage.setQuantity(mat.getQuantity());
         storagesWithMaterialsRepository.save(filledStorage);
 
     }
