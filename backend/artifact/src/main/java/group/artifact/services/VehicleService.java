@@ -62,6 +62,7 @@ public class VehicleService {
     }
 
     public VehicleDTO receiveVehicleFromCallSign(String sid, String rvt, String rvn) {
+        System.out.println(1);
         List<VehicleDTO> vehicles = receiveVehiclesFromFiredepartment(sid);
         if (vehicles == null) {
             return null;
