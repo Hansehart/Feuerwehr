@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import group.artifact.dtos.StorageWithMaterialsDTO;
 import group.artifact.dtos.VehicleDTO;
 import group.artifact.dtos.VehicleWithStoragesDTO;
 import group.artifact.services.VehicleService;
@@ -38,6 +39,24 @@ public class VehicleController {
             System.out.println("ERROR: " + e);
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);
         }
+    }
+
+    @GetMapping("/receive/storages")
+    public ResponseEntity<List<StorageWithMaterialsDTO>> receiveStorages(@CookieValue(value = "sid") String sid,
+            @RequestParam(required = true) String rvt, // radio vehicle type
+            @RequestParam(required = true) String rvn) // radio vehicle number
+    {
+        try {
+            List<StorageWithMaterialsDTO> storages = vehicleService.receiveStoragesFromVehicle(sid, rvt, rvn);
+            if (storages == null) { // no user found for sid
+                return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null);
+            }
+            return ResponseEntity.ok(storages);
+        } catch (Exception e) {
+            System.out.println("ERROR: " + e);
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);
+        }
+
     }
 
     @GetMapping("/receive/vehicles")

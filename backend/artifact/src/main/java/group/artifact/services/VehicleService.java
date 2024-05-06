@@ -1,19 +1,23 @@
 package group.artifact.services;
 
+import java.util.LinkedList;
 import java.util.List;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import group.artifact.dtos.StorageWithMaterialsDTO;
 import group.artifact.dtos.VehicleDTO;
 import group.artifact.dtos.VehicleWithStoragesDTO;
 import group.artifact.models.Firedepartment;
+import group.artifact.models.Material;
 import group.artifact.models.Session;
 import group.artifact.models.Storage;
 import group.artifact.models.Vehicle;
 import group.artifact.repositories.FiredepartmentRepository;
 import group.artifact.repositories.StorageRepository;
+import group.artifact.repositories.StoragesWithMaterialsRepository;
 import group.artifact.repositories.VehicleRepository;
 
 @Service
@@ -27,6 +31,8 @@ public class VehicleService {
     FiredepartmentRepository firedepartmentRepository;
     @Autowired
     StorageRepository storageRepository;
+    @Autowired
+    StoragesWithMaterialsRepository storagesWithMaterialsRepository;
 
     public void save(VehicleWithStoragesDTO vehicleDTO) {
         // extract vehicle from the vehicle dto"
@@ -60,32 +66,62 @@ public class VehicleService {
         if (vehicles == null) {
             return null;
         }
-        VehicleDTO dto = vehicles.stream()
+
+        VehicleDTO vehicle = vehicles.stream()
                 .filter(v -> v.getRadioVehicleType().equals(rvt) && v.getRadioVehicleNumber().equals(rvn))
                 .findFirst()
                 .orElse(null);
-        return dto;
+        return vehicle;
     }
 
     public List<VehicleDTO> receiveVehiclesFromFiredepartment(String sid) {
+        List<Vehicle> vehicles = receiveVehiclesFromSid(sid);
+        List<VehicleDTO> dtos = vehicles.stream().map(v -> createVehicleDTO(v)).collect(Collectors.toList());
+        return dtos;
+
+    }
+
+    public List<StorageWithMaterialsDTO> receiveStoragesFromVehicle(String sid, String rvt, String rvn) {
+        // find vehicle
+        List<Vehicle> vehicles = receiveVehiclesFromSid(sid);
+        Vehicle vehicle = vehicles.stream()
+                .filter(v -> v.getRadioVehicleType().equals(rvt) && v.getRadioVehicleNumber().equals(rvn)).findFirst()
+                .orElse(null);
+    
+        // find corresponding storages
+        List<Storage> storages = storageRepository.findByVehicle(vehicle);
+        List<StorageWithMaterialsDTO> result = new LinkedList<>();
+        // iterate through every storage and get all materials in it
+        for (Storage s: storages) {
+            // find material in a storage
+            List<Material> material = storagesWithMaterialsRepository.findAllMaterialsByStorage(s);
+            // create dto
+            StorageWithMaterialsDTO swmDTO = new StorageWithMaterialsDTO(s, material);
+            // append created dto to result
+            result.add(swmDTO);
+
+        }
+        return result;
+    }
+
+    private VehicleDTO createVehicleDTO(Vehicle vehicle) {
+        VehicleDTO v = new VehicleDTO();
+        v.setFid(vehicle.getFiredepartment().getId()); // firedepartment id
+        v.setVid(vehicle.getId()); // vehicle id
+        v.setName(vehicle.getName());
+        v.setShortcut(vehicle.getShortcut());
+        v.setRadioVehicleType(vehicle.getRadioVehicleType());
+        v.setRadioVehicleNumber(vehicle.getRadioVehicleNumber());
+        return v;
+    }
+
+    private List<Vehicle> receiveVehiclesFromSid(String sid) {
         Session s = sessionService.auth(sid);
         if (s == null) {
             return null;
         }
         Firedepartment f = s.getFiredepartment();
         List<Vehicle> vehicles = vehicleRepository.findAllByFiredepartment(f);
-        List<VehicleDTO> dto = vehicles.stream().map(v -> createVehicleDTO(v)).collect(Collectors.toList());
-        return dto;
-    }
-
-    private VehicleDTO createVehicleDTO(Vehicle vehicle) {
-        VehicleDTO v = new VehicleDTO();
-        v.setFid(vehicle.getFiredepartment().getId());
-        v.setName(vehicle.getName());
-        v.setShortcut(vehicle.getShortcut());
-        v.setRadioVehicleType(vehicle.getRadioVehicleType());
-        v.setRadioVehicleNumber(vehicle.getRadioVehicleNumber());
-        return v;
-
+        return vehicles;
     }
 }

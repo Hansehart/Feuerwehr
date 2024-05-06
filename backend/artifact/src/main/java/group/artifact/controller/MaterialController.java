@@ -22,7 +22,7 @@ public class MaterialController {
         try {
             materialService.save(m);
             return ResponseEntity.ok(
-                    "material successfully assigned to its coresponding storage");
+                    "material successfully assigned to its corresponding storage");
         } catch (Exception e) {
             System.out.println("ERROR: " + e);
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);
