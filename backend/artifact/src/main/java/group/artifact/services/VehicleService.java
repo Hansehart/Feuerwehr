@@ -93,7 +93,7 @@ public class VehicleService {
         // iterate through every storage and get all materials in it
         for (Storage s : storages) {
             // find material in a storage
-            List<Material> material = storagesWithMaterialsRepository.findAllMaterialsByStorage(s);
+            List<Material> material = storagesWithMaterialsRepository.findAllByStorage(s);
             // create dto
             StorageWithMaterialsDTO swmDTO = new StorageWithMaterialsDTO(s, material);
             // append created dto to result
