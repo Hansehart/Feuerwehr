@@ -13,7 +13,7 @@ import group.artifact.models.Session;
 import group.artifact.models.Storage;
 import group.artifact.models.Vehicle;
 import group.artifact.repositories.FiredepartmentRepository;
-import group.artifact.repositories.StorageLocationRepository;
+import group.artifact.repositories.StorageRepository;
 import group.artifact.repositories.VehicleRepository;
 
 @Service
@@ -26,7 +26,7 @@ public class VehicleService {
     @Autowired
     FiredepartmentRepository firedepartmentRepository;
     @Autowired
-    StorageLocationRepository storageLocationRepository;
+    StorageRepository storageRepository;
 
     public void save(VehicleWithStoragesDTO vehicleDTO) {
         // extract vehicle from the vehicle dto"
@@ -44,12 +44,14 @@ public class VehicleService {
         v.setRadioVehicleNumber(vDTO.getRadioVehicleNumber());
         v.setShortcut(vDTO.getShortcut());
         v.setName(vDTO.getName());
-        vehicleRepository.save(v);
-        
-        // extract storage locations
+        Vehicle newVehicle = vehicleRepository.save(v);
+
+        // extract storages
+        Integer vid = newVehicle.getId(); // vehicle id
         Storage[] storages = vehicleDTO.getStorages();
         for (Storage storage : storages) {
-            storageLocationRepository.save(storage);
+            storage.setId(vid);
+            storageRepository.save(storage);
         }
 
     }

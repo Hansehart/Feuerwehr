@@ -6,7 +6,7 @@ import org.springframework.stereotype.Repository;
 import group.artifact.models.Storage;
 
 @Repository
-public interface StorageLocationRepository extends JpaRepository<Storage, Integer>{
+public interface StorageRepository extends JpaRepository<Storage, Integer>{
     
 }
 
