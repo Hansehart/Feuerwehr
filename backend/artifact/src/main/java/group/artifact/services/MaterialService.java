@@ -3,7 +3,7 @@ package group.artifact.services;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import group.artifact.dtos.MaterialDTO;
+import group.artifact.dtos.StorageWithMaterialsDTO;
 import group.artifact.models.Material;
 import group.artifact.models.Storage;
 import group.artifact.models.mappers.StoragesWithMaterials;
@@ -20,7 +20,7 @@ public class MaterialService {
     @Autowired
     StoragesWithMaterialsRepository storagesWithMaterialsRepository;
 
-    public void save(MaterialDTO mat) {
+    public void save(StorageWithMaterialsDTO mat) {
         // extract material
         Material m = new Material();
         m.setName(mat.getName());

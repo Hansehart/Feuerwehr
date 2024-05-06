@@ -1,13 +1,23 @@
 package group.artifact.dtos;
 
-import java.util.List;
-
-import lombok.AllArgsConstructor;
+import group.artifact.models.Material;
+import group.artifact.models.Storage;
 import lombok.Data;
 
 @Data
-@AllArgsConstructor
 public class StorageWithMaterialsDTO {
-    String storageName;
-    List<MaterialDTO> material;
+    private Integer stid; // storage id
+    private String stname; // storage name
+    private String name;
+    private String description;
+    private Integer quantity;
+
+    public StorageWithMaterialsDTO(Material material, Storage storage, Integer quantity) {
+        setStid(storage.getId());
+        setStname(storage.getName());
+
+        setName(material.getName());
+        setDescription(material.getDescription());
+        setQuantity(quantity);
+    }
 }

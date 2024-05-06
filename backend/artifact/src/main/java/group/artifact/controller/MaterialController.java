@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import group.artifact.dtos.MaterialDTO;
+import group.artifact.dtos.StorageWithMaterialsDTO;
 import group.artifact.services.MaterialService;
 
 @RestController
@@ -18,7 +18,7 @@ public class MaterialController {
     MaterialService materialService;
 
     @PostMapping("/save/material")
-    public ResponseEntity<String> saveMaterial(@RequestBody MaterialDTO m) {
+    public ResponseEntity<String> saveMaterial(@RequestBody StorageWithMaterialsDTO m) {
         try {
             materialService.save(m);
             return ResponseEntity.ok(

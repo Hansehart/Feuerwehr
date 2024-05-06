@@ -7,7 +7,6 @@ import java.util.stream.Collectors;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import group.artifact.dtos.MaterialDTO;
 import group.artifact.dtos.StorageWithMaterialsDTO;
 import group.artifact.dtos.VehicleDTO;
 import group.artifact.dtos.VehicleWithStoragesDTO;
@@ -92,13 +91,11 @@ public class VehicleService {
         List<StorageWithMaterialsDTO> result = new LinkedList<>();
         // iterate through every storage and get all materials in it
         for (Storage s : storages) {
-            // find material in a storage and extract it
-            List<MaterialDTO> materials = storagesWithMaterialsRepository.findByStorage(s).stream()
-                    .map(swm -> new MaterialDTO(swm.getMaterial(), swm.getQuantity())).toList();
-            // create dto
-            StorageWithMaterialsDTO swmDTO = new StorageWithMaterialsDTO(s.getName(), materials);
+            // fill storages with material
+            List<StorageWithMaterialsDTO> filledStorages = storagesWithMaterialsRepository.findByStorage(s).stream()
+                    .map(swm -> new StorageWithMaterialsDTO(swm.getMaterial(), swm.getStorage(), swm.getQuantity())).toList();
             // append created dto to result
-            result.add(swmDTO);
+            result.addAll(filledStorages);
 
         }
         return result;
