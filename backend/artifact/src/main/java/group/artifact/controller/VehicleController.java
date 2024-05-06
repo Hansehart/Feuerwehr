@@ -41,7 +41,7 @@ public class VehicleController {
         }
     }
 
-    @GetMapping("/receive/storages")
+    @GetMapping("/receive/vehicle/storages")
     public ResponseEntity<List<StorageWithMaterialsDTO>> receiveStorages(@CookieValue(value = "sid") String sid,
             @RequestParam(required = true) String rvt, // radio vehicle type
             @RequestParam(required = true) String rvn) // radio vehicle number
