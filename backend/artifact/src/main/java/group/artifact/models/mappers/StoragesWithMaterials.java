@@ -27,4 +27,6 @@ public class StoragesWithMaterials {
     @MapsId("fkMaterial")
     @JoinColumn(name = "fk_material")
     private Material material;
+
+    private Integer quantity;
 }
