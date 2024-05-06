@@ -15,6 +15,7 @@ import group.artifact.models.Material;
 import group.artifact.models.Session;
 import group.artifact.models.Storage;
 import group.artifact.models.Vehicle;
+import group.artifact.models.mappers.StoragesWithMaterials;
 import group.artifact.repositories.FiredepartmentRepository;
 import group.artifact.repositories.StorageRepository;
 import group.artifact.repositories.StoragesWithMaterialsRepository;
@@ -92,10 +93,11 @@ public class VehicleService {
         List<StorageWithMaterialsDTO> result = new LinkedList<>();
         // iterate through every storage and get all materials in it
         for (Storage s : storages) {
-            // find material in a storage
-            List<Material> material = storagesWithMaterialsRepository.findByStorage(s);
+            // find material in a storage and extract it
+            List<Material> materials = storagesWithMaterialsRepository.findByStorage(s).stream()
+                    .map(StoragesWithMaterials::getMaterial).toList();
             // create dto
-            StorageWithMaterialsDTO swmDTO = new StorageWithMaterialsDTO(s, material);
+            StorageWithMaterialsDTO swmDTO = new StorageWithMaterialsDTO(s, materials);
             // append created dto to result
             result.add(swmDTO);
 
