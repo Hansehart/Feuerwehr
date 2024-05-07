@@ -41,6 +41,7 @@ function Vehicle() {
         const formattedData: string[][] = data.map((d) => [
           d.name,
           String(d.quantity),
+          d.stname
         ]);
         setTableData(formattedData);
       })
