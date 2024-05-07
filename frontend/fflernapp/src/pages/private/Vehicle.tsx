@@ -68,7 +68,7 @@ function Vehicle() {
 
   return (
     <div>
-      <MobileHeader name={vehicle?.shortcut || "Fahrzeug"} />
+      <MobileHeader name="Fahrzeuge" />
       <MobileBody
         main={
           <MobileVehicleView

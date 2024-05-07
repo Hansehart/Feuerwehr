@@ -17,13 +17,13 @@ export default function MobileVehicleView({ title, data }: MobileVehicleView) {
       <section className="vehicle">
         <h2>{convertSoftHyphen(title)}</h2>
         <img src={fireEngine} alt="fire engine"></img>
-        <h3>Material</h3>
       </section>
       <section className="material">
-        <Table
-          header={["Gerät", "Ort", "Stk."]}
-          data={data}
-        />
+        <h3>Material</h3>
+        <Table header={["Gerät", "Ort", "Stk."]} data={data} />
+      </section>
+      <section className="specification">
+        <h3>Technische Daten</h3>
       </section>
     </div>
   );
