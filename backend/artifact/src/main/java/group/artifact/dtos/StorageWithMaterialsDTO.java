@@ -4,9 +4,10 @@ import group.artifact.models.Material;
 import group.artifact.models.Storage;
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Data
-@AllArgsConstructor
+@NoArgsConstructor
 public class StorageWithMaterialsDTO {
     private Integer stid; // storage id
     private String stname; // storage name
