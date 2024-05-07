@@ -10,10 +10,11 @@ h2 {
 }
 
 .vehicle img {
-    width: 100vw;
+    width: 90vw;
+    border: 2px solid #05192a;
 }
 
-.material {
+.material, .specifiation {
     display: flex;
     flex-direction: column;
     justify-content: center;
