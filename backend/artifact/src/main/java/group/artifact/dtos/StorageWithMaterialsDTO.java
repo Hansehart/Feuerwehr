@@ -2,7 +2,6 @@ package group.artifact.dtos;
 
 import group.artifact.models.Material;
 import group.artifact.models.Storage;
-import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
