@@ -3,9 +3,7 @@ table {
 }
 
 th {
-    position: relative;
-    left: .5em;
-
+    padding-left: .5em;
     text-align: left;
     font-size: 3vh;
 }
