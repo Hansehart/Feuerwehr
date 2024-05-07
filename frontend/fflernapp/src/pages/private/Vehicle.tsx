@@ -11,10 +11,19 @@ interface Vehicle {
   shortcut: string;
 }
 
+interface StorageWithMaterial {
+  stid: number; // storage id
+  stname: string; // storage name
+  name: string; // material name
+  quantity: number;
+  description: string;
+}
+
 function Vehicle() {
   const navigate = useNavigate();
   const [select, setSelect] = useState("");
   const [vehicle, setVehicle] = useState<Vehicle | null>(null);
+  const [tableData, setTableData] = useState<string[][]>();
   const { rvt, rvn } = useParams();
 
   useEffect(() => {
@@ -28,7 +37,13 @@ function Vehicle() {
       `https://fflernapp.hansehart.de/api/service/receive/vehicle/storages?rvt=${rvt}&rvn=${rvn}`
     )
       .then((response) => response.json())
-      .then((data) => setVehicle(data))
+      .then((data: StorageWithMaterial[]) => {
+        const formattedData: string[][] = data.map((d) => [
+          d.name,
+          String(d.quantity),
+        ]);
+        setTableData(formattedData);
+      })
       .catch((error) => console.error("Error fetching data: ", error));
   }, []);
 
@@ -54,7 +69,12 @@ function Vehicle() {
     <div>
       <MobileHeader name={vehicle?.shortcut || "Fahrzeug"} />
       <MobileBody
-        main={<MobileVehicleView title={vehicle?.name || "lädt..."} />}
+        main={
+          <MobileVehicleView
+            title={vehicle?.name || "lädt..."}
+            data={tableData ?? []}
+          />
+        }
         marginToFooter="18vh"
       />
       <MobileNavBar changeView={changeView} preset="department" />

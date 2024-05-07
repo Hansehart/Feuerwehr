@@ -4,13 +4,14 @@ import fireEngine from "/src/assets/fire-engine.png";
 
 interface MobileVehicleView {
   title: string;
+  data: string[][];
 }
 
 const convertSoftHyphen = (title: string) => {
   return title.replace(/&shy;/g, "\u00AD");
 };
 
-export default function MobileVehicleView({ title }: MobileVehicleView) {
+export default function MobileVehicleView({ title, data }: MobileVehicleView) {
   return (
     <div className="vehicle-view">
       <section className="vehicle">
@@ -19,7 +20,10 @@ export default function MobileVehicleView({ title }: MobileVehicleView) {
         <h3>Material</h3>
       </section>
       <section className="material">
-        <Table header={["Gerät", "Stk"]} data={[["Axt", "2"], ["Feuerlöscher", "3"]]}/>
+        <Table
+          header={["Gerät", "Stk"]}
+          data={data}
+        />
       </section>
     </div>
   );

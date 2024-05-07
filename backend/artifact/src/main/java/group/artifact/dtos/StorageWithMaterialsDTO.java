@@ -20,6 +20,6 @@ public class StorageWithMaterialsDTO {
 
         setName(material.getName());
         setDescription(material.getDescription());
-        setQuantity(quantity);
+        setQuantity(quantity == null ? 1 : quantity);
     }
 }
