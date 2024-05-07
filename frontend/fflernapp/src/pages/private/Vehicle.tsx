@@ -40,8 +40,8 @@ function Vehicle() {
       .then((data: StorageWithMaterial[]) => {
         const formattedData: string[][] = data.map((d) => [
           d.name,
-          String(d.quantity),
-          d.stname
+          d.stname,
+          String(d.quantity)
         ]);
         setTableData(formattedData);
       })
