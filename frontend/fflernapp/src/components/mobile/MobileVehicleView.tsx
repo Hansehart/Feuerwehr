@@ -24,6 +24,7 @@ export default function MobileVehicleView({ title, data }: MobileVehicleView) {
       </section>
       <section className="specification">
         <h3>Technische Daten</h3>
+        <Table header={["Spezifikation", "Wert"]} data={[]} />
       </section>
     </div>
   );
