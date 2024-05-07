@@ -21,7 +21,7 @@ export default function MobileVehicleView({ title, data }: MobileVehicleView) {
       </section>
       <section className="material">
         <Table
-          header={["Gerät", "Stk", "Fach"]}
+          header={["Gerät", "Ort", "Stk"]}
           data={data}
         />
       </section>
