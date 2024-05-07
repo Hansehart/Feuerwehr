@@ -147,7 +147,7 @@ function MobileQuizCard() {
             <h4 style={{ display: "block" }}>
             {timerStarted
                 ? "Weiter in " 
-                : "skip"}
+                : "überspringen"}
             </h4>
             <h4 id="timer" style={{ display: "none" }}>
               &nbsp;{count}...
