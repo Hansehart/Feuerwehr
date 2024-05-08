@@ -33,6 +33,7 @@ public class SessionService {
 
     public Cookie attemptLogin(User user, String password) {
         String hashedPassword = DigestUtils.sha256Hex(password + user.getSalt());
+        System.out.println(user.getPassword() + "\n" + hashedPassword);
         if (user.getPassword() == hashedPassword) { // successfull attempt
             Firedepartment f = usersInFiredepartmentRepository.findByUser(user).stream()
                     .filter(membership -> membership.isMain())
