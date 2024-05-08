@@ -6,15 +6,19 @@ import org.apache.commons.codec.digest.DigestUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import group.artifact.models.Firedepartment;
 import group.artifact.models.Session;
 import group.artifact.models.User;
 import group.artifact.repositories.SessionRepository;
+import group.artifact.repositories.UsersInFiredepartmentRepository;
 import jakarta.servlet.http.Cookie;
 
 @Service
 public class SessionService {
     @Autowired
     SessionRepository sessionRepository;
+    @Autowired
+    UsersInFiredepartmentRepository usersInFiredepartmentRepository;
 
     private final String CHARACTERS = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!?=";
 
@@ -30,26 +34,19 @@ public class SessionService {
     public Cookie attemptLogin(User user, String password) {
         String hashedPassword = DigestUtils.sha256Hex(password + user.getSalt());
         if (user.getPassword() == hashedPassword) { // successfull attempt
+            Firedepartment f = usersInFiredepartmentRepository.findByUser(user).stream()
+                    .filter(membership -> membership.isMain())
+                    .findFirst()
+                    .map(m -> m.getFiredepartment())
+                    .orElse(null);
+            String sid = generateSalt(32);
+            Cookie sessionCookie = generateCookie("sid", sid);
 
+            Session s = new Session(sid, user, f);
+            sessionRepository.save(s);
+            return sessionCookie; 
         }
         return null;
-    }
-
-    Cookie generateSession(User u) {
-        // create session cookie
-        String sid = generateSalt(32);
-        Cookie cookie = new Cookie("sid", sid);
-        cookie.setAttribute("SameSite", "Strict");
-        cookie.setHttpOnly(true);
-        cookie.setSecure(true);
-        cookie.setPath("/");
-
-        // generate session
-        Session s = new Session();
-        s.setSid(sid);
-        s.setUser(u);
-        sessionRepository.save(s);
-        return cookie;
     }
 
     /*
@@ -73,5 +70,27 @@ public class SessionService {
         }
 
         return salt.toString();
+    }
+
+    Cookie generateSession(User u) {
+        // create session cookie
+        String sid = generateSalt(32);
+        Cookie cookie = generateCookie("sid", sid);
+
+        // generate session
+        Session s = new Session();
+        s.setSid(sid);
+        s.setUser(u);
+        sessionRepository.save(s);
+        return cookie;
+    }
+
+    private Cookie generateCookie(String name, String value) {
+        Cookie cookie = new Cookie(name, value);
+        cookie.setAttribute("SameSite", "Strict");
+        cookie.setHttpOnly(true);
+        cookie.setSecure(true);
+        cookie.setPath("/");
+        return cookie;
     }
 }

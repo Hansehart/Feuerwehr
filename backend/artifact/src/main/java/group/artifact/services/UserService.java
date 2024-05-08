@@ -95,6 +95,7 @@ public class UserService {
         UsersInFiredepartments membership = new UsersInFiredepartments();
         membership.setUser(u);
         membership.setFiredepartment(f);
+        membership.setMain(true);
 
         // update session
         Session s = sessionRepository.findById(sid).orElse(null);

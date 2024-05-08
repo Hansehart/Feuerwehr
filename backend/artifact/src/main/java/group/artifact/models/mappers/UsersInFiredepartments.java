@@ -29,4 +29,6 @@ public class UsersInFiredepartments {
     @MapsId("fkFiredepartment")
     @JoinColumn(name = "fk_firedepartment")
     private Firedepartment firedepartment;
+
+    private boolean main;
 }
