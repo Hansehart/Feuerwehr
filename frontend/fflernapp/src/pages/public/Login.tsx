@@ -47,14 +47,16 @@ function Login({
     {
       label: "E-Mail",
       type: "email",
-      onChange: (element: HTMLInputElement) => setEmail(element.value)
+      onChange: (e: React.ChangeEvent<HTMLInputElement>) =>
+        setEmail(e.target.value) 
     },
     {
       label: "Passwort",
       type: "password",
-      onChange: (element: HTMLInputElement) => setPassword(element.value)
+      onChange: (e: React.ChangeEvent<HTMLInputElement>) =>
+        setPassword(e.target.value)
     },
-    { value: "Anmelden", type: "button", function: login },
+    { value: "Anmelden", type: "button", onClick: login },
   ];
 
   useEffect(() => {

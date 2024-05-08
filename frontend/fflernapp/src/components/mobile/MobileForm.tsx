@@ -8,7 +8,8 @@ interface InputField {
   inline?: boolean; // determines if elements should be displayed in a row (against the default: column)
   reverse?: boolean; // true means first input, then label
   selectOptions?: string[];
-  function?: () => void;
+  onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  onClick?: () => void;
 }
 
 interface MobileFormProps {
@@ -51,7 +52,8 @@ export default function MobileForm({ background, fields }: MobileFormProps) {
                       id={`input-${index}`}
                       type={field.type}
                       value={field.value}
-                      onClick={field.function}
+                      onChange={field.onChange}
+                      onClick={field.onClick}
                     />
                     <label htmlFor={`input-${index}`}>{field.label}</label>
                   </>
@@ -62,7 +64,8 @@ export default function MobileForm({ background, fields }: MobileFormProps) {
                       id={`input-${index}`}
                       type={field.type}
                       value={field.value}
-                      onClick={field.function}
+                      onChange={field.onChange}
+                      onClick={field.onClick}
                     />
                   </>
                 )}
