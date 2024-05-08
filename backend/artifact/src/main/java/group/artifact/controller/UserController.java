@@ -42,10 +42,10 @@ public class UserController {
     public ResponseEntity<MessageDTO<String>> login(@RequestBody UserDTO u, HttpServletResponse response) {
         try {
             Cookie cookie = userService.login(u);
-            response.addCookie(cookie);
             if (cookie == null) {
                 return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null);
             }
+            response.addCookie(cookie);
             return ResponseEntity.ok(new MessageDTO<>("successfully logged in"));
         } catch (Exception e) {
             System.out.println("ERROR: " + e);
