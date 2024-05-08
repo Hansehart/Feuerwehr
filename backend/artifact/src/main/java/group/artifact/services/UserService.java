@@ -66,6 +66,10 @@ public class UserService {
 
     public Cookie saveAccount(User u) {
         // initialize user
+        User unique = userRepository.findByEmail(u.getEmail());
+        if (unique != null) { // e-mail already taken
+            return null;
+        }
         String salt = sessionService.generateSalt(16);
         String hashedPW = DigestUtils.sha256Hex(u.getPassword() + salt);
         u.setPassword(hashedPW);
