@@ -13,13 +13,14 @@ function Login({
 }) {
   const navigate = useNavigate();
   const [select, setSelect] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
   function login() {
-    const inputFields = document.querySelectorAll("input");
-
-    const formData: { [key: string]: string } = {};
-    formData["email"] = inputFields[0].value;
-    formData["password"] = inputFields[1].value;
+    const formData = {
+      email: email,
+      password: password,
+    };
     const jsonData = JSON.stringify(formData);
 
     fetch("https://fflernapp.hansehart.de/api/service/login", {
@@ -46,10 +47,12 @@ function Login({
     {
       label: "E-Mail",
       type: "email",
+      onChange: (element: HTMLInputElement) => setEmail(element.value)
     },
     {
       label: "Passwort",
       type: "password",
+      onChange: (element: HTMLInputElement) => setPassword(element.value)
     },
     { value: "Anmelden", type: "button", function: login },
   ];
