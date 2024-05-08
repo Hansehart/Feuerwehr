@@ -6,12 +6,40 @@ import MobileHeader from "../../components/mobile/MobileHeader";
 import MobileNavBar from "../../components/mobile/MobileNavBar";
 import MobileForm from "../../components/mobile/MobileForm";
 
-function Login() {
+function Login({
+  updateAuthStatus,
+}: {
+  updateAuthStatus: (auth: boolean) => void;
+}) {
   const navigate = useNavigate();
   const [select, setSelect] = useState("");
 
   function login() {
+    const inputFields = document.querySelectorAll("input");
 
+    const formData: { [key: string]: string } = {};
+    formData["email"] = inputFields[0].value;
+    formData["password"] = inputFields[1].value;
+    const jsonData = JSON.stringify(formData);
+
+    fetch("https://fflernapp.hansehart.de/api/service/login", {
+      credentials: "include",
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: jsonData,
+    }).then((response) => {
+      if (response.ok) {
+        // authenticate the user
+        fetch("https://fflernapp.hansehart.de/api/service/auth")
+          .then((response) => response.json())
+          .then((data) => {
+            updateAuthStatus(data.msg);
+            navigate("/home");
+          });
+      }
+    });
   }
 
   const fields = [
@@ -23,7 +51,7 @@ function Login() {
       label: "Passwort",
       type: "password",
     },
-    { value: "Anmelden", type: "button", function: login }
+    { value: "Anmelden", type: "button", function: login },
   ];
 
   useEffect(() => {
@@ -48,12 +76,7 @@ function Login() {
     <div>
       <MobileHeader name="Login" />
       <MobileBody
-        main={
-          <MobileForm
-            background={true}
-            fields={fields}
-          />
-        }
+        main={<MobileForm background={true} fields={fields} />}
         marginToFooter="15vh"
       />
       <MobileNavBar changeView={changeView} preset="profile" />

@@ -50,7 +50,7 @@ function App() {
               path="/profile/register/account"
               element={<RegisterAccount updateAuthStatus={setAuth} />}
             />
-            <Route path="/profile/login" element={<Login />} />
+            <Route path="/profile/login" element={<Login updateAuthStatus={setAuth}/>} />
             <Route path="*" element={<Navigate replace to="/home" />} />
           </>
         )}
