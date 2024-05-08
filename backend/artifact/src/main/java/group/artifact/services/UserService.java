@@ -31,7 +31,6 @@ public class UserService {
     @Autowired
     UsersInFiredepartmentRepository usersInFiredepartmentRepository;
 
-
     public MessageDTO<Boolean> authUser(String sid) {
         MessageDTO<Boolean> msg = new MessageDTO<>(false);
         if (sid == null) {
