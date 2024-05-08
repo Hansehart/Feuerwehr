@@ -63,7 +63,7 @@ function RegisterAccount({
       reverse: true,
     },
 
-    { value: "Bestätigen", type: "button", function: register },
+    { value: "Bestätigen", type: "button", onClick: register },
   ];
 
   useEffect(() => {
