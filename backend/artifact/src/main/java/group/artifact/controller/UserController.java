@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import group.artifact.dtos.MessageDTO;
 import group.artifact.dtos.ProfileDTO;
+import group.artifact.dtos.UserDTO;
 import group.artifact.models.User;
 import group.artifact.services.UserService;
 import jakarta.servlet.http.Cookie;
@@ -31,6 +32,21 @@ public class UserController {
         try {
             msg = userService.authUser(sid);
             return ResponseEntity.ok(msg);
+        } catch (Exception e) {
+            System.out.println("ERROR: " + e);
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);
+        }
+    }
+
+    @PostMapping("/login")
+    public ResponseEntity<MessageDTO<String>> login(@RequestBody UserDTO u, HttpServletResponse response) {
+        try {
+            Cookie cookie = userService.login(u);
+            response.addCookie(cookie);
+            if (cookie == null) {
+                return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null);
+            }
+            return ResponseEntity.ok(new MessageDTO<>("successfully logged in"));
         } catch (Exception e) {
             System.out.println("ERROR: " + e);
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);

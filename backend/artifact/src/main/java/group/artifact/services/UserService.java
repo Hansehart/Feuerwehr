@@ -3,12 +3,11 @@ package group.artifact.services;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.security.SecureRandom;
-
 import org.apache.commons.codec.digest.DigestUtils;
 
 import group.artifact.dtos.MessageDTO;
 import group.artifact.dtos.ProfileDTO;
+import group.artifact.dtos.UserDTO;
 import group.artifact.models.Firedepartment;
 import group.artifact.models.Session;
 import group.artifact.models.User;
@@ -32,7 +31,6 @@ public class UserService {
     @Autowired
     UsersInFiredepartmentRepository usersInFiredepartmentRepository;
 
-    private final String CHARACTERS = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!?=";
 
     public MessageDTO<Boolean> authUser(String sid) {
         MessageDTO<Boolean> msg = new MessageDTO<>(false);
@@ -44,7 +42,14 @@ public class UserService {
             msg.setMsg(true);
         }
         return msg;
+    }
 
+    public Cookie login(UserDTO u) {
+        User user = userRepository.findByEmail(u.getEmail());
+        if (user == null) { // no user found
+            return null;
+        }
+        return sessionService.attemptLogin(user, u.getPassword());
     }
 
     public MessageDTO<String> receiveUserAttr(String sid, String attr) {
@@ -61,30 +66,16 @@ public class UserService {
     }
 
     public Cookie saveAccount(User u) {
-        // update user
-        String salt = generateSalt(16);
+        // initialize user
+        String salt = sessionService.generateSalt(16);
         String hashedPW = DigestUtils.sha256Hex(u.getPassword() + salt);
         u.setPassword(hashedPW);
         u.setSalt(salt);
 
-        // generate session cookie
-        String sid = generateSalt(32);
-        Cookie cookie = new Cookie("sid", sid);
-        cookie.setAttribute("SameSite", "Strict");
-        cookie.setHttpOnly(true);
-        cookie.setSecure(true);
-        cookie.setPath("/");
-
-        // generate session
-        Session s = new Session();
-        s.setSid(sid);
-        s.setUser(u);
-
-        // save entities
+        // save user and generate session
         userRepository.save(u);
-        sessionRepository.save(s);
-
-        return cookie;
+        Cookie sessionCookie = sessionService.generateSession(u);
+        return sessionCookie;
     }
 
     public void saveProfile(String sid, ProfileDTO p) { // profile
@@ -120,26 +111,4 @@ public class UserService {
         sessionRepository.save(s);
     }
 
-    /*
-     * generates a random string
-     * 
-     * @value: length
-     * 
-     * @return: salt
-     */
-    private String generateSalt(int length) {
-        if (length <= 0) {
-            System.out.println("ERROR: creating salt requires a minimum length of 1");
-            throw new IllegalArgumentException();
-        }
-
-        SecureRandom random = new SecureRandom();
-        StringBuilder salt = new StringBuilder(length);
-
-        for (int i = 0; i < length; i++) {
-            salt.append(CHARACTERS.charAt(random.nextInt(CHARACTERS.length())));
-        }
-
-        return salt.toString();
-    }
 }
