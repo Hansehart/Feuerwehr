@@ -21,6 +21,8 @@ public class PreviewService {
             return previewRepository.findAllByPathStartingWith("/profile%");
         } else if (type.equals("main")) {
             return previewRepository.findAllByPathStartingWith("/main%");
+        } else if (type.equals("regulations")) {
+            return previewRepository.findAllByPathStartingWith("/learn/regulations%");
         } else {
             System.out.println("ERROR: type unknown in query string when searching for preview");
             return null;
