@@ -46,7 +46,7 @@ function Home() {
       break;
     case "profile":
       displayComponent = (
-        <MobileBody before={<MobileAuthPreview />} type="profile" />
+        <MobileBody before={<MobileAuthPreview />}/> // type is for public page not set because their should be no content loaded
       );
       window.history.replaceState({}, "");
       break;
