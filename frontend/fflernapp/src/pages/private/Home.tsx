@@ -67,7 +67,7 @@ function Home() {
       break;
     case "profile":
       displayComponent = (
-        <MobileBody type="vehicle"
+        <MobileBody type="profile"
         marginToFooter="18vh"
         />
       );
