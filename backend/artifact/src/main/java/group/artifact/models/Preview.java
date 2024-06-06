@@ -17,6 +17,6 @@ public class Preview {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private String title;
-    private String subtitle;
+    private String subtitle = "";
     private String path;
 }
