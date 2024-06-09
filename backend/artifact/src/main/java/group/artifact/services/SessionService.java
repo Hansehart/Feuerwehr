@@ -36,7 +36,7 @@ public class SessionService {
         if (s != null) { // session still exists
             sessionRepository.delete(s);
         }
-        return generateCookie(sid, null, 0); // 0 deletes the cookie form the store
+        return generateCookie("sid", null, 0); // 0 deletes the cookie form the store
     }
 
     public Cookie attemptLogin(User user, String password) {
