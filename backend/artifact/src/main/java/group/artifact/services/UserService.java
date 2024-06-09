@@ -43,6 +43,10 @@ public class UserService {
         return msg;
     }
 
+    public Cookie logout(String sid) {
+       return sessionService.removeSession(sid);
+    }
+
     public Cookie login(UserDTO u) {
         User user = userRepository.findByEmail(u.getEmail());
         if (user == null) { // no user found

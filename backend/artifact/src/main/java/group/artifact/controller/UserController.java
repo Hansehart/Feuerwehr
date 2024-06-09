@@ -38,6 +38,22 @@ public class UserController {
         }
     }
 
+    @GetMapping("/logout")
+    public ResponseEntity<MessageDTO<String>> logout(@CookieValue(value = "sid", required = true) String sid, HttpServletResponse response) {
+        try {
+
+            Cookie cookie =  userService.logout(sid);
+            if (cookie == null) {
+                return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null);
+            }
+            response.addCookie(cookie);
+            return ResponseEntity.ok(new MessageDTO<>("successfully logged out"));
+        } catch (Exception e) {
+            System.out.println("ERROR: " + e);
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);
+        }
+    }
+
     @PostMapping("/login")
     public ResponseEntity<MessageDTO<String>> login(@RequestBody UserDTO u, HttpServletResponse response) {
         try {

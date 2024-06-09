@@ -5,7 +5,7 @@ import MobileBody from "../../components/mobile/MobileBody";
 import MobileHeader from "../../components/mobile/MobileHeader";
 import MobileNavBar from "../../components/mobile/MobileNavBar";
 
-function Login({
+function Logout({
   updateAuthStatus,
 }: {
   updateAuthStatus: (auth: boolean) => void;
@@ -52,4 +52,4 @@ function Login({
   );
 }
 
-export default Login;
+export default Logout;

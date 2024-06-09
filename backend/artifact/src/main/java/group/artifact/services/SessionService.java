@@ -31,6 +31,14 @@ public class SessionService {
         return s;
     }
 
+    public Cookie removeSession(String sid) {
+        Session s = sessionRepository.findById(sid).orElse(null);
+        if (s != null) { // session still exists
+            sessionRepository.delete(s);
+        }
+        return generateCookie(sid, null, 0); // 0 deletes the cookie form the store
+    }
+
     public Cookie attemptLogin(User user, String password) {
         String hashedPassword = DigestUtils.sha256Hex(password + user.getSalt());
         if (user.getPassword().equals(hashedPassword)) { // successfull attempt
@@ -40,7 +48,7 @@ public class SessionService {
                     .map(m -> m.getFiredepartment())
                     .orElse(null);
             String sid = generateSalt(32);
-            Cookie sessionCookie = generateCookie("sid", sid);
+            Cookie sessionCookie = generateCookie("sid", sid, 604800);
 
             Session s = new Session(sid, user, f);
             sessionRepository.save(s);
@@ -75,7 +83,7 @@ public class SessionService {
     Cookie generateSession(User u) {
         // create session cookie
         String sid = generateSalt(32);
-        Cookie cookie = generateCookie("sid", sid);
+        Cookie cookie = generateCookie("sid", sid, 604800); // a week
 
         // generate session
         Session s = new Session();
@@ -85,11 +93,12 @@ public class SessionService {
         return cookie;
     }
 
-    private Cookie generateCookie(String name, String value) {
+    private Cookie generateCookie(String name, String value, int maxAge) {
         Cookie cookie = new Cookie(name, value);
         cookie.setAttribute("SameSite", "Strict");
         cookie.setHttpOnly(true);
         cookie.setSecure(true);
+        cookie.setMaxAge(maxAge);
         cookie.setPath("/");
         return cookie;
     }
