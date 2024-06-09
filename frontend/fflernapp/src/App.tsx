@@ -12,6 +12,7 @@ import Courses from "./pages/public/Courses";
 import RegisterAccount from "./pages/public/RegisterAccount";
 import RegisterProfile from "./pages/public/RegisterProfile";
 import Login from "./pages/public/Login";
+import Logout from "./pages/private/Logout";
 
 import Vehicle from "./pages/private/Vehicle";
 import Home from "./pages/private/Home";
@@ -40,6 +41,7 @@ function App() {
               path="/profile/register/profile"
               element={<RegisterProfile />}
             />
+            <Route path="/profile/logout" element={<Logout updateAuthStatus={setAuth}/>} />
             <Route path="*" element={<Navigate replace to="/home" />} />
           </>
         ) : (
