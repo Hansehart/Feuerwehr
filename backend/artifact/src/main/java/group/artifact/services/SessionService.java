@@ -20,7 +20,7 @@ public class SessionService {
     @Autowired
     UsersInFiredepartmentRepository usersInFiredepartmentRepository;
 
-    private final String CHARACTERS = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!?=";
+    private final String CHARACTERS = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
 
     public Session auth(String sid) {
         Session s = sessionRepository.findById(sid).orElse(null);
