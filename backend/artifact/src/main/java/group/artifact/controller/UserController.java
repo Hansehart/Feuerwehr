@@ -46,6 +46,7 @@ public class UserController {
             if (cookie == null) {
                 return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null);
             }
+            System.out.println(cookie.toString());
             response.addCookie(cookie);
             return ResponseEntity.ok(new MessageDTO<>("successfully logged out"));
         } catch (Exception e) {
