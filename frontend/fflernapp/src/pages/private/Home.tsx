@@ -4,7 +4,7 @@ import { useLocation } from "react-router-dom";
 import MobileBody from "../../components/mobile/MobileBody";
 import MobileHeader from "../../components/mobile/MobileHeader";
 import MobileNavBar from "../../components/mobile/MobileNavBar";
-import ProgressBall from "../../components/ProgressBall";
+import ProgressBall from "../../components/general/ProgressBall";
 
 function Home() {
   const location = useLocation();

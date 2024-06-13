@@ -1,4 +1,4 @@
-import Table from "../Table";
+import Table from "../general/Table";
 import "./MobileVehicleViewStyle.css";
 import fireEngine from "/src/assets/fire-engine.png";
 
