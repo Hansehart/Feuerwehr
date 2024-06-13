@@ -31,6 +31,7 @@ function RegisterProfile() {
   }, []);
 
   useEffect(() => {
+    console.log(n)
     if (n) {
       if (n === "success") {
         setTextNotficator("Account erfolgreich erstellt!")
