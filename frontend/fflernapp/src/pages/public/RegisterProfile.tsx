@@ -1,10 +1,11 @@
 import { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
 import MobileBody from "../../components/mobile/MobileBody";
 import MobileHeader from "../../components/mobile/MobileHeader";
 import MobileNavBar from "../../components/mobile/MobileNavBar";
 import MobileForm from "../../components/mobile/MobileForm";
+import Notficator from "../../components/general/Notficator";
 
 interface Firedepartment {
   id: number;
@@ -14,7 +15,9 @@ interface Firedepartment {
 
 function RegisterProfile() {
   const navigate = useNavigate();
+  const { n } = useParams(); // n = notfication
   const [select, setSelect] = useState("");
+  const [showNotficator, setShowNotficator] = useState(false);
   const [firedepartments, setFiredepartments] = useState<Firedepartment[]>([]);
 
   useEffect(() => {
@@ -25,6 +28,15 @@ function RegisterProfile() {
         setFiredepartments(data);
       });
   }, []);
+
+  useEffect(() => {
+    if (n) {
+      setShowNotficator(true);
+      setTimeout(() => {
+        setShowNotficator(false);
+      }, 5000);
+    }
+  }, [])
 
   function register() {
     const username = document.getElementById("input-0") as HTMLInputElement;
@@ -105,6 +117,7 @@ function RegisterProfile() {
 
   return (
     <div>
+      {n && <Notficator/>}
       <MobileHeader name="Registrieren" />
       <MobileBody
         main={<MobileForm background={true} fields={fields} />}
