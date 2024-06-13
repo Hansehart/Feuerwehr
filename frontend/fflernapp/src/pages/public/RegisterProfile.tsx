@@ -18,6 +18,7 @@ function RegisterProfile() {
   const { n } = useParams(); // n = notfication
   const [select, setSelect] = useState("");
   const [showNotficator, setShowNotficator] = useState(false);
+  const [textNotficator, setTextNotficator] = useState("");
   const [firedepartments, setFiredepartments] = useState<Firedepartment[]>([]);
 
   useEffect(() => {
@@ -31,6 +32,9 @@ function RegisterProfile() {
 
   useEffect(() => {
     if (n) {
+      if (n === "success") {
+        setTextNotficator("Account erfolgreich erstellt!")
+      }
       setShowNotficator(true);
       setTimeout(() => {
         setShowNotficator(false);
@@ -117,7 +121,7 @@ function RegisterProfile() {
 
   return (
     <div>
-      {n && <Notficator/>}
+      {showNotficator && <Notficator text={textNotficator}/>}
       <MobileHeader name="Registrieren" />
       <MobileBody
         main={<MobileForm background={true} fields={fields} />}

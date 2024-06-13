@@ -1,15 +1,20 @@
 import { useEffect } from "react";
 import "./NotficatorStyle.css";
 
-export default function Notficator() {
+interface NotificatorProps {
+  text: string;
+}
+
+export default function Notficator({ text }: NotificatorProps) {
+
 
   useEffect(() => {
-    
+
   })
 
   return (
     <div className="window">
-      <h2>Test</h2>
+      <h2>{text}</h2>
     </div>
   );
 }
