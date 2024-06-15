@@ -1,10 +1,17 @@
 .box {
-    position: absolute;
+    position: fixed;
+    display: flex;
+    justify-content: center;
+
+    top: 10vh;
     width: 100vw;
 }
 
 .message {
     display: flex;
     justify-content: center;
-    width: 60vw
+    width: 60vw;
+
+    background-color: green
+    ;
 }
