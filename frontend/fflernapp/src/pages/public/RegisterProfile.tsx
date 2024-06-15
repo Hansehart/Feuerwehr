@@ -111,7 +111,7 @@ function RegisterProfile() {
 
 
   console.log(state)
-  console.log(state.notfication)
+  console.log(state.notification)
   return (
     <div>
       {state && state.notification && <Notficator text={state.notfication}/>}
