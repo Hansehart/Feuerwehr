@@ -6,9 +6,12 @@ interface NotificatorProps {
 
 export default function Notficator({ text }: NotificatorProps) {
   return (
-    <div className="box">
-      <div className="message">
-        <h2>{text}</h2>
+    <div className="window">
+      <div className="box">
+        <div className="text">
+        <h3>Success</h3>
+        <p>{text}</p>
+        </div>
       </div>
     </div>
   );

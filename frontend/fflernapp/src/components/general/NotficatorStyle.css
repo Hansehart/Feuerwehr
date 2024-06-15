@@ -1,17 +1,18 @@
-.box {
+.window {
     position: fixed;
     display: flex;
     justify-content: center;
 
     top: 10vh;
     width: 100vw;
+
+    z-index: 1;
 }
 
-.message {
+.box {
     display: flex;
     justify-content: center;
-    width: 60vw;
 
-    background-color: green
+    border-left: 1em solid #029902;
     ;
 }
