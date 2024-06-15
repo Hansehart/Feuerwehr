@@ -31,6 +31,18 @@ function RegisterProfile() {
       });
   }, []);
 
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      // remove the notification
+      const notificator = document.getElementById('notificator');
+      if (notificator) { // if the element was found
+        notificator.style.display = 'none';
+      }
+    }, 5000); // 5000 milliseconds = 5 seconds
+
+    return () => clearTimeout(timer); // cleanup the timer if the component unmounts
+  }, []);
+
 
   function register() {
     const username = document.getElementById("input-0") as HTMLInputElement;

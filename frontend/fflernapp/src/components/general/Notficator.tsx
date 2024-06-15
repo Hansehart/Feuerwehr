@@ -6,7 +6,7 @@ interface NotificatorProps {
 
 export default function Notficator({ text }: NotificatorProps) {
   return (
-    <div className="window">
+    <div className="window" id="notficator">
       <div className="box">
         <div className="text">
         <h3>Erfolg</h3>
