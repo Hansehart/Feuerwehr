@@ -1,4 +1,3 @@
-import { useEffect } from "react";
 import "./NotficatorStyle.css";
 
 interface NotificatorProps {
@@ -6,11 +5,6 @@ interface NotificatorProps {
 }
 
 export default function Notficator({ text }: NotificatorProps) {
-
-
-  useEffect(() => {
-
-  })
 
   return (
     <div className="window">

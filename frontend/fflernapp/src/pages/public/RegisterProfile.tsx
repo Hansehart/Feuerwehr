@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 
 import MobileBody from "../../components/mobile/MobileBody";
 import MobileHeader from "../../components/mobile/MobileHeader";
@@ -14,12 +14,13 @@ interface Firedepartment {
 }
 
 function RegisterProfile() {
+  const location = useLocation();
   const navigate = useNavigate();
-  const { n } = useParams(); // n = notfication
   const [select, setSelect] = useState("");
-  const [showNotficator, setShowNotficator] = useState(false);
-  const [textNotficator, setTextNotficator] = useState("");
   const [firedepartments, setFiredepartments] = useState<Firedepartment[]>([]);
+
+
+  const { state } = location;
 
   useEffect(() => {
     fetch("https://fflernapp.hansehart.de/api/service/receive/firedepartments")
@@ -30,18 +31,6 @@ function RegisterProfile() {
       });
   }, []);
 
-  useEffect(() => {
-    console.log(n)
-    if (n) {
-      if (n === "success") {
-        setTextNotficator("Account erfolgreich erstellt!")
-      }
-      setShowNotficator(true);
-      setTimeout(() => {
-        setShowNotficator(false);
-      }, 5000);
-    }
-  }, [])
 
   function register() {
     const username = document.getElementById("input-0") as HTMLInputElement;
@@ -122,7 +111,7 @@ function RegisterProfile() {
 
   return (
     <div>
-      {showNotficator && <Notficator text={textNotficator}/>}
+      {state && state.notfication && <Notficator text={state.notfication}/>}
       <MobileHeader name="Registrieren" />
       <MobileBody
         main={<MobileForm background={true} fields={fields} />}
