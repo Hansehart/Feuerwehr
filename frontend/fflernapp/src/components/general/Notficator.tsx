@@ -9,7 +9,7 @@ export default function Notficator({ text }: NotificatorProps) {
     <div className="window">
       <div className="box">
         <div className="text">
-        <h3>Success</h3>
+        <h3>Erfolg</h3>
         <p>{text}</p>
         </div>
       </div>

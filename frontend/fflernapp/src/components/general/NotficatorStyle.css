@@ -1,9 +1,10 @@
 .window {
     position: fixed;
     display: flex;
-    justify-content: center;
+    justify-content: right;
 
     top: 10vh;
+    right: 3vw;
     width: 100vw;
 
     z-index: 1;
@@ -13,6 +14,17 @@
     display: flex;
     justify-content: center;
 
+    border-radius: 1em;
     border-left: 1em solid #029902;
+    background-color: #8bdf84
     ;
+}
+
+.text {
+    padding-left: 1em;
+    padding-right: 1em;
+}
+
+.text p {
+    margin: 0
 }
