@@ -109,6 +109,9 @@ function RegisterProfile() {
     setSelect(view);
   };
 
+
+  console.log(state)
+  console.log(state.notfication)
   return (
     <div>
       {state && state.notification && <Notficator text={state.notfication}/>}
