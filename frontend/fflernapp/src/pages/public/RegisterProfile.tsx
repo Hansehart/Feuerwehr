@@ -109,12 +109,9 @@ function RegisterProfile() {
     setSelect(view);
   };
 
-
-  console.log(state)
-  console.log(state.notfication)
   return (
     <div>
-      {state && state.notfication && <Notficator text={state.notfication}/>}
+      {state && state.notification && <Notficator text={state.notfication}/>}
       <MobileHeader name="Registrieren" />
       <MobileBody
         main={<MobileForm background={true} fields={fields} />}
