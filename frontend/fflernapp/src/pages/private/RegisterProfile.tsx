@@ -5,7 +5,7 @@ import MobileBody from "../../components/mobile/MobileBody";
 import MobileHeader from "../../components/mobile/MobileHeader";
 import MobileNavBar from "../../components/mobile/MobileNavBar";
 import MobileForm from "../../components/mobile/MobileForm";
-import Notficator from "../../components/general/Notficator";
+import Notificator from "../../components/general/Notficator";
 
 interface Firedepartment {
   id: number;
@@ -127,7 +127,7 @@ function RegisterProfile() {
   console.log(1)
   return (
     <div>
-      {state && state.notification && <Notficator type="warning" text={state.notification}/>}
+      {state && state.notification && <Notificator type="warning" text={state.notification}/>}
       <MobileHeader name="Registrieren" />
       <MobileBody
         main={<MobileForm background={true} fields={fields} />}

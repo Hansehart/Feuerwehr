@@ -5,6 +5,12 @@ import MobileBody from "../../components/mobile/MobileBody";
 import MobileHeader from "../../components/mobile/MobileHeader";
 import MobileNavBar from "../../components/mobile/MobileNavBar";
 import MobileForm from "../../components/mobile/MobileForm";
+import Notificator from "../../components/general/Notficator";
+
+interface NotficatorProps {
+  type: string;
+  message: string;
+}
 
 function RegisterAccount({
   updateAuthStatus,
@@ -13,6 +19,7 @@ function RegisterAccount({
 }) {
   const navigate = useNavigate();
   const [select, setSelect] = useState("");
+  const [notification, setNotification] = useState<NotficatorProps | null>(null);
 
   function register() {
     // prevent the default form submission behavior
@@ -41,6 +48,8 @@ function RegisterAccount({
               state: { notification: "Account wurde erstellt!" },
             });
           });
+      } else if (response.status === 400) { // e-mail already taken
+        setNotification({type: "error", message: "Wähle eine andere E-Mail!"});
       }
     });
   }
@@ -88,6 +97,7 @@ function RegisterAccount({
 
   return (
     <div>
+      {notification && <Notificator type={notification.type} text={notification.message} />}
       <MobileHeader name="Registrieren" />
       <MobileBody
         main={<MobileForm background={true} fields={fields} />}

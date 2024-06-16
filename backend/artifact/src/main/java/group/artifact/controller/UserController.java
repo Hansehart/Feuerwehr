@@ -87,7 +87,6 @@ public class UserController {
     public ResponseEntity<String> saveAccount(@RequestBody User u, HttpServletResponse response) {
         try {
             Cookie cookie = userService.saveAccount(u);
-            System.out.println("cookie val: " + cookie);
             if (cookie == null) { // e-mail already taken
                 return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null);
             }
