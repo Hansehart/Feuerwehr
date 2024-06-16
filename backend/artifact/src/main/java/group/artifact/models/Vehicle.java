@@ -26,7 +26,7 @@ public class Vehicle {
     private String shortcut;
     private String name;
 
-    // vehicle specification
+    // details
     private String crew; // 0/1/8/9
     private Integer hp; // horse power
     private Integer waterCapacity;

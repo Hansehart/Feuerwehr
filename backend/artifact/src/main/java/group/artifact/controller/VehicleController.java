@@ -56,7 +56,6 @@ public class VehicleController {
             System.out.println("ERROR: " + e);
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);
         }
-
     }
 
     @GetMapping("/receive/vehicles")

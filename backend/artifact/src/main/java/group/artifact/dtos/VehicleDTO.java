@@ -11,4 +11,8 @@ public class VehicleDTO {
     private String radioVehicleNumber; // 01
     private String shortcut;
     private String name;
+
+    private String crew;
+    private Integer hp;
+    private Integer waterCapacity;
 }

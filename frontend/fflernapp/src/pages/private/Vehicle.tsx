@@ -9,6 +9,9 @@ import MobileVehicleView from "../../components/mobile/MobileVehicleView";
 interface Vehicle {
   name: string;
   shortcut: string;
+  crew: string;
+  hp: number;
+  waterCapacity: number;
 }
 
 interface StorageWithMaterial {
@@ -40,8 +43,8 @@ function Vehicle() {
       .then((data: StorageWithMaterial[]) => {
         const formattedData: string[][] = data.map((d) => [
           d.name,
-          d.stname,
-          String(d.quantity)
+          d.stname, // storage name
+          String(d.quantity),
         ]);
         setTableData(formattedData);
       })
@@ -73,7 +76,8 @@ function Vehicle() {
         main={
           <MobileVehicleView
             title={vehicle?.name || "lädt..."}
-            data={tableData ?? []}
+            material={tableData ?? []}
+            details={[]} //TODO
           />
         }
         marginToFooter="18vh"
