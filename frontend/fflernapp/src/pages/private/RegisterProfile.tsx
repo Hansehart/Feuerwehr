@@ -127,7 +127,7 @@ function RegisterProfile() {
   console.log(1)
   return (
     <div>
-      {state && state.notification && <Notficator type="success" text={state.notification}/>}
+      {state && state.notification && <Notficator type="warning" text={state.notification}/>}
       <MobileHeader name="Registrieren" />
       <MobileBody
         main={<MobileForm background={true} fields={fields} />}
