@@ -25,4 +25,9 @@ public class Vehicle {
     private String radioVehicleNumber;
     private String shortcut;
     private String name;
+
+    // vehicle specification
+    private String crew; // 0/1/8/9
+    private Integer hp; // horse power
+    private Integer waterCapacity;
 }
