@@ -17,12 +17,12 @@ export default function Notficator({ type, text }: NotificatorProps) {
         notificator.style.borderLeft = "1em solid #029902";
         setTitle("Erfolg");
       } else if (type === "warning") {
-        notificator.style.backgroundColor = "#d87811";
-        notificator.style.borderLeft = "1em solid #dfb984";
+        notificator.style.backgroundColor = "#dfb984";
+        notificator.style.borderLeft = "1em solid #d87811";
         setTitle("Warnung");
       } else if (type === "error") {
-        notificator.style.backgroundColor = "#c10f0f";
-        notificator.style.borderLeft = "1em solid #c15252";
+        notificator.style.backgroundColor = "#c15252";
+        notificator.style.borderLeft = "1em solid #c10f0f";
         setTitle("Fehler");
       }
     }
