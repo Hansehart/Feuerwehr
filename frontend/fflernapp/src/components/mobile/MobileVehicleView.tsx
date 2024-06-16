@@ -23,7 +23,7 @@ export default function MobileVehicleView({ title, data }: MobileVehicleView) {
         <Table header={["Gerät", "Ort", "Stk."]} data={data} />
       </section>
       <section className="specification">
-        <h3>Technische Daten</h3>
+        <h3>Allgemeine Daten</h3>
         <Table header={["Spezifikation", "Wert"]} data={[]} />
       </section>
     </div>
