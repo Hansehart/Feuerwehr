@@ -10,7 +10,7 @@ import Exercise from "./pages/public/Exercise";
 import Regulations from "./pages/public/Regulations";
 import Courses from "./pages/public/Courses";
 import RegisterAccount from "./pages/public/RegisterAccount";
-import RegisterProfile from "./pages/public/RegisterProfile";
+import RegisterProfile from "./pages/private/RegisterProfile";
 import Login from "./pages/public/Login";
 import Logout from "./pages/private/Logout";
 

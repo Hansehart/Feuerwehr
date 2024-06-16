@@ -34,7 +34,7 @@ function RegisterProfile() {
   useEffect(() => {
     const timer = setTimeout(() => {
       // remove the notification
-      const notificator = document.getElementById('notificator');
+      const notificator = document.getElementById('notificator-window');
       if (notificator) { // if the element was found
         notificator.style.display = 'none';
       }
@@ -127,7 +127,7 @@ function RegisterProfile() {
   console.log(1)
   return (
     <div>
-      {state && state.notification && <Notficator text={state.notification}/>}
+      {state && state.notification && <Notficator type="success" text={state.notification}/>}
       <MobileHeader name="Registrieren" />
       <MobileBody
         main={<MobileForm background={true} fields={fields} />}
