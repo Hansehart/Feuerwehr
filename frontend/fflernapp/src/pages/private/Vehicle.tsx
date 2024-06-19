@@ -22,11 +22,13 @@ interface StorageWithMaterial {
   description: string;
 }
 
+
 function Vehicle() {
   const navigate = useNavigate();
   const [select, setSelect] = useState("");
   const [vehicle, setVehicle] = useState<Vehicle | null>(null);
-  const [tableData, setTableData] = useState<string[][]>();
+  const [detailsData, setDetailsData] = useState<string[][]>();
+  const [materialData, setMaterialData] = useState<string[][]>();
   const { rvt, rvn } = useParams();
 
   useEffect(() => {
@@ -34,7 +36,13 @@ function Vehicle() {
       `https://fflernapp.hansehart.de/api/service/receive/vehicle?rvt=${rvt}&rvn=${rvn}`
     )
       .then((response) => response.json())
-      .then((data) => setVehicle(data))
+      .then((data: Vehicle) => {
+        setVehicle(data);
+        const formattedData: string[][] = [
+          [String(data.hp), data.crew, String(data.waterCapacity)],
+        ];
+        setDetailsData(formattedData);
+      })
       .catch((error) => console.error("Error fetching data: ", error));
     fetch(
       `https://fflernapp.hansehart.de/api/service/receive/vehicle/storages?rvt=${rvt}&rvn=${rvn}`
@@ -46,7 +54,7 @@ function Vehicle() {
           d.stname, // storage name
           String(d.quantity),
         ]);
-        setTableData(formattedData);
+        setMaterialData(formattedData);
       })
       .catch((error) => console.error("Error fetching data: ", error));
   }, []);
@@ -76,8 +84,8 @@ function Vehicle() {
         main={
           <MobileVehicleView
             title={vehicle?.name || "lädt..."}
-            material={tableData ?? []}
-            details={[]} //TODO
+            material={materialData ?? []}
+            details={detailsData ?? []}
           />
         }
         marginToFooter="18vh"
