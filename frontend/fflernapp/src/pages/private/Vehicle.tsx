@@ -42,6 +42,7 @@ function Vehicle() {
           [String(data.hp), data.crew, String(data.waterCapacity)],
         ];
         setDetailsData(formattedData);
+        console.log(formattedData);
       })
       .catch((error) => console.error("Error fetching data: ", error));
     fetch(
