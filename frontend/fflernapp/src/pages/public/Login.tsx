@@ -5,6 +5,12 @@ import MobileBody from "../../components/mobile/MobileBody";
 import MobileHeader from "../../components/mobile/MobileHeader";
 import MobileNavBar from "../../components/mobile/MobileNavBar";
 import MobileForm from "../../components/mobile/MobileForm";
+import Notificator from "../../components/general/Notficator";
+
+interface NotficatorProps {
+  type: string;
+  message: string;
+}
 
 function Login({
   updateAuthStatus,
@@ -15,6 +21,9 @@ function Login({
   const [select, setSelect] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [notification, setNotification] = useState<NotficatorProps | null>(
+    null
+  );
 
   function login() {
     const formData = {
@@ -39,6 +48,12 @@ function Login({
             updateAuthStatus(data.msg);
             navigate("/home");
           });
+      } else if (response.status === 400) {
+        // unknown account
+        setNotification({
+          type: "error",
+          message: "E-Mail oder Passwort fehlerhaft",
+        });
       }
     });
   }
@@ -48,13 +63,13 @@ function Login({
       label: "E-Mail",
       type: "email",
       onChange: (e: React.ChangeEvent<HTMLInputElement>) =>
-        setEmail(e.target.value) 
+        setEmail(e.target.value),
     },
     {
       label: "Passwort",
       type: "password",
       onChange: (e: React.ChangeEvent<HTMLInputElement>) =>
-        setPassword(e.target.value)
+        setPassword(e.target.value),
     },
     { value: "Anmelden", type: "button", onClick: login },
   ];
@@ -79,6 +94,9 @@ function Login({
 
   return (
     <div>
+      {notification && (
+        <Notificator type={notification.type} text={notification.message} />
+      )}
       <MobileHeader name="Login" />
       <MobileBody
         main={<MobileForm background={true} fields={fields} />}

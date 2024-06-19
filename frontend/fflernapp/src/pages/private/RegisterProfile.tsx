@@ -122,9 +122,6 @@ function RegisterProfile() {
   };
 
 
-  console.log(state)
-  console.log(state.notification)
-  console.log(1)
   return (
     <div>
       {state && state.notification && <Notificator type="success" text={state.notification}/>}
