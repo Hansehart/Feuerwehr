@@ -109,6 +109,9 @@ public class VehicleService {
         v.setShortcut(vehicle.getShortcut());
         v.setRadioVehicleType(vehicle.getRadioVehicleType());
         v.setRadioVehicleNumber(vehicle.getRadioVehicleNumber());
+        v.setCrew(vehicle.getCrew());
+        v.setHp(vehicle.getHp());
+        v.setWaterCapacity(vehicle.getWaterCapacity())
         return v;
     }
 
