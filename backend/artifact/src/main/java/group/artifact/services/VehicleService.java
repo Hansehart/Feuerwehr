@@ -111,7 +111,7 @@ public class VehicleService {
         v.setRadioVehicleNumber(vehicle.getRadioVehicleNumber());
         v.setCrew(vehicle.getCrew());
         v.setHp(vehicle.getHp());
-        v.setWaterCapacity(vehicle.getWaterCapacity())
+        v.setWaterCapacity(vehicle.getWaterCapacity());
         return v;
     }
 
