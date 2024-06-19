@@ -36,7 +36,7 @@ function Vehicle() {
       `https://fflernapp.hansehart.de/api/service/receive/vehicle?rvt=${rvt}&rvn=${rvn}`
     )
       .then((response) => response.json())
-      .then((data: Vehicle[]) => {
+      .then((data: Vehicle) => {
         setVehicle(data);
         const formattedData: string[][] = [
           [String(data.hp), data.crew, String(data.waterCapacity)],
