@@ -38,6 +38,7 @@ function App() {
           <>
             <Route path="/home" element={<Home />} />
             <Route path="/main/vehicle/:rvt/:rvn" element={<Vehicle />} />
+            <Route path="/profile/settings" element={<Settings/>}/>
             <Route
               path="/profile/register/profile"
               element={<RegisterProfile />}
@@ -48,7 +49,6 @@ function App() {
         ) : (
           <>
             <Route path="/home" element={<PublicHome />} />
-            <Route path="/profile/settings" element={<Settings/>}/>
             <Route path="/main/vehicle/:rvt/:rvn" element={<Vehicle />} />
             <Route
               path="/profile/register/account"
