@@ -38,11 +38,18 @@ function Vehicle() {
       .then((response) => response.json())
       .then((data: Vehicle) => {
         setVehicle(data);
-        const formattedData: string[][] = [
-          ["Besatzung", data.crew],
-          ["PS", String(data.hp)],
-          ["Löschwasser", String(data.waterCapacity) + "L"]
-         ].filter(([_, value]) => value !== '' && value !== null && value !== undefined)
+        const formattedData: string[][] = [];
+
+        if (data.crew) {
+          formattedData.push(["Besatzung", data.crew]);
+        }
+        if (data.hp) {
+          formattedData.push(["PS", String(data.hp)]);
+        }
+        if (data.waterCapacity) {
+          formattedData.push(["Löschwasser", String(data.waterCapacity) + "L"]);
+        }
+      
         setDetailsData(formattedData);
       })
       .catch((error) => console.error("Error fetching data: ", error));
