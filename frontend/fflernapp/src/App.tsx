@@ -17,6 +17,7 @@ import Logout from "./pages/private/Logout";
 import Vehicle from "./pages/private/Vehicle";
 import Home from "./pages/private/Home";
 import { useEffect, useState } from "react";
+import Settings from "./pages/private/Settings";
 
 function App() {
   const [auth, setAuth] = useState<boolean>(false);
@@ -47,6 +48,7 @@ function App() {
         ) : (
           <>
             <Route path="/home" element={<PublicHome />} />
+            <Route path="/profile/settings" element={<Settings/>}/>
             <Route path="/main/vehicle/:rvt/:rvn" element={<Vehicle />} />
             <Route
               path="/profile/register/account"

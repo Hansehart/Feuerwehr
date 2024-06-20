@@ -5,22 +5,9 @@ import MobileBody from "../../components/mobile/MobileBody";
 import MobileHeader from "../../components/mobile/MobileHeader";
 import MobileNavBar from "../../components/mobile/MobileNavBar";
 
-function Logout({
-  updateAuthStatus,
-}: {
-  updateAuthStatus: (auth: boolean) => void;
-}) {
+function Settings() {
   const navigate = useNavigate();
   const [select, setSelect] = useState("");
-
-
-    fetch("https://fflernapp.hansehart.de/api/service/logout", {
-      credentials: "include",
-      method: "GET",
-    }).then(() => {
-      updateAuthStatus(false);
-      navigate("/home");
-    });
 
   useEffect(() => {
     switch (select) {
@@ -42,14 +29,11 @@ function Logout({
 
   return (
     <div>
-      <MobileHeader name="Logout" />
-      <MobileBody
-        main={<h2>Bitte warten Sie einen Moment.</h2>}
-        marginToFooter="15vh"
-      />
-      <MobileNavBar changeView={changeView} preset="profile" />
+      <MobileHeader name="Karte" />
+      <MobileBody />
+      <MobileNavBar changeView={changeView} preset="department" />
     </div>
   );
 }
 
-export default Logout;
+export default Settings;
