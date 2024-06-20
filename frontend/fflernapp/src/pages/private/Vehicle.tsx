@@ -42,7 +42,7 @@ function Vehicle() {
           ["Besatzung", data.crew],
           ["PS", String(data.hp)],
           ["Löschwasser", String(data.waterCapacity) + "L"]
-         ]
+         ].filter(([_, value]) => value !== '' && value !== null && value !== undefined)
         setDetailsData(formattedData);
       })
       .catch((error) => console.error("Error fetching data: ", error));
