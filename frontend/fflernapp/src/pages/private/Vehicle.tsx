@@ -39,9 +39,9 @@ function Vehicle() {
       .then((data: Vehicle) => {
         setVehicle(data);
         const formattedData: string[][] = [
-          ["besatzung", data.crew],
-          ["hp", String(data.hp)],
-          ["waterCapacity", String(data.waterCapacity)]
+          ["Besatzung", data.crew],
+          ["PS", String(data.hp)],
+          ["Löschwasser", String(data.waterCapacity) + "L"]
          ]
         setDetailsData(formattedData);
       })
