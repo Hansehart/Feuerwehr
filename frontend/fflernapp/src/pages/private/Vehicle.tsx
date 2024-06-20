@@ -86,9 +86,6 @@ function Vehicle() {
     setSelect(view);
   };
 
-  console.log(materialData)
-  console.log(detailsData);
-
   return (
     <div>
       <MobileHeader name="Fahrzeuge" />
