@@ -39,8 +39,10 @@ function Vehicle() {
       .then((data: Vehicle) => {
         setVehicle(data);
         const formattedData: string[][] = [
-          [String(data.hp), data.crew, String(data.waterCapacity)],
-        ];
+          ["besatzung", data.crew],
+          ["hp", String(data.hp)],
+          ["waterCapacity", String(data.waterCapacity)]
+         ]
         setDetailsData(formattedData);
       })
       .catch((error) => console.error("Error fetching data: ", error));
