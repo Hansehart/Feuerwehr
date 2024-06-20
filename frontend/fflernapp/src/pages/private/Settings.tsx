@@ -29,9 +29,9 @@ function Settings() {
 
   return (
     <div>
-      <MobileHeader name="Karte" />
+      <MobileHeader name="Einstellungen" />
       <MobileBody />
-      <MobileNavBar changeView={changeView} preset="department" />
+      <MobileNavBar changeView={changeView} preset="profile" />
     </div>
   );
 }
