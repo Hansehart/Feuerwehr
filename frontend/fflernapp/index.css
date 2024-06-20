@@ -16,6 +16,14 @@ h3 {
   font-size: 4vh;
 }
 
+th {
+  font-size: 4vh;
+}
+
+td {
+  font-size: 3vh;
+}
+
 p {
   font-size: 1.5em;
 }
