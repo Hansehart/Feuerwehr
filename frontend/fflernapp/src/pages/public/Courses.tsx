@@ -31,7 +31,7 @@ function Courses() {
   return (
     <div>
       <MobileHeader name="Lehrgänge" />
-      <MobileBody main={<Maintenance/>}/>
+      <MobileBody main={<Maintenance/>} marginToFooter="15vh"/>
       <MobileNavBar changeView={changeView} preset="learn" />
     </div>
   );
