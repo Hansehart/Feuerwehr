@@ -31,7 +31,7 @@ function Regulations() {
   return (
     <div>
       <MobileHeader name="Vorschriften" />
-      <MobileBody main={<Maintenance/>} marginToFooter="15vh"/>
+      <MobileBody main={<Maintenance/>} marginToFooter="18vh"/>
       <MobileNavBar changeView={changeView} preset="learn" />
     </div>
   );

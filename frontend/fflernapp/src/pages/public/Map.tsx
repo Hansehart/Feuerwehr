@@ -31,7 +31,7 @@ function Map() {
   return (
     <div>
       <MobileHeader name="Karte" />
-      <MobileBody main={<Maintenance/>} marginToFooter="15vh"/>
+      <MobileBody main={<Maintenance/>} marginToFooter="18vh"/>
       <MobileNavBar changeView={changeView} preset="department" />
     </div>
   );

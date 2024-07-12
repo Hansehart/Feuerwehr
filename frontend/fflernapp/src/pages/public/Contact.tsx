@@ -31,7 +31,7 @@ function Contact() {
   return (
     <div>
       <MobileHeader name="Kontakt" />
-      <MobileBody main={<Maintenance/>} marginToFooter="15vh"/>
+      <MobileBody main={<Maintenance/>} marginToFooter="18vh"/>
       <MobileNavBar changeView={changeView} preset="profile" />
     </div>
   );
