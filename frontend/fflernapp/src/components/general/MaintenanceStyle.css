@@ -16,7 +16,7 @@
 }
 
 #maintenance-box #text {
-    grid-area: 1/4/2/3;
+    grid-area: 1/2/3/4;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -24,6 +24,6 @@
 }
 
 #maintenance-icon {
-    grid-area: 3/4/3/4;
+    grid-area: 3/3/4/4;
     height: 20vh;
 }
