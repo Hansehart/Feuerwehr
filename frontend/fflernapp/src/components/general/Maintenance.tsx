@@ -26,7 +26,7 @@ export default function Maintenance() {
 
   return (
     <div className="box">
-      <h2>Wartungsarbeiten</h2>
+      <h3>Wartungsarbeiten</h3>
       <p>Diese Seite befindet sich noch im Umbau. Bitte probiere es zu einem anderen Zeitpunkt erneut.</p>
       <p>Du wirst in {timer} Sekunden zurückgeleitet!</p>
       <div className="icon">
