@@ -4,7 +4,8 @@ import "./MaintenanceStyle.css";
 import RoundedIcon from "./RoundedIcon";
 
 export default function Maintenance() {
-  const [timer, setTimer] = useState(5);
+  const initalTimer = 1000;
+  const [timer, setTimer] = useState(initalTimer);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -15,7 +16,7 @@ export default function Maintenance() {
     const timeout = setTimeout(() => {
       const newPath = window.location.pathname.split("/").slice(0, -1).join("/");
       navigate(newPath);
-    }, 30000000);
+    }, initalTimer * 1000);
 
     return () => {
       clearInterval(countdown);
