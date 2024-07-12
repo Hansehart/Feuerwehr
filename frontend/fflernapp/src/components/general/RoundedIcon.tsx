@@ -3,6 +3,7 @@ import firefighter from "/src/assets/icons/firefighter.png";
 import vehicleB from "/src/assets/icons/firefighter-vehicle-blue.png";
 import vehicleR from "/src/assets/icons/firefighter-vehicle-red.png";
 import book from "/src/assets/icons/book.png";
+import pylons from "/src/assets/icons/pylons.png"
 
 interface RoundedIconProps {
   icon: string;
@@ -27,6 +28,8 @@ function getIconPath(icon: string) {
       return vehicleR;
     case "book":
       return book;
+    case "pylons":
+      return pylons;
   }
 }
 

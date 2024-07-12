@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./MaintenanceStyle.css";
+import RoundedIcon from "./RoundedIcon";
 
 export default function Maintenance() {
   const [timer, setTimer] = useState(5);
@@ -27,6 +28,7 @@ export default function Maintenance() {
       <h2>Wartungsarbeiten</h2>
       <p>Diese Seite befindet sich noch im Umbau. Bitte probiere es zu einem anderen Zeitpunkt erneut.</p>
       <p>Du wirst in {timer} Sekunden zurückgeleitet!</p>
+      <RoundedIcon icon="pylons" bgColor="orange"/>
     </div>
   );
 }
