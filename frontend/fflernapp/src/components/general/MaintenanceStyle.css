@@ -16,7 +16,7 @@
 }
 
 #maintenance-box #text {
-    grid-area: 1/2/3/4;
+    grid-area: 2/1/4/3;
     display: flex;
     justify-content: center;
     align-items: center;
