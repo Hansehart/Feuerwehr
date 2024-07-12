@@ -25,10 +25,10 @@ export default function Maintenance() {
 
   return (
     <div className="box">
-      <h2>Wartungsarbeiten</h2>
+      <h2>TWartungsarbeiten</h2>
       <p>Diese Seite befindet sich noch im Umbau. Bitte probiere es zu einem anderen Zeitpunkt erneut.</p>
       <p>Du wirst in {timer} Sekunden zurückgeleitet!</p>
-      <RoundedIcon icon="pylons" bgColor="orange"/>
+      <RoundedIcon icon="pylon" bgColor="orange"/>
     </div>
   );
 }

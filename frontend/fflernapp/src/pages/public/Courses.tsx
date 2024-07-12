@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import MobileBody from "../../components/mobile/MobileBody";
 import MobileHeader from "../../components/mobile/MobileHeader";
 import MobileNavBar from "../../components/mobile/MobileNavBar";
+import Maintenance from "../../components/general/Maintenance";
 
 function Courses() {
   const navigate = useNavigate();
@@ -30,7 +31,7 @@ function Courses() {
   return (
     <div>
       <MobileHeader name="Lehrgänge" />
-      <MobileBody/>
+      <MobileBody main={<Maintenance/>}/>
       <MobileNavBar changeView={changeView} preset="learn" />
     </div>
   );

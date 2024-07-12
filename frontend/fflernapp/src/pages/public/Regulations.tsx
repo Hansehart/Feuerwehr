@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import MobileBody from "../../components/mobile/MobileBody";
 import MobileHeader from "../../components/mobile/MobileHeader";
 import MobileNavBar from "../../components/mobile/MobileNavBar";
+import Maintenance from "../../components/general/Maintenance";
 
 function Regulations() {
   const navigate = useNavigate();
@@ -30,7 +31,7 @@ function Regulations() {
   return (
     <div>
       <MobileHeader name="Vorschriften" />
-      <MobileBody/>
+      <MobileBody main={<Maintenance/>}/>
       <MobileNavBar changeView={changeView} preset="learn" />
     </div>
   );
