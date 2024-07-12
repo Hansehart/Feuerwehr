@@ -18,6 +18,7 @@ import Vehicle from "./pages/private/Vehicle";
 import Home from "./pages/private/Home";
 import { useEffect, useState } from "react";
 import Settings from "./pages/private/Settings";
+import Contact from "./pages/public/Contact";
 
 function App() {
   const [auth, setAuth] = useState<boolean>(false);
@@ -58,10 +59,12 @@ function App() {
             <Route path="*" element={<Navigate replace to="/home" />} />
           </>
         )}
+        <Route path="/contact" element={<Contact   />} />
+        <Route path="/main/map" element={<Map />} />
+
         <Route path="/learn/exercises" element={<Exercise />} />
         <Route path="/learn/regulations" element={<Regulations />} />
         <Route path="/learn/courses" element={<Courses />} />
-        <Route path="/main/map" element={<Map />} />
       </Routes>
     </Router>
   );
