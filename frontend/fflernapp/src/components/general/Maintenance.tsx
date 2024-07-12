@@ -15,7 +15,7 @@ export default function Maintenance() {
     const timeout = setTimeout(() => {
       const newPath = window.location.pathname.split("/").slice(0, -1).join("/");
       navigate(newPath);
-    }, 5000);
+    }, 30000000);
 
     return () => {
       clearInterval(countdown);
@@ -25,7 +25,7 @@ export default function Maintenance() {
 
   return (
     <div className="box">
-      <h2>TWartungsarbeiten</h2>
+      <h2>Wartungsarbeiten</h2>
       <p>Diese Seite befindet sich noch im Umbau. Bitte probiere es zu einem anderen Zeitpunkt erneut.</p>
       <p>Du wirst in {timer} Sekunden zurückgeleitet!</p>
       <RoundedIcon icon="pylon" bgColor="orange"/>
