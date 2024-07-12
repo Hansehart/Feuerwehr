@@ -39,7 +39,7 @@ export default function Maintenance() {
         <p>Du wirst in {timer} Sekunden zurückgeleitet!</p>
       </div>
       <div id="maintenance-icon">
-        <RoundedIcon icon="pylon" stroke="#ff7a00" bgColor="white" />
+        <RoundedIcon icon="pylon" stroke="#ff7a00" strokeWidth="5" bgColor="white" />
       </div>
     </div>
   );
