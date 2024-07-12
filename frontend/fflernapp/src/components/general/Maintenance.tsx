@@ -6,7 +6,7 @@ import RoundedIcon from "./RoundedIcon";
 import MobileButton from "../mobile/MobileButton";
 
 export default function Maintenance() {
-  const initalTimer = 5;
+  const initalTimer = 500;
   const [timer, setTimer] = useState(initalTimer);
   const navigate = useNavigate();
 
