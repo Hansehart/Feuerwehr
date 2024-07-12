@@ -1,7 +1,7 @@
 #maintenance-box {
     display: grid;
     grid-template-columns: 3fr 1fr;
-    grid-template-rows: 1fr 4fr 1fr;
+    grid-template-rows: repeat(3, 1fr);
 
     margin: 10vw;
     border: 5px solid #ff7a00;
