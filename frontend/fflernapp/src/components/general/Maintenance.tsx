@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import "./MaintenanceStyle.css";
 
 import RoundedIcon from "./RoundedIcon";
+import MobileButton from "../mobile/MobileButton";
 
 export default function Maintenance() {
   const initalTimer = 1000;
@@ -37,6 +38,9 @@ export default function Maintenance() {
           anderen Zeitpunkt erneut.
         </p>
         <p>Du wirst in {timer} Sekunden zurückgeleitet!</p>
+      </div>
+      <div id="maintenance-contact">
+        <MobileButton text="Kontakt" path="" bgColor="ff7a00"/>
       </div>
       <div id="maintenance-icon">
         <RoundedIcon icon="pylon" stroke="#ff7a00" strokeWidth="3" bgColor="white" />
