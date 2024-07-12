@@ -30,6 +30,7 @@ export default function Maintenance() {
   }, [navigate]);
 
   return (
+    <div id="maintenance-window">
     <div id="maintenance-box">
       <h3>Wartungsarbeiten</h3>
       <div id="text">
@@ -50,6 +51,7 @@ export default function Maintenance() {
           bgColor="white"
         />
       </div>
+    </div>
     </div>
   );
 }

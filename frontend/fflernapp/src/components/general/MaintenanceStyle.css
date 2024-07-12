@@ -1,3 +1,10 @@
+#maintenance-window {
+    height: 70vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 #maintenance-box {
     display: grid;
     grid-template-columns: 3fr 1fr;
