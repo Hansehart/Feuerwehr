@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./MaintenanceStyle.css";
+
 import RoundedIcon from "./RoundedIcon";
 
 export default function Maintenance() {
@@ -25,7 +26,7 @@ export default function Maintenance() {
   }, [navigate]);
 
   return (
-    <div className="box">
+    <div id="maintenance-box">
       <h3>Wartungsarbeiten</h3>
       <p>Diese Seite befindet sich noch im Umbau. Bitte probiere es zu einem anderen Zeitpunkt erneut.</p>
       <p>Du wirst in {timer} Sekunden zurückgeleitet!</p>
