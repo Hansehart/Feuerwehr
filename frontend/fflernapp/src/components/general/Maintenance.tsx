@@ -29,7 +29,9 @@ export default function Maintenance() {
       <h2>Wartungsarbeiten</h2>
       <p>Diese Seite befindet sich noch im Umbau. Bitte probiere es zu einem anderen Zeitpunkt erneut.</p>
       <p>Du wirst in {timer} Sekunden zurückgeleitet!</p>
-      <RoundedIcon icon="pylon" bgColor="orange"/>
+      <div className="icon">
+      <RoundedIcon icon="pylon" stroke="ff7a00" bgColor="white"/>
+      </div>
     </div>
   );
 }
