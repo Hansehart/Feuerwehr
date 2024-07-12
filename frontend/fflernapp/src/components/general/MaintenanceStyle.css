@@ -15,6 +15,13 @@
     background-color: #ff7a00;
 }
 
+#maintenance-box #text {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
 #maintenance-icon {
     grid-area: 3/4/3/4;
     height: 20vh;

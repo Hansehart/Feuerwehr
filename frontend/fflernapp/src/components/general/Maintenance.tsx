@@ -15,7 +15,10 @@ export default function Maintenance() {
     }, 1000);
 
     const timeout = setTimeout(() => {
-      const newPath = window.location.pathname.split("/").slice(0, -1).join("/");
+      const newPath = window.location.pathname
+        .split("/")
+        .slice(0, -1)
+        .join("/");
       navigate(newPath);
     }, initalTimer * 1000);
 
@@ -28,10 +31,15 @@ export default function Maintenance() {
   return (
     <div id="maintenance-box">
       <h3>Wartungsarbeiten</h3>
-      <p>Diese Seite befindet sich noch im Umbau. Bitte probiere es zu einem anderen Zeitpunkt erneut.</p>
-      <p>Du wirst in {timer} Sekunden zurückgeleitet!</p>
+      <div id="text">
+        <p>
+          Diese Seite befindet sich noch im Umbau. Bitte probiere es zu einem
+          anderen Zeitpunkt erneut.
+        </p>
+        <p>Du wirst in {timer} Sekunden zurückgeleitet!</p>
+      </div>
       <div id="maintenance-icon">
-      <RoundedIcon icon="pylon" stroke="#ff7a00" bgColor="white"/>
+        <RoundedIcon icon="pylon" stroke="#ff7a00" bgColor="white" />
       </div>
     </div>
   );
