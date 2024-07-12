@@ -21,7 +21,7 @@ export default function Notficator({ type, text }: NotificatorProps) {
         notificator.style.borderLeft = "1em solid #d87811";
         setTitle("Warnung");
       } else if (type === "error") {
-        notificator.style.backgroundColor = "#e299999";
+        notificator.style.backgroundColor = "#e29999";
         notificator.style.borderLeft = "1em solid #ea4138";
         setTitle("Fehler");
       }
