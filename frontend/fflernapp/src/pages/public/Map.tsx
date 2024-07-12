@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import MobileBody from "../../components/mobile/MobileBody";
 import MobileHeader from "../../components/mobile/MobileHeader";
 import MobileNavBar from "../../components/mobile/MobileNavBar";
+import Maintenance from "../../components/general/Maintenance";
 
 function Map() {
   const navigate = useNavigate();
@@ -30,7 +31,7 @@ function Map() {
   return (
     <div>
       <MobileHeader name="Karte" />
-      <MobileBody />
+      <MobileBody main={<Maintenance/>}/>
       <MobileNavBar changeView={changeView} preset="department" />
     </div>
   );
