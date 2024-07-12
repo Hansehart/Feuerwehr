@@ -6,7 +6,7 @@ import RoundedIcon from "./RoundedIcon";
 import MobileButton from "../mobile/MobileButton";
 
 export default function Maintenance() {
-  const initalTimer = 5;
+  const initalTimer = 1000;
   const [timer, setTimer] = useState(initalTimer);
   const navigate = useNavigate();
 
@@ -39,7 +39,7 @@ export default function Maintenance() {
         </p>
         <p>Du wirst in {timer} Sekunden zurückgeleitet!</p>
         <div id="contact">
-          <MobileButton text="Kontakt" path="/contact" bgColor="#ff7a00" />
+          <MobileButton text="Kontakt" path="/profile/contact" bgColor="#ff7a00" />
         </div>
       </div>
       <div id="maintenance-icon">

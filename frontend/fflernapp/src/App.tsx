@@ -65,12 +65,13 @@ function App() {
             <Route path="*" element={<Navigate replace to="/home" />} />
           </>
         )}
-        <Route path="/contact" element={<Contact />} />
         <Route path="/main/map" element={<Map />} />
 
         <Route path="/learn/exercises" element={<Exercise />} />
         <Route path="/learn/regulations" element={<Regulations />} />
         <Route path="/learn/courses" element={<Courses />} />
+
+        <Route path="/profile/contact" element={<Contact />} />
       </Routes>
     </Router>
   );
