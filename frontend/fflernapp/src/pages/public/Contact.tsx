@@ -4,7 +4,6 @@ import { useNavigate } from "react-router-dom";
 import MobileBody from "../../components/mobile/MobileBody";
 import MobileHeader from "../../components/mobile/MobileHeader";
 import MobileNavBar from "../../components/mobile/MobileNavBar";
-import MobileQuizCard from "../../components/mobile/MobileQuizCard";
 import Maintenance from "../../components/general/Maintenance";
 
 function Contact() {

@@ -39,12 +39,15 @@ function App() {
           <>
             <Route path="/home" element={<Home />} />
             <Route path="/main/vehicle/:rvt/:rvn" element={<Vehicle />} />
-            <Route path="/profile/settings" element={<Settings/>}/>
+            <Route path="/profile/settings" element={<Settings />} />
             <Route
               path="/profile/register/profile"
               element={<RegisterProfile />}
             />
-            <Route path="/profile/logout" element={<Logout updateAuthStatus={setAuth}/>} />
+            <Route
+              path="/profile/logout"
+              element={<Logout updateAuthStatus={setAuth} />}
+            />
             <Route path="*" element={<Navigate replace to="/home" />} />
           </>
         ) : (
@@ -55,11 +58,14 @@ function App() {
               path="/profile/register/account"
               element={<RegisterAccount updateAuthStatus={setAuth} />}
             />
-            <Route path="/profile/login" element={<Login updateAuthStatus={setAuth}/>} />
+            <Route
+              path="/profile/login"
+              element={<Login updateAuthStatus={setAuth} />}
+            />
             <Route path="*" element={<Navigate replace to="/home" />} />
           </>
         )}
-        <Route path="/contact" element={<Contact   />} />
+        <Route path="/contact" element={<Contact />} />
         <Route path="/main/map" element={<Map />} />
 
         <Route path="/learn/exercises" element={<Exercise />} />
