@@ -30,7 +30,7 @@ export default function Maintenance() {
       <p>Diese Seite befindet sich noch im Umbau. Bitte probiere es zu einem anderen Zeitpunkt erneut.</p>
       <p>Du wirst in {timer} Sekunden zurückgeleitet!</p>
       <div className="icon">
-      <RoundedIcon icon="pylon" stroke="ff7a00" bgColor="white"/>
+      <RoundedIcon icon="pylon" stroke="#ff7a00" bgColor="white"/>
       </div>
     </div>
   );
