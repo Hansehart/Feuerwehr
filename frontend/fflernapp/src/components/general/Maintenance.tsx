@@ -38,12 +38,17 @@ export default function Maintenance() {
           anderen Zeitpunkt erneut.
         </p>
         <p>Du wirst in {timer} Sekunden zurückgeleitet!</p>
-      </div>
-      <div id="maintenance-contact">
-        <MobileButton text="Kontakt" path="" bgColor="ff7a00"/>
+        <div id="contact">
+          <MobileButton text="Kontakt" path="" bgColor="#ff7a00" />
+        </div>
       </div>
       <div id="maintenance-icon">
-        <RoundedIcon icon="pylon" stroke="#ff7a00" strokeWidth="3" bgColor="white" />
+        <RoundedIcon
+          icon="pylon"
+          stroke="#ff7a00"
+          strokeWidth="3"
+          bgColor="white"
+        />
       </div>
     </div>
   );
