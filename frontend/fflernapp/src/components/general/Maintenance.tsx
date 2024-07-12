@@ -30,7 +30,7 @@ export default function Maintenance() {
       <h3>Wartungsarbeiten</h3>
       <p>Diese Seite befindet sich noch im Umbau. Bitte probiere es zu einem anderen Zeitpunkt erneut.</p>
       <p>Du wirst in {timer} Sekunden zurückgeleitet!</p>
-      <div className="icon">
+      <div id="maintenance-icon">
       <RoundedIcon icon="pylon" stroke="#ff7a00" bgColor="white"/>
       </div>
     </div>
