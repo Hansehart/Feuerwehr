@@ -46,8 +46,6 @@ export default function Maintenance() {
       <div id="maintenance-icon">
         <RoundedIcon
           icon="pylon"
-          stroke="#ff7a00"
-          strokeWidth="3"
           bgColor="white"
         />
       </div>
