@@ -11,6 +11,7 @@
     grid-column: span 2;
 
     margin: 0;
+    padding-left: .5em;
     color: white;
     background-color: #ff7a00;
 }
@@ -25,7 +26,8 @@
 }
 
 #maintenance-icon {
+    display: flex;
+    align-items: center;
     grid-column: 2/3;
     grid-row: 2/3;
-    height: 20vh;
 }
