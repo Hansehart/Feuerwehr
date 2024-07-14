@@ -8,7 +8,7 @@ import ProgressBall from "../../components/general/ProgressBall";
 
 function Home() {
   const location = useLocation();
-  const [select, setSelect] = useState("department");
+  const [select, setSelect] = useState("");
   const [username, setUsername] = useState("");
   const [firedepartment, setFiredepartment] = useState("");
 
