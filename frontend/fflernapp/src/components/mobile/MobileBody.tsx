@@ -34,7 +34,6 @@ export default function MobileBody({
 
   useEffect(() => {
     // clear old cards from another tab
-    console.log(preview + " type:" + type)
     setPreview([]);
     if (type) {
       if (type === "vehicle") {
@@ -51,6 +50,7 @@ export default function MobileBody({
           });
       }
       else {
+        console.log(preview)
         fetch(
           `https://fflernapp.hansehart.de/api/service/receive/previews?type=${type}`
         )
