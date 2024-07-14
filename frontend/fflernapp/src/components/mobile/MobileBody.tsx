@@ -31,7 +31,8 @@ export default function MobileBody({
   marginToFooter,
 }: MobileBodyProps) {
   const [preview, setPreview] = useState<Preview[]>([]);
-
+  const [cards, setCards] = useState<React.ReactNode[]>([]);
+  
   useEffect(() => {
     // clear old cards from another tab
     setPreview([]);
@@ -50,7 +51,6 @@ export default function MobileBody({
           });
       }
       else {
-        console.log("type: " + type, preview.length)
         fetch(
           `https://fflernapp.hansehart.de/api/service/receive/previews?type=${type}`
         )
@@ -59,20 +59,20 @@ export default function MobileBody({
           .catch((error) => console.error("Error fetching data: ", error));
       }
     }
+    const newCards = preview.map((data, index) => (
+      <MobileContentCard
+        key={index}
+        title={convertSoftHyphen(data.title)}
+        subtitle={convertSoftHyphen(data.subtitle)}
+        path={data.path}
+      />
+    ));
+    setCards(newCards);
   }, [type]);
 
   const convertSoftHyphen = (title: string) => {
     return title.replace(/&shy;/g, "\u00AD");
   };
-
-  const cards = preview.map((data, index) => (
-    <MobileContentCard
-      key={index}
-      title={convertSoftHyphen(data.title)}
-      subtitle={convertSoftHyphen(data.subtitle)}
-      path={data.path}
-    />
-  ));
 
   return (
     <main style={{ marginBottom: marginToFooter }}>
