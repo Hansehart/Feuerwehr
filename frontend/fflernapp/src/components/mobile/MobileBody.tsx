@@ -34,6 +34,7 @@ export default function MobileBody({
 
   useEffect(() => {
     // clear old cards from another tab
+    console.log(preview + " type:" + type)
     setPreview([]);
     if (type) {
       if (type === "vehicle") {

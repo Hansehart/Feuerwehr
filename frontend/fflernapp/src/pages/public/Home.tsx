@@ -25,7 +25,6 @@ function Home() {
   // decide which body to display
   let displayComponent;
 
-  console.log(select)
   switch (select) {
     case "learn":
       displayComponent = <MobileBody type="learn" marginToFooter="18vh" />;
