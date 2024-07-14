@@ -8,7 +8,7 @@ import MobileAuthPreview from "../../components/mobile/MobileAuthPreview";
 
 function Home() {
   const location = useLocation();
-  const [select, setSelect] = useState("department");
+  const [select, setSelect] = useState("");
 
   const changeView = (view: string) => {
     setSelect(view);
