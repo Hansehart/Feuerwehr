@@ -50,6 +50,7 @@ export default function MobileBody({
           });
       }
       else {
+        console.log("type: " + type, preview.length)
         fetch(
           `https://fflernapp.hansehart.de/api/service/receive/previews?type=${type}`
         )
