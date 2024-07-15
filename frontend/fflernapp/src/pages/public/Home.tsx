@@ -5,6 +5,7 @@ import MobileBody from "../../components/mobile/basics/MobileBody";
 import MobileHeader from "../../components/mobile/basics/MobileHeader";
 import MobileNavBar from "../../components/mobile/basics/MobileNavBar";
 import MobileAuthPreview from "../../components/mobile/previews/MobileAuthPreview";
+import MobileDepartmentPreview from "../../components/mobile/previews/MobileDepartmentPreview";
 
 function Home() {
   const location = useLocation();
@@ -32,15 +33,7 @@ function Home() {
       break;
     case "department":
       displayComponent = (
-        <MobileBody
-          before={
-            <div style={{ textAlign: "center", margin: "2em" }}>
-              <h3>Moin!</h3>
-            </div>
-          }
-          type="main"
-          marginToFooter="18vh"
-        />
+        <MobileBody before={<MobileDepartmentPreview />}/> // type is for public page not set because their should be no content loaded
       );
       window.history.replaceState({}, "");
       break;
