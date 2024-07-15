@@ -1,6 +1,6 @@
 import "./MobileAuthPreviewStyle.css";
 
-import MobileButton from "./MobileButton";
+import MobileButton from "../basics/MobileButton";
 import drivingFirefighters from "/src/assets/driving-firefighters-filter.jpg";
 
 export default function MobileAuthPreview() {

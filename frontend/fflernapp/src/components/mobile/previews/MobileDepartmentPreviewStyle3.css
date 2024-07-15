@@ -1,0 +1,36 @@
+button:hover {
+    cursor: pointer;
+}
+
+.department {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 70vh;
+
+    background-size: cover;
+}
+
+.department-preview {
+    width: 90%;
+}
+
+.department-text {
+    color: white;
+    background-color: #0000009e;
+
+    border: .35em solid #ea4138;
+    border-radius: .5em;
+    text-align: center;
+}
+
+.choose-buttons {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    justify-content: center;
+    align-items: center;
+
+    margin-top: 1em;
+    gap: 0 1em;
+
+}

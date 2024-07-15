@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import RoundedIcon from "../general/RoundedIcon";
+import RoundedIcon from "../../general/RoundedIcon";
 import "./MobileNavBarStyle.css";
 
 export default function MobileNavBar({

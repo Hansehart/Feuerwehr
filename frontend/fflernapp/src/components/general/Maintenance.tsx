@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import "./MaintenanceStyle.css";
 
 import RoundedIcon from "./RoundedIcon";
-import MobileButton from "../mobile/MobileButton";
+import MobileButton from "../mobile/basics/MobileButton";
 
 export default function Maintenance() {
   const initalTimer = 5;

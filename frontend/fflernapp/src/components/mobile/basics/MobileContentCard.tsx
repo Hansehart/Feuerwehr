@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import RoundedIcon from "../general/RoundedIcon";
+import RoundedIcon from "../../general/RoundedIcon";
 import "./MobileContentCardStyle.css";
 import drivingFirefighters from "/src/assets/driving-firefighters-filter.jpg";
 
