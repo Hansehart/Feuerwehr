@@ -20,8 +20,8 @@ form {
 }
 
 form textarea {
-    min-width: 60vh;
-    max-width: 60vh;
+    min-width: 60vw;
+    max-width: 60vw;
 }
 
 form input[type="button"] {
