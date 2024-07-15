@@ -91,7 +91,7 @@ function RegisterProfile() {
   const fields = [
     {
       label: "Name",
-      type: "name",
+      type: "text",
     },
     {
       label: "Feuerwehr auswählen",

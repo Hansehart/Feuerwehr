@@ -10,7 +10,12 @@ function Contact() {
   const navigate = useNavigate();
   const [select, setSelect] = useState("");
 
-  const options = ["Fehler mitteilen", "Kontaktaufnahme", "Presseanfrage", "Sonstiges"];
+  const options = [
+    "Fehler mitteilen",
+    "Kontaktaufnahme",
+    "Presseanfrage",
+    "Sonstiges",
+  ];
 
   useEffect(() => {
     switch (select) {
@@ -31,7 +36,9 @@ function Contact() {
   };
 
   function send() {
-    const selectedReason = document.getElementById("input-0") as HTMLInputElement;
+    const selectedReason = document.getElementById(
+      "input-0"
+    ) as HTMLInputElement;
     const email = document.getElementById("input-1") as HTMLInputElement;
     const message = document.getElementById("input-2") as HTMLInputElement;
 
@@ -59,11 +66,15 @@ function Contact() {
     {
       label: "Grund auswählen",
       type: "select",
-      selectOptions: options
+      selectOptions: options,
     },
     {
-      label: "Name",
-      type: "name",
+      label: "E-Mail",
+      type: "email",
+    },
+    {
+      label: "Deine Nachricht an uns",
+      type: "text",
     },
     { value: "Senden", type: "button", onClick: send },
   ];
