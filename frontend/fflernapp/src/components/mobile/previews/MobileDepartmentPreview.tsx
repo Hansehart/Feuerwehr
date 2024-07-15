@@ -18,9 +18,9 @@ export default function MobileDepartmentPreview() {
           </p>
 
           <p>
-            Bist Du in noch keiner Feuerwehr? 
+            Du bist in noch keiner Feuerwehr? 
             <br />
-            Finde auf unserer Karte die Nächste!
+            Schau direkt mal auf die Karte!
           </p>
         </div>
         <div className="choose-buttons">
