@@ -19,6 +19,11 @@ form {
     margin-bottom: 2em;
 }
 
+form textarea {
+    min-width: 60vh;
+    max-width: 60vh;
+}
+
 form input[type="button"] {
     height: 10vh;
     border: none;
