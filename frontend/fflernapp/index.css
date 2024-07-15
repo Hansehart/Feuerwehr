@@ -31,3 +31,8 @@ p {
 button {
   font-size: 1.2em;
 }
+
+textarea {
+  font-family: sans-serif;
+  font-weight: 400;
+}

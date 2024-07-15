@@ -47,7 +47,7 @@ function Contact() {
 
     payload["reason"] = selectedReason.value.trim();
     payload["email"] = email.value;
-    payload["message"] = message.value;
+    payload["question"] = message.value;
     const jsonData = JSON.stringify(payload);
     fetch("https://fflernapp.hansehart.de/api/service/save/message", {
       method: "POST",
