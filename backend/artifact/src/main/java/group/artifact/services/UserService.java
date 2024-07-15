@@ -5,7 +5,7 @@ import org.springframework.stereotype.Service;
 
 import org.apache.commons.codec.digest.DigestUtils;
 
-import group.artifact.dtos.MessageDTO;
+import group.artifact.dtos.ContainerDTO;
 import group.artifact.dtos.ProfileDTO;
 import group.artifact.dtos.UserDTO;
 import group.artifact.models.Firedepartment;
@@ -31,14 +31,14 @@ public class UserService {
     @Autowired
     UsersInFiredepartmentRepository usersInFiredepartmentRepository;
 
-    public MessageDTO<Boolean> authUser(String sid) {
-        MessageDTO<Boolean> msg = new MessageDTO<>(false);
+    public ContainerDTO<Boolean> authUser(String sid) {
+        ContainerDTO<Boolean> msg = new ContainerDTO<>(false);
         if (sid == null) {
             return msg;
         }
         Session s = sessionService.auth(sid);
         if (s != null) {
-            msg.setMsg(true);
+            msg.setContent(true);
         }
         return msg;
     }
@@ -55,15 +55,15 @@ public class UserService {
         return sessionService.attemptLogin(user, u.getPassword());
     }
 
-    public MessageDTO<String> receiveUserAttr(String sid, String attr) {
+    public ContainerDTO<String> receiveUserAttr(String sid, String attr) {
         Session s = sessionService.auth(sid);
         if (s == null) { // no user for provided sid
             return null;
         }
         User u = s.getUser();
-        MessageDTO<String> msg = new MessageDTO<>();
+        ContainerDTO<String> msg = new ContainerDTO<>();
         if (attr.equals("name")) {
-            msg.setMsg(u.getName());
+            msg.setContent(u.getName());
         }
         return msg;
     }

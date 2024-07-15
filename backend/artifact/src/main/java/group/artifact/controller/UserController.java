@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import group.artifact.dtos.MessageDTO;
+import group.artifact.dtos.ContainerDTO;
 import group.artifact.dtos.ProfileDTO;
 import group.artifact.dtos.UserDTO;
 import group.artifact.models.User;
@@ -27,8 +27,8 @@ public class UserController {
     UserService userService;
 
     @GetMapping("/auth")
-    public ResponseEntity<MessageDTO<Boolean>> authenticate(@CookieValue(value = "sid", required = false) String sid) {
-        MessageDTO<Boolean> msg = new MessageDTO<>();
+    public ResponseEntity<ContainerDTO<Boolean>> authenticate(@CookieValue(value = "sid", required = false) String sid) {
+        ContainerDTO<Boolean> msg = new ContainerDTO<>();
         try {
             msg = userService.authUser(sid);
             return ResponseEntity.ok(msg);
@@ -39,7 +39,7 @@ public class UserController {
     }
 
     @GetMapping("/logout")
-    public ResponseEntity<MessageDTO<String>> logout(@CookieValue(value = "sid", required = true) String sid, HttpServletResponse response) {
+    public ResponseEntity<ContainerDTO<String>> logout(@CookieValue(value = "sid", required = true) String sid, HttpServletResponse response) {
         try {
 
             Cookie cookie =  userService.logout(sid);
@@ -47,21 +47,21 @@ public class UserController {
                 return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null);
             }
             response.addCookie(cookie);
-            return ResponseEntity.ok(new MessageDTO<>("successfully logged out"));
+            return ResponseEntity.ok(new ContainerDTO<>("successfully logged out"));
         } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);
         }
     }
 
     @PostMapping("/login")
-    public ResponseEntity<MessageDTO<String>> login(@RequestBody UserDTO u, HttpServletResponse response) {
+    public ResponseEntity<ContainerDTO<String>> login(@RequestBody UserDTO u, HttpServletResponse response) {
         try {
             Cookie cookie = userService.login(u);
             if (cookie == null) {
                 return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null);
             }
             response.addCookie(cookie);
-            return ResponseEntity.ok(new MessageDTO<>("successfully logged in"));
+            return ResponseEntity.ok(new ContainerDTO<>("successfully logged in"));
         } catch (Exception e) {
             System.out.println("ERROR: " + e);
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);
@@ -69,10 +69,10 @@ public class UserController {
     }
 
     @GetMapping("/receive/user")
-    public ResponseEntity<MessageDTO<String>> receiveUserInformation(@CookieValue(value = "sid") String sid,
+    public ResponseEntity<ContainerDTO<String>> receiveUserInformation(@CookieValue(value = "sid") String sid,
             @RequestParam(required = true) String attr) { // attribute
         try {
-            MessageDTO<String> msg = userService.receiveUserAttr(sid, attr);
+            ContainerDTO<String> msg = userService.receiveUserAttr(sid, attr);
             if (msg == null) { // no user found for sid
                 return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null);
             }

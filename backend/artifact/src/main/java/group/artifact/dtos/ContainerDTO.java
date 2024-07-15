@@ -7,6 +7,6 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class MessageDTO <T>{
-    private T msg;
+public class ContainerDTO <T>{
+    private T content;
 }

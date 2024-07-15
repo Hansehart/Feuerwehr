@@ -5,7 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import group.artifact.dtos.MessageDTO;
+import group.artifact.dtos.ContainerDTO;
 import group.artifact.models.Firedepartment;
 import group.artifact.models.Session;
 import group.artifact.repositories.FiredepartmentRepository;
@@ -23,16 +23,16 @@ public class FiredepartmentService {
         return f;
     }   
 
-    public MessageDTO<String> receiveAttribute(String sid, String attr) {
-        MessageDTO<String> m = new MessageDTO<>(); // message
+    public ContainerDTO<String> receiveAttribute(String sid, String attr) {
+        ContainerDTO<String> m = new ContainerDTO<>(); // message
         if (attr.equals("name")) {
             Session s = sessionRepository.findById(sid).orElse(null);
             if (s == null) {
                 System.out.println("ERROR: corresponding firedepartment for sid not found whereby firedepartment can't provide further information");
-                m.setMsg(null);
+                m.setContent(null);
             }
             Firedepartment f = s.getFiredepartment();
-            m.setMsg(f.getName());
+            m.setContent(f.getName());
         }
         return m;
     }   

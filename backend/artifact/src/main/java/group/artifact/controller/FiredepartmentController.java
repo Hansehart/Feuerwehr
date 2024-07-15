@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import group.artifact.dtos.MessageDTO;
+import group.artifact.dtos.ContainerDTO;
 import group.artifact.models.Firedepartment;
 import group.artifact.services.FiredepartmentService;
 
@@ -36,9 +36,9 @@ public class FiredepartmentController {
     }
 
     @GetMapping("/receive/firedepartment")
-    public ResponseEntity<MessageDTO<String>> receiveFiredepartmentInformation(@CookieValue(value = "sid") String sid, @RequestParam(required = true) String attr) { // attribute
+    public ResponseEntity<ContainerDTO<String>> receiveFiredepartmentInformation(@CookieValue(value = "sid") String sid, @RequestParam(required = true) String attr) { // attribute
         try {
-            MessageDTO<String> msg = firedepartmentService.receiveAttribute(sid, attr);
+            ContainerDTO<String> msg = firedepartmentService.receiveAttribute(sid, attr);
             return ResponseEntity.ok(msg);
         } catch (Exception e) {
             System.out.println("ERROR: " + e);
