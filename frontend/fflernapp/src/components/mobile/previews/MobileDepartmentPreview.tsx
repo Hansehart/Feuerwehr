@@ -11,15 +11,11 @@ export default function MobileDepartmentPreview() {
     >
       <div className="department-preview">
         <div className="department-text">
-          <p>
-            Um eine Wache im Detail sehen zu können,
-            <br />
-            melde dich bitte an.
-            <br />
-            Bist Du in noch keiner Feuerwehr?
-            <br />
-            Finde auf unserer Karte die Nächste!
-          </p>
+          <p>Um eine Wache im Detail sehen zu können,</p>
+          <p>melde dich bitte an.</p>
+
+          <p>Bist Du in noch keiner Feuerwehr?</p>
+          <p>Finde auf unserer Karte die Nächste!</p>
         </div>
         <div className="choose-buttons">
           <MobileButton text="Karte" path="/main/map"></MobileButton>
