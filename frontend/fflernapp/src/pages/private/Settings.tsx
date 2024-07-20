@@ -39,11 +39,13 @@ function Settings() {
       label: "Dein Nutzername",
       type: "text",
       value: username,
+      disabled: true,
     },
     {
       label: "Passwort",
       type: "password",
       value: "12345678",
+      disabled: true,
     },
 
     { value: "Speichern", type: "button" },
