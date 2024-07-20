@@ -45,7 +45,7 @@ function Login({
         fetch("https://fflernapp.hansehart.de/api/service/auth")
           .then((response) => response.json())
           .then((data) => {
-            updateAuthStatus(data.msg);
+            updateAuthStatus(data.content);
             navigate("/home");
           });
       } else if (response.status === 400) {

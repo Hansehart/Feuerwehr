@@ -43,7 +43,7 @@ function RegisterAccount({
         fetch("https://fflernapp.hansehart.de/api/service/auth")
           .then((response) => response.json())
           .then((data) => {
-            updateAuthStatus(data.msg);
+            updateAuthStatus(data.content);
             navigate("/profile/register/profile", {
               state: { notification: "Account wurde erstellt!" },
             });

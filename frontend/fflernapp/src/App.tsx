@@ -28,8 +28,7 @@ function App() {
     fetch("https://fflernapp.hansehart.de/api/service/auth")
       .then((response) => response.json())
       .then((data) => {
-        setAuth(data.msg);
-        console.log(data.msg + "--" + auth)
+        setAuth(data.content);
       });
   }, []);
 
