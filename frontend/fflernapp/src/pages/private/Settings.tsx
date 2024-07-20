@@ -26,8 +26,8 @@ function Settings() {
     }
 
     fetch("https://fflernapp.hansehart.de/api/service/receive/user?attr=name")
-    .then((response) => response.json())
-    .then((data) => setUsername(data.content));
+      .then((response) => response.json())
+      .then((data) => setUsername(data.content));
   }, [select]);
 
   const changeView = (view: string) => {
@@ -38,19 +38,28 @@ function Settings() {
     {
       label: "Dein Nutzername",
       type: "text",
-      value: username
+      value: username,
     },
     {
       label: "Passwort",
       type: "password",
-      value: "12345678"
+      value: "12345678",
     },
+
+    { value: "Speichern", type: "button" },
   ];
 
   return (
     <div>
       <MobileHeader name="Einstellungen" />
-      <MobileBody before={<RoundedIcon icon="pylon" bgColor="red"/>} main={<MobileForm background={true} fields={fields}/>}/>
+      <MobileBody
+        main={
+          <div>
+            <RoundedIcon bgColor="white" icon="pylon"/>
+            <MobileForm background={false} fields={fields} />
+          </div>
+        }
+      />
       <MobileNavBar changeView={changeView} preset="profile" />
     </div>
   );
