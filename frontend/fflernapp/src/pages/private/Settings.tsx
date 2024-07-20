@@ -48,7 +48,7 @@ function Settings() {
       disabled: true,
     },
 
-    { value: "Speichern", type: "button" },
+    { value: "Bearbeiten", type: "button" },
   ];
 
   return (
@@ -56,10 +56,7 @@ function Settings() {
       <MobileHeader name="Einstellungen" />
       <MobileBody
         main={
-          <div>
-            <RoundedIcon bgColor="white" icon="pylon"/>
-            <MobileForm background={false} fields={fields} />
-          </div>
+            <MobileForm background={true} fields={fields} />
         }
       />
       <MobileNavBar changeView={changeView} preset="profile" />

@@ -7,7 +7,7 @@ interface InputField {
   value?: string; // text inside inputs i. e buttons
   inline?: boolean; // determines if elements should be displayed in a row (against the default: column)
   reverse?: boolean; // true means first input, then label
-  disabled?: boolean; // true means its not editable
+  disabled?: false; // true means its not editable
   selectOptions?: string[];
   onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
   onClick?: () => void;
@@ -36,9 +36,7 @@ const renderField = (field: InputField, index: number) => {
       return (
         <>
           <label htmlFor={`input-${index}`}>{field.label}</label>
-          <textarea
-            id={`input-${index}`}
-          />
+          <textarea id={`input-${index}`} />
         </>
       );
 
@@ -66,7 +64,7 @@ const renderField = (field: InputField, index: number) => {
                 value={field.value}
                 onChange={field.onChange}
                 onClick={field.onClick}
-                disabled={field.disabled}
+                disabled={field.disabled ? true : false}
               />
             </>
           )}
