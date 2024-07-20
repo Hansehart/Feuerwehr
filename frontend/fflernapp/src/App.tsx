@@ -32,6 +32,8 @@ function App() {
       });
   }, []);
 
+  console.log(auth);
+
   return (
     <Router>
       <Routes>
