@@ -56,7 +56,7 @@ form input[type="button"] {
     height: 6vh;
     width: 60vw;
 
-    font-size: 1.5em;
+    font-size: 2.4em;
     border-radius: .5em;
 }
 
@@ -70,6 +70,12 @@ form input[type="button"] {
 
 .field-container option {
     font-size: 1.5rem;
+}
+
+.field-container textarea {
+    font-family: sans-serif;
+    font-weight: 400;
+    font-size: 1.5em;
 }
 
 .field-container-inline {

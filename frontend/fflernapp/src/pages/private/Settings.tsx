@@ -36,13 +36,10 @@ function Settings() {
 
   function edit() {
     setEditMode(true);
-    const disabledButtons = document.querySelectorAll("input:disabled");
+  }
 
-    // iterate over each disabled input and enable them
-    disabledButtons.forEach((element) => {
-      const input = element as HTMLInputElement;
-      input.disabled = false;
-    });
+  function cancel() {
+    setEditMode(false);
   }
 
   const fields = [
@@ -50,26 +47,26 @@ function Settings() {
       label: "Dein Nutzername",
       type: "text",
       value: username,
-      disabled: true,
+      disabled: !editMode,
     },
     {
       label: "Passwort",
       type: "password",
       value: "12345678",
-      disabled: true,
+      disabled: !editMode,
     },
     ...(editMode
       ? [
           {
             value: "Abbrechen",
             type: "button",
-            onClick: edit,
+            onClick: cancel,
           },
           {
             value: "Speichern",
             type: "button",
             onClick: edit,
-          }
+          },
         ]
       : [
           {
@@ -83,7 +80,11 @@ function Settings() {
   return (
     <div>
       <MobileHeader name="Einstellungen" />
-      <MobileBody main={<MobileForm background={true} fields={fields} />} />
+      <MobileBody
+        main={
+          <MobileForm identifier="settings" background={true} fields={fields} />
+        }
+      />
       <MobileNavBar changeView={changeView} preset="profile" />
     </div>
   );

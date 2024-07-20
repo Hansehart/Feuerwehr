@@ -14,6 +14,7 @@ interface InputField {
 }
 
 interface MobileFormProps {
+  identifier?: string;
   background: boolean;
   fields: InputField[];
 }
@@ -73,7 +74,7 @@ const renderField = (field: InputField, index: number) => {
   }
 };
 
-export default function MobileForm({ background, fields }: MobileFormProps) {
+export default function MobileForm({ identifier, background, fields }: MobileFormProps) {
   return (
     <section
       className="form-section"
@@ -83,7 +84,7 @@ export default function MobileForm({ background, fields }: MobileFormProps) {
           : { backgroundImage: "none" }
       }
     >
-      <form>
+      <form id={identifier}>
         {fields.map((field, index) => (
           <div
             key={index}
