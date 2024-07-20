@@ -5,6 +5,7 @@ import MobileBody from "../../components/mobile/basics/MobileBody";
 import MobileHeader from "../../components/mobile/basics/MobileHeader";
 import MobileNavBar from "../../components/mobile/basics/MobileNavBar";
 import MobileForm from "../../components/mobile/basics/MobileForm";
+import RoundedIcon from "../../components/general/RoundedIcon";
 
 function Settings() {
   const navigate = useNavigate();
@@ -49,7 +50,7 @@ function Settings() {
   return (
     <div>
       <MobileHeader name="Einstellungen" />
-      <MobileBody main={<MobileForm background={true} fields={fields}/>}/>
+      <MobileBody before={<RoundedIcon icon="pylon" bgColor="red"/>} main={<MobileForm background={true} fields={fields}/>}/>
       <MobileNavBar changeView={changeView} preset="profile" />
     </div>
   );
