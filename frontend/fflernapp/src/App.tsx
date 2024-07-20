@@ -29,10 +29,9 @@ function App() {
       .then((response) => response.json())
       .then((data) => {
         setAuth(data.msg);
+        console.log(data.msg + "--" + auth)
       });
   }, []);
-
-  console.log(auth);
 
   return (
     <Router>
