@@ -9,6 +9,7 @@ import MobileForm from "../../components/mobile/basics/MobileForm";
 function Settings() {
   const navigate = useNavigate();
   const [select, setSelect] = useState("");
+  const [editMode, setEditMode] = useState(false);
   const [username, setUsername] = useState("");
 
   useEffect(() => {
@@ -33,6 +34,17 @@ function Settings() {
     setSelect(view);
   };
 
+  function edit() {
+    setEditMode(true);
+    const disabledButtons = document.querySelectorAll("input:disabled");
+  
+  // iterate over each disabled button and enable them
+  disabledButtons.forEach((element) => {
+    const input = element as HTMLButtonElement;
+    input.disabled = false; // Enable the button
+  });
+  }
+
   const fields = [
     {
       label: "Dein Nutzername",
@@ -47,17 +59,13 @@ function Settings() {
       disabled: true,
     },
 
-    { value: "Bearbeiten", type: "button" },
+    { value: "Bearbeiten", type: "button", onClick: edit },
   ];
 
   return (
     <div>
       <MobileHeader name="Einstellungen" />
-      <MobileBody
-        main={
-            <MobileForm background={true} fields={fields} />
-        }
-      />
+      <MobileBody main={<MobileForm background={true} fields={fields} />} />
       <MobileNavBar changeView={changeView} preset="profile" />
     </div>
   );
