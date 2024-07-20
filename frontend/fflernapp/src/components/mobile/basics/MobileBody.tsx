@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { convertSoftHyphen } from '/src/utils.tsx';
+import { convertSoftHyphen } from "/src/utils.tsx";
 import MobileContentCard from "./MobileContentCard";
 
 interface MobileBodyProps {
