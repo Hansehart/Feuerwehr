@@ -37,12 +37,12 @@ function Settings() {
   function edit() {
     setEditMode(true);
     const disabledButtons = document.querySelectorAll("input:disabled");
-  
-  // iterate over each disabled button and enable them
-  disabledButtons.forEach((element) => {
-    const input = element as HTMLButtonElement;
-    input.disabled = false; // Enable the button
-  });
+
+    // iterate over each disabled input and enable them
+    disabledButtons.forEach((element) => {
+      const input = element as HTMLInputElement;
+      input.disabled = false;
+    });
   }
 
   const fields = [
@@ -58,8 +58,26 @@ function Settings() {
       value: "12345678",
       disabled: true,
     },
-
-    { value: "Bearbeiten", type: "button", onClick: edit },
+    ...(editMode
+      ? [
+          {
+            value: "Abbrechen",
+            type: "button",
+            onClick: edit,
+          },
+          {
+            value: "Speichern",
+            type: "button",
+            onClick: edit,
+          }
+        ]
+      : [
+          {
+            value: "Bearbeiten",
+            type: "button",
+            onClick: edit,
+          },
+        ]),
   ];
 
   return (
