@@ -7,7 +7,7 @@ interface InputField {
   value?: string; // text inside inputs i. e buttons
   inline?: boolean; // determines if elements should be displayed in a row (against the default: column)
   reverse?: boolean; // true means first input, then label
-  disabled?: false; // true means its not editable
+  disabled?: boolean; // true means its not editable
   selectOptions?: string[];
   onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
   onClick?: () => void;

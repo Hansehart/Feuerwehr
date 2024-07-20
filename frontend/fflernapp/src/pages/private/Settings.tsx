@@ -5,7 +5,6 @@ import MobileBody from "../../components/mobile/basics/MobileBody";
 import MobileHeader from "../../components/mobile/basics/MobileHeader";
 import MobileNavBar from "../../components/mobile/basics/MobileNavBar";
 import MobileForm from "../../components/mobile/basics/MobileForm";
-import RoundedIcon from "../../components/general/RoundedIcon";
 
 function Settings() {
   const navigate = useNavigate();
