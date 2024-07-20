@@ -90,7 +90,7 @@ function RegisterProfile() {
 
   const fields = [
     {
-      label: "Name",
+      label: "Dein Nutzername",
       type: "text",
     },
     {
