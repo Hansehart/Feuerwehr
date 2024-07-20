@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import { convertSoftHyphen } from "/src/utils.tsx";
 import MobileContentCard from "./MobileContentCard";
 
 interface MobileBodyProps {
@@ -60,6 +59,10 @@ export default function MobileBody({
       }
     }
   }, [type]);
+
+  const convertSoftHyphen = (title: string) => {
+    return title.replace(/&shy;/g, "\u00AD");
+  };
 
 
   const cards = preview.map((data, index) => (
