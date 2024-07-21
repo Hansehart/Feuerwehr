@@ -10,6 +10,7 @@ function Settings() {
   const navigate = useNavigate();
   const [select, setSelect] = useState("");
   const [editMode, setEditMode] = useState(false);
+  const [editPassword, setEditPassword] = useState(false);
   const [username, setUsername] = useState("");
 
   useEffect(() => {
@@ -34,14 +35,6 @@ function Settings() {
     setSelect(view);
   };
 
-  function edit() {
-    setEditMode(true);
-  }
-
-  function cancel() {
-    setEditMode(false);
-  }
-
   const fields = [
     {
       label: "Dein Nutzername",
@@ -50,29 +43,43 @@ function Settings() {
       disabled: !editMode,
     },
     {
-      label: "Passwort",
+      label: "Aktuelles Passwort",
       type: "password",
       value: "12345678",
       disabled: !editMode,
+      onFocus: () => setEditPassword(true),
     },
+    ...(editPassword
+      ? [
+          {
+            label: "Neues Passwort",
+            type: "password",
+          },
+          {
+            label: "Wiederholen",
+            type: "password",
+          },
+        ]
+      : [
+        ]),
     ...(editMode
       ? [
           {
             value: "Abbrechen",
             type: "button",
-            onClick: cancel,
+            onClick: () => setEditMode(false),
           },
           {
             value: "Speichern",
             type: "button",
-            onClick: edit,
+            onClick: () => setEditMode(true),
           },
         ]
       : [
           {
             value: "Bearbeiten",
             type: "button",
-            onClick: edit,
+            onClick: () =>  setEditMode(true),
           },
         ]),
   ];

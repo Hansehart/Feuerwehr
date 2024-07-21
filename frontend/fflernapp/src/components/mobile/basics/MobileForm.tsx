@@ -11,6 +11,7 @@ interface InputField {
   selectOptions?: string[];
   onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
   onClick?: () => void;
+  onFocus?: () => void;
 }
 
 interface MobileFormProps {
@@ -50,9 +51,10 @@ const renderField = (field: InputField, index: number) => {
                 id={`input-${index}`}
                 type={field.type}
                 value={field.value}
+                disabled={field.disabled}
                 onChange={field.onChange}
                 onClick={field.onClick}
-                disabled={field.disabled}
+                onFocus={field.onFocus}
               />
               <label htmlFor={`input-${index}`}>{field.label}</label>
             </>
@@ -63,9 +65,10 @@ const renderField = (field: InputField, index: number) => {
                 id={`input-${index}`}
                 type={field.type}
                 value={field.value}
+                disabled={field.disabled ? true : false}
                 onChange={field.onChange}
                 onClick={field.onClick}
-                disabled={field.disabled ? true : false}
+                onFocus={field.onFocus}
               />
             </>
           )}
