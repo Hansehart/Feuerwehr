@@ -52,7 +52,7 @@ function Settings() {
     formData["username"] = username;
     const jsonData = JSON.stringify(formData);
 
-    fetch("https://fflernapp.hansehart.de/api/service/update/user", {
+    fetch("https://fflernapp.hansehart.de/api/service/update/profile", {
       credentials: "include",
       method: "POST",
       headers: {

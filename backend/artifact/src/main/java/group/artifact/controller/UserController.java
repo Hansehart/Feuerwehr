@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 import group.artifact.dtos.ContainerDTO;
 import group.artifact.dtos.ProfileDTO;
 import group.artifact.dtos.UserDTO;
+import group.artifact.dtos.UserUpdateDTO;
 import group.artifact.models.User;
 import group.artifact.services.UserService;
 import jakarta.servlet.http.Cookie;
@@ -111,11 +112,11 @@ public class UserController {
         }
     }
 
-    @PostMapping("/update/user")
+    @PostMapping("/update/profile")
     public ResponseEntity<String> updateUserAttributes(@CookieValue(value = "sid") String sid,
-            @RequestParam(required = true) String username) {
+            @RequestBody UserUpdateDTO updatedUser) {
         try {
-            userService.updateUser(sid, "username", username);
+            userService.updateUser(sid, updatedUser.getAttr(), updatedUser.getValue());
             return ResponseEntity.ok("user successfully updated");
         } catch (Exception e) {
             System.out.println("ERROR: " + e);
