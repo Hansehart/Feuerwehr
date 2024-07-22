@@ -70,13 +70,12 @@ function Settings() {
     {
       label: "Dein Nutzername",
       type: "text",
-      value: username,
+      placeholder: username,
       disabled: !editMode,
     },
     {
       label: "Aktuelles Passwort",
       type: "password",
-      value: "12345678",
       disabled: !editMode,
       onFocus: () => setEditPassword(true),
     },

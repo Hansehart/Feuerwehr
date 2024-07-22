@@ -5,6 +5,7 @@ interface InputField {
   label?: string; // label element in addition to the input element i. e text before a field for free text
   type: string; // choose select, texarea or one of the input types
   value?: string; // text inside inputs i. e buttons
+  placeholder?: string; // text inside inputs, that disappear after clicking on it
   inline?: boolean; // determines if elements should be displayed in a row (against the default: column)
   reverse?: boolean; // true means first input, then label
   disabled?: boolean; // true means its not editable
@@ -51,6 +52,7 @@ const renderField = (field: InputField, index: number) => {
                 id={`input-${index}`}
                 type={field.type}
                 value={field.value}
+                placeholder={field.placeholder}
                 disabled={field.disabled}
                 onChange={field.onChange}
                 onClick={field.onClick}
@@ -65,6 +67,7 @@ const renderField = (field: InputField, index: number) => {
                 id={`input-${index}`}
                 type={field.type}
                 value={field.value}
+                placeholder={field.placeholder}
                 disabled={field.disabled ? true : false}
                 onChange={field.onChange}
                 onClick={field.onClick}
