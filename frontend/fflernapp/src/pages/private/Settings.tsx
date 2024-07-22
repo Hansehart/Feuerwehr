@@ -76,6 +76,7 @@ function Settings() {
     {
       label: "Aktuelles Passwort",
       type: "password",
+      placeholder: "12345678",
       disabled: !editMode,
       onFocus: () => setEditPassword(true),
     },
