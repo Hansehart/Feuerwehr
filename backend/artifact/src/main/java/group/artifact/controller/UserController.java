@@ -27,7 +27,8 @@ public class UserController {
     UserService userService;
 
     @GetMapping("/auth")
-    public ResponseEntity<ContainerDTO<Boolean>> authenticate(@CookieValue(value = "sid", required = false) String sid) {
+    public ResponseEntity<ContainerDTO<Boolean>> authenticate(
+            @CookieValue(value = "sid", required = false) String sid) {
         ContainerDTO<Boolean> msg = new ContainerDTO<>();
         try {
             msg = userService.authUser(sid);
@@ -39,10 +40,11 @@ public class UserController {
     }
 
     @GetMapping("/logout")
-    public ResponseEntity<ContainerDTO<String>> logout(@CookieValue(value = "sid", required = true) String sid, HttpServletResponse response) {
+    public ResponseEntity<ContainerDTO<String>> logout(@CookieValue(value = "sid", required = true) String sid,
+            HttpServletResponse response) {
         try {
 
-            Cookie cookie =  userService.logout(sid);
+            Cookie cookie = userService.logout(sid);
             if (cookie == null) {
                 return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null);
             }
@@ -103,6 +105,18 @@ public class UserController {
         try {
             userService.saveProfile(sid, profile);
             return ResponseEntity.ok("profile successfully created");
+        } catch (Exception e) {
+            System.out.println("ERROR: " + e);
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);
+        }
+    }
+
+    @PostMapping("/update/user")
+    public ResponseEntity<String> updateUserAttributes(@CookieValue(value = "sid") String sid,
+            @RequestParam(required = true) String username) {
+        try {
+            userService.updateUser(sid, "username", username);
+            return ResponseEntity.ok("user successfully updated");
         } catch (Exception e) {
             System.out.println("ERROR: " + e);
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);

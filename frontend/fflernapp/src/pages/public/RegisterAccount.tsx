@@ -22,7 +22,6 @@ function RegisterAccount({
   const [notification, setNotification] = useState<NotficatorProps | null>(null);
 
   function register() {
-    // prevent the default form submission behavior
     const inputFields = document.querySelectorAll("input");
 
     // create an object to store input values

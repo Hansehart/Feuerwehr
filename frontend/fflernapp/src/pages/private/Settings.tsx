@@ -35,6 +35,35 @@ function Settings() {
     setSelect(view);
   };
 
+  function saveChanges() {
+    setEditMode(false);
+    const inputFields = document.querySelectorAll("input");
+
+    const username = inputFields[0].value;
+    const oldPassword = inputFields[1].value;
+    const newPassword = inputFields[2].value;
+    const newRepeatedPassword = inputFields[3].value;
+
+    console.log(oldPassword + newPassword + newRepeatedPassword);
+
+    // create an object to store input values
+    const formData: { [key: string]: string } = {};
+    formData["username"] = username;
+    const jsonData = JSON.stringify(formData);
+
+    fetch("https://fflernapp.hansehart.de/api/service/update/user", {
+      credentials: "include",
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: jsonData,
+    }).then((response) => {
+      if (response.ok) {
+      }
+    });
+  }
+
   const fields = [
     {
       label: "Dein Nutzername",
@@ -60,8 +89,7 @@ function Settings() {
             type: "password",
           },
         ]
-      : [
-        ]),
+      : []),
     ...(editMode
       ? [
           {
@@ -72,14 +100,14 @@ function Settings() {
           {
             value: "Speichern",
             type: "button",
-            onClick: () => setEditMode(true),
+            onClick: () => saveChanges(),
           },
         ]
       : [
           {
             value: "Bearbeiten",
             type: "button",
-            onClick: () =>  setEditMode(true),
+            onClick: () => setEditMode(true),
           },
         ]),
   ];

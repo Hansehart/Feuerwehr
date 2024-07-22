@@ -88,6 +88,9 @@ public class UserService {
     public void saveProfile(String sid, ProfileDTO p) { // profile
         // update user
         Session session = sessionService.auth(sid);
+        if (session == null) { // no user for provided sid
+            return;
+        }
         User u = session.getUser();
         u.setName(p.getUsername());
 
@@ -119,4 +122,20 @@ public class UserService {
         sessionRepository.save(s);
     }
 
+    public void updateUser(String sid, String attr, String value) {
+        Session session = sessionService.auth(sid);
+        if (session == null) { // no user for provided sid
+            return;
+        }
+
+        User u = session.getUser();
+        switch (attr) {
+            case "username":
+                u.setName(value);
+                userRepository.save(u);
+                break;
+            default:
+                break;
+        }
+    }
 }
