@@ -37,6 +37,7 @@ function Settings() {
 
   function saveChanges() {
     setEditMode(false);
+    setEditPassword(false);
     const inputFields = document.querySelectorAll("input");
 
     const username = inputFields[0].value;
@@ -76,7 +77,7 @@ function Settings() {
       type: "password",
       value: "12345678",
       disabled: !editMode,
-      onFocus: () => setEditPassword(true),
+      onFocus: () => etEditPassword(true),
     },
     ...(editPassword && editMode
       ? [
@@ -95,7 +96,7 @@ function Settings() {
           {
             value: "Abbrechen",
             type: "button",
-            onClick: () => setEditMode(false),
+            onClick: () => {setEditMode(false); setEditPassword(false)},
           },
           {
             value: "Speichern",
@@ -107,7 +108,7 @@ function Settings() {
           {
             value: "Bearbeiten",
             type: "button",
-            onClick: () => setEditMode(true),
+            onClick: () => {setEditMode(false); setEditPassword(false)},
           },
         ]),
   ];
