@@ -49,10 +49,11 @@ function Settings() {
 
     // create an object to store input values
     const formData: { [key: string]: string } = {};
-    formData["username"] = username;
+    formData["attribute"] = "username";
+    formData["value"] = username;
     const jsonData = JSON.stringify(formData);
 
-    fetch("https://fflernapp.hansehart.de/api/service/update/profile", {
+    fetch("https://fflernapp.hansehart.de/api/service/update/user", {
       credentials: "include",
       method: "POST",
       headers: {

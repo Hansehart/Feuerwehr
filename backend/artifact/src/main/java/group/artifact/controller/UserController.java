@@ -112,11 +112,11 @@ public class UserController {
         }
     }
 
-    @PostMapping("/update/profile")
+    @PostMapping("/update/user")
     public ResponseEntity<String> updateUserAttributes(@CookieValue(value = "sid") String sid,
             @RequestBody UserUpdateDTO updatedUser) {
         try {
-            userService.updateUser(sid, updatedUser.getAttr(), updatedUser.getValue());
+            userService.updateUser(sid, updatedUser.getAttribute(), updatedUser.getValue());
             return ResponseEntity.ok("user successfully updated");
         } catch (Exception e) {
             System.out.println("ERROR: " + e);
