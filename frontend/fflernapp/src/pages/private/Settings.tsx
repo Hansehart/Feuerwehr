@@ -49,7 +49,7 @@ function Settings() {
       disabled: !editMode,
       onFocus: () => setEditPassword(true),
     },
-    ...(editPassword
+    ...(editPassword && editMode
       ? [
           {
             label: "Neues Passwort",
