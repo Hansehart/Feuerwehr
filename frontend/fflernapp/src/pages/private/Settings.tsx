@@ -77,7 +77,7 @@ function Settings() {
       type: "password",
       value: "12345678",
       disabled: !editMode,
-      onFocus: () => etEditPassword(true),
+      onFocus: () => setEditPassword(true),
     },
     ...(editPassword && editMode
       ? [
