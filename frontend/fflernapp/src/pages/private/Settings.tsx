@@ -108,7 +108,7 @@ function Settings() {
           {
             value: "Bearbeiten",
             type: "button",
-            onClick: () => {setEditMode(false); setEditPassword(false)},
+            onClick: () => {setEditMode(true)},
           },
         ]),
   ];
