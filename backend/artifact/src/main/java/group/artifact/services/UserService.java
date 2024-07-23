@@ -136,7 +136,7 @@ public class UserService {
                 break;
             case "password":
                 String salt = sessionService.generateSalt(16);
-                String hashedPW = DigestUtils.sha256Hex(u.getPassword() + salt);
+                String hashedPW = DigestUtils.sha256Hex(value + salt);
                 u.setPassword(hashedPW);
                 u.setSalt(salt);
                 userRepository.save(u);
