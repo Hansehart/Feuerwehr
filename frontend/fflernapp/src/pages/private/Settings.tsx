@@ -12,6 +12,7 @@ function Settings() {
   const [editMode, setEditMode] = useState(false);
   const [editPassword, setEditPassword] = useState(false);
   const [username, setUsername] = useState("");
+  const [inputFields, setInputFields] = useState<NodeListOf<HTMLInputElement>>();
 
   useEffect(() => {
     switch (select) {
@@ -36,32 +37,31 @@ function Settings() {
   };
 
   function saveChanges() {
-    var inputFields = document.querySelectorAll("input");
-    const username = inputFields[0].value;
-
-
+    setInputFields(document.querySelectorAll("input"))
     setEditMode(false);
     setEditPassword(false);
 
-    console.log(inputFields);
+    if (inputFields) {
+      const username = inputFields[0].value;
 
-    // create an object to store input values
-    const formData: { [key: string]: string } = {};
-    formData["attribute"] = "username";
-    formData["value"] = username;
-    const jsonData = JSON.stringify(formData);
-
-    fetch("https://fflernapp.hansehart.de/api/service/update/user", {
-      credentials: "include",
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: jsonData,
-    }).then((response) => {
-      if (response.ok) {
-      }
-    });
+      // create an object to store input values
+      const formData: { [key: string]: string } = {};
+      formData["attribute"] = "username";
+      formData["value"] = username;
+      const jsonData = JSON.stringify(formData);
+  
+      fetch("https://fflernapp.hansehart.de/api/service/update/user", {
+        credentials: "include",
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: jsonData,
+      }).then((response) => {
+        if (response.ok) {
+        }
+      });
+    }
   }
 
   const fields = [
