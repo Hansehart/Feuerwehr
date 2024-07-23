@@ -36,7 +36,7 @@ function Settings() {
   };
 
   function saveChanges() {
-    const inputFields = document.querySelectorAll("input");
+    var inputFields = document.querySelectorAll("input");
     const username = inputFields[0].value;
     const oldPassword = inputFields[1].value;
     const newPassword = inputFields[2].value;
