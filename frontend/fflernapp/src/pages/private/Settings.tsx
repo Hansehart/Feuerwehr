@@ -41,8 +41,12 @@ function Settings() {
     setEditMode(false);
     setEditPassword(false);
 
+    console.log(1);
+    console.log(inputFields)
+
     if (inputFields) {
       const username = inputFields[0].value;
+      console.log(inputFields);
 
       // create an object to store input values
       const formData: { [key: string]: string } = {};
