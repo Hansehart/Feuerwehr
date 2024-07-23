@@ -36,14 +36,14 @@ function Settings() {
   };
 
   function saveChanges() {
-    setEditMode(false);
-    setEditPassword(false);
     const inputFields = document.querySelectorAll("input");
-
     const username = inputFields[0].value;
     const oldPassword = inputFields[1].value;
     const newPassword = inputFields[2].value;
     const newRepeatedPassword = inputFields[3].value;
+
+    setEditMode(false);
+    setEditPassword(false);
 
     console.log(oldPassword + newPassword + newRepeatedPassword);
 
