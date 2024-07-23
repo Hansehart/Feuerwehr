@@ -45,7 +45,7 @@ function Settings() {
     setEditMode(false);
     setEditPassword(false);
 
-    console.log(oldPassword + newPassword + newRepeatedPassword);
+    console.log(inputFields);
 
     // create an object to store input values
     const formData: { [key: string]: string } = {};
