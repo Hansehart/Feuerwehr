@@ -69,6 +69,8 @@ function Settings() {
       const newPassword = inputFields[2].value;
       const newPasswordRepeated = inputFields[3].value;
 
+      console.log(newPassword === newPasswordRepeated)
+      console.log(newPassword + ":" + newPasswordRepeated)
       if (newPassword === newPasswordRepeated ) {
         formData["attribute"] = "password";
         formData["value"] = newPassword;
