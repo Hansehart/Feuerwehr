@@ -12,7 +12,8 @@ function Settings() {
   const [editMode, setEditMode] = useState(false);
   const [editPassword, setEditPassword] = useState(false);
   const [username, setUsername] = useState("");
-  const [inputFields, setInputFields] = useState<NodeListOf<HTMLInputElement>>();
+  const [inputFields, setInputFields] =
+    useState<NodeListOf<HTMLInputElement>>();
 
   useEffect(() => {
     switch (select) {
@@ -33,8 +34,8 @@ function Settings() {
   }, [select]);
 
   useEffect(() => {
-    setInputFields(document.querySelectorAll("input"))
-  }, [editPassword])
+    setInputFields(document.querySelectorAll("input"));
+  }, [editPassword]);
 
   const changeView = (view: string) => {
     setSelect(view);
@@ -42,15 +43,15 @@ function Settings() {
 
   function saveChanges() {
     if (inputFields) {
+      // save new username
       const username = inputFields[0].value;
 
-      console.log(inputFields);
       // create an object to store input values
-      const formData: { [key: string]: string } = {};
+      let formData: { [key: string]: string } = {};
       formData["attribute"] = "username";
       formData["value"] = username;
-      const jsonData = JSON.stringify(formData);
-  
+      let jsonData = JSON.stringify(formData);
+
       fetch("https://fflernapp.hansehart.de/api/service/update/user", {
         credentials: "include",
         method: "POST",
@@ -60,12 +61,34 @@ function Settings() {
         body: jsonData,
       }).then((response) => {
         if (response.ok) {
-          setEditMode(false);
-          setEditPassword(false);
         }
       });
-    }
 
+      // save new password
+      //const oldPassword = inputFields[1].value;
+      const newPassword = inputFields[2].value;
+      const newPasswordRepeated = inputFields[3].value;
+
+      if (newPassword === newPasswordRepeated ) {
+        formData["attribute"] = "password";
+        formData["value"] = newPassword;
+        jsonData = JSON.stringify(formData);
+  
+        fetch("https://fflernapp.hansehart.de/api/service/update/user", {
+          credentials: "include",
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: jsonData,
+        }).then((response) => {
+          if (response.ok) {
+          }
+        });
+      }
+      setEditMode(false);
+      setEditPassword(false);
+    }
   }
 
   const fields = [
@@ -98,7 +121,10 @@ function Settings() {
           {
             value: "Abbrechen",
             type: "button",
-            onClick: () => {setEditMode(false); setEditPassword(false)},
+            onClick: () => {
+              setEditMode(false);
+              setEditPassword(false);
+            },
           },
           {
             value: "Speichern",
@@ -110,7 +136,9 @@ function Settings() {
           {
             value: "Bearbeiten",
             type: "button",
-            onClick: () => {setEditMode(true)},
+            onClick: () => {
+              setEditMode(true);
+            },
           },
         ]),
   ];
