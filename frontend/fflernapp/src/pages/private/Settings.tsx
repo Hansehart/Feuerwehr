@@ -12,6 +12,7 @@ function Settings() {
   const [editMode, setEditMode] = useState(false);
   const [editPassword, setEditPassword] = useState(false);
   const [username, setUsername] = useState("");
+  const [inputFields, setInputFields] = useState<NodeListOf<HTMLInputElement>>();
 
   useEffect(() => {
     switch (select) {
@@ -31,34 +32,40 @@ function Settings() {
       .then((data) => setUsername(data.content));
   }, [select]);
 
+  useEffect(() => {
+    setInputFields(document.querySelectorAll("input"))
+  }, [editPassword])
+
   const changeView = (view: string) => {
     setSelect(view);
   };
 
   function saveChanges() {
-    var inputFields = document.querySelectorAll("input");
-    const username = inputFields[0].value;
+    if (inputFields) {
+      const username = inputFields[0].value;
 
-    console.log(inputFields);
-    // create an object to store input values
-    const formData: { [key: string]: string } = {};
-    formData["attribute"] = "username";
-    formData["value"] = username;
-    const jsonData = JSON.stringify(formData);
+      console.log(inputFields);
+      // create an object to store input values
+      const formData: { [key: string]: string } = {};
+      formData["attribute"] = "username";
+      formData["value"] = username;
+      const jsonData = JSON.stringify(formData);
+  
+      fetch("https://fflernapp.hansehart.de/api/service/update/user", {
+        credentials: "include",
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: jsonData,
+      }).then((response) => {
+        if (response.ok) {
+          setEditMode(false);
+          setEditPassword(false);
+        }
+      });
+    }
 
-    fetch("https://fflernapp.hansehart.de/api/service/update/user", {
-      credentials: "include",
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: jsonData,
-    }).then((response) => {
-      if (response.ok) {
-        setEditMode(false);
-        setEditPassword(false);
-      }
-    });
   }
 
   const fields = [
