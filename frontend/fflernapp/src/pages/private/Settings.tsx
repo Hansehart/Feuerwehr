@@ -38,9 +38,7 @@ function Settings() {
   function saveChanges() {
     var inputFields = document.querySelectorAll("input");
     const username = inputFields[0].value;
-    const oldPassword = inputFields[1].value;
-    const newPassword = inputFields[2].value;
-    const newRepeatedPassword = inputFields[3].value;
+
 
     setEditMode(false);
     setEditPassword(false);
