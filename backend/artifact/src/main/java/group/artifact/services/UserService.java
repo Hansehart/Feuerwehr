@@ -44,7 +44,7 @@ public class UserService {
     }
 
     public Cookie logout(String sid) {
-       return sessionService.removeSession(sid);
+        return sessionService.removeSession(sid);
     }
 
     public Cookie login(UserDTO u) {
@@ -135,7 +135,11 @@ public class UserService {
                 userRepository.save(u);
                 break;
             case "password":
-                
+                String salt = sessionService.generateSalt(16);
+                String hashedPW = DigestUtils.sha256Hex(u.getPassword() + salt);
+                u.setPassword(hashedPW);
+                u.setSalt(salt);
+                userRepository.save(u);
             default:
                 break;
         }
