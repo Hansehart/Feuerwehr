@@ -69,13 +69,13 @@ function Settings() {
       const newPassword = inputFields[2].value;
       const newPasswordRepeated = inputFields[3].value;
 
-      console.log(newPassword === newPasswordRepeated)
-      console.log(newPassword + ":" + newPasswordRepeated)
-      if (newPassword === newPasswordRepeated ) {
+      console.log(newPassword === newPasswordRepeated);
+      console.log(newPassword + ":" + newPasswordRepeated);
+      if (newPassword === newPasswordRepeated) {
         formData["attribute"] = "password";
         formData["value"] = newPassword;
         jsonData = JSON.stringify(formData);
-  
+
         fetch("https://fflernapp.hansehart.de/api/service/update/user", {
           credentials: "include",
           method: "POST",
@@ -88,9 +88,9 @@ function Settings() {
           }
         });
       }
-      setEditMode(false);
-      setEditPassword(false);
     }
+    setEditMode(false);
+    setEditPassword(false);
   }
 
   const fields = [
