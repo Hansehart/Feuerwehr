@@ -76,8 +76,8 @@ function Settings() {
     {
       label: "Aktuelles Passwort",
       type: "password",
-      disabled: !editPassword,
-      onClick: () => setEditPassword(true),
+      disabled: !editMode,
+      onFocus: () => setEditPassword(true),
     },
     ...(editPassword && editMode
       ? [

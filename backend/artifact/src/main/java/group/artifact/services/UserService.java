@@ -134,6 +134,8 @@ public class UserService {
                 u.setName(value);
                 userRepository.save(u);
                 break;
+            case "password":
+                
             default:
                 break;
         }
