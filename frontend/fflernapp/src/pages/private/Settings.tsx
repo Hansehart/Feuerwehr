@@ -123,97 +123,81 @@ function Settings() {
     setEditPassword(false);
   }
 
-  const fields = [
-    ...(!editMode
-      ? [
-          // edit mode off
-          {
-            label: "Dein Nutzername",
-            type: "text",
-            placeholder: username,
-            disabled: true,
-          },
-          {
-            label: "Aktuelles Passwort",
-            type: "password",
-            placeholder: "*********",
-            disabled: true,
-          },
-          {
-            value: "Bearbeiten",
-            type: "button",
-            onClick: () => {
-              setEditMode(true);
-            },
-          },
-        ]
-      : [
-          // edit mode on
-          {
-            label: "Neuer Nutzername",
-            type: "text",
-            onClick: () => {
-              setEditUsername(true);
-            },
-          },
-          ...(!editPassword
-            ? [
-                // and edit password off
-                {
-                  label: "Neues Passwort",
-                  type: "password",
-                  onClick: () => {
-                    setEditPassword(true);
-                  },
-                },
-                // buttons for edit mode on and for both password modes
-                {
-                  value: "Abbrechen",
-                  type: "button",
-                  onClick: () => {
-                    setEditMode(false);
-                    setEditUsername(false);
-                    setEditPassword(false);
-                  },
-                },
-                {
-                  value: "Speichern",
-                  type: "button",
-                  onClick: () => saveChanges(),
-                },
-              ]
-            : [
-                // and edit password on
-                {
-                  label: "Neues Passwort",
-                  type: "password",
-                },
-                {
-                  label: "Neues Passwort wiederholen",
-                  type: "password",
-                },
-                {
-                  label: "aktuelles Passwort",
-                  type: "password",
-                },
-                // buttons for edit mode on and for both password modes
-                {
-                  value: "Abbrechen",
-                  type: "button",
-                  onClick: () => {
-                    setEditMode(false);
-                    setEditUsername(false);
-                    setEditPassword(false);
-                  },
-                },
-                {
-                  value: "Speichern",
-                  type: "button",
-                  onClick: () => saveChanges(),
-                },
-              ]),
-        ]),
+  const preview = [
+    {
+      label: "Dein Nutzername",
+      type: "text",
+      placeholder: username,
+      disabled: true,
+    },
+    {
+      label: "Aktuelles Passwort",
+      type: "password",
+      placeholder: "*********",
+      disabled: true,
+    },
+    {
+      value: "Bearbeiten",
+      type: "button",
+      onClick: () => setEditMode(true),
+    },
   ];
+
+  const editUsernameFields = [
+    {
+      label: "Neuer Nutzername",
+      type: "text",
+      onClick: () => setEditUsername(true),
+    },
+  ];
+
+  const editPasswordPreview = [
+    {
+      label: "Neues Passwort",
+      type: "password",
+      onClick: () => setEditPassword(true),
+    },
+  ];
+
+  const editPasswordFields = [
+    {
+      label: "Neues Passwort",
+      type: "password",
+    },
+    {
+      label: "Neues Passwort wiederholen",
+      type: "password",
+    },
+    {
+      label: "aktuelles Passwort",
+      type: "password",
+    },
+  ];
+
+  const editButtons = [
+    {
+      value: "Abbrechen",
+      type: "button",
+      onClick: () => {
+        setEditMode(false);
+        setEditUsername(false);
+        setEditPassword(false);
+      },
+    },
+    {
+      value: "Speichern",
+      type: "button",
+      onClick: () => saveChanges(),
+    },
+  ];
+
+  const fields = !editMode
+    ? preview 
+    : [
+        ...editUsernameFields,
+        ...(editPassword ? editPasswordFields : editPasswordPreview),
+        ...editButtons,
+      ];
 
   return (
     <div>
