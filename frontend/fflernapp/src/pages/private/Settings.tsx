@@ -10,10 +10,9 @@ function Settings() {
   const navigate = useNavigate();
   const [select, setSelect] = useState("");
   const [editMode, setEditMode] = useState(false);
+  const [editUsername, setEditUsername] = useState(false);
   const [editPassword, setEditPassword] = useState(false);
   const [username, setUsername] = useState("");
-  const [inputFields, setInputFields] =
-    useState<NodeListOf<HTMLInputElement>>();
 
   useEffect(() => {
     switch (select) {
@@ -33,19 +32,14 @@ function Settings() {
       .then((data) => setUsername(data.content));
   }, [select]);
 
-  useEffect(() => {
-    setInputFields(document.querySelectorAll("input"));
-  }, [editPassword]);
-
   const changeView = (view: string) => {
     setSelect(view);
   };
 
   function saveChanges() {
-    if (inputFields) {
-      // save new username
-      const username = inputFields[0].value;
-
+    const inputFields = document.querySelectorAll("input");
+    if (editUsername) { // username has to be updated
+      const username = inputFields[0].value
       // create an object to store input values
       let formData: { [key: string]: string } = {};
       formData["attribute"] = "username";
@@ -63,34 +57,10 @@ function Settings() {
         if (response.ok) {
         }
       });
-
-      // save new password
-      //const oldPassword = inputFields[1].value;
-      const newPassword = inputFields[2].value;
-      const newPasswordRepeated = inputFields[3].value;
-
-      console.log(newPassword === newPasswordRepeated);
-      console.log(newPassword + ":" + newPasswordRepeated);
-      if (newPassword === newPasswordRepeated) {
-        formData["attribute"] = "password";
-        formData["value"] = newPassword;
-        jsonData = JSON.stringify(formData);
-
-        fetch("https://fflernapp.hansehart.de/api/service/update/user", {
-          credentials: "include",
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: jsonData,
-        }).then((response) => {
-          if (response.ok) {
-          }
-        });
-      }
     }
-    setEditMode(false);
-    setEditPassword(false);
+    if (editPassword) { // password has to be updated
+      console.log(inputFields)
+    }
   }
 
   const fields = [
@@ -155,6 +125,7 @@ function Settings() {
             type: "button",
             onClick: () => {
               setEditMode(false);
+              setEditUsername(false)
               setEditPassword(false);
             },
           },
