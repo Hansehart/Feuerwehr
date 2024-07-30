@@ -162,7 +162,7 @@ function Settings() {
                 {
                   label: "Neues Passwort",
                   type: "password",
-                  placeholder: "",
+                  value: "",
                   onClick: () => {
                     setEditPassword(true);
                   },
@@ -173,17 +173,17 @@ function Settings() {
                 {
                   label: "Neues Passwort",
                   type: "password",
-                  placeholder: "",
+                  value: "",
                 },
                 {
                   label: "Neues Passwort wiederholen",
                   type: "password",
-                  placeholder: "",
+                  value: "",
                 },
                 {
                   label: "aktuelles Passwort",
                   type: "password",
-                  placeholder: "",
+                  value: "",
                 },
               ]),
           // buttons for edit mode on and for both password modes

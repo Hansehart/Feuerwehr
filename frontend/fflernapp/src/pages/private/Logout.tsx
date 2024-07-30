@@ -19,6 +19,9 @@ function Logout({
       method: "GET",
     }).then(() => {
       updateAuthStatus(false);
+      setTimeout(() => {
+
+      }, 100000)
       navigate("/home");
     });
 
