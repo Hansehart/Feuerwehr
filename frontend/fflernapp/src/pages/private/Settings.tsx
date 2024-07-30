@@ -59,7 +59,11 @@ function Settings() {
       });
     }
     if (editPassword) { // password has to be updated
-      console.log(inputFields)
+      const newPassword = inputFields[1].value;
+      const newRepeatedPassword = inputFields[2].value;
+      const currentPassword = inputFields[3].value;
+
+      console.log(newPassword, newRepeatedPassword, currentPassword)
     }
   }
 
@@ -92,6 +96,9 @@ function Settings() {
           {
             label: "Neuer Nutzername",
             type: "text",
+            onClick: () => {
+              setEditUsername(true);
+            }
           },
           ...(!editPassword
             ? [
