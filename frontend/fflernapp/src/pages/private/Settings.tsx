@@ -38,8 +38,8 @@ function Settings() {
 
   function saveChanges() {
     const inputFields = document.querySelectorAll("input");
-    if (editUsername) { // username has to be updated
-      const username = inputFields[0].value
+    const username = inputFields[0].value
+    if (editUsername && username.length > 0) { // username has to be updated
       // create an object to store input values
       let formData: { [key: string]: string } = {};
       formData["attribute"] = "username";
@@ -62,6 +62,8 @@ function Settings() {
       const newPassword = inputFields[1].value;
       const newRepeatedPassword = inputFields[2].value;
       const currentPassword = inputFields[3].value;
+
+
 
       console.log(newPassword, newRepeatedPassword, currentPassword)
     }
