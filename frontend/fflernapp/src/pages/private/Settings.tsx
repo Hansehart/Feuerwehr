@@ -115,8 +115,6 @@ function Settings() {
       } else {
         // show notfication error
       }
-
-      console.log(newPassword, newRepeatedPassword, currentPassword);
     }
 
     // remove edit options after saving
@@ -164,6 +162,7 @@ function Settings() {
                 {
                   label: "Neues Passwort",
                   type: "password",
+                  placeholder: "",
                   onClick: () => {
                     setEditPassword(true);
                   },
@@ -174,14 +173,17 @@ function Settings() {
                 {
                   label: "Neues Passwort",
                   type: "password",
+                  placeholder: "",
                 },
                 {
                   label: "Neues Passwort wiederholen",
                   type: "password",
+                  placeholder: "",
                 },
                 {
                   label: "aktuelles Passwort",
                   type: "password",
+                  placeholder: "",
                 },
               ]),
           // buttons for edit mode on and for both password modes
