@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import MobileBody from "../../components/mobile/basics/MobileBody";
 import MobileHeader from "../../components/mobile/basics/MobileHeader";
 import MobileNavBar from "../../components/mobile/basics/MobileNavBar";
+import LoadingCircle from "../../components/general/LoadingCircle";
 
 function Logout({
   updateAuthStatus,
@@ -13,17 +14,14 @@ function Logout({
   const navigate = useNavigate();
   const [select, setSelect] = useState("");
 
-
-    fetch("https://fflernapp.hansehart.de/api/service/logout", {
-      credentials: "include",
-      method: "GET",
-    }).then(() => {
-      updateAuthStatus(false);
-      setTimeout(() => {
-
-      }, 100000)
-      navigate("/home");
-    });
+  fetch("https://fflernapp.hansehart.de/api/service/logout", {
+    credentials: "include",
+    method: "GET",
+  }).then(() => {
+    updateAuthStatus(false);
+    setTimeout(() => {}, 100000);
+    navigate("/home");
+  });
 
   useEffect(() => {
     switch (select) {
@@ -47,7 +45,8 @@ function Logout({
     <div>
       <MobileHeader name="Logout" />
       <MobileBody
-        main={<h2>Bitte warten Sie einen Moment.</h2>}
+        before={<h2>Bitte warten Sie einen Moment.</h2>}
+        main={<LoadingCircle />}
         marginToFooter="15vh"
       />
       <MobileNavBar changeView={changeView} preset="profile" />
