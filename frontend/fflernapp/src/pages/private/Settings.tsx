@@ -166,6 +166,21 @@ function Settings() {
                     setEditPassword(true);
                   },
                 },
+                // buttons for edit mode on and for both password modes
+                {
+                  value: "Abbrechen",
+                  type: "button",
+                  onClick: () => {
+                    setEditMode(false);
+                    setEditUsername(false);
+                    setEditPassword(false);
+                  },
+                },
+                {
+                  value: "Speichern",
+                  type: "button",
+                  onClick: () => saveChanges(),
+                },
               ]
             : [
                 // and edit password on
@@ -177,26 +192,26 @@ function Settings() {
                   label: "Neues Passwort wiederholen",
                   type: "password",
                 },
-              {
+                {
                   label: "aktuelles Passwort",
                   type: "password",
                 },
+                // buttons for edit mode on and for both password modes
+                {
+                  value: "Abbrechen",
+                  type: "button",
+                  onClick: () => {
+                    setEditMode(false);
+                    setEditUsername(false);
+                    setEditPassword(false);
+                  },
+                },
+                {
+                  value: "Speichern",
+                  type: "button",
+                  onClick: () => saveChanges(),
+                },
               ]),
-          // buttons for edit mode on and for both password modes
-          {
-            value: "Abbrechen",
-            type: "button",
-            onClick: () => {
-              setEditMode(false);
-              setEditUsername(false);
-              setEditPassword(false);
-            },
-          },
-          {
-            value: "Speichern",
-            type: "button",
-            onClick: () => saveChanges(),
-          },
         ]),
   ];
 
