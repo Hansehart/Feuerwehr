@@ -94,32 +94,62 @@ function Settings() {
   }
 
   const fields = [
-    {
-      label: "Dein Nutzername",
-      type: "text",
-      placeholder: username,
-      disabled: !editMode,
-    },
-    {
-      label: "Aktuelles Passwort",
-      type: "password",
-      disabled: !editMode,
-      onFocus: () => setEditPassword(true),
-    },
-    ...(editPassword && editMode
+    ...(!editMode
       ? [
+          // edit mode off
           {
-            label: "Neues Passwort",
-            type: "password",
+            label: "Dein Nutzername",
+            type: "text",
+            placeholder: username,
+            disabled: true,
           },
           {
-            label: "Wiederholen",
+            label: "Aktuelles Passwort",
             type: "password",
+            placeholder: "*********",
+            disabled: true,
+          },
+          {
+            value: "Bearbeiten",
+            type: "button",
+            onClick: () => {
+              setEditMode(true);
+            },
           },
         ]
-      : []),
-    ...(editMode
-      ? [
+      : [
+          // edit mode on
+          {
+            label: "Neuer Nutzername",
+            type: "text",
+          },
+          ...(!editPassword
+            ? [
+                // and edit password off
+                {
+                  label: "Neues Passwort",
+                  type: "password",
+                  onClick: () => {
+                    setEditPassword(true);
+                  },
+                },
+              ]
+            : [
+                // and edit password on
+                {
+                  label: "Neues Passwort",
+                  type: "password",
+                },
+                {
+                  label: "Neues Passwort wiederholen",
+                  type: "password",
+                },
+                {
+                  label: "aktuelles Passwort",
+                  type: "password",
+                },
+              ]),
+          // buttons for edit mode on and for both password modes
           {
             value: "Abbrechen",
             type: "button",
@@ -132,15 +162,6 @@ function Settings() {
             value: "Speichern",
             type: "button",
             onClick: () => saveChanges(),
-          },
-        ]
-      : [
-          {
-            value: "Bearbeiten",
-            type: "button",
-            onClick: () => {
-              setEditMode(true);
-            },
           },
         ]),
   ];
