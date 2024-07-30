@@ -19,9 +19,7 @@ function Logout({
     method: "GET",
   }).then(() => {
     updateAuthStatus(false);
-    setTimeout(() => {
-      navigate("/home");
-    }, 100000); // 100 seconds
+    navigate("/home");
   });
 
   useEffect(() => {
