@@ -64,6 +64,8 @@ public class UserService {
         ContainerDTO<String> msg = new ContainerDTO<>();
         if (attr.equals("name")) {
             msg.setContent(u.getName());
+        } else if (attr.equals("email")) {
+            msg.setContent(u.getEmail());
         }
         return msg;
     }

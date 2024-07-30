@@ -38,8 +38,9 @@ function Settings() {
 
   function saveChanges() {
     const inputFields = document.querySelectorAll("input");
-    const username = inputFields[0].value
-    if (editUsername && username.length > 0) { // username has to be updated
+    const username = inputFields[0].value;
+    if (editUsername && username.length > 0) {
+      // username has to be updated
       // create an object to store input values
       let formData: { [key: string]: string } = {};
       formData["attribute"] = "username";
@@ -58,15 +59,70 @@ function Settings() {
         }
       });
     }
-    if (editPassword) { // password has to be updated
+    if (editPassword) {
+      // password has to be updated
       const newPassword = inputFields[1].value;
       const newRepeatedPassword = inputFields[2].value;
       const currentPassword = inputFields[3].value;
 
+      if (newPassword === newRepeatedPassword) {
+        // autheticate
+        fetch(
+          "https://fflernapp.hansehart.de/api/service/receive/user?attr=email"
+        )
+          .then((response) => response.json())
+          .then((data) => {
+            const email = data.content;
+            let formData = {
+              email: email,
+              password: currentPassword,
+            };
+            let jsonData = JSON.stringify(formData);
+            fetch("https://fflernapp.hansehart.de/api/service/login", {
+              credentials: "include",
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+              },
+              body: jsonData,
+            }).then((response) => {
+              if (response.ok) {
+                // change password due to successfull authentication
+                let formData: { [key: string]: string } = {};
+                formData["attribute"] = "password";
+                formData["value"] = newPassword;
+                let jsonData = JSON.stringify(formData);
 
+                fetch(
+                  "https://fflernapp.hansehart.de/api/service/update/user",
+                  {
+                    credentials: "include",
+                    method: "POST",
+                    headers: {
+                      "Content-Type": "application/json",
+                    },
+                    body: jsonData,
+                  }
+                ).then((response) => {
+                  if (response.ok) {
+                  }
+                });
+              } else {
+                // show notfication wrong password
+              }
+            });
+          });
+      } else {
+        // show notfication error
+      }
 
-      console.log(newPassword, newRepeatedPassword, currentPassword)
+      console.log(newPassword, newRepeatedPassword, currentPassword);
     }
+
+    // remove edit options after saving
+    setEditMode(false);
+    setEditUsername(false);
+    setEditPassword(false);
   }
 
   const fields = [
@@ -100,7 +156,7 @@ function Settings() {
             type: "text",
             onClick: () => {
               setEditUsername(true);
-            }
+            },
           },
           ...(!editPassword
             ? [
@@ -134,7 +190,7 @@ function Settings() {
             type: "button",
             onClick: () => {
               setEditMode(false);
-              setEditUsername(false)
+              setEditUsername(false);
               setEditPassword(false);
             },
           },
