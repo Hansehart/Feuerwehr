@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import "./MobileQuizCardStyle.css";
-import drivingFirefighters from "/src/assets/driving-firefighters-filter.jpg";
+import drivingFirefighters from "/src/assets/pictures/driving-firefighters-filter.jpg";
 
 interface QuizData {
   text: string;

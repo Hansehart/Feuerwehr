@@ -1,6 +1,6 @@
 import Table from "../general/Table";
 import "./MobileVehicleViewStyle.css";
-import fireEngine from "/src/assets/fire-engine.png";
+import fireEngine from "/src/assets/pictures/fire-engine.png";
 
 interface MobileVehicleView {
   title: string;
