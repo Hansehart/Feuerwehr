@@ -30,7 +30,7 @@ function Start() {
 
   return (
     <div>
-      <MobileHeader name="FFLernApp" />
+      <MobileHeader name="Feuerwehr" />
       <MobileBody main={<MobileStartPreview/>} marginToFooter="15vh"/>
       <MobileNavBar changeView={changeView} preset="department" />
     </div>

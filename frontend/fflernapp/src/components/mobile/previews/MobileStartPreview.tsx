@@ -4,7 +4,7 @@ import extingusihBurningVehicle from "/src/assets/videos/extinguish-burning-vehi
 export default function MobileStartPreview() {
   return (
     <section>
-      <video>
+      <video controls>
         <source src={extingusihBurningVehicle}/>
       </video>
     </section>
