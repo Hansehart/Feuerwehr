@@ -4,8 +4,6 @@ import { useNavigate } from "react-router-dom";
 import MobileBody from "../../components/mobile/basics/MobileBody";
 import MobileHeader from "../../components/mobile/basics/MobileHeader";
 import MobileNavBar from "../../components/mobile/basics/MobileNavBar";
-import Maintenance from "../../components/general/Maintenance";
-import MobileAuthPreview from "../../components/mobile/previews/MobileAuthPreview";
 import MobileStartPreview from "../../components/mobile/previews/MobileStartPreview";
 
 function Start() {
@@ -39,4 +37,4 @@ function Start() {
   );
 }
 
-export default Map;
+export default Start;
