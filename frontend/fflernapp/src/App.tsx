@@ -49,7 +49,6 @@ function App() {
               path="/profile/logout"
               element={<Logout updateAuthStatus={setAuth} />}
             />
-            <Route path="*" element={<Navigate replace to="/start" />} />
           </>
         ) : (
           <>
@@ -62,7 +61,6 @@ function App() {
               path="/profile/login"
               element={<Login updateAuthStatus={setAuth} />}
             />
-            <Route path="*" element={<Navigate replace to="/start" />} />
           </>
         )}
         <Route path="/start" element={<Start />} />
@@ -73,6 +71,8 @@ function App() {
         <Route path="/learn/courses" element={<Courses />} />
 
         <Route path="/profile/contact" element={<Contact />} />
+        
+        <Route path="*" element={<Navigate replace to="/start" />} />
       </Routes>
     </Router>
   );
