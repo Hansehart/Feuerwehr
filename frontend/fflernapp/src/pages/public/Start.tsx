@@ -5,8 +5,10 @@ import MobileBody from "../../components/mobile/basics/MobileBody";
 import MobileHeader from "../../components/mobile/basics/MobileHeader";
 import MobileNavBar from "../../components/mobile/basics/MobileNavBar";
 import Maintenance from "../../components/general/Maintenance";
+import MobileAuthPreview from "../../components/mobile/previews/MobileAuthPreview";
+import MobileStartPreview from "../../components/mobile/previews/MobileStartPreview";
 
-function Map() {
+function Start() {
   const navigate = useNavigate();
   const [select, setSelect] = useState("");
 
@@ -31,7 +33,7 @@ function Map() {
   return (
     <div>
       <MobileHeader name="FFLernApp" />
-      <MobileBody main={<Maintenance/>} marginToFooter="15vh"/>
+      <MobileBody main={<MobileStartPreview/>} marginToFooter="15vh"/>
       <MobileNavBar changeView={changeView} preset="department" />
     </div>
   );
