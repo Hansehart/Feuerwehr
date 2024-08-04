@@ -1,11 +1,11 @@
 import "./MobileStartPreviewStyle.css";
-import extingusihBurningVehicle from "/src/assets/videos/extinguish-burning-vehicle.webm";
+import intro from "/src/assets/videos/intro.mp4";
 
 export default function MobileStartPreview() {
   return (
     <section>
       <video controls>
-        <source src={extingusihBurningVehicle} type="video/webm"/>
+        <source src={intro} type="video/webm"/>
       </video>
     </section>
   );
