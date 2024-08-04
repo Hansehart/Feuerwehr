@@ -8,8 +8,8 @@ export default function MobileStartPreview() {
         <source src={intro} type="video/mp4" />
       </video>
       <section id="start-preview-text">
-        <h2>Gemeinwohl im Sinn</h2>
-        <h2>Feuer im Herzen</h2>
+        <h2 className="slide-in-left">Gemeinwohl im Sinn</h2>
+        <h2 className="slide-in-right">Feuer im Herzen</h2>
       </section>
     </section>
   );
