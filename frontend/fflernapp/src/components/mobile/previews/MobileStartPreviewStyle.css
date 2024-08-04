@@ -17,7 +17,7 @@
 #start-preview-text {
     position: absolute;
     z-index: 1;
-    padding: .1em
+    padding: .1em;
 
     color: white;
     border: .35em solid #ea4138;
