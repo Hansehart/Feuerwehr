@@ -5,7 +5,7 @@ export default function MobileStartPreview() {
   return (
     <section>
       <video controls>
-        <source src={extingusihBurningVehicle} type="video/mp4"/>
+        <source src={extingusihBurningVehicle} type="video/webm"/>
       </video>
     </section>
   );
