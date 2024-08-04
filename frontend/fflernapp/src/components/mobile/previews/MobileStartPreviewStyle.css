@@ -1,8 +1,14 @@
-#video-intro {
-    position: absolute;
-    z-index: 0;
+#start-video-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     width: 100vw;
     height: 70vh;
+}
+
+#start-video-intro {
+    position: absolute;
+    z-index: 0;
 
     filter: blur(5px);
 }
