@@ -7,16 +7,19 @@
 }
 
 #start-video-intro {
-    position: absolute;
+    height: 100%;
+    position: relative;
     z-index: 0;
 
-    filter: blur(5px);
+    filter: blur(5px) brightness(.2);
 }
 
 #start-preview-text {
-    position: relative;
+    position: absolute;
     z-index: 1;
+    padding: .1em
 
+    color: white;
     border: .35em solid #ea4138;
     border-radius: .5em;
 }
