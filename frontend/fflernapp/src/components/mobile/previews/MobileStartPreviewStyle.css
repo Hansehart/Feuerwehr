@@ -1,0 +1,5 @@
+#video-intro {
+    width: 100vw;
+    height: 70vh;
+    filter: blur(5px);
+}
