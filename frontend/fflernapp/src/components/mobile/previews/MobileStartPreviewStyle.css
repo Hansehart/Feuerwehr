@@ -16,4 +16,7 @@
 #start-preview-text {
     position: relative;
     z-index: 1;
+
+    border: .35em solid #ea4138;
+    border-radius: .5em;
 }
