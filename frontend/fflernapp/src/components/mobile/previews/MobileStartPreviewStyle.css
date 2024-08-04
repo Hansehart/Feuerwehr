@@ -16,16 +16,15 @@
 
 #start-preview-text {
     position: absolute;
-    z-index: 1;
-
-    opacity: 1;
 }
 
 .slide-in-left {
+    opacity: 0;
     animation: slideInFromLeft 1s ease-out 1s forwards;
 }
 
 .slide-in-right {
+    opacity: 0;
     animation: slideInFromRight 1s ease-out 2s forwards;
 }
   
