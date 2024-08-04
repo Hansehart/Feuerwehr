@@ -1,5 +1,5 @@
 import "./MobileStartPreviewStyle.css";
-import extingusihBurningVehicle from "/src/assets/videos/extinguish-burning-vehicle.mp4";
+import extingusihBurningVehicle from "/src/assets/videos/extinguish-burning-vehicle.webm";
 
 export default function MobileStartPreview() {
   return (
