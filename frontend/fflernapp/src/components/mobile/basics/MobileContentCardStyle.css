@@ -9,11 +9,6 @@
   border-radius: 1em;
 
   color: #ea4138;
-
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
 }
 
 .content-card-section:hover {
