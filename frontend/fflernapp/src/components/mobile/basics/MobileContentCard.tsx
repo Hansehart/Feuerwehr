@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import RoundedIcon from "../../general/RoundedIcon";
 import "./MobileContentCardStyle.css";
-import drivingFirefighters from "/src/assets/pictures/driving-firefighters-filter.jpg";
+import drivingFirefighters from "/src/assets/pictures/highway-accident.jpg";
 
 interface MobileContentCardProps {
   title: string;

@@ -1,5 +1,5 @@
 import "./MobileFormStyle.css";
-import drivingFirefighters from "/src/assets/pictures/driving-firefighters-filter.jpg";
+import highwayAccident from "/src/assets/pictures/highway-accident.jpg";
 
 interface InputField {
   label?: string; // label element in addition to the input element i. e text before a field for free text
@@ -86,7 +86,7 @@ export default function MobileForm({ identifier, background, fields }: MobileFor
       className="form-section"
       style={
         background
-          ? { backgroundImage: `url(${drivingFirefighters})` }
+          ? { backgroundImage: `url(${highwayAccident})` }
           : { backgroundImage: "none" }
       }
     >

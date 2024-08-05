@@ -1,13 +1,13 @@
 import "./MobileAuthPreviewStyle.css";
 
 import MobileButton from "../basics/MobileButton";
-import drivingFirefighters from "/src/assets/pictures/mobile-firefighter-portrait.jpg";
+import highwayAccident from "/src/assets/pictures/highway-accident.jpg";
 
 export default function MobileAuthPreview() {
   return (
     <section
       className="auth"
-      style={{ backgroundImage: `url(${drivingFirefighters})` }}
+      style={{ backgroundImage: `url(${highwayAccident})` }}
     >
       <div className="auth-preview">
         <div className="auth-text">
