@@ -22,15 +22,15 @@ public class PreviewService {
 
     public List<Preview> receive(String type) {
         if (type.equals("learn")) {
-            // return previewRepository.findAllByPathStartingWith("/learn%");
-            return reducePreviewResultsToWantedSlashCountHirarchie(previewRepository.findAllByPathStartingWith("/learn%"), "/learn");
+            return previewRepository.findAllByPathStartingWith("/learn%");
+            // return reducePreviewResultsToWantedSlashCountHirarchie(previewRepository.findAllByPathStartingWith("/learn%"), "/learn");
         } else if (type.equals("profile")) {
             return previewRepository.findAllByPathStartingWith("/profile%");
         } else if (type.equals("main")) {
             return previewRepository.findAllByPathStartingWith("/main%");
         } else if (type.equals("regulations")) {
-            // return previewRepository.findAllByPathStartingWith("/learn/regulations%");
-            return reducePreviewResultsToWantedSlashCountHirarchie(previewRepository.findAllByPathStartingWith("/learn/regulations%"), "/learn/regulations");
+            return previewRepository.findAllByPathStartingWith("/learn/regulations%");
+            // return reducePreviewResultsToWantedSlashCountHirarchie(previewRepository.findAllByPathStartingWith("/learn/regulations%"), "/learn/regulations");
         } else {
             System.out.println("ERROR: type unknown in query string when searching for preview");
             return null;
@@ -49,7 +49,7 @@ public class PreviewService {
     private List<Preview> reducePreviewResultsToWantedSlashCountHirarchie(List<Preview> previews, String path)
     {
         String myLocalPath = path;
-        if(path.length() == path.lastIndexOf("\\"))
+        if(path.length() - 1 == path.lastIndexOf("\\"))
         {
             myLocalPath = path.substring(0, path.length()-1);
         }
@@ -63,7 +63,7 @@ public class PreviewService {
             if(numberOfSlashes(previews.get(0).getPath()) == numSlashes + 1 )
             {
                 returnPreviews.add(previews.get(i));
-                System.out.println(previews.get(0).getPath());
+                System.out.println(previews.get(i).getPath());
             }
         }
 
