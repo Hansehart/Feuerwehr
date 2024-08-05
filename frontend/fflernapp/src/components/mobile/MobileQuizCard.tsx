@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import "./MobileQuizCardStyle.css";
-import drivingFirefighters from "/src/assets/pictures/driving-firefighters-filter.jpg";
+import highwayAccident from "/src/assets/pictures/highway-accident.jpg";
 
 interface QuizData {
   text: string;
@@ -120,7 +120,7 @@ function MobileQuizCard() {
         <div className="quiz">
           <section
             className="question"
-            style={{ backgroundImage: `url(${drivingFirefighters})` }}
+            style={{ backgroundImage: `url(${highwayAccident})` }}
           >
             <h3>{quizData.text}</h3>
           </section>

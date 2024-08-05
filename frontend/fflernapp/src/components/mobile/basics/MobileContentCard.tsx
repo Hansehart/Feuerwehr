@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import RoundedIcon from "../../general/RoundedIcon";
 import "./MobileContentCardStyle.css";
-import drivingFirefighters from "/src/assets/pictures/driving-firefighters-filter.jpg";
+import highwayAccident from "/src/assets/pictures/highway-accident.jpg";
 
 interface MobileContentCardProps {
   title: string;
@@ -21,11 +21,8 @@ export default function MobileContentCard({
   };
 
   return (
-    <section
-      className="content-card-section"
-      style={{ backgroundImage: `url(${drivingFirefighters})` }}
-      onClick={handeClick}
-    >
+    <section className="content-card-section" onClick={handeClick}>
+      <div id="content-card-background-image" style={{ backgroundImage: `url(${highwayAccident})` }}></div>
       <h1>{title}</h1>
       <h2>{subtitle}</h2>
       <RoundedIcon icon="vehicle-r" bgColor="#000000d6" stroke="#ea4138" />

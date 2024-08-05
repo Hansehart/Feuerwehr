@@ -9,6 +9,7 @@ button:hover {
     height: 70vh;
 
     background-size: cover;
+    filter: brightness(.4);
 }
 
 .auth-preview {

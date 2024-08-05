@@ -1,13 +1,13 @@
 import "./MobileDepartmentPreviewStyle.css";
 
 import MobileButton from "../basics/MobileButton";
-import drivingFirefighters from "/src/assets/pictures/driving-firefighters-filter.jpg";
+import highwayAccident from "/src/assets/pictures/highway-accident.jpg";
 
 export default function MobileDepartmentPreview() {
   return (
     <section
       className="department"
-      style={{ backgroundImage: `url(${drivingFirefighters})` }}
+      style={{ backgroundImage: `url(${highwayAccident})` }}
     >
       <div className="department-preview">
         <div className="department-text">
