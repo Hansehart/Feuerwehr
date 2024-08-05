@@ -12,6 +12,7 @@
 
   color: white;
   background-size: cover;
+  filter: brightness(.4);
 }
 
 .type {
