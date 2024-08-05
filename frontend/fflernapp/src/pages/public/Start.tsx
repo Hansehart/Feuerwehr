@@ -11,8 +11,6 @@ function Start() {
   const [select, setSelect] = useState("");
 
   useEffect(() => {
-    console.log(select)
-
     switch (select) {
       case "learn":
         navigate("/home", { state: { select: "learn" } });
