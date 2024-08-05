@@ -22,14 +22,10 @@ export default function MobileContentCard({
 
   return (
     <section className="content-card-section" onClick={handeClick}>
-      <div
-        style={{ backgroundImage: `url(${highwayAccident})` }}
-        id="content-card-background"
-      >
-        <h1>{title}</h1>
-        <h2>{subtitle}</h2>
-        <RoundedIcon icon="vehicle-r" bgColor="#000000d6" stroke="#ea4138" />
-      </div>
+      <div style={{ backgroundImage: `url(${highwayAccident})` }}></div>
+      <h1>{title}</h1>
+      <h2>{subtitle}</h2>
+      <RoundedIcon icon="vehicle-r" bgColor="#000000d6" stroke="#ea4138" />
     </section>
   );
 }
