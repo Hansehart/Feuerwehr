@@ -55,8 +55,17 @@ public class PreviewService {
         }
         
         int numSlashes = numberOfSlashes(myLocalPath);
+        Preview pr = new Preview();
+        pr.setId(99);
+        pr.setPath("/learn");
+        pr.setSubtitle(path);
+        pr.setTitle("das ist ein test");
+
         System.out.println(numSlashes);
         List<Preview> returnPreviews = new ArrayList<>(); 
+
+        returnPreviews.add(pr);
+        return returnPreviews;
 
         for (int i = 0; i < previews.size(); i++) 
         {
