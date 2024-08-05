@@ -55,6 +55,7 @@ public class PreviewService {
         }
         
         int numSlashes = numberOfSlashes(myLocalPath);
+        System.out.println(numSlashes);
         List<Preview> returnPreviews = new ArrayList<>(); 
 
         for (int i = 0; i < previews.size(); i++) 
@@ -62,6 +63,7 @@ public class PreviewService {
             if(numberOfSlashes(previews.get(0).getPath()) == numSlashes + 1 )
             {
                 returnPreviews.add(previews.get(i));
+                System.out.println(previews.get(0).getPath());
             }
         }
 
