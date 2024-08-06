@@ -7,7 +7,9 @@ button:hover {
     justify-content: center;
     align-items: center;
     height: 70vh;
+}
 
+.department-background {
     background-size: cover;
     filter: brightness(.4);
 }

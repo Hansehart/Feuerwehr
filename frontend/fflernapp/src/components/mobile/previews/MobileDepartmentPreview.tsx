@@ -5,10 +5,11 @@ import highwayAccident from "/src/assets/pictures/highway-accident.jpg";
 
 export default function MobileDepartmentPreview() {
   return (
-    <section
-      className="department"
-      style={{ backgroundImage: `url(${highwayAccident})` }}
-    >
+    <section className="department">
+      <div
+        className="department-background"
+        style={{ backgroundImage: `url(${highwayAccident})` }}
+      ></div>
       <div className="department-preview">
         <div className="department-text">
           <p>
@@ -18,7 +19,7 @@ export default function MobileDepartmentPreview() {
           </p>
 
           <p>
-            Du bist in noch keiner Feuerwehr? 
+            Du bist in noch keiner Feuerwehr?
             <br />
             Schau direkt mal auf die Karte!
           </p>
