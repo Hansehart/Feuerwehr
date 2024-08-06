@@ -18,8 +18,8 @@ function Logout({
     credentials: "include",
     method: "GET",
   }).then(() => {
-    updateAuthStatus(true);
-    //navigate("/home");
+    updateAuthStatus(false);
+    navigate("/home");
   });
 
   useEffect(() => {
@@ -52,7 +52,6 @@ function Logout({
       <MobileBody
         main={<LoadingCircle />}
         after={<p>Bitte warten Sie einen Moment.</p>}
-        marginToFooter="15vh"
       />
       </div>
       <MobileNavBar changeView={changeView} preset="profile" />
