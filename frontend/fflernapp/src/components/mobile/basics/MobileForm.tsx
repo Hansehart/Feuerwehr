@@ -80,16 +80,21 @@ const renderField = (field: InputField, index: number) => {
   }
 };
 
-export default function MobileForm({ identifier, background, fields }: MobileFormProps) {
+export default function MobileForm({
+  identifier,
+  background,
+  fields,
+}: MobileFormProps) {
   return (
-    <section
-      className="form-section"
-      style={
-        background
-          ? { backgroundImage: `url(${highwayAccident})` }
-          : { backgroundImage: "none" }
-      }
-    >
+    <section className="form-section">
+      <div
+        className="form-background"
+        style={
+          background
+            ? { backgroundImage: `url(${highwayAccident})` }
+            : { backgroundImage: "none" }
+        }
+      ></div>
       <form id={identifier}>
         {fields.map((field, index) => (
           <div
