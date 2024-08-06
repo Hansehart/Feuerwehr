@@ -43,11 +43,18 @@ function Logout({
   return (
     <div>
       <MobileHeader name="Logout" />
+      <div style={{
+        height: "70vh",
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center"
+      }}>
       <MobileBody
         main={<LoadingCircle />}
         after={<p>Bitte warten Sie einen Moment.</p>}
         marginToFooter="15vh"
       />
+      </div>
       <MobileNavBar changeView={changeView} preset="profile" />
     </div>
   );
