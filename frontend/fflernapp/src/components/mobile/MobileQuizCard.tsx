@@ -16,7 +16,7 @@ function MobileQuizCard() {
 
   useEffect(() => {
     fetchQuizData();
-  }, [])
+  }, []);
 
   useEffect(() => {
     let timer: number | null = null;
@@ -118,10 +118,11 @@ function MobileQuizCard() {
     <div>
       {quizData && (
         <div className="quiz">
-          <section
-            className="question"
-            style={{ backgroundImage: `url(${highwayAccident})` }}
-          >
+          <section className="question">
+            <div
+              className="question-background"
+              style={{ backgroundImage: `url(${highwayAccident})` }}
+            ></div>
             <h3>{quizData.text}</h3>
           </section>
           <section className="type">
@@ -143,11 +144,13 @@ function MobileQuizCard() {
               </div>
             ))}
           </section>
-          <section className="continue" onClick={fetchQuizData} unselectable="on">
+          <section
+            className="continue"
+            onClick={fetchQuizData}
+            unselectable="on"
+          >
             <h4 style={{ display: "block" }}>
-            {timerStarted
-                ? "Weiter in " 
-                : "überspringen"}
+              {timerStarted ? "Weiter in " : "überspringen"}
             </h4>
             <h4 id="timer" style={{ display: "none" }}>
               &nbsp;{count}...
