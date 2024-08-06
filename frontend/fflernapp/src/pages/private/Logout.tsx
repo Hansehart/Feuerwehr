@@ -19,7 +19,7 @@ function Logout({
     method: "GET",
   }).then(() => {
     updateAuthStatus(false);
-    navigate("/home");
+    //navigate("/home");
   });
 
   useEffect(() => {
