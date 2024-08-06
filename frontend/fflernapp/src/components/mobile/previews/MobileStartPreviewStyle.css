@@ -7,10 +7,12 @@
 }
 
 #start-video-intro {
+    width: 100%;
     height: 100%;
     position: relative;
     z-index: 0;
 
+    object-fit: cover;
     filter: brightness(.4);
 }
 
