@@ -44,8 +44,8 @@ function Logout({
     <div>
       <MobileHeader name="Logout" />
       <MobileBody
-        before={<h2>Bitte warten Sie einen Moment.</h2>}
         main={<LoadingCircle />}
+        after={<p>Bitte warten Sie einen Moment.</p>}
         marginToFooter="15vh"
       />
       <MobileNavBar changeView={changeView} preset="profile" />
