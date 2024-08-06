@@ -18,7 +18,7 @@ function Logout({
     credentials: "include",
     method: "GET",
   }).then(() => {
-    updateAuthStatus(false);
+    updateAuthStatus(true);
     //navigate("/home");
   });
 
