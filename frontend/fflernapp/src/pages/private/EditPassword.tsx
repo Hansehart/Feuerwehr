@@ -27,7 +27,65 @@ function EditPassword() {
     setSelect(view);
   };
 
-  function saveChanges() {}
+  function saveChanges() {
+    // pull all fields
+    const inputFields = document.querySelectorAll("input");
+    const currentPassword = inputFields[0].value;
+    const newPassword = inputFields[1].value;
+    const newRepeatedPassword = inputFields[2].value;
+
+    // check if password fits
+    if (newPassword === newRepeatedPassword) {
+      // pull email for user
+      fetch(
+        "https://fflernapp.hansehart.de/api/service/receive/user?attr=email"
+      )
+        .then((response) => response.json())
+        .then((data) => {
+          const email = data.content;
+          let formData = {
+            email: email,
+            password: currentPassword,
+          };
+
+          // authenticate with e-mail
+          let jsonData = JSON.stringify(formData);
+          fetch("https://fflernapp.hansehart.de/api/service/login", {
+            credentials: "include",
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: jsonData,
+          }).then((response) => {
+            if (response.ok) {
+              // change password due to successfull authentication
+              let formData: { [key: string]: string } = {};
+              formData["attribute"] = "password";
+              formData["value"] = newPassword;
+              let jsonData = JSON.stringify(formData);
+
+              fetch(
+                "https://fflernapp.hansehart.de/api/service/update/user",
+                {
+                  credentials: "include",
+                  method: "POST",
+                  headers: {
+                    "Content-Type": "application/json",
+                  },
+                  body: jsonData,
+                }
+              ).then((response) => {
+                if (response.ok) {
+                  // success
+                } else {
+                  // error message
+                }});
+            }
+          });
+        });
+    }
+  }
 
   const fields = [
     {
