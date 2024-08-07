@@ -4,6 +4,9 @@ import {
   Route,
   Navigate,
 } from "react-router-dom";
+
+import { useEffect, useState } from "react";
+
 import PublicHome from "./pages/public/Home";
 import Map from "./pages/public/Map";
 import Exercise from "./pages/public/Exercise";
@@ -13,13 +16,11 @@ import RegisterAccount from "./pages/public/RegisterAccount";
 import RegisterProfile from "./pages/private/RegisterProfile";
 import Login from "./pages/public/Login";
 import Logout from "./pages/private/Logout";
-
 import Vehicle from "./pages/private/Vehicle";
 import Home from "./pages/private/Home";
-import { useEffect, useState } from "react";
-import Settings from "./pages/private/Settings";
 import Contact from "./pages/public/Contact";
 import Start from "./pages/public/Start";
+import EditPassword from "./pages/private/EditPassword";
 
 function App() {
   const [auth, setAuth] = useState<boolean>(false);
@@ -40,7 +41,7 @@ function App() {
           <>
             <Route path="/home" element={<Home />} />
             <Route path="/main/vehicle/:rvt/:rvn" element={<Vehicle />} />
-            <Route path="/profile/settings" element={<Settings />} />
+            <Route path="/profile/settings/edit/password" element={<EditPassword />} />
             <Route
               path="/profile/register/profile"
               element={<RegisterProfile />}
