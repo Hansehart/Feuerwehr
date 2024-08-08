@@ -13,6 +13,10 @@
   border-radius: 1em;
 }
 
+.question h3 {
+  margin-bottom: 0;
+}
+
 .question-background {
   width: 100%;
   height: 100%;
