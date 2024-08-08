@@ -5,9 +5,7 @@
 
   position: relative;
   min-height: 20vh;
-  margin: 2em;
   padding: 1em;
-  border-radius: 1em;
 
   color: #ea4138;
 }
@@ -52,7 +50,5 @@
   position: absolute;
   z-index: -1;
 
-
-  border-radius: 1em;
   filter: brightness(.4)
 }
