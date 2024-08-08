@@ -73,5 +73,6 @@
 hr {
   width: 99vw;
   height: 2px;
+  margin: 0;
   background-color: #05192a;
 }
