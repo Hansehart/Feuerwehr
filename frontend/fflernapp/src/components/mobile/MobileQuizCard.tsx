@@ -121,7 +121,7 @@ function MobileQuizCard() {
           <section className="question">
             <h3>{quizData.text}</h3>
           </section>
-          <section className="answer">
+          <section className="answer-container">
             <div
               className="question-background "
               style={{ backgroundImage: `url(${highwayAccident})` }}
