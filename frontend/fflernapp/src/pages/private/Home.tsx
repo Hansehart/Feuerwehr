@@ -68,7 +68,7 @@ function Home() {
     case "profile":
       displayComponent = (
         <MobileBody type="/profile"
-        marginToFooter="18vh"
+        marginToFooter="15vh"
         />
       );
       window.history.replaceState({}, "");

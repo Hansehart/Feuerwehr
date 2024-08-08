@@ -41,6 +41,7 @@ function App() {
           <>
             <Route path="/home" element={<Home />} />
             <Route path="/main/vehicle/:rvt/:rvn" element={<Vehicle />} />
+            <Route path="/profile/settings" element={<EditPassword />} />
             <Route path="/profile/settings/password" element={<EditPassword />} />
             <Route
               path="/profile/register/profile"
