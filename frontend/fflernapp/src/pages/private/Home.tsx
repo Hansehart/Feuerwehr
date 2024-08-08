@@ -46,7 +46,7 @@ function Home() {
             </div>
           }
           type="/learn"
-          marginToFooter="18vh"
+          marginToFooter="15vh"
         />
       );
       window.history.replaceState({}, "");
