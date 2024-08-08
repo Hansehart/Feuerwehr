@@ -28,7 +28,7 @@ function Home() {
 
   switch (select) {
     case "learn":
-      displayComponent = <MobileBody type="learn" marginToFooter="18vh" />;
+      displayComponent = <MobileBody type="/learn" marginToFooter="18vh" />;
       window.history.replaceState({}, "");
       break;
     case "department":

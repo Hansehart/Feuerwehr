@@ -45,7 +45,7 @@ function Home() {
               <h3>Lernfortschritt</h3>
             </div>
           }
-          type="learn"
+          type="/learn"
           marginToFooter="18vh"
         />
       );
@@ -59,7 +59,7 @@ function Home() {
               <h3>{username? `Moin ${username}!` : "Moin!"}</h3>
             </div>
           }
-          type="vehicle"
+          type="/vehicle"
           marginToFooter="18vh"
         />
       );
@@ -67,7 +67,7 @@ function Home() {
       break;
     case "profile":
       displayComponent = (
-        <MobileBody type="profile"
+        <MobileBody type="/profile"
         marginToFooter="18vh"
         />
       );
