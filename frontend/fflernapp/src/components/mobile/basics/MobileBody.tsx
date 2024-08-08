@@ -13,6 +13,7 @@ interface Preview {
   title: string;
   subtitle: string;
   path: string;
+  img: string;
 }
 
 interface Vehicle {
@@ -48,13 +49,14 @@ export default function MobileBody({
             }));
             setPreview((prevPreview) => [...prevPreview, ...previews]);
           });
-      }
-      else {
+      } else {
         fetch(
           `https://fflernapp.hansehart.de/api/service/receive/previews?type=${type}`
         )
           .then((response) => response.json())
-          .then((data) => setPreview(data))
+          .then((data) => {
+            setPreview(data);
+          })
           .catch((error) => console.error("Error fetching data: ", error));
       }
     }
@@ -64,13 +66,13 @@ export default function MobileBody({
     return title.replace(/&shy;/g, "\u00AD");
   };
 
-
   const cards = preview.map((data, index) => (
     <MobileContentCard
       key={index}
       title={convertSoftHyphen(data.title)}
       subtitle={convertSoftHyphen(data.subtitle)}
       path={data.path}
+      img={data.img}
     />
   ));
 

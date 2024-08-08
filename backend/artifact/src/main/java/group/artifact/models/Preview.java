@@ -19,4 +19,5 @@ public class Preview {
     private String title;
     private String subtitle = "";
     private String path;
+    private String img;
 }

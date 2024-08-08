@@ -1,7 +1,7 @@
 import "./MobileAuthPreviewStyle.css";
 
 import MobileButton from "../basics/MobileButton";
-import highwayAccident from "/src/assets/pictures/highway-accident.jpg";
+import firefighterPortrait from "/src/assets/pictures/firefighter-portrait.jpg";
 
 export default function MobileAuthPreview() {
   return (
@@ -10,7 +10,7 @@ export default function MobileAuthPreview() {
     >
       <div
         className="auth-background"
-        style={{ backgroundImage: `url(${highwayAccident})` }}
+        style={{ backgroundImage: `url(${firefighterPortrait})` }}
       ></div>
       <div className="auth-preview">
         <div className="auth-text">
