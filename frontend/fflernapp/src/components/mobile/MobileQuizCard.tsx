@@ -118,7 +118,8 @@ function MobileQuizCard() {
       {quizData && (
         <div className="quiz">
           <section className="question">
-            <h3>{quizData.text}</h3>
+            <h3>Frage</h3>
+            <p>{quizData.text}</p>
           </section>
           <section className="answer-container">
             <section className="type">
