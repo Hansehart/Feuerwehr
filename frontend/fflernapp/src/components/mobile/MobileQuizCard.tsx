@@ -118,43 +118,45 @@ function MobileQuizCard() {
     <div>
       {quizData && (
         <div className="quiz">
-          <div
-            className="question-background"
-            style={{ backgroundImage: `url(${highwayAccident})` }}
-          ></div>
           <section className="question">
             <h3>{quizData.text}</h3>
           </section>
-          <section className="type">
-            <h3>
-              {quizData.solutionIndexes.length > 1
-                ? "Mehrfachauswahl"
-                : "Einfachauswahl"}
-            </h3>
-          </section>
-          <section className="select">
-            {quizData.selections.map((selection, index) => (
-              <div
-                key={index}
-                className="answer"
-                id={`answer-${index}`}
-                onClick={() => handleAnswerClick(`answer-${index}`)}
-              >
-                <p>{selection}</p>
-              </div>
-            ))}
-          </section>
-          <section
-            className="continue"
-            onClick={fetchQuizData}
-            unselectable="on"
-          >
-            <h4 style={{ display: "block" }}>
-              {timerStarted ? "Weiter in " : "überspringen"}
-            </h4>
-            <h4 id="timer" style={{ display: "none" }}>
-              &nbsp;{count}...
-            </h4>
+          <section className="answer">
+            <div
+              className="question-background "
+              style={{ backgroundImage: `url(${highwayAccident})` }}
+            ></div>
+            <section className="type">
+              <h3>
+                {quizData.solutionIndexes.length > 1
+                  ? "Mehrfachauswahl"
+                  : "Einfachauswahl"}
+              </h3>
+            </section>
+            <section className="select">
+              {quizData.selections.map((selection, index) => (
+                <div
+                  key={index}
+                  className="answer"
+                  id={`answer-${index}`}
+                  onClick={() => handleAnswerClick(`answer-${index}`)}
+                >
+                  <p>{selection}</p>
+                </div>
+              ))}
+            </section>
+            <section
+              className="continue"
+              onClick={fetchQuizData}
+              unselectable="on"
+            >
+              <h4 style={{ display: "block" }}>
+                {timerStarted ? "Weiter in " : "überspringen"}
+              </h4>
+              <h4 id="timer" style={{ display: "none" }}>
+                &nbsp;{count}...
+              </h4>
+            </section>
           </section>
         </div>
       )}

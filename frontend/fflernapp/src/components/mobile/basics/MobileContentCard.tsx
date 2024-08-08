@@ -8,6 +8,7 @@ interface MobileContentCardProps {
   title: string;
   subtitle: string;
   path: string;
+  backgroundImage?: string;
 }
 
 export default function MobileContentCard({
