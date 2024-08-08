@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import "./MobileQuizCardStyle.css";
-import highwayAccident from "/src/assets/pictures/highway-accident.jpg";
 
 interface QuizData {
   text: string;
@@ -122,11 +121,8 @@ function MobileQuizCard() {
             <h3>{quizData.text}</h3>
           </section>
           <section className="answer-container">
-            <div
-              className="question-background "
-              style={{ backgroundImage: `url(${highwayAccident})` }}
-            ></div>
             <section className="type">
+              <hr></hr>
               <h3>
                 {quizData.solutionIndexes.length > 1
                   ? "Mehrfachauswahl"
