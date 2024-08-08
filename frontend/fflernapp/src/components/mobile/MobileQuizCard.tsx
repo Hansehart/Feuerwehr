@@ -147,6 +147,7 @@ function MobileQuizCard() {
               onClick={fetchQuizData}
               unselectable="on"
             >
+              <hr></hr>
               <h4 style={{ display: "block" }}>
                 {timerStarted ? "Weiter in " : "überspringen"}
               </h4>
