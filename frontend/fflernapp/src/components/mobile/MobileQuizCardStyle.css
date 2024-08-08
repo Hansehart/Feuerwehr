@@ -1,10 +1,12 @@
+.quiz {
+  height: 70vh;
+}
+
 .question {
   display: flex;
   justify-content: center;
   align-items: center;
   text-align: center;
-
-  height: 70vh;
 
   padding: 1em;
   border-radius: 1em;
