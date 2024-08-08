@@ -115,14 +115,13 @@ function MobileQuizCard() {
   };
 
   return (
-    <div>
+    <div
+      className="question-background"
+      style={{ backgroundImage: `url(${highwayAccident})` }}
+    >
       {quizData && (
         <div className="quiz">
           <section className="question">
-            <div
-              className="question-background"
-              style={{ backgroundImage: `url(${highwayAccident})` }}
-            ></div>
             <h3>{quizData.text}</h3>
           </section>
           <section className="type">
