@@ -2,7 +2,7 @@ import { useNavigate } from "react-router-dom";
 import "./MobileContentCardStyle.css";
 
 import highwayAccident from "/src/assets/pictures/highway-accident.jpg";
-import exercisePortrait from "/src/assets/pictures/exercise-Portrait.jpg";
+import exercisePortrait from "/src/assets/pictures/exercise-portrait.jpg";
 import serviceRegulation from "/src/assets/pictures/service-regulation.jpg";
 import firefighterTeaching from "/src/assets/pictures/firefighter-teaching.jpg";
 import firedepartmentEmergency from "/src/assets/pictures/firedepartment-emergency.jpg";
