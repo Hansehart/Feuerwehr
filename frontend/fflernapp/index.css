@@ -1,5 +1,5 @@
 @font-face {
-  font-family: "Nord";
+  font-family: "Brooklyn";
   src:  url("/src/assets/fonts/Brooklyn-Normal.woff") format("woff"), 
         url("/src/assets/fonts/Brooklyn-Normal.woff2") format("woff2"),
         url("/src/assets/fonts/Brooklyn-Normal.ttf") format("truetype");
@@ -9,20 +9,23 @@
 
 body {
   margin: 0;
-  font-family: "Nord", sans-serif;
+  font-family: "Brooklyn", sans-serif;
   font-weight: 400;
 }
 
 h1 {
   font-size: 8vh;
+  font-weight: 600;
 }
 
 h2 {
   font-size: 6vh;
+  font-weight: 600;
 }
 
 h3 {
   font-size: 4vh;
+  font-weight: 600;
 }
 
 th {
