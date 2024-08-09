@@ -31,8 +31,9 @@ function Map() {
   return (
     <div>
       <MobileHeader name="Karte" />
-      <MobileBody main={<Maintenance/>} marginToFooter="15vh"/>
-      <MobileNavBar changeView={changeView} preset="department" />
+      <iframe width="425" height="350" src="https://www.openstreetmap.org/export/embed.html?bbox=6.6192626953125%2C53.227412682397365%2C11.889953613281252%2C55.22432367289142&amp;layer=mapnik" style="border: 1px solid black"></iframe><br/><small><a href="https://www.openstreetmap.org/#map=9/54.2379/9.2546">Größere Karte anzeigen</a></small>
+      {/* <MobileBody main={<Maintenance/>} marginToFooter="15vh"/> */}
+      {/* <MobileNavBar changeView={changeView} preset="department" /> */}
     </div>
   );
 }
