@@ -1,8 +1,8 @@
 import { useNavigate } from "react-router-dom";
-import RoundedIcon from "../../general/RoundedIcon";
 import "./MobileContentCardStyle.css";
 
 import highwayAccident from "/src/assets/pictures/highway-accident.jpg";
+import exercisePortrait from "/src/assets/pictures/exercise-Portrait.jpg";
 import firefighterTeaching from "/src/assets/pictures/firefighter-teaching.jpg";
 import firedepartmentEmergency from "/src/assets/pictures/firedepartment-emergency.jpg";
 import questionmarkPlaceholder from "/src/assets/pictures/questionmark-placeholder.jpg";
@@ -31,6 +31,9 @@ export default function MobileContentCard({
   switch (img) {
     case "highwayAccident":
       backgroundImg = highwayAccident;
+      break;
+    case "exercisePortrait":
+      backgroundImg = exercisePortrait;
       break;
     case "firefighterTeaching":
       backgroundImg = firefighterTeaching;
