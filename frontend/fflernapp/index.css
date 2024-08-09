@@ -1,6 +1,13 @@
+@font-face {
+  font-family: "Nord";
+  src: url("/src/assets/fonts/NORD-Medium.woff") format("woff");
+  font-style: normal;
+}
+
+
 body {
   margin: 0;
-  font-family: "Teko", sans-serif;
+  font-family: "Nord", sans-serif;
   font-weight: 400;
 }
 
