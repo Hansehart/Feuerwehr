@@ -37,7 +37,7 @@ export default function MobileBody({
     // clear old cards from another tab
     setPreview([]);
     if (type) {
-      if (type === "vehicle") {
+      if (type === "/vehicle") {
         fetch(`https://fflernapp.hansehart.de/api/service/receive/vehicles`)
           .then((response) => response.json())
           .then((data) => {
