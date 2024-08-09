@@ -1,6 +1,8 @@
 @font-face {
   font-family: "Nord";
-  src: url("/src/assets/fonts/ModernFuturistic.woff") format("woff");
+  src:  url("/src/assets/fonts/Brooklyn-Normal.woff") format("woff"), 
+        url("/src/assets/fonts/Brooklyn-Normal.woff2") format("woff2"),
+        url("/src/assets/fonts/Brooklyn-Normal.ttf") format("truetype");
   font-style: normal;
 }
 
