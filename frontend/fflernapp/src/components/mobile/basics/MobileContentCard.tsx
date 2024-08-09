@@ -3,9 +3,9 @@ import RoundedIcon from "../../general/RoundedIcon";
 import "./MobileContentCardStyle.css";
 
 import highwayAccident from "/src/assets/pictures/highway-accident.jpg";
+import firefighterTeaching from "/src/assets/pictures/firefighter-teaching.jpg";
 import firedepartmentEmergency from "/src/assets/pictures/firedepartment-emergency.jpg";
 import questionmarkPlaceholder from "/src/assets/pictures/questionmark-placeholder.jpg";
-
 
 interface MobileContentCardProps {
   title: string;
@@ -18,7 +18,7 @@ export default function MobileContentCard({
   title,
   subtitle,
   path,
-  img
+  img,
 }: MobileContentCardProps) {
   const navigate = useNavigate();
 
@@ -26,11 +26,14 @@ export default function MobileContentCard({
     navigate(path);
   };
 
-  // Determine the background image 
+  // Determine the background image
   let backgroundImg;
   switch (img) {
     case "highwayAccident":
       backgroundImg = highwayAccident;
+      break;
+    case "firefighterTeaching":
+      backgroundImg = firefighterTeaching;
       break;
     case "firedepartmentEmergency":
       backgroundImg = firedepartmentEmergency;
