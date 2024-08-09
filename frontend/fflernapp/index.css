@@ -6,26 +6,27 @@
   font-style: normal;
 }
 
-
 body {
   margin: 0;
   font-family: "Brooklyn", sans-serif;
   font-weight: 400;
 }
 
+h1, h2, h3, th {
+  font-family: "Teko", sans-serif;
+  font-weight: 600;
+}
+
 h1 {
   font-size: 8vh;
-  font-weight: 600;
 }
 
 h2 {
   font-size: 6vh;
-  font-weight: 600;
 }
 
 h3 {
   font-size: 4vh;
-  font-weight: 600;
 }
 
 th {
