@@ -47,7 +47,6 @@ export default function MobileContentCard({
       ></div>
       <h1>{title}</h1>
       <h2>{subtitle}</h2>
-      <RoundedIcon icon="vehicle-r" bgColor="#000000d6" stroke="#ea4138" />
     </section>
   );
 }
