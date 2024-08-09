@@ -3,6 +3,7 @@ import "./MobileContentCardStyle.css";
 
 import highwayAccident from "/src/assets/pictures/highway-accident.jpg";
 import exercisePortrait from "/src/assets/pictures/exercise-Portrait.jpg";
+import serviceRegulation from "/src/assets/pictures/service-regulation.jpg";
 import firefighterTeaching from "/src/assets/pictures/firefighter-teaching.jpg";
 import firedepartmentEmergency from "/src/assets/pictures/firedepartment-emergency.jpg";
 import questionmarkPlaceholder from "/src/assets/pictures/questionmark-placeholder.jpg";
@@ -34,6 +35,9 @@ export default function MobileContentCard({
       break;
     case "exercisePortrait":
       backgroundImg = exercisePortrait;
+      break;
+    case "serviceRegulation":
+      backgroundImg = serviceRegulation;
       break;
     case "firefighterTeaching":
       backgroundImg = firefighterTeaching;
