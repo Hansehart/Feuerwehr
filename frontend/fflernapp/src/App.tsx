@@ -21,6 +21,7 @@ import Home from "./pages/private/Home";
 import Contact from "./pages/public/Contact";
 import Start from "./pages/public/Start";
 import EditPassword from "./pages/private/EditPassword";
+import Directory from "./pages/public/Directory";
 
 function App() {
   const [auth, setAuth] = useState<boolean>(false);
@@ -41,7 +42,7 @@ function App() {
           <>
             <Route path="/home" element={<Home />} />
             <Route path="/main/vehicle/:rvt/:rvn" element={<Vehicle />} />
-            <Route path="/profile/settings" element={<EditPassword />} />
+            <Route path="/profile/settings" element={<Directory type="/profile/settings" />} />
             <Route path="/profile/settings/password" element={<EditPassword />} />
             <Route
               path="/profile/register/profile"
