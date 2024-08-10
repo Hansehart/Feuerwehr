@@ -22,7 +22,7 @@ function getIconPath(icon: string) {
     case "firefighter":
       return firefighter;
     case "firedepartment":
-      return firedeparment;
+      return firedepartment;
     case "book":
       return book;
     case "pylon":
