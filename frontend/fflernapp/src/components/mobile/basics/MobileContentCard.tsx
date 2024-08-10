@@ -1,6 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import "./MobileContentCardStyle.css";
 
+import emergencyExit from "/src/assets/pictures/emergency-exit.jpg";
 import highwayAccident from "/src/assets/pictures/highway-accident.jpg";
 import exercisePortrait from "/src/assets/pictures/exercise-portrait.jpg";
 import serviceRegulation from "/src/assets/pictures/service-regulation.jpg";
@@ -30,6 +31,9 @@ export default function MobileContentCard({
   // Determine the background image
   let backgroundImg;
   switch (img) {
+    case "emergencyExit":
+      backgroundImg = emergencyExit;
+      break;
     case "highwayAccident":
       backgroundImg = highwayAccident;
       break;
