@@ -1,7 +1,6 @@
 import "./RoundedIconStyle.css";
 import firefighter from "/src/assets/icons/firefighter.png";
-import vehicleB from "/src/assets/icons/firefighter-vehicle-blue.png";
-import vehicleR from "/src/assets/icons/firefighter-vehicle-red.png";
+import firedepartment from "/src/assets/icons/firedepartment.png";
 import book from "/src/assets/icons/book.png";
 import pylon from "/src/assets/icons/pylon.png"
 
@@ -22,10 +21,8 @@ function getIconPath(icon: string) {
   switch (icon) {
     case "firefighter":
       return firefighter;
-    case "vehicle-b":
-      return vehicleB;
-    case "vehicle-r":
-      return vehicleR;
+    case "firedepartment":
+      return firedeparment;
     case "book":
       return book;
     case "pylon":

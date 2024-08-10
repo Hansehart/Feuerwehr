@@ -17,7 +17,7 @@ export default function MobileNavBar({
 
   const buttons = [
     { id: "learn", icon: "book" },
-    { id: "department", icon: "vehicle-b" },
+    { id: "department", icon: "firedepartment" },
     { id: "profile", icon: "firefighter" },
   ];
 
