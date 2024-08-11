@@ -8,7 +8,6 @@ import MobileNavBar from "../../components/mobile/basics/MobileNavBar";
 interface DirectoryProps {
     type: string;
   }
-  
   function Directory({ type }: DirectoryProps) {
   const navigate = useNavigate();
   const [select, setSelect] = useState("");
