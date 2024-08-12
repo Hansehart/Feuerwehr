@@ -1,4 +1,4 @@
-# FFLernApp
+# Feuerwehr App
 
 Diese Applikation unterstützt Feuerwehr-Angehörige. Dabei werden Funktionalitäten angeboten wie:
 
