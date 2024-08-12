@@ -75,7 +75,7 @@ function RegisterProfile() {
     payload["fid"] = target.id;
     payload["username"] = username.value;
     const jsonData = JSON.stringify(payload);
-    fetch("https://fflernapp.hansehart.de/api/service/save/profile", {
+    fetch("https://feuerwehr.hansehart.de/api/service/save/profile", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
