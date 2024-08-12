@@ -38,7 +38,7 @@ function EditPassword() {
     if (newPassword === newRepeatedPassword) {
       // pull email for user
       fetch(
-        "https://fflernapp.hansehart.de/api/service/receive/user?attr=email"
+        "https://feuerwehr.hansehart.de/api/service/receive/user?attr=email"
       )
         .then((response) => response.json())
         .then((data) => {
@@ -50,7 +50,7 @@ function EditPassword() {
 
           // authenticate with e-mail
           let jsonData = JSON.stringify(formData);
-          fetch("https://fflernapp.hansehart.de/api/service/login", {
+          fetch("https://feuerwehr.hansehart.de/api/service/login", {
             credentials: "include",
             method: "POST",
             headers: {
@@ -66,7 +66,7 @@ function EditPassword() {
               let jsonData = JSON.stringify(formData);
 
               fetch(
-                "https://fflernapp.hansehart.de/api/service/update/user",
+                "https://feuerwehr.hansehart.de/api/service/update/user",
                 {
                   credentials: "include",
                   method: "POST",

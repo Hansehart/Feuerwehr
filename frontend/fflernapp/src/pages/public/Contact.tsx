@@ -49,7 +49,7 @@ function Contact() {
     payload["email"] = email.value;
     payload["question"] = message.value;
     const jsonData = JSON.stringify(payload);
-    fetch("https://fflernapp.hansehart.de/api/service/save/message", {
+    fetch("https://feuerwehr.hansehart.de/api/service/save/message", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

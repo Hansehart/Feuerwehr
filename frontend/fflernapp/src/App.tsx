@@ -28,7 +28,7 @@ function App() {
 
   // on render set auth status
   useEffect(() => {
-    fetch("https://fflernapp.hansehart.de/api/service/auth")
+    fetch("https://feuerwehr.hansehart.de/api/service/auth")
       .then((response) => response.json())
       .then((data) => {
         setAuth(data.content);

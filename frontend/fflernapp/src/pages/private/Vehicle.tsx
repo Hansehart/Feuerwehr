@@ -33,7 +33,7 @@ function Vehicle() {
 
   useEffect(() => {
     fetch(
-      `https://fflernapp.hansehart.de/api/service/receive/vehicle?rvt=${rvt}&rvn=${rvn}`
+      `https://feuerwehr.hansehart.de/api/service/receive/vehicle?rvt=${rvt}&rvn=${rvn}`
     )
       .then((response) => response.json())
       .then((data: Vehicle) => {
@@ -54,7 +54,7 @@ function Vehicle() {
       })
       .catch((error) => console.error("Error fetching data: ", error));
     fetch(
-      `https://fflernapp.hansehart.de/api/service/receive/vehicle/storages?rvt=${rvt}&rvn=${rvn}`
+      `https://feuerwehr.hansehart.de/api/service/receive/vehicle/storages?rvt=${rvt}&rvn=${rvn}`
     )
       .then((response) => response.json())
       .then((data: StorageWithMaterial[]) => {

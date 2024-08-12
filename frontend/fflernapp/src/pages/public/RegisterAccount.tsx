@@ -29,7 +29,7 @@ function RegisterAccount({
     formData["email"] = inputFields[0].value;
     formData["password"] = inputFields[1].value;
     const jsonData = JSON.stringify(formData);
-    fetch("https://fflernapp.hansehart.de/api/service/save/account", {
+    fetch("https://feuerwehr.hansehart.de/api/service/save/account", {
       credentials: "include",
       method: "POST",
       headers: {
@@ -39,7 +39,7 @@ function RegisterAccount({
     }).then((response) => {
       if (response.ok) {
         // authenticate the user
-        fetch("https://fflernapp.hansehart.de/api/service/auth")
+        fetch("https://feuerwehr.hansehart.de/api/service/auth")
           .then((response) => response.json())
           .then((data) => {
             updateAuthStatus(data.content);

@@ -38,7 +38,7 @@ export default function MobileBody({
     setPreview([]);
     if (type) {
       if (type === "/vehicle") {
-        fetch(`https://fflernapp.hansehart.de/api/service/receive/vehicles`)
+        fetch(`https://feuerwehr.hansehart.de/api/service/receive/vehicles`)
           .then((response) => response.json())
           .then((data) => {
             // map and extract shortcut and name fields
@@ -52,7 +52,7 @@ export default function MobileBody({
           });
       } else {
         fetch(
-          `https://fflernapp.hansehart.de/api/service/receive/previews?type=${type}`
+          `https://feuerwehr.hansehart.de/api/service/receive/previews?type=${type}`
         )
           .then((response) => response.json())
           .then((data) => {

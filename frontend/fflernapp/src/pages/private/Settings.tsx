@@ -27,7 +27,7 @@ function Settings() {
         break;
     }
 
-    fetch("https://fflernapp.hansehart.de/api/service/receive/user?attr=name")
+    fetch("https://feuerwehr.hansehart.de/api/service/receive/user?attr=name")
       .then((response) => response.json())
       .then((data) => setUsername(data.content));
   }, [select]);
@@ -47,7 +47,7 @@ function Settings() {
       formData["value"] = username;
       let jsonData = JSON.stringify(formData);
 
-      fetch("https://fflernapp.hansehart.de/api/service/update/user", {
+      fetch("https://feuerwehr.hansehart.de/api/service/update/user", {
         credentials: "include",
         method: "POST",
         headers: {

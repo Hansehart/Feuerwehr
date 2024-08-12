@@ -32,7 +32,7 @@ function Login({
     };
     const jsonData = JSON.stringify(formData);
 
-    fetch("https://fflernapp.hansehart.de/api/service/login", {
+    fetch("https://feuerwehr.hansehart.de/api/service/login", {
       credentials: "include",
       method: "POST",
       headers: {
@@ -42,7 +42,7 @@ function Login({
     }).then((response) => {
       if (response.ok) {
         // authenticate the user
-        fetch("https://fflernapp.hansehart.de/api/service/auth")
+        fetch("https://feuerwehr.hansehart.de/api/service/auth")
           .then((response) => response.json())
           .then((data) => {
             updateAuthStatus(data.content);

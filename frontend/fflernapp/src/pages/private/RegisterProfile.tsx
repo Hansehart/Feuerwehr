@@ -23,7 +23,7 @@ function RegisterProfile() {
   const { state } = location;
 
   useEffect(() => {
-    fetch("https://fflernapp.hansehart.de/api/service/receive/firedepartments")
+    fetch("https://feuerwehr.hansehart.de/api/service/receive/firedepartments")
       .then((response) => response.json())
       .then((data: Firedepartment[]) => {
         // direct type casting to Firedepartment[]

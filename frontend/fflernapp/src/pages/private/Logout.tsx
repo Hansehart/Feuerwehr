@@ -14,7 +14,7 @@ function Logout({
   const navigate = useNavigate();
   const [select, setSelect] = useState("");
 
-  fetch("https://fflernapp.hansehart.de/api/service/logout", {
+  fetch("https://feuerwehr.hansehart.de/api/service/logout", {
     credentials: "include",
     method: "GET",
   }).then(() => {

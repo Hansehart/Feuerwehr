@@ -23,11 +23,11 @@ function Home() {
       setSelect(location.state.select);
     }
 
-    fetch("https://fflernapp.hansehart.de/api/service/receive/user?attr=name")
+    fetch("https://feuerwehr.hansehart.de/api/service/receive/user?attr=name")
       .then((response) => response.json())
       .then((data) => setUsername(data.content));
 
-    fetch("https://fflernapp.hansehart.de/api/service/receive/firedepartment?attr=name")
+    fetch("https://feuerwehr.hansehart.de/api/service/receive/firedepartment?attr=name")
       .then((response) => response.json())
       .then((data) => setFiredepartment(data.content));
   }, []);
