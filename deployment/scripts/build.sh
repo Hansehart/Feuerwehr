@@ -4,13 +4,14 @@
 mkdir -p /app/build
 cd /app/build
 rm -r /app/build/*
-git clone git@github:LittleBitDevelopment/FFLernApp.git
+git clone git@github:LittleBitDevelopment/Feuerwehr.git
 
 # build app.war
-cd /app/build/FFLernApp/backend/artifact
+cd /app/build/Feuerwehr/backend/artifact
 mvn package
 
 # build /dist
-cd /app/build/FFLernApp/frontend/fflernapp
+cd /app/build/Feuerwehr/frontend/artifact
 npm install
 npm run build
+
