@@ -44,7 +44,7 @@ function MobileQuizCard() {
     setTimerStarted(false);
     setMultipleChoice([]);
     setCount(3);
-    fetch(`https://fflernapp.hansehart.de/api/service/receive/quiz`)
+    fetch(`https://feuerwehr.hansehart.de/api/service/receive/quiz`)
       .then((response) => response.json())
       .then((data) => setQuizData(data))
       .catch((error) => console.error("Error fetching data: ", error));
