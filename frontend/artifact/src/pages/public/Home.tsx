@@ -50,6 +50,7 @@ function Home() {
   return (
     <div>
       <MobileHeader name="Feuerwehr" />
+      <h1 className="underline">HELLO</h1>
       {displayComponent}
       <MobileNavBar changeView={changeView} preset={`${select}`} />
     </div>

@@ -1,3 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 @font-face {
   font-family: "Brooklyn";
   src:  url("/src/assets/fonts/Brooklyn-Normal.woff") format("woff"), 
