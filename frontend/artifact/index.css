@@ -1,53 +1,47 @@
+/* Import Tailwind CSS utilities */
 @import "tailwindcss/base";
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
 
+/* Define custom fonts */
 @font-face {
   font-family: "Brooklyn";
-  src:  url("/src/assets/fonts/Brooklyn-Normal.woff") format("woff"), 
-        url("/src/assets/fonts/Brooklyn-Normal.woff2") format("woff2"),
-        url("/src/assets/fonts/Brooklyn-Normal.ttf") format("truetype");
+  src: url("/src/assets/fonts/Brooklyn-Normal.woff") format("woff"), 
+       url("/src/assets/fonts/Brooklyn-Normal.woff2") format("woff2"),
+       url("/src/assets/fonts/Brooklyn-Normal.ttf") format("truetype");
   font-style: normal;
 }
 
+/* Global styles */
 body {
-  margin: 0;
-  font-family: "Brooklyn", sans-serif;
-  font-weight: 400;
+  @apply m-0 font-brooklyn font-normal;
 }
 
-h1, h2, h3, th {
-  font-family: "Teko", sans-serif;
-  font-weight: 600;
-}
-
+/* Headings and table styles */
 h1 {
-  font-size: 8vh;
+  @apply text-8vh font-teko;
 }
 
 h2 {
-  font-size: 6vh;
+  @apply text-6vh font-teko;
 }
 
 h3 {
-  font-size: 4vh;
+  @apply text-4vh font-teko;
 }
 
 th {
-  font-size: 4vh;
+  @apply text-4vh font-teko;
 }
 
 td {
-  font-size: 3vh;
+  @apply text-3vh;
 }
 
 p {
-  font-size: 1.5em;
-  margin-right: .5em;
-  margin-left: .5em;
+  @apply text-base mx-p-margin;
 }
 
 button {
-  font-family: "Brooklyn";
-  font-size: 1.5em;
+  @apply font-brooklyn text-lg;
 }
