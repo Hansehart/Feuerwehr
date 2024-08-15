@@ -4,8 +4,9 @@ import { useNavigate } from "react-router-dom";
 import MobileBody from "../../components/mobile/basics/MobileBody";
 import MobileHeader from "../../components/mobile/basics/MobileHeader";
 import MobileNavBar from "../../components/mobile/basics/MobileNavBar";
+import Maintenance from "../../components/general/Maintenance";
 
-function Regulations() {
+  function Construction() {
   const navigate = useNavigate();
   const [select, setSelect] = useState("");
 
@@ -29,11 +30,11 @@ function Regulations() {
 
   return (
     <div>
-      <MobileHeader name="Vorschriften" />
-      <MobileBody marginToFooter="15vh"/>
-      <MobileNavBar changeView={changeView} preset="learn" />
+      <MobileHeader name="Feuerwehr" />
+      <MobileBody main={<Maintenance/>} marginToFooter="15vh"/>
+      <MobileNavBar changeView={changeView} preset="department" />
     </div>
   );
 }
 
-export default Regulations;
+export default Construction;

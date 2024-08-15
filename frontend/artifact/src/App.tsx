@@ -10,8 +10,6 @@ import { useEffect, useState } from "react";
 import PublicHome from "./pages/public/Home";
 import Map from "./pages/public/Map";
 import Exercise from "./pages/public/Exercise";
-import Regulations from "./pages/public/Regulations";
-import Courses from "./pages/public/Courses";
 import RegisterAccount from "./pages/public/RegisterAccount";
 import RegisterProfile from "./pages/private/RegisterProfile";
 import Login from "./pages/public/Login";
@@ -22,6 +20,7 @@ import Contact from "./pages/public/Contact";
 import Start from "./pages/public/Start";
 import EditPassword from "./pages/private/EditPassword";
 import Directory from "./pages/public/Directory";
+import Construction from "./pages/public/Construction";
 
 function App() {
   const [auth, setAuth] = useState<boolean>(false);
@@ -70,8 +69,8 @@ function App() {
         <Route path="/main/map" element={<Map />} />
 
         <Route path="/learn/exercises" element={<Exercise />} />
-        <Route path="/learn/regulations" element={<Regulations />} />
-        <Route path="/learn/courses" element={<Courses />} />
+        <Route path="/learn/regulations" element={<Construction />} />
+        <Route path="/learn/courses" element={<Construction />} />
 
         <Route path="/profile/contact" element={<Contact />} />
         
