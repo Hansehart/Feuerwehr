@@ -16,6 +16,7 @@ export default {
         '6vh': '6vh',
         '4vh': '4vh',
         '3vh': '3vh',
+        '2vh': '2vh',
       },
       spacing: {
         'p-margin': '0.5em',

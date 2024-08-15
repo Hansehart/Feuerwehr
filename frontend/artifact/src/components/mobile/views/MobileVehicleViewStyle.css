@@ -1,4 +1,4 @@
-h2 {    
+h2 {
     text-align: center;
 }
 
@@ -7,10 +7,12 @@ h2 {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    margin-top: 1em;    
 }
 
 .vehicle img {
     width: 90vw;
+    margin-top: 1em;    
 }
 
 .material, .specification {

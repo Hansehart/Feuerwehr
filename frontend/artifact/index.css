@@ -31,11 +31,11 @@ h3 {
 }
 
 th {
-  @apply text-4vh font-teko;
+  @apply text-3vh font-teko;
 }
 
 td {
-  @apply text-3vh;
+  @apply text-2vh;
 }
 
 p {
