@@ -7,10 +7,16 @@ import MobileNavBar from "../../components/mobile/basics/MobileNavBar";
 
 interface DirectoryProps {
     type: string;
+    navbar: string;
   }
-  function Directory({ type }: DirectoryProps) {
+  function Directory({ type, navbar }: DirectoryProps) {
   const navigate = useNavigate();
   const [select, setSelect] = useState("");
+
+  // runs only on first render
+  useEffect(() => {
+    setSelect(navbar)
+  }, [])
 
   useEffect(() => {
     switch (select) {
