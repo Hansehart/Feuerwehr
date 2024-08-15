@@ -4,7 +4,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import MobileBody from "../../components/mobile/basics/MobileBody";
 import MobileHeader from "../../components/mobile/basics/MobileHeader";
 import MobileNavBar from "../../components/mobile/basics/MobileNavBar";
-import MobileVehicleView from "../../components/mobile/MobileVehicleView";
+import MobileVehicleView from "../../components/mobile/views/MobileVehicleView";
 
 interface Vehicle {
   name: string;
