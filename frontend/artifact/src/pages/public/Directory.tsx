@@ -15,10 +15,12 @@ interface DirectoryProps {
 
   // runs only on first render
   useEffect(() => {
+    console.log(navbar + "11111")
     setSelect(navbar)
   }, [])
 
   useEffect(() => {
+    console.log(navbar + "22222")
     switch (select) {
       case "learn":
         navigate("/home", { state: { select: "learn" } });
