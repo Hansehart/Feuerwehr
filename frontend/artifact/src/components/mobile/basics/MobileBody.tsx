@@ -46,7 +46,7 @@ export default function MobileBody({
               title: item.shortcut,
               subtitle: item.name,
               path: `/main/vehicle/${item.radioVehicleType}/${item.radioVehicleNumber}`,
-              img: "firedepartmentEmergency"
+              img: "vehicle"
             }));
             setPreview((prevPreview) => [...prevPreview, ...previews]);
           });
