@@ -33,10 +33,12 @@ export default function MobileContentCard({
   // Determine the background image
   let backgroundImg;
   let optionX;
+  let optionFilter = "brightness(.4)"
   switch (img) {
     case "vehicle":
       backgroundImg = vehicle;
       optionX = "center"
+      optionFilter = ""
       break;
     case "serviceCenter":
       backgroundImg = serviceCenter;
@@ -67,7 +69,7 @@ export default function MobileContentCard({
     <section className="content-card-section" onClick={handeClick}>
       <div
         id="content-card-background-image"
-        style={{ backgroundImage: `url(${backgroundImg})`, backgroundPositionX: optionX }}
+        style={{ backgroundImage: `url(${backgroundImg})`, backgroundPositionX: optionX, filter: optionFilter }}
       ></div>
       <h1>{title}</h1>
       <h2>{subtitle}</h2>
