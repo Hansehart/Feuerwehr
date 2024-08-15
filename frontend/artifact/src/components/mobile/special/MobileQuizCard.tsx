@@ -124,7 +124,7 @@ function MobileQuizCard() {
           <section className="answer-container">
             <section className="type">
               <hr></hr>
-              <h3>
+              <h3 className="mt-4">
                 {quizData.solutionIndexes.length > 1
                   ? "Mehrfachauswahl"
                   : "Einfachauswahl"}
@@ -142,12 +142,12 @@ function MobileQuizCard() {
                 </div>
               ))}
             </section>
+            <hr></hr>
             <section
               className="continue"
               onClick={fetchQuizData}
               unselectable="on"
             >
-              <hr></hr>
               <h4 id="timer" style={{ display: "block" }}>
                 {timerStarted ? `Weiter in ${count}` : "überspringen"}
               </h4>

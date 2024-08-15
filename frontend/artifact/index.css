@@ -39,7 +39,7 @@ td {
 }
 
 p {
-  @apply text-base mx-p-margin;
+  @apply text-base m-p-margin;
 }
 
 button {

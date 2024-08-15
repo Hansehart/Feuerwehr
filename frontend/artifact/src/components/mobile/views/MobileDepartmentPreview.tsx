@@ -14,7 +14,6 @@ export default function MobileDepartmentPreview() {
         <div className="department-text">
           <p>
             Um eine Wache im Detail sehen zu können,
-            <br />
             melde dich bitte an.
           </p>
 
