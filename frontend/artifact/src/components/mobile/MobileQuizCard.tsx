@@ -124,7 +124,7 @@ function MobileQuizCard() {
           <section className="answer-container">
             <section className="type">
               <hr></hr>
-              <h3>
+              <h3 className="mt-4">
                 {quizData.solutionIndexes.length > 1
                   ? "Mehrfachauswahl"
                   : "Einfachauswahl"}
