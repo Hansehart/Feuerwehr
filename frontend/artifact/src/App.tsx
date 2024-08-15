@@ -41,8 +41,18 @@ function App() {
           <>
             <Route path="/home" element={<Home />} />
             <Route path="/main/vehicle/:rvt/:rvn" element={<Vehicle />} />
-            <Route path="/profile/settings" element={<Directory type="/profile/settings" navbar="profile"/>} />
-            <Route path="/profile/settings/password" element={<EditPassword />} />
+            <Route
+              path="/profile/settings"
+              element={<Directory type="/profile/settings" navbar="profile" />}
+            />
+            <Route
+              path="/profile/settings/data"
+              element={<Construction />}
+            />
+            <Route
+              path="/profile/settings/password"
+              element={<EditPassword />}
+            />
             <Route
               path="/profile/register/profile"
               element={<RegisterProfile />}
@@ -73,7 +83,7 @@ function App() {
         <Route path="/learn/courses" element={<Construction />} />
 
         <Route path="/profile/contact" element={<Contact />} />
-        
+
         <Route path="*" element={<Navigate replace to="/start" />} />
       </Routes>
     </Router>
