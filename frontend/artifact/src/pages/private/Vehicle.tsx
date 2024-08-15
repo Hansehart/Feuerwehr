@@ -97,7 +97,7 @@ function Vehicle() {
             details={detailsData ?? []}
           />
         }
-        marginToFooter="18vh"
+        marginToFooter="15vh"
       />
       <MobileNavBar changeView={changeView} preset="department" />
     </div>
