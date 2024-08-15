@@ -4,8 +4,8 @@ import { useLocation } from "react-router-dom";
 import MobileBody from "../../components/mobile/basics/MobileBody";
 import MobileHeader from "../../components/mobile/basics/MobileHeader";
 import MobileNavBar from "../../components/mobile/basics/MobileNavBar";
-import MobileAuthPreview from "../../components/mobile/previews/MobileAuthPreview";
-import MobileDepartmentPreview from "../../components/mobile/previews/MobileDepartmentPreview";
+import MobileAuthPreview from "../../components/mobile/views/MobileAuthPreview";
+import MobileDepartmentPreview from "../../components/mobile/views/MobileDepartmentPreview";
 
 function Home() {
   const location = useLocation();

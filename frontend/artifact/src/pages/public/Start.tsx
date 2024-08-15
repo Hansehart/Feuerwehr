@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import MobileBody from "../../components/mobile/basics/MobileBody";
 import MobileHeader from "../../components/mobile/basics/MobileHeader";
 import MobileNavBar from "../../components/mobile/basics/MobileNavBar";
-import MobileStartPreview from "../../components/mobile/previews/MobileStartPreview";
+import MobileStartPreview from "../../components/mobile/views/MobileStartPreview";
 
 function Start() {
   const navigate = useNavigate();
