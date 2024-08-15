@@ -13,14 +13,7 @@ interface DirectoryProps {
   const navigate = useNavigate();
   const [select, setSelect] = useState("");
 
-  // runs only on first render
   useEffect(() => {
-    console.log(navbar + "11111")
-    setSelect(navbar)
-  }, [])
-
-  useEffect(() => {
-    console.log(navbar + "22222")
     switch (select) {
       case "learn":
         navigate("/home", { state: { select: "learn" } });
@@ -42,7 +35,7 @@ interface DirectoryProps {
     <div>
       <MobileHeader name="Feuerwehr" />
       <MobileBody type={type} marginToFooter="15vh"/>
-      <MobileNavBar changeView={changeView} preset="department" />
+      <MobileNavBar changeView={changeView} preset="profile" />
     </div>
   );
 }
