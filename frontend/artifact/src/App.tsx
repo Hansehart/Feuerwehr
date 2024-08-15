@@ -43,7 +43,7 @@ function App() {
             <Route path="/main/vehicle/:rvt/:rvn" element={<Vehicle />} />
             <Route
               path="/profile/settings"
-              element={<Directory type="/profile/settings" />}
+              element={<Directory type="/profile/settings" navbar="profile" />}
             />
             <Route
               path="/profile/settings/data"

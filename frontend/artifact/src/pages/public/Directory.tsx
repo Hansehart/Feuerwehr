@@ -7,8 +7,9 @@ import MobileNavBar from "../../components/mobile/basics/MobileNavBar";
 
 interface DirectoryProps {
     type: string;
+    navbar: string;
   }
-  function Directory({ type }: DirectoryProps) {
+  function Directory({ type, navbar }: DirectoryProps) {
   const navigate = useNavigate();
   const [select, setSelect] = useState("");
 
@@ -34,7 +35,7 @@ interface DirectoryProps {
     <div>
       <MobileHeader name="Feuerwehr" />
       <MobileBody type={type} marginToFooter="15vh"/>
-      <MobileNavBar changeView={changeView} preset="profile" />
+      <MobileNavBar changeView={changeView} preset={navbar} />
     </div>
   );
 }
