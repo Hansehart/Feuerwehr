@@ -60,7 +60,7 @@ function Home() {
             </div>
           }
           type="/vehicle"
-          marginToFooter="18vh"
+          marginToFooter="15vh"
         />
       );
       window.history.replaceState({}, "");
