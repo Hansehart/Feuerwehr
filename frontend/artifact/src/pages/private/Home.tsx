@@ -40,7 +40,7 @@ function Home() {
       displayComponent = (
         <MobileBody
           before={
-            <div style={{ textAlign: "center" }}>
+            <div className="mt-4 mb-4 text-center">
               <ProgressBall></ProgressBall>
               <h3>Lernfortschritt</h3>
             </div>
