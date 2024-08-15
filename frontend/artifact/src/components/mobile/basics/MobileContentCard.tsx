@@ -10,7 +10,6 @@ import mechanicPortrait from "/src/assets/pictures/mechanic-portrait.jpg";
 import serviceRegulation from "/src/assets/pictures/service-regulation.jpg";
 import firefighterTeaching from "/src/assets/pictures/firefighter-teaching.jpg";
 import questionmarkPlaceholder from "/src/assets/pictures/questionmark-placeholder.jpg";
-import { useState } from "react";
 
 interface MobileContentCardProps {
   title: string;
@@ -25,7 +24,6 @@ export default function MobileContentCard({
   path,
   img,
 }: MobileContentCardProps) {
-  const [option, setOption] = useState("");
   const navigate = useNavigate();
 
   const handeClick = () => {
@@ -34,10 +32,11 @@ export default function MobileContentCard({
 
   // Determine the background image
   let backgroundImg;
+  let optionX;
   switch (img) {
     case "vehicle":
       backgroundImg = vehicle;
-      setOption("center");
+      optionX = "center"
       break;
     case "serviceCenter":
       backgroundImg = serviceCenter;
@@ -68,7 +67,7 @@ export default function MobileContentCard({
     <section className="content-card-section" onClick={handeClick}>
       <div
         id="content-card-background-image"
-        style={{ backgroundImage: `url(${backgroundImg})`, backgroundPositionX: option }}
+        style={{ backgroundImage: `url(${backgroundImg})`, backgroundPositionX: optionX }}
       ></div>
       <h1>{title}</h1>
       <h2>{subtitle}</h2>
