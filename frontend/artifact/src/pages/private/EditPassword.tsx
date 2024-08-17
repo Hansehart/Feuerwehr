@@ -89,7 +89,7 @@ function EditPassword() {
 
   const fields = [
     {
-      label: "aktuelles Passwort",
+      label: "Aktuelles Passwort",
       type: "password",
     },
     {
@@ -102,6 +102,7 @@ function EditPassword() {
     },
     {
       value: "Abbrechen",
+      classname: "mt-4",
       type: "button",
       onClick: () => {
         navigate("/home");
