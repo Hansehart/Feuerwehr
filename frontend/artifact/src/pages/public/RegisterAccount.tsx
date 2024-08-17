@@ -79,7 +79,6 @@ function RegisterAccount({
           <a
             href="https://feuerwehr.hansehart.de/info/gtc"
             target="_blank"
-            rel="noopener noreferrer"
           >
             AGB
           </a>
