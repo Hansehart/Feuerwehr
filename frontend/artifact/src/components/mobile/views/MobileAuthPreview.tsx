@@ -20,7 +20,7 @@ export default function MobileAuthPreview() {
             melde dich bitte an.
           </p>
         </div>
-        <div className="auth-buttons">
+        <div className="auth-buttons mt-8">
           <MobileButton
             text="Registrieren"
             path="/profile/register/account"
