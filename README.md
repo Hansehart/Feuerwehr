@@ -5,3 +5,10 @@ Diese Applikation unterstützt Feuerwehr-Angehörige. Dabei werden Funktionalit�
 - Lerninhalte und Vorschriften
 - Überprüfugung der Einsatzbereitschaft
 - Lehrgangsübersicht
+
+Das Repository ist in vier Bereiche aufgeteilt:
+
+- Frontend
+- Backend
+- Deployment
+- Documents
