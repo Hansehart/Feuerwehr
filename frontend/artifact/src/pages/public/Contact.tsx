@@ -87,7 +87,7 @@ function Contact() {
         main={<MobileForm background={true} fields={fields} />}
         marginToFooter="15vh"
       />
-      <MobileNavBar changeView={changeView} preset="profile" />
+      <MobileNavBar changeView={changeView} preset="" />
     </div>
   );
 }

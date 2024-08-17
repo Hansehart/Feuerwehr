@@ -77,15 +77,15 @@ function App() {
         )}
         <Route path="/start" element={<Start />} />
         <Route path="/info/map" element={<Construction />} />
-        <Route path="/dev/info/map" element={<Map />} />
         <Route path="/info/gtc" element={<Construction />} />
         <Route path="/info/imprint" element={<Construction />} />
+        <Route path="/info/contact" element={<Contact />} />
 
         <Route path="/learn/exercises" element={<Exercise />} />
         <Route path="/learn/regulations" element={<Construction />} />
         <Route path="/learn/courses" element={<Construction />} />
 
-        <Route path="/profile/contact" element={<Contact />} />
+        <Route path="/dev/info/map" element={<Map />} />
 
         <Route path="*" element={<Navigate replace to="/start" />} />
       </Routes>
