@@ -100,7 +100,7 @@ function RegisterProfile() {
         (fd) => fd.name + " (" + fd.locationNumber + ")"
       ),
     },
-    { value: "Bestätigen", type: "button", onClick: register },
+    { value: "Bestätigen", classname: "mt-8", type: "button", onClick: register },
   ];
 
   useEffect(() => {

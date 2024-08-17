@@ -67,7 +67,7 @@ function RegisterAccount({
       type: "password",
     },
     {
-      label: "Ich akzeptiere die AGB",
+      label: "Ich akzeptiere die AGB <a href='https://feuerwehr.hansehart.de/info/gtc'></a>",
       type: "checkbox",
       className: "mt-4 mb-8",
       inline: true,
