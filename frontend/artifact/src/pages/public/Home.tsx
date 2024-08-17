@@ -29,7 +29,7 @@ function Home() {
 
   switch (select) {
     case "learn":
-      displayComponent = <MobileBody type="/learn" marginToFooter="15vh" />;
+      displayComponent = <MobileBody type="/learn" marginToFooter="15vh" after={<MobileImprintFooter/>}/>;
       window.history.replaceState({}, "");
       break;
     case "department":
@@ -40,7 +40,7 @@ function Home() {
       break;
     case "profile":
       displayComponent = (
-        <MobileBody before={<MobileAuthPreview />}/> // type is for public page not set because their should be no content loaded
+        <MobileBody before={<MobileAuthPreview />} after={<MobileImprintFooter/>}/> // type is for public page not set because their should be no content loaded
       );
       window.history.replaceState({}, "");
       break;
