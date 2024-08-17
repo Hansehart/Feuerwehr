@@ -102,7 +102,7 @@ function EditPassword() {
     },
     {
       value: "Abbrechen",
-      classname: "mt-4",
+      classname: "mt-8",
       type: "button",
       onClick: () => {
         navigate("/profile/settings");
