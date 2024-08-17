@@ -32,7 +32,7 @@ function Start() {
     <div>
       <MobileHeader name="Feuerwehr" />
       <MobileBody main={<MobileStartPreview/>} marginToFooter="15vh"/>
-      <MobileNavBar changeView={changeView} preset="department" />
+      <MobileNavBar changeView={changeView} preset="" />
     </div>
   );
 }

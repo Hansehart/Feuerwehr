@@ -32,7 +32,7 @@ import Maintenance from "../../components/general/Maintenance";
     <div>
       <MobileHeader name="Feuerwehr" />
       <MobileBody main={<Maintenance/>} marginToFooter="15vh"/>
-      <MobileNavBar changeView={changeView} preset="department" />
+      <MobileNavBar changeView={changeView} preset="" />
     </div>
   );
 }
