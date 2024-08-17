@@ -19,7 +19,9 @@ function RegisterAccount({
 }) {
   const navigate = useNavigate();
   const [select, setSelect] = useState("");
-  const [notification, setNotification] = useState<NotficatorProps | null>(null);
+  const [notification, setNotification] = useState<NotficatorProps | null>(
+    null
+  );
 
   function register() {
     const inputFields = document.querySelectorAll("input");
@@ -47,8 +49,12 @@ function RegisterAccount({
               state: { notification: "Account wurde erstellt!" },
             });
           });
-      } else if (response.status === 400) { // e-mail already taken
-        setNotification({type: "error", message: "Wähle eine andere E-Mail!"});
+      } else if (response.status === 400) {
+        // e-mail already taken
+        setNotification({
+          type: "error",
+          message: "Wähle eine andere E-Mail!",
+        });
       }
     });
   }
@@ -67,7 +73,18 @@ function RegisterAccount({
       type: "password",
     },
     {
-      label: "Ich akzeptiere die AGB <a href='https://feuerwehr.hansehart.de/info/gtc'></a>",
+      label: (
+        <>
+          Ich akzeptiere die{" "}
+          <a
+            href="https://feuerwehr.hansehart.de/info/gtc"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            AGB
+          </a>
+        </>
+      ),
       type: "checkbox",
       className: "mt-4 mb-8",
       inline: true,
@@ -97,7 +114,9 @@ function RegisterAccount({
 
   return (
     <div>
-      {notification && <Notificator type={notification.type} text={notification.message} />}
+      {notification && (
+        <Notificator type={notification.type} text={notification.message} />
+      )}
       <MobileHeader name="Registrieren" />
       <MobileBody
         main={<MobileForm background={true} fields={fields} />}
