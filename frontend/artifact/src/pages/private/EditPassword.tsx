@@ -105,7 +105,7 @@ function EditPassword() {
       classname: "mt-4",
       type: "button",
       onClick: () => {
-        navigate("/home");
+        navigate("/profile/settings");
       },
     },
 

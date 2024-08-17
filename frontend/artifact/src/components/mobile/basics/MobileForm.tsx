@@ -67,6 +67,7 @@ const renderField = (field: InputField, index: number) => {
               <label htmlFor={`input-${index}`}>{field.label}</label>
               <input
                 id={`input-${index}`}
+                className={field.classname}
                 type={field.type}
                 value={field.value}
                 placeholder={field.placeholder}
