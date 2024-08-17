@@ -1,10 +1,13 @@
-
 export default function MobileImprintFooter() {
   return (
-    <div className="flex flex-col">
-      <a>AGB</a>
-      <a>Impressum</a>
-      <a>Kontakt</a>
-    </div>
+    <section className="mb-[20vh]">
+      <div className="flex jusitfy-center h-[15vh]">
+        <a>AGB</a>
+        <p>|</p>
+        <a>Impressum</a>
+        <p>|</p>
+        <a>Kontakt</a>
+      </div>
+    </section>
   );
 }
