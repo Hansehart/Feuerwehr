@@ -69,6 +69,7 @@ function RegisterAccount({
     {
       label: "Ich akzeptiere die AGB",
       type: "checkbox",
+      className: "mt-4 mb-8",
       inline: true,
       reverse: true,
     },
