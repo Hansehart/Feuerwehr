@@ -74,6 +74,7 @@ function Contact() {
     },
     {
       label: "Deine Nachricht an uns",
+      className: "mt-8",
       type: "textarea",
     },
     { value: "Senden", type: "button", onClick: send },
