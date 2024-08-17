@@ -85,7 +85,7 @@ function RegisterAccount({
         </>
       ),
       type: "checkbox",
-      className: "mt-4 mb-8",
+      classname: "mt-4 mb-8",
       inline: true,
       reverse: true,
     },
