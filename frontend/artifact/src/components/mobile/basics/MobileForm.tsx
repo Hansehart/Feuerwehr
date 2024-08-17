@@ -4,6 +4,7 @@ import highwayAccident from "/src/assets/pictures/highway-accident.jpg";
 interface InputField {
   label?: string; // label element in addition to the input element i. e text before a field for free text
   type: string; // choose select, texarea or one of the input types
+  classname?: string; // add classname and apply options i. e. via tailwind 
   value?: string; // text inside inputs i. e buttons
   placeholder?: string; // text inside inputs, that disappear after clicking on it
   inline?: boolean; // determines if elements should be displayed in a row (against the default: column)
@@ -50,6 +51,7 @@ const renderField = (field: InputField, index: number) => {
             <>
               <input
                 id={`input-${index}`}
+                className={field.classname}
                 type={field.type}
                 value={field.value}
                 placeholder={field.placeholder}
