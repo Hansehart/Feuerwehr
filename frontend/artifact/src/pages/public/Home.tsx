@@ -6,6 +6,7 @@ import MobileHeader from "../../components/mobile/basics/MobileHeader";
 import MobileNavBar from "../../components/mobile/basics/MobileNavBar";
 import MobileAuthPreview from "../../components/mobile/views/MobileAuthPreview";
 import MobileDepartmentPreview from "../../components/mobile/views/MobileDepartmentPreview";
+import MobileImprintFooter from "../../components/mobile/basics/MobileImprintFooter";
 
 function Home() {
   const location = useLocation();
@@ -33,7 +34,7 @@ function Home() {
       break;
     case "department":
       displayComponent = (
-        <MobileBody before={<MobileDepartmentPreview />}/> // type is for public page not set because their should be no content loaded
+        <MobileBody before={<MobileDepartmentPreview />} after={<MobileImprintFooter/>}/> // type is for public page not set because their should be no content loaded
       );
       window.history.replaceState({}, "");
       break;
