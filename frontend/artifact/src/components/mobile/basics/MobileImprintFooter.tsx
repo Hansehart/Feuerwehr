@@ -1,7 +1,7 @@
 export default function MobileImprintFooter() {
   return (
     <section className="mb-[20vh]">
-      <div className="flex jusitfy-center content-center h-[15vh]">
+      <div className="flex justify-center items-center h-[15vh]">
         <a href="https://feuerwehr.hansehart.de/info/gtc" target="_blank">
           AGB
         </a>
