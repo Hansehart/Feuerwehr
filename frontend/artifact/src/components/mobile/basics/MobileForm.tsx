@@ -2,7 +2,7 @@ import "./MobileFormStyle.css";
 import highwayAccident from "/src/assets/pictures/highway-accident.jpg";
 
 interface InputField {
-  label?: string; // label element in addition to the input element i. e text before a field for free text
+  label?: string | React.ReactNode; // label element in addition to the input element i. e text before a field for free text
   type: string; // choose select, texarea or one of the input types
   classname?: string; // add classname and apply options i. e. via tailwind 
   value?: string; // text inside inputs i. e buttons
