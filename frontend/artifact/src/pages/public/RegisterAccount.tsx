@@ -6,6 +6,7 @@ import MobileHeader from "../../components/mobile/basics/MobileHeader";
 import MobileNavBar from "../../components/mobile/basics/MobileNavBar";
 import MobileForm from "../../components/mobile/basics/MobileForm";
 import Notificator from "../../components/general/Notficator";
+import MobileImprintFooter from "../../components/mobile/basics/MobileInfoFooter";
 
 interface NotficatorProps {
   type: string;
@@ -163,6 +164,7 @@ function RegisterAccount({
         main={<MobileForm background={true} fields={fields} classname="mt-8" />}
       />
       <MobileNavBar changeView={changeView} preset="profile" />
+      <MobileImprintFooter/>
     </div>
   );
 }

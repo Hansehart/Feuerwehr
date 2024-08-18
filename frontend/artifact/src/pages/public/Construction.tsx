@@ -5,6 +5,7 @@ import MobileBody from "../../components/mobile/basics/MobileBody";
 import MobileHeader from "../../components/mobile/basics/MobileHeader";
 import MobileNavBar from "../../components/mobile/basics/MobileNavBar";
 import Maintenance from "../../components/general/Maintenance";
+import MobileImprintFooter from "../../components/mobile/basics/MobileInfoFooter";
 
   function Construction() {
   const navigate = useNavigate();
@@ -31,8 +32,9 @@ import Maintenance from "../../components/general/Maintenance";
   return (
     <div>
       <MobileHeader name="Feuerwehr" />
-      <MobileBody main={<Maintenance/>} marginToFooter="15vh"/>
+      <MobileBody main={<Maintenance/>}/>
       <MobileNavBar changeView={changeView} preset="" />
+      <MobileImprintFooter/>
     </div>
   );
 }

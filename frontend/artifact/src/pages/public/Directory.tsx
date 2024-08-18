@@ -4,6 +4,8 @@ import { useNavigate } from "react-router-dom";
 import MobileBody from "../../components/mobile/basics/MobileBody";
 import MobileHeader from "../../components/mobile/basics/MobileHeader";
 import MobileNavBar from "../../components/mobile/basics/MobileNavBar";
+import MobileImprintFooter from "../../components/mobile/basics/MobileInfoFooter";
+
 
 interface DirectoryProps {
     type: string;
@@ -34,8 +36,9 @@ interface DirectoryProps {
   return (
     <div>
       <MobileHeader name="Feuerwehr" />
-      <MobileBody type={type} marginToFooter="15vh"/>
+      <MobileBody type={type}/>
       <MobileNavBar changeView={changeView} preset={navbar} />
+      <MobileImprintFooter/>
     </div>
   );
 }

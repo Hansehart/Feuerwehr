@@ -8,6 +8,7 @@ import MobileAuthPreview from "../../components/mobile/views/MobileAuthPreview";
 import MobileDepartmentPreview from "../../components/mobile/views/MobileDepartmentPreview";
 import MobileImprintFooter from "../../components/mobile/basics/MobileInfoFooter";
 
+
 function Home() {
   const location = useLocation();
   const [select, setSelect] = useState("");

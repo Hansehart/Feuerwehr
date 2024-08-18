@@ -5,6 +5,8 @@ import MobileBody from "../../components/mobile/basics/MobileBody";
 import MobileHeader from "../../components/mobile/basics/MobileHeader";
 import MobileNavBar from "../../components/mobile/basics/MobileNavBar";
 import MobileForm from "../../components/mobile/basics/MobileForm";
+import MobileImprintFooter from "../../components/mobile/basics/MobileInfoFooter";
+
 
 function Contact() {
   const navigate = useNavigate();
@@ -84,9 +86,9 @@ function Contact() {
       <MobileHeader name="Kontakt" />
       <MobileBody
         main={<MobileForm background={true} fields={fields} />}
-        marginToFooter="15vh"
       />
       <MobileNavBar changeView={changeView} preset="" />
+      <MobileImprintFooter/>
     </div>
   );
 }

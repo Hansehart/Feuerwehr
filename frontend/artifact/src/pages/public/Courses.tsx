@@ -4,6 +4,8 @@ import { useNavigate } from "react-router-dom";
 import MobileBody from "../../components/mobile/basics/MobileBody";
 import MobileHeader from "../../components/mobile/basics/MobileHeader";
 import MobileNavBar from "../../components/mobile/basics/MobileNavBar";
+import MobileImprintFooter from "../../components/mobile/basics/MobileInfoFooter";
+
 
 function Courses() {
   const navigate = useNavigate();
@@ -30,8 +32,9 @@ function Courses() {
   return (
     <div>
       <MobileHeader name="Lehrgänge" />
-      <MobileBody marginToFooter="15vh"/>
+      <MobileBody/>
       <MobileNavBar changeView={changeView} preset="learn" />
+      <MobileImprintFooter/>
     </div>
   );
 }

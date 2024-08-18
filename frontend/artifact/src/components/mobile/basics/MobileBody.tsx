@@ -6,7 +6,6 @@ interface MobileBodyProps {
   type?: string; // main is made with contentcards
   main?: React.ReactNode; // main is custom made
   after?: React.ReactNode; // footer (in main)
-  marginToFooter?: string;
 }
 
 interface Preview {
@@ -29,7 +28,6 @@ export default function MobileBody({
   type,
   main,
   after,
-  marginToFooter,
 }: MobileBodyProps) {
   const [preview, setPreview] = useState<Preview[]>([]);
 
@@ -78,7 +76,7 @@ export default function MobileBody({
   ));
 
   return (
-    <main style={{ marginBottom: marginToFooter }}>
+    <main>
       {before}
       {cards.length > 0 ? cards : main}
       {after}

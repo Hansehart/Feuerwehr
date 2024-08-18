@@ -5,6 +5,8 @@ import MobileBody from "../../components/mobile/basics/MobileBody";
 import MobileHeader from "../../components/mobile/basics/MobileHeader";
 import MobileNavBar from "../../components/mobile/basics/MobileNavBar";
 import MobileQuizCard from "../../components/mobile/special/MobileQuizCard";
+import MobileImprintFooter from "../../components/mobile/basics/MobileInfoFooter";
+
 
 function Exercise() {
   const navigate = useNavigate();
@@ -31,8 +33,9 @@ function Exercise() {
   return (
     <div>
       <MobileHeader name="Übung" />
-      <MobileBody before={<MobileQuizCard />} marginToFooter="15vh"/>
-      <MobileNavBar changeView={changeView} preset="learn" />
+      <MobileBody before={<MobileQuizCard />}/>
+      <MobileNavBar changeView={changeView} preset="learn" />´
+      <MobileImprintFooter/>
     </div>
   );
 }
