@@ -67,6 +67,7 @@ function RegisterAccount({
     {
       label: "Passwort",
       type: "password",
+      passwordValidator: true,
     },
     {
       label: "Passwort wiederholen",
@@ -120,7 +121,7 @@ function RegisterAccount({
       )}
       <MobileHeader name="Registrieren" />
       <MobileBody
-        main={<MobileForm background={true} fields={fields} />}
+        main={<MobileForm background={true} fields={fields} classname="mt-8" />}
         marginToFooter="15vh"
       />
       <MobileNavBar changeView={changeView} preset="profile" />
