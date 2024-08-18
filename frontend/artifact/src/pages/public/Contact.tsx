@@ -74,10 +74,9 @@ function Contact() {
     },
     {
       label: "Deine Nachricht an uns",
-      classname: "mt-8",
       type: "textarea",
     },
-    { value: "Senden", type: "button", onClick: send },
+    { value: "Senden", classname: "mt-8", type: "button", onClick: send },
   ];
 
   return (
