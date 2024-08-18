@@ -76,21 +76,23 @@ function RegisterAccount({
       label: (
         <>
           Ich akzeptiere die{" "}
-          <a
-            href="https://feuerwehr.hansehart.de/info/gtc"
-            target="_blank"
-          >
+          <a href="https://feuerwehr.hansehart.de/info/gtc" target="_blank">
             AGB
           </a>
         </>
       ),
       type: "checkbox",
-      classname: "mt-4 mb-8",
+      classname: "w-6 h-6",
       inline: true,
       reverse: true,
     },
 
-    { value: "Bestätigen", type: "button", onClick: register },
+    {
+      value: "Bestätigen",
+      classname: "mt-4",
+      type: "button",
+      onClick: register,
+    },
   ];
 
   useEffect(() => {

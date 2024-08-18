@@ -8,7 +8,6 @@ import {
 import { useEffect, useState } from "react";
 
 import PublicHome from "./pages/public/Home";
-import Map from "./pages/public/Map";
 import Exercise from "./pages/public/Exercise";
 import RegisterAccount from "./pages/public/RegisterAccount";
 import RegisterProfile from "./pages/private/RegisterProfile";
@@ -84,8 +83,6 @@ function App() {
         <Route path="/learn/exercises" element={<Exercise />} />
         <Route path="/learn/regulations" element={<Construction />} />
         <Route path="/learn/courses" element={<Construction />} />
-
-        <Route path="/dev/info/map" element={<Map />} />
 
         <Route path="*" element={<Navigate replace to="/start" />} />
       </Routes>

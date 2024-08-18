@@ -29,18 +29,18 @@ function Home() {
 
   switch (select) {
     case "learn":
-      displayComponent = <MobileBody type="/learn" marginToFooter="15vh" after={<MobileImprintFooter/>}/>;
+      displayComponent = <MobileBody type="/learn"/>;
       window.history.replaceState({}, "");
       break;
     case "department":
       displayComponent = (
-        <MobileBody before={<MobileDepartmentPreview />} after={<MobileImprintFooter/>}/> // type is for public page not set because their should be no content loaded
+        <MobileBody before={<MobileDepartmentPreview />}/> // type is for public page not set because their should be no content loaded
       );
       window.history.replaceState({}, "");
       break;
     case "profile":
       displayComponent = (
-        <MobileBody before={<MobileAuthPreview />} after={<MobileImprintFooter/>}/> // type is for public page not set because their should be no content loaded
+        <MobileBody before={<MobileAuthPreview />}/> // type is for public page not set because their should be no content loaded
       );
       window.history.replaceState({}, "");
       break;
@@ -53,6 +53,7 @@ function Home() {
       <MobileHeader name="Feuerwehr" />
       {displayComponent}
       <MobileNavBar changeView={changeView} preset={`${select}`} />
+      <MobileImprintFooter/>
     </div>
   );
 }

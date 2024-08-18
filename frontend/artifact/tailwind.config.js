@@ -11,6 +11,10 @@ export default {
         brooklyn: ['Brooklyn', 'sans-serif'],
         teko: ['Teko', 'sans-serif'],
       },
+      colors: {
+        primary: '#05192a',
+        secondary: '#ea4138'
+      },
       fontSize: {
         '8vh': '8vh',
         '6vh': '6vh',
