@@ -71,7 +71,7 @@ function Login({
       onChange: (e: React.ChangeEvent<HTMLInputElement>) =>
         setPassword(e.target.value),
     },
-    { value: "Anmelden", className: "mt-8", type: "button", onClick: login },
+    { value: "Anmelden", classname: "mt-8", type: "button", onClick: login },
   ];
 
   useEffect(() => {
