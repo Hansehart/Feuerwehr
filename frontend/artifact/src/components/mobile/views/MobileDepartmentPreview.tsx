@@ -25,7 +25,7 @@ export default function MobileDepartmentPreview() {
         </div>
         <div className="choose-buttons">
           <MobileButton text="Karte" path="/info/map"></MobileButton>
-          <MobileButton text="Kontakt" path="/profile/contact"></MobileButton>
+          <MobileButton text="Kontakt" path="/info/contact"></MobileButton>
         </div>
       </div>
     </section>
