@@ -6,11 +6,19 @@ import MobileHeader from "../../components/mobile/basics/MobileHeader";
 import MobileNavBar from "../../components/mobile/basics/MobileNavBar";
 import MobileForm from "../../components/mobile/basics/MobileForm";
 import MobileImprintFooter from "../../components/mobile/basics/MobileInfoFooter";
+import Notificator from "../../components/general/Notficator";
 
+interface NotficatorProps {
+  type: string;
+  message: string;
+}
 
 function Contact() {
   const navigate = useNavigate();
   const [select, setSelect] = useState("");
+  const [notification, setNotification] = useState<NotficatorProps | null>(
+    null
+  );
 
   const options = [
     "Fehler mitteilen",
@@ -31,35 +39,64 @@ function Contact() {
         navigate("/home", { state: { select: "profile" } });
         break;
     }
-  }, [select]);
+  }, [select, navigate]);
 
   const changeView = (view: string) => {
     setSelect(view);
   };
 
+  useEffect(() => {
+    if (notification) {
+      // Notification will automatically trigger a re-render when setNotification is called
+      const timer = setTimeout(() => {
+        setNotification(null);
+      }, 3000); // Clear the notification after 3 seconds
+
+      return () => clearTimeout(timer); // Cleanup timeout on component unmount or notification change
+    }
+  }, [notification]);
+
   function send() {
-    const selectedReason = document.getElementById(
-      "input-0"
-    ) as HTMLInputElement;
+    const selectedReason = document.getElementById("input-0") as HTMLInputElement;
     const email = document.getElementById("input-1") as HTMLInputElement;
     const message = document.getElementById("input-2") as HTMLInputElement;
 
-    // create an object to store input values
-    const payload: { [key: string]: string } = {};
+    // Function to check if an email is valid
+    const isEmailValid = (email: string) =>
+      /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
 
-    payload["reason"] = selectedReason.value.trim();
-    payload["email"] = email.value;
-    payload["question"] = message.value;
-    const jsonData = JSON.stringify(payload);
+    if (!isEmailValid(email.value)) {
+      setNotification({
+        type: "error",
+        message: "E-Mail Format ungültig!",
+      });
+      return;
+    }
+
+    const payload: { [key: string]: string } = {
+      reason: selectedReason.value.trim(),
+      email: email.value,
+      question: message.value,
+    };
+
     fetch("https://feuerwehr.hansehart.de/api/service/save/message", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      body: jsonData,
+      body: JSON.stringify(payload),
     }).then((response) => {
       if (response.ok) {
         navigate("/home");
+        setNotification({
+          type: "success",
+          message: "Nachricht erfolgreich versendet",
+        });
+      } else {
+        setNotification({
+          type: "error",
+          message: "Fehler beim Senden der Nachricht!",
+        });
       }
     });
   }
@@ -84,11 +121,12 @@ function Contact() {
   return (
     <div>
       <MobileHeader name="Kontakt" />
-      <MobileBody
-        main={<MobileForm background={true} fields={fields} />}
-      />
+      {notification && (
+        <Notificator type={notification.type} text={notification.message} />
+      )}
+      <MobileBody main={<MobileForm background={true} fields={fields} />} />
       <MobileNavBar changeView={changeView} preset="" />
-      <MobileImprintFooter/>
+      <MobileImprintFooter />
     </div>
   );
 }
