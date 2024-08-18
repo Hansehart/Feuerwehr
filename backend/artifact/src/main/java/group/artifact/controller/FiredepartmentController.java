@@ -39,7 +39,10 @@ public class FiredepartmentController {
     public ResponseEntity<ContainerDTO<String>> receiveFiredepartmentInformation(@CookieValue(value = "sid") String sid, @RequestParam(required = true) String attr) { // attribute
         try {
             ContainerDTO<String> msg = firedepartmentService.receiveAttribute(sid, attr);
-            if (msg == null) { // user is registered but has not created a profile yet
+            if (msg == null) { // user unknown
+                return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(null);
+            }
+            if (msg.getContent() == null) { // user is known but not a member of a firedepartment
                 return ResponseEntity.status(HttpStatus.FORBIDDEN).body(null);
             }
             return ResponseEntity.ok(msg);

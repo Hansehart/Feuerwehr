@@ -27,11 +27,16 @@ public class FiredepartmentService {
         ContainerDTO<String> m = new ContainerDTO<>(); // message
         if (attr.equals("name")) {
             Session s = sessionRepository.findById(sid).orElse(null);
-            if (s == null) {
+            if (s == null) { // user unknown
+                return null;
+            }
+            
+            Firedepartment f = s.getFiredepartment();
+            if (f == null) { // user is known but not a member of a firedepartment
                 System.out.println("ERROR: corresponding firedepartment for sid not found whereby firedepartment can't provide further information");
                 m.setContent(null);
+                return m;
             }
-            Firedepartment f = s.getFiredepartment();
             m.setContent(f.getName());
         }
         return m;
