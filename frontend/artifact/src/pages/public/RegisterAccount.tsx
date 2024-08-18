@@ -26,10 +26,49 @@ function RegisterAccount({
   function register() {
     const inputFields = document.querySelectorAll("input");
 
+    const email = inputFields[0].value;
+    const pw = inputFields[1].value;
+    const repeatedPw = inputFields[2].value;
+    const checkbox = inputFields[3].checked;
+
+    // Function to check if an email is valid
+    const isEmailValid = (email: string) =>
+      /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+
+    // check if passwords are equal
+    if (!isEmailValid(email)) {
+      setNotification({
+        type: "error",
+        message: "E-Mail Format ungültig!",
+      });
+      return;
+    } else if (pw !== repeatedPw) {
+      // passwords different
+      setNotification({
+        type: "error",
+        message: "Passwort stimmt nicht überein!",
+      });
+      return;
+    } else if (pw.length === 0 || repeatedPw.length === 0) {
+      // passwords empty
+      setNotification({
+        type: "error",
+        message: "Passwort darf nicht leer sein!",
+      });
+      return;
+    } else if (!checkbox) {
+      // gtc not accepted
+      setNotification({
+        type: "error",
+        message: "Stimme bitt den AGB zu!",
+      });
+      return;
+    }
+
     // create an object to store input values
     const formData: { [key: string]: string } = {};
-    formData["email"] = inputFields[0].value;
-    formData["password"] = inputFields[1].value;
+    formData["email"] = email;
+    formData["password"] = pw;
     const jsonData = JSON.stringify(formData);
     fetch("https://feuerwehr.hansehart.de/api/service/save/account", {
       credentials: "include",
@@ -53,7 +92,7 @@ function RegisterAccount({
         // e-mail already taken
         setNotification({
           type: "error",
-          message: "Wähle eine andere E-Mail!",
+          message: "E-Mail bereits vergeben!",
         });
       }
     });
@@ -62,7 +101,7 @@ function RegisterAccount({
   const fields = [
     {
       label: "E-Mail",
-      type: "text",
+      type: "email",
     },
     {
       label: "Passwort",
@@ -90,7 +129,7 @@ function RegisterAccount({
 
     {
       value: "Bestätigen",
-      classname: "mt-4",
+      classname: "mt-4 mb-8",
       type: "button",
       onClick: register,
     },
@@ -122,7 +161,6 @@ function RegisterAccount({
       <MobileHeader name="Registrieren" />
       <MobileBody
         main={<MobileForm background={true} fields={fields} classname="mt-8" />}
-        marginToFooter="15vh"
       />
       <MobileNavBar changeView={changeView} preset="profile" />
     </div>

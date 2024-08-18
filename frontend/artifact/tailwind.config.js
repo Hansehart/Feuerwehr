@@ -13,7 +13,9 @@ export default {
       },
       colors: {
         primary: '#05192a',
-        secondary: '#ea4138'
+        secondary: '#ea4138',
+        success: '',
+        error: '#e29999',
       },
       fontSize: {
         '8vh': '8vh',

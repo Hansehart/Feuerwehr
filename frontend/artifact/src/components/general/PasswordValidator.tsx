@@ -11,16 +11,16 @@ export default function PasswordValidator({ password }: PasswordValidatorProps) 
   return (
     <div>
       <div>
-        <p style={{ color: validateLength ? 'green' : 'red' }}>
+        <p style={{ color: validateLength ? '#029902' : '#ea4138' }}>
           {validateLength ? '✔' : '✖'} min. 8 Zeichen
         </p>
-        <p style={{ color: validateNumber ? 'green' : 'red' }}>
+        <p style={{ color: validateNumber ? '#029902' : '#ea4138' }}>
           {validateNumber ? '✔' : '✖'} Zahl
         </p>
-        <p style={{ color: validateUppercase ? 'green' : 'red' }}>
+        <p style={{ color: validateUppercase ? '#029902' : '#ea4138' }}>
           {validateUppercase ? '✔' : '✖'} Großbuchstabe
         </p>
-        <p style={{ color: validateLowercase ? 'green' : 'red' }}>
+        <p style={{ color: validateLowercase ? '#029902' : '#ea4138' }}>
           {validateLowercase ? '✔' : '✖'} Kleinbuchstabe
         </p>
       </div>
