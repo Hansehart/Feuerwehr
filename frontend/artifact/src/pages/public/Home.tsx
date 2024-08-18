@@ -7,11 +7,13 @@ import MobileNavBar from "../../components/mobile/basics/MobileNavBar";
 import MobileAuthPreview from "../../components/mobile/views/MobileAuthPreview";
 import MobileDepartmentPreview from "../../components/mobile/views/MobileDepartmentPreview";
 import MobileImprintFooter from "../../components/mobile/basics/MobileInfoFooter";
+import Notificator from "../../components/general/Notficator";
 
 
 function Home() {
   const location = useLocation();
   const [select, setSelect] = useState("");
+  const notification = location.state?.notification;
 
   const changeView = (view: string) => {
     setSelect(view);
@@ -52,6 +54,12 @@ function Home() {
   return (
     <div>
       <MobileHeader name="Feuerwehr" />
+      {notification && (
+        <Notificator
+          type={notification.type}
+          text={notification.message}
+        />
+      )}
       {displayComponent}
       <MobileNavBar changeView={changeView} preset={`${select}`} />
       <MobileImprintFooter/>

@@ -87,10 +87,13 @@ function Contact() {
       body: JSON.stringify(payload),
     }).then((response) => {
       if (response.ok) {
-        navigate("/home");
-        setNotification({
-          type: "success",
-          message: "Nachricht erfolgreich versendet",
+        navigate("/home", {
+          state: {
+            notification: {
+              type: "success",
+              message: "Nachricht erfolgreich versendet",
+            },
+          },
         });
       } else {
         setNotification({

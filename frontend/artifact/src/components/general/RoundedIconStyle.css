@@ -19,7 +19,7 @@
   height: 100%;
   max-height: 15vh;
 
-  -webkit-transform: scale(1.2) translateY(-2vh); /* for older iOS versions */
-  transform: scale(1.2) translateY(-2vh);
+  -webkit-transform: scale(1.2); /* for older iOS versions */
+  transform: scale(1.2);
   transition: transform 0.3s ease;
 }
