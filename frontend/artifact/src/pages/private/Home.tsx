@@ -5,12 +5,13 @@ import MobileBody from "../../components/mobile/basics/MobileBody";
 import MobileHeader from "../../components/mobile/basics/MobileHeader";
 import MobileNavBar from "../../components/mobile/basics/MobileNavBar";
 import ProgressBall from "../../components/general/ProgressBall";
+import MobileDepartmentPreview from "../../components/mobile/views/MobileDepartmentPreview";
 
 function Home() {
   const location = useLocation();
   const [select, setSelect] = useState("");
   const [username, setUsername] = useState("");
-  const [firedepartment, setFiredepartment] = useState("");
+  const [firedepartment, setFiredepartment] = useState<string | null>("");
 
   const changeView = (view: string) => {
     setSelect(view);
@@ -27,9 +28,21 @@ function Home() {
       .then((response) => response.json())
       .then((data) => setUsername(data.content));
 
-    fetch("https://feuerwehr.hansehart.de/api/service/receive/firedepartment?attr=name")
-      .then((response) => response.json())
-      .then((data) => setFiredepartment(data.content));
+    fetch(
+      "https://feuerwehr.hansehart.de/api/service/receive/firedepartment?attr=name"
+    )
+      .then((response) => {
+        if (response.status == 403) { // user known but no membership
+          setFiredepartment(null);
+          return null;
+        }
+        return response.json();
+      })
+      .then((data) => {
+        if (data) {
+          setFiredepartment(data.content);
+        }
+      });
   }, []);
 
   // decide which body to display
@@ -51,23 +64,28 @@ function Home() {
       window.history.replaceState({}, "");
       break;
     case "department":
-      displayComponent = (
-        <MobileBody
-          before={
-            <div style={{ textAlign: "center", margin: "2em" }}>
-              <h3>{username? `Moin ${username}!` : "Moin!"}</h3>
-            </div>
-          }
-          type="/vehicle"
-        />
-      );
+      if (firedepartment) {
+        displayComponent = (
+          <MobileBody
+            before={
+              <div style={{ textAlign: "center", margin: "2em" }}>
+                <h3>{username ? `Moin ${username}!` : "Moin!"}</h3>
+              </div>
+            }
+            type="/vehicle"
+          />
+        );
+      } else {
+        displayComponent = ( // no membership yet
+          <MobileBody before={<MobileDepartmentPreview />}/> // type is for public page not set because their should be no content loaded
+
+        );
+      }
+
       window.history.replaceState({}, "");
       break;
     case "profile":
-      displayComponent = (
-        <MobileBody type="/profile"
-        />
-      );
+      displayComponent = <MobileBody type="/profile" />;
       window.history.replaceState({}, "");
       break;
     default:
@@ -76,7 +94,7 @@ function Home() {
 
   return (
     <div>
-      <MobileHeader department={true} name={firedepartment} />
+      <MobileHeader department={firedepartment? true : false} name={firedepartment ? firedepartment : "Feuerwehr"} />
       {displayComponent}
       <MobileNavBar changeView={changeView} preset={`${select}`} />
     </div>
