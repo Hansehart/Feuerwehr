@@ -14,7 +14,7 @@ export default function ProgressBall() {
   }, [progress]);
 
   return (
-    <div className="container flex flex-col items-center">
+    <div className="container">
       <div className="ball" id="route"></div>
       <div className="ball" id="bar"></div>
       <div id="circle">
