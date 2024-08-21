@@ -46,7 +46,6 @@ function Home() {
             </div>
           }
           type="/learn"
-          marginToFooter="15vh"
         />
       );
       window.history.replaceState({}, "");
@@ -60,7 +59,6 @@ function Home() {
             </div>
           }
           type="/vehicle"
-          marginToFooter="15vh"
         />
       );
       window.history.replaceState({}, "");
@@ -68,7 +66,6 @@ function Home() {
     case "profile":
       displayComponent = (
         <MobileBody type="/profile"
-        marginToFooter="15vh"
         />
       );
       window.history.replaceState({}, "");

@@ -128,7 +128,6 @@ function RegisterProfile() {
       <MobileHeader name="Registrieren" />
       <MobileBody
         main={<MobileForm background={true} fields={fields} />}
-        marginToFooter="15vh"
       />
       <MobileNavBar changeView={changeView} preset="profile" />
     </div>
