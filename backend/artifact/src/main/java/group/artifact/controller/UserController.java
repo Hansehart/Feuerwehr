@@ -101,7 +101,7 @@ public class UserController {
         }
     }
 
-    @PostMapping("/receive/profile")
+    @GetMapping("/receive/profile")
     public ResponseEntity<ContainerDTO<Boolean>> receiveProfile(@CookieValue(value = "sid") String sid) {
         try {
             ContainerDTO<Boolean> msg = userService.receiveProfile(sid);
