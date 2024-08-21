@@ -101,6 +101,20 @@ public class UserController {
         }
     }
 
+    @PostMapping("/receive/profile")
+    public ResponseEntity<ContainerDTO<Boolean>> receiveProfile(@CookieValue(value = "sid") String sid) {
+        try {
+            ContainerDTO<Boolean> msg = userService.receiveProfile(sid);
+            if (msg == null) { // user unknown
+                return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(null);
+            }
+            return ResponseEntity.ok(msg);
+        } catch (Exception e) {
+            System.out.println("ERROR: " + e);
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);
+        }
+    }
+
     @PostMapping("/save/profile")
     public ResponseEntity<String> saveProfile(@CookieValue(value = "sid") String sid, @RequestBody ProfileDTO profile) {
         try {

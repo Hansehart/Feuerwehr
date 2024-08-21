@@ -3,6 +3,8 @@ package group.artifact.services;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 import org.apache.commons.codec.digest.DigestUtils;
 
 import group.artifact.dtos.ContainerDTO;
@@ -67,6 +69,23 @@ public class UserService {
         } else if (attr.equals("email")) {
             msg.setContent(u.getEmail());
         }
+        return msg;
+    }
+
+    public ContainerDTO<Boolean> receiveProfile(String sid) {
+        Session s = sessionService.auth(sid);
+        if (s == null) { // no user for provided sid
+            return null;
+        }
+        User u = s.getUser();
+        ContainerDTO<Boolean> msg = new ContainerDTO<>();
+        msg.setContent(false);
+        
+        List<UsersInFiredepartments> memberships = usersInFiredepartmentRepository.findByUser(u);
+        if (!memberships.isEmpty()) { // at least one membership
+            msg.setContent(true);
+        }
+
         return msg;
     }
 
