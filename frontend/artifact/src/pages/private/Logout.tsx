@@ -19,7 +19,7 @@ function Logout({
     method: "GET",
   }).then(() => {
     updateAuthStatus(false);
-    navigate("/start", {
+    navigate("/home", {
       state: { notification: {type: "success", message: "Erfolgreich abgemeldet!"} },
     });
   });

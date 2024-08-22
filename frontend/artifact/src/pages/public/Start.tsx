@@ -1,18 +1,15 @@
 import { useState, useEffect } from "react";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 import MobileBody from "../../components/mobile/basics/MobileBody";
 import MobileHeader from "../../components/mobile/basics/MobileHeader";
 import MobileNavBar from "../../components/mobile/basics/MobileNavBar";
 import MobileStartPreview from "../../components/mobile/views/MobileStartPreview";
 import MobileImprintFooter from "../../components/mobile/basics/MobileInfoFooter";
-import Notificator from "../../components/general/Notficator";
 
 function Start() {
   const navigate = useNavigate();
-  const location = useLocation();
   const [select, setSelect] = useState("");
-  const notification = location.state?.notification;
 
   useEffect(() => {
     switch (select) {
@@ -35,12 +32,6 @@ function Start() {
   return (
     <div>
       <MobileHeader name="Feuerwehr" />
-      {notification && (
-        <Notificator
-          type={notification.type}
-          text={notification.message}
-        />
-      )}
       <MobileBody main={<MobileStartPreview/>}/>
       <MobileNavBar changeView={changeView} preset="" />
       <MobileImprintFooter/>
