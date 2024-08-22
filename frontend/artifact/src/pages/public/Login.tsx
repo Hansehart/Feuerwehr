@@ -53,7 +53,7 @@ function Login({
         // unknown account
         setNotification({
           type: "error",
-          message: "E-Mail oder Passwort fehlerhaft",
+          message: "E-Mail oder Passwort fehlerhaft!",
         });
       }
     });
