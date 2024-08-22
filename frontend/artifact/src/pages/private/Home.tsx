@@ -35,6 +35,7 @@ function Home() {
         if (response.status === 403) {
           // user is known but has no membership, handle this silently
           setFiredepartment(null);
+          console.log(1)
           // resolve the promise with null or undefined to prevent further processing
           return null;
         }
