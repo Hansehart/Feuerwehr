@@ -101,19 +101,19 @@ function EditPassword() {
       type: "password",
     },
     {
-      value: "Abbrechen",
+      value: "Speichern",
       classname: "mt-8",
+      type: "button",
+      onClick: () => saveChanges(),
+    },
+    {
+      value: "Abbrechen",
+      classname: "!border-solid !bg-transparent !border-4 !border-secondary",
       type: "button",
       onClick: () => {
         navigate("/profile/settings");
       },
-    },
-
-    {
-      value: "Speichern",
-      type: "button",
-      onClick: () => saveChanges(),
-    },
+    }
   ];
 
   return (
