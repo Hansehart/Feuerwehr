@@ -34,7 +34,7 @@ function Exercise() {
     <div>
       <MobileHeader name="Übung" />
       <MobileBody before={<MobileQuizCard />}/>
-      <MobileNavBar changeView={changeView} preset="learn" />´
+      <MobileNavBar changeView={changeView} preset="learn" />
       <MobileImprintFooter/>
     </div>
   );

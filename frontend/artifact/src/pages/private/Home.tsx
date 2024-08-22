@@ -32,18 +32,20 @@ function Home() {
       "https://feuerwehr.hansehart.de/api/service/receive/firedepartment?attr=name"
     )
       .then((response) => {
-        if (response.status == 403) {
-          // user known but no membership
+        if (response.status === 403) {
+          // user is known but has no membership, handle this silently
           setFiredepartment(null);
+          // resolve the promise with null or undefined to prevent further processing
           return null;
         }
+        // For other status codes, continue with normal processing
         return response.json();
       })
       .then((data) => {
         if (data) {
           setFiredepartment(data.content);
         }
-      });
+      })
   }, []);
 
   // decide which body to display

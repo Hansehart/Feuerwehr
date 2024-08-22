@@ -14,7 +14,7 @@ export default function MobileDepartmentPreview() {
         <div className="department-text">
           <p>
             Um eine Wache im Detail sehen zu können,
-            vervollständige dein Profil!
+            füge eine Feuerwehr deinem Profil hinzu!
           </p>
           <p>
             Du bist in noch keiner Feuerwehr?
@@ -23,7 +23,7 @@ export default function MobileDepartmentPreview() {
           </p>
           <p>
           <p>
-            Alternativ kannst Du dir auch im Lexikon Beispielfahrzeuge anschauen.
+            Alternativ kannst Du dir auch im Lexikon Beispielfahrzeuge und Material anschauen.
             </p>  
           </p>
         </div>
