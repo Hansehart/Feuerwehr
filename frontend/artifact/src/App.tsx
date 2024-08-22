@@ -44,10 +44,7 @@ function App() {
               path="/profile/settings"
               element={<Directory type="/profile/settings" navbar="profile" />}
             />
-            <Route
-              path="/profile/settings/data"
-              element={<Construction />}
-            />
+            <Route path="/profile/settings/data" element={<Construction />} />
             <Route
               path="/profile/settings/password"
               element={<EditPassword />}
@@ -56,6 +53,7 @@ function App() {
               path="/profile/register/profile"
               element={<RegisterProfile />}
             />
+            <Route path="/profile/contact" element={<Contact />} />
             <Route
               path="/profile/logout"
               element={<Logout updateAuthStatus={setAuth} />}
