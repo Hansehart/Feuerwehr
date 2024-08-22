@@ -5,7 +5,7 @@ import MobileBody from "../../components/mobile/basics/MobileBody";
 import MobileHeader from "../../components/mobile/basics/MobileHeader";
 import MobileNavBar from "../../components/mobile/basics/MobileNavBar";
 import MobileImprintFooter from "../../components/mobile/basics/MobileInfoFooter";
-import MobileMapPreview from "../../components/mobile/views/MobileMapPreview";
+import MobileMapPreview from "../../components/mobile/views/MobileMapView";
 
 function Map() {
   const navigate = useNavigate();

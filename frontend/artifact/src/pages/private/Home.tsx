@@ -77,14 +77,16 @@ function Home() {
                 <h3>{username ? `Moin ${username}!` : "Moin!"}</h3>
               </div>
             }
-            main={ // when no vehicles are added (list empty)
+            main={
+              // when no vehicles are added (list empty)
               <MobileDepartmentPrivatePreview
                 text={
                   <>
                     <p>
                       Deine Feuerwehr hat noch keine Inhalte hinzugefügt!
                       <br></br>
-                      Nehme Kontakt auf, damit hier Inhalte wie der Fahrzeugbestand und Weiteres erscheint.
+                      Nehme Kontakt auf, damit hier Inhalte wie der
+                      Fahrzeugbestand und Weiteres erscheint.
                     </p>
                   </>
                 }
@@ -111,10 +113,8 @@ function Home() {
                         Schau direkt mal auf die Karte!
                       </p>
                       <p>
-                        <p>
-                          Alternativ kannst Du dir auch im Lexikon
-                          Beispielfahrzeuge und Material anschauen.
-                        </p>
+                        Alternativ kannst Du dir auch im Lexikon
+                        Beispielfahrzeuge und Material anschauen.
                       </p>
                     </>
                   }
