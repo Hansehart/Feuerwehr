@@ -8,7 +8,6 @@ import MobileForm from "../../components/mobile/basics/MobileForm";
 import Notificator from "../../components/general/Notficator";
 import MobileImprintFooter from "../../components/mobile/basics/MobileInfoFooter";
 
-
 interface NotficatorProps {
   type: string;
   message: string;
@@ -100,11 +99,9 @@ function Login({
         <Notificator type={notification.type} text={notification.message} />
       )}
       <MobileHeader name="Login" />
-      <MobileBody
-        main={<MobileForm background={true} fields={fields} />}
-      />
+      <MobileBody main={<MobileForm background={true} fields={fields} />} />
       <MobileNavBar changeView={changeView} preset="profile" />
-      <MobileImprintFooter/>
+      <MobileImprintFooter />
     </div>
   );
 }
