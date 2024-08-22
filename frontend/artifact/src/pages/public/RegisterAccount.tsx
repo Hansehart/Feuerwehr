@@ -40,7 +40,7 @@ function RegisterAccount({
     if (!isEmailValid(email)) {
       setNotification({
         type: "error",
-        message: "E-Mail Format ungültig!",
+        message: "E-Mail ungültig!",
       });
       return;
     } else if (pw !== repeatedPw) {

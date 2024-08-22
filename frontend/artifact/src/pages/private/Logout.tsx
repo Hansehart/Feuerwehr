@@ -19,7 +19,9 @@ function Logout({
     method: "GET",
   }).then(() => {
     updateAuthStatus(false);
-    navigate("/start");
+    navigate("/start", {
+      state: { notification: "Account wurde erstellt!" },
+    });
   });
 
   useEffect(() => {

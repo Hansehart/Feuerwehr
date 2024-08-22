@@ -82,7 +82,7 @@ function RegisterProfile() {
       body: jsonData,
     }).then((response) => {
       if (response.ok) {
-        navigate("/home");
+        navigate("/home", { state: { notfication: "department" } });
       }
     });
   }

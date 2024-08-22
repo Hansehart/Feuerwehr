@@ -70,7 +70,7 @@ function Contact() {
     if (!isEmailValid(email.value)) {
       setNotification({
         type: "error",
-        message: "E-Mail Format ungültig!",
+        message: "E-Mail ungültig!",
       });
       return;
     }
