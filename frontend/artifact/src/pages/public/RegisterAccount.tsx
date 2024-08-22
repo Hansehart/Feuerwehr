@@ -86,7 +86,7 @@ function RegisterAccount({
           .then((data) => {
             updateAuthStatus(data.content);
             navigate("/profile/register/profile", {
-              state: { notification: "Account wurde erstellt!" },
+              state: { notification: "Account erstellt!" },
             });
           });
       } else if (response.status === 400) {

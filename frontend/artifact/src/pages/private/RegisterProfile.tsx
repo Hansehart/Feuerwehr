@@ -82,7 +82,7 @@ function RegisterProfile() {
       body: jsonData,
     }).then((response) => {
       if (response.ok) {
-        navigate("/home", { state: { select:"department", notfication: "Profil erfolgreich erstellt!" } });
+        navigate("/home", { state: { select:"department", notification: {type: "success", message: "Profil erstellt!"}} });
       }
     });
   }
