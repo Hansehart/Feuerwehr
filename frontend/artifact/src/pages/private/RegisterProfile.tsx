@@ -88,8 +88,7 @@ function RegisterProfile() {
   }
 
   function skip() {
-    navigate("/start");
-  }
+    navigate("/home", { state: { select: "profile" } });  }
 
   const fields = [
     {
@@ -108,6 +107,12 @@ function RegisterProfile() {
       classname: "mt-8",
       type: "button",
       onClick: register,
+    },
+    {
+      value: "Überspringen",
+      classname: "mt-8",
+      type: "button",
+      onClick: skip,
     },
   ];
 
@@ -137,7 +142,6 @@ function RegisterProfile() {
       <MobileHeader name="Registrieren" />
       <MobileBody
         main={<MobileForm background={true} fields={fields} />}
-        after={<p onClick={skip}>überspringen</p>}
       />
       <MobileNavBar changeView={changeView} preset="profile" />
     </div>
