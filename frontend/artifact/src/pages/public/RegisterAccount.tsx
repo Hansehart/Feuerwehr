@@ -61,7 +61,7 @@ function RegisterAccount({
       // gtc not accepted
       setNotification({
         type: "error",
-        message: "Stimme bitt den AGB zu!",
+        message: "AGB muss zugestimmt werden!",
       });
       return;
     }
@@ -117,7 +117,11 @@ function RegisterAccount({
       label: (
         <>
           Ich akzeptiere die{" "}
-          <a href="https://feuerwehr.hansehart.de/info/gtc" target="_blank">
+          <a
+            href="https://feuerwehr.hansehart.de/info/gtc"
+            className="underline"
+            target="_blank"
+          >
             AGB
           </a>
         </>
@@ -157,14 +161,18 @@ function RegisterAccount({
   return (
     <div>
       {notification && (
-        <Notificator type={notification.type} text={notification.message} />
+        <Notificator
+          type={notification.type}
+          text={notification.message}
+          onClose={() => setNotification(null)}
+        />
       )}
       <MobileHeader name="Registrieren" />
       <MobileBody
         main={<MobileForm background={true} fields={fields} classname="mt-8" />}
       />
       <MobileNavBar changeView={changeView} preset="profile" />
-      <MobileImprintFooter/>
+      <MobileImprintFooter />
     </div>
   );
 }

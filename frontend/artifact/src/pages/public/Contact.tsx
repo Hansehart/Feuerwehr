@@ -57,7 +57,9 @@ function Contact() {
   }, [notification]);
 
   function send() {
-    const selectedReason = document.getElementById("input-0") as HTMLInputElement;
+    const selectedReason = document.getElementById(
+      "input-0"
+    ) as HTMLInputElement;
     const email = document.getElementById("input-1") as HTMLInputElement;
     const message = document.getElementById("input-2") as HTMLInputElement;
 
@@ -125,7 +127,11 @@ function Contact() {
     <div>
       <MobileHeader name="Kontakt" />
       {notification && (
-        <Notificator type={notification.type} text={notification.message} />
+        <Notificator
+          type={notification.type}
+          text={notification.message}
+          onClose={() => setNotification(null)}
+        />
       )}
       <MobileBody main={<MobileForm background={true} fields={fields} />} />
       <MobileNavBar changeView={changeView} preset="" />

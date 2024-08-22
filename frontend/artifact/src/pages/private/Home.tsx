@@ -32,7 +32,8 @@ function Home() {
       "https://feuerwehr.hansehart.de/api/service/receive/firedepartment?attr=name"
     )
       .then((response) => {
-        if (response.status == 403) { // user known but no membership
+        if (response.status == 403) {
+          // user known but no membership
           setFiredepartment(null);
           return null;
         }
@@ -76,10 +77,10 @@ function Home() {
           />
         );
       } else {
-        displayComponent = ( // no membership yet
-          <MobileBody before={<MobileDepartmentPreview />}/> // type is for public page not set because their should be no content loaded
-
-        );
+        displayComponent = // no membership yet
+          (
+            <MobileBody before={<MobileDepartmentPreview />} /> // type is for public page not set because their should be no content loaded
+          );
       }
 
       window.history.replaceState({}, "");
@@ -94,7 +95,10 @@ function Home() {
 
   return (
     <div>
-      <MobileHeader department={firedepartment? true : false} name={firedepartment ? firedepartment : "Feuerwehr"} />
+      <MobileHeader
+        department={firedepartment ? true : false}
+        name={firedepartment ? firedepartment : "Feuerwehr"}
+      />
       {displayComponent}
       <MobileNavBar changeView={changeView} preset={`${select}`} />
     </div>

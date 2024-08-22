@@ -4,12 +4,13 @@ import "./NotficatorStyle.css";
 interface NotificatorProps {
   type: string;
   text: string;
+  onClose?: () => void; // New prop to handle notification close
 }
 
-export default function Notficator({ type, text }: NotificatorProps) {
+export default function Notficator({ type, text, onClose }: NotificatorProps) {
   const [title, setTitle] = useState("");
   const [show, setShow] = useState(false);
-  const [exiting, setExiting] = useState(false); // New state to track exiting
+  const [exiting, setExiting] = useState(false);
 
   useEffect(() => {
     // Determine the title based on the type
@@ -23,23 +24,26 @@ export default function Notficator({ type, text }: NotificatorProps) {
 
     // Show the notification
     setShow(true);
-    setExiting(false); // Reset the exiting state
+    setExiting(false);
 
-    // Start the exit process after 2.7 seconds (or slightly less than the total time)
+    // Start the exit process after 2.7 seconds
     const exitTimer = setTimeout(() => {
       setExiting(true);
-    }, 2700); // Slightly before the total duration of 3 seconds
+    }, 2700);
 
     // Completely hide after the full 3 seconds
     const hideTimer = setTimeout(() => {
       setShow(false);
-    }, 3000); // Duration should match the CSS transition duration
+      if (onClose) {
+        onClose(); // Invoke the onClose callback to reset the notification state
+      }
+    }, 3000);
 
     return () => {
-      clearTimeout(exitTimer); // Cleanup the timers if the component unmounts
+      clearTimeout(exitTimer);
       clearTimeout(hideTimer);
     };
-  }, [type, text]); // Depend on both type and text to trigger re-render
+  }, [type, text, onClose]);
 
   return (
     <div className={`window ${show ? "show" : ""}`}>
