@@ -1,9 +1,9 @@
-import "./MobileDepartmentPreviewStyle.css";
+import "./MobileDepartmentPrivatePreviewStyle.css";
 
 import MobileButton from "../basics/MobileButton";
 import highwayAccident from "/src/assets/pictures/highway-accident.jpg";
 
-export default function MobileDepartmentPreview() {
+export default function MobileDepartmentPrivatePreview() {
   return (
     <section className="department">
       <div

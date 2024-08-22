@@ -5,7 +5,7 @@ import MobileBody from "../../components/mobile/basics/MobileBody";
 import MobileHeader from "../../components/mobile/basics/MobileHeader";
 import MobileNavBar from "../../components/mobile/basics/MobileNavBar";
 import ProgressBall from "../../components/general/ProgressBall";
-import MobileDepartmentVehiclePreview from "../../components/mobile/views/MobileDepartmentVehiclePreview";
+import MobileDepartmentPrivatePreview from "../../components/mobile/views/MobileDepartmentVehiclePreview";
 import Notificator from "../../components/general/Notficator";
 
 function Home() {
@@ -77,13 +77,16 @@ function Home() {
                 <h3>{username ? `Moin ${username}!` : "Moin!"}</h3>
               </div>
             }
+            main={
+              <MobileDepartmentPrivatePreview />
+            }
             type="/vehicle"
           />
         );
       } else {
         displayComponent = // no membership yet
           (
-            <MobileBody before={<MobileDepartmentVehiclePreview />} /> // type is for public page not set because their should be no content loaded
+            <MobileBody before={<MobileDepartmentPrivatePreview />} /> // type is for public page not set because their should be no content loaded
           );
       }
 

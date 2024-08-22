@@ -77,7 +77,7 @@ function EditPassword() {
                 }
               ).then((response) => {
                 if (response.ok) {
-                  navigate("/home", { state: { select: "department", notification: {type: "success", message: "Passwort erfolgreich geändert!"}}});
+                  navigate("/home", { state: { select: "department", notification: {type: "success", message: "Passwort geändert!"}}});
                 } else {
                   // error message
                 }});
