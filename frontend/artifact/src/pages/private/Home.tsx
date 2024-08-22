@@ -5,7 +5,7 @@ import MobileBody from "../../components/mobile/basics/MobileBody";
 import MobileHeader from "../../components/mobile/basics/MobileHeader";
 import MobileNavBar from "../../components/mobile/basics/MobileNavBar";
 import ProgressBall from "../../components/general/ProgressBall";
-import MobileDepartmentPreview from "../../components/mobile/views/MobileDepartmentPreview";
+import MobileDepartmentVehiclePreview from "../../components/mobile/views/MobileDepartmentVehiclePreview";
 
 function Home() {
   const location = useLocation();
@@ -79,7 +79,7 @@ function Home() {
       } else {
         displayComponent = // no membership yet
           (
-            <MobileBody before={<MobileDepartmentPreview />} /> // type is for public page not set because their should be no content loaded
+            <MobileBody before={<MobileDepartmentVehiclePreview />} /> // type is for public page not set because their should be no content loaded
           );
       }
 

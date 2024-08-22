@@ -14,13 +14,17 @@ export default function MobileDepartmentPreview() {
         <div className="department-text">
           <p>
             Um eine Wache im Detail sehen zu können,
-            melde dich bitte an.
+            vervollständige dein Profil!
           </p>
-
           <p>
             Du bist in noch keiner Feuerwehr?
             <br />
             Schau direkt mal auf die Karte!
+          </p>
+          <p>
+          <p>
+            Alternativ kannst Du dir auch im Lexikon Beispielfahrzeuge anschauen.
+            </p>  
           </p>
         </div>
         <div className="choose-buttons">
