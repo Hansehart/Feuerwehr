@@ -40,7 +40,7 @@ export default function Maintenance() {
         </p>
         <p>Du wirst in {timer} Sekunden zurückgeleitet!</p>
         <div id="contact">
-          <MobileButton text="Kontakt" path="/profile/contact" bgColor="#ff7a00" />
+          <MobileButton text="Kontakt" path="/info/contact" bgColor="#ff7a00" />
         </div>
       </div>
       <div id="maintenance-icon">

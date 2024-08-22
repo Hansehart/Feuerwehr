@@ -11,7 +11,7 @@ function Home() {
   const location = useLocation();
   const [select, setSelect] = useState("");
   const [username, setUsername] = useState("");
-  const [firedepartment, setFiredepartment] = useState<string | null>("");
+  const [firedepartment, setFiredepartment] = useState<string | null>("department");
 
   const changeView = (view: string) => {
     setSelect(view);
