@@ -88,7 +88,7 @@ function RegisterProfile() {
   }
 
   function skip() {
-    navigate("/home", { state: { select: "profile" } });  }
+    navigate("/home", { state: { select: "department" } });  }
 
   const fields = [
     {
@@ -110,7 +110,7 @@ function RegisterProfile() {
     },
     {
       value: "Überspringen",
-      classname: "mt-8",
+      classname: "bg-transparent border-4 border-secondary",
       type: "button",
       onClick: skip,
     },
