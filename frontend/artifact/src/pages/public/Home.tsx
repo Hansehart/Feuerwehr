@@ -12,7 +12,7 @@ import Notificator from "../../components/general/Notficator";
 
 function Home() {
   const location = useLocation();
-  const [select, setSelect] = useState("");
+  const [select, setSelect] = useState("department");
   const notification = location.state?.notification;
 
   const changeView = (view: string) => {
