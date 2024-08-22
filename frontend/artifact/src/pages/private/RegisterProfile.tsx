@@ -110,7 +110,7 @@ function RegisterProfile() {
     },
     {
       value: "Überspringen",
-      classname: "bg-transparent border-4 border-secondary",
+      classname: "!bg-transparent !border-4 !border-secondary",
       type: "button",
       onClick: skip,
     },
