@@ -3,7 +3,11 @@ import "./MobileDepartmentPrivatePreviewStyle.css";
 import MobileButton from "../basics/MobileButton";
 import highwayAccident from "/src/assets/pictures/highway-accident.jpg";
 
-export default function MobileDepartmentPrivatePreview() {
+interface MobileDepartmentPrivatePreviewProps {
+  text: React.ReactNode; // Change this to accept a string instead of ReactHTMLElement
+}
+
+export default function MobileDepartmentPrivatePreview({ text }: MobileDepartmentPrivatePreviewProps) {
   return (
     <section className="department">
       <div
@@ -12,20 +16,7 @@ export default function MobileDepartmentPrivatePreview() {
       ></div>
       <div className="department-preview">
         <div className="department-text">
-          <p>
-            Um eine Wache im Detail sehen zu können,
-            füge eine Feuerwehr deinem Profil hinzu!
-          </p>
-          <p>
-            Du bist in noch keiner Feuerwehr?
-            <br />
-            Schau direkt mal auf die Karte!
-          </p>
-          <p>
-          <p>
-            Alternativ kannst Du dir auch im Lexikon Beispielfahrzeuge und Material anschauen.
-            </p>  
-          </p>
+          <p>{text}</p>
         </div>
         <div className="choose-buttons">
           <MobileButton text="Karte" path="/info/map"></MobileButton>

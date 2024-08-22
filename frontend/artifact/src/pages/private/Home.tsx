@@ -5,7 +5,7 @@ import MobileBody from "../../components/mobile/basics/MobileBody";
 import MobileHeader from "../../components/mobile/basics/MobileHeader";
 import MobileNavBar from "../../components/mobile/basics/MobileNavBar";
 import ProgressBall from "../../components/general/ProgressBall";
-import MobileDepartmentPrivatePreview from "../../components/mobile/views/MobileDepartmentVehiclePreview";
+import MobileDepartmentPrivatePreview from "../../components/mobile/views/MobileDepartmentPrivatePreview";
 import Notificator from "../../components/general/Notficator";
 
 function Home() {
@@ -77,8 +77,18 @@ function Home() {
                 <h3>{username ? `Moin ${username}!` : "Moin!"}</h3>
               </div>
             }
-            main={
-              <MobileDepartmentPrivatePreview />
+            main={ // when no vehicles are added (list empty)
+              <MobileDepartmentPrivatePreview
+                text={
+                  <>
+                    <p>
+                      Deine Feuerwehr hat noch keine Inhalte hinzugefügt!
+                      <br></br>
+                      Nehme Kontakt auf, damit hier Inhalte wie der Fahrzeugbestand und Weiteres erscheint.
+                    </p>
+                  </>
+                }
+              />
             }
             type="/vehicle"
           />
@@ -86,7 +96,31 @@ function Home() {
       } else {
         displayComponent = // no membership yet
           (
-            <MobileBody before={<MobileDepartmentPrivatePreview />} /> // type is for public page not set because their should be no content loaded
+            <MobileBody
+              before={
+                <MobileDepartmentPrivatePreview
+                  text={
+                    <>
+                      <p>
+                        Um eine Wache im Detail sehen zu können, füge eine
+                        Feuerwehr deinem Profil hinzu!
+                      </p>
+                      <p>
+                        Du bist in noch keiner Feuerwehr?
+                        <br />
+                        Schau direkt mal auf die Karte!
+                      </p>
+                      <p>
+                        <p>
+                          Alternativ kannst Du dir auch im Lexikon
+                          Beispielfahrzeuge und Material anschauen.
+                        </p>
+                      </p>
+                    </>
+                  }
+                />
+              }
+            /> // type is for public page not set because their should be no content loaded
           );
       }
 

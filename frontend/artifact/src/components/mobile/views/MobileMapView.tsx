@@ -1,4 +1,4 @@
-import "./MobileMapPreviewStyle.css";
+import "./MobileMapViewStyle.css";
 
 
 export default function MobileMapPreview() {
