@@ -20,7 +20,7 @@ function Logout({
   }).then(() => {
     updateAuthStatus(false);
     navigate("/start", {
-      state: { notification: {type: "success", msg: "Erfolgreich abgemeldet!"} },
+      state: { notification: {type: "success", message: "Erfolgreich abgemeldet!"} },
     });
   });
 

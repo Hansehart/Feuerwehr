@@ -6,12 +6,14 @@ import MobileHeader from "../../components/mobile/basics/MobileHeader";
 import MobileNavBar from "../../components/mobile/basics/MobileNavBar";
 import ProgressBall from "../../components/general/ProgressBall";
 import MobileDepartmentVehiclePreview from "../../components/mobile/views/MobileDepartmentVehiclePreview";
+import Notificator from "../../components/general/Notficator";
 
 function Home() {
   const location = useLocation();
-  const [select, setSelect] = useState("");
+  const [select, setSelect] = useState("department");
   const [username, setUsername] = useState("");
-  const [firedepartment, setFiredepartment] = useState<string | null>("department");
+  const [firedepartment, setFiredepartment] = useState<string | null>("");
+  const notification = location.state?.notification;
 
   const changeView = (view: string) => {
     setSelect(view);
@@ -45,7 +47,7 @@ function Home() {
         if (data) {
           setFiredepartment(data.content);
         }
-      })
+      });
   }, []);
 
   // decide which body to display
@@ -101,6 +103,9 @@ function Home() {
         department={firedepartment ? true : false}
         name={firedepartment ? firedepartment : "Feuerwehr"}
       />
+      {notification && (
+        <Notificator type={notification.type} text={notification.message} />
+      )}
       {displayComponent}
       <MobileNavBar changeView={changeView} preset={`${select}`} />
     </div>
