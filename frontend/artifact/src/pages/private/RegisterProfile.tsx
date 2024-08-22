@@ -19,7 +19,6 @@ function RegisterProfile() {
   const [select, setSelect] = useState("");
   const [firedepartments, setFiredepartments] = useState<Firedepartment[]>([]);
 
-
   const { state } = location;
 
   useEffect(() => {
@@ -34,15 +33,15 @@ function RegisterProfile() {
   useEffect(() => {
     const timer = setTimeout(() => {
       // remove the notification
-      const notificator = document.getElementById('notificator-window');
-      if (notificator) { // if the element was found
-        notificator.style.display = 'none';
+      const notificator = document.getElementById("notificator-window");
+      if (notificator) {
+        // if the element was found
+        notificator.style.display = "none";
       }
     }, 5000); // 5000 milliseconds = 5 seconds
 
     return () => clearTimeout(timer); // cleanup the timer if the component unmounts
   }, []);
-
 
   function register() {
     const username = document.getElementById("input-0") as HTMLInputElement;
@@ -88,6 +87,10 @@ function RegisterProfile() {
     });
   }
 
+  function skip() {
+    navigate("/start");
+  }
+
   const fields = [
     {
       label: "Dein Nutzername",
@@ -100,7 +103,12 @@ function RegisterProfile() {
         (fd) => fd.name + " (" + fd.locationNumber + ")"
       ),
     },
-    { value: "Bestätigen", classname: "mt-8", type: "button", onClick: register },
+    {
+      value: "Bestätigen",
+      classname: "mt-8",
+      type: "button",
+      onClick: register,
+    },
   ];
 
   useEffect(() => {
@@ -121,13 +129,15 @@ function RegisterProfile() {
     setSelect(view);
   };
 
-
   return (
     <div>
-      {state && state.notification && <Notificator type="success" text={state.notification}/>}
+      {state && state.notification && (
+        <Notificator type="success" text={state.notification} />
+      )}
       <MobileHeader name="Registrieren" />
       <MobileBody
         main={<MobileForm background={true} fields={fields} />}
+        after={<p onClick={skip}>überspringen</p>}
       />
       <MobileNavBar changeView={changeView} preset="profile" />
     </div>
