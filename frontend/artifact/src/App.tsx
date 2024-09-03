@@ -78,11 +78,15 @@ function App() {
         <Route path="/info/imprint" element={<Construction />} />
         <Route path="/info/contact" element={<Contact />} />
 
-        <Route path="/learn/exercises" element={<Exercise />} />
+        <Route
+          path="/learn/exercises"
+          element={<Directory type="/learn/exercises" navbar="learn" />}
+        />
         <Route
           path="/learn/regulations"
           element={<Directory type="/learn/regulations" navbar="learn" />}
         />
+        <Route path="/learn/regulations/fwdv" element={<Construction />} />
         <Route path="/learn/courses" element={<Construction />} />
 
         <Route path="*" element={<Navigate replace to="/start" />} />
