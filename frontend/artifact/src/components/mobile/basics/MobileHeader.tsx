@@ -7,7 +7,7 @@ interface MobileHeaderProps {
 
 export default function MobileHeader({ department, name }: MobileHeaderProps) {
   return (
-    <header style={{ minHeight: department ? "20vh" : "15vh" }}>
+    <header className="border-b-4 border-secondary" style={{ minHeight: department ? "20vh" : "15vh" }}>
       <section id="header-title">
         {" "}
         {department ? (
