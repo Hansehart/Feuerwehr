@@ -1,6 +1,6 @@
 export default function MobileInfoFooter() {
   return (
-    <section className="text-white bg-primary border-t-4 border-secondary">
+    <section className="text-white bg-primary">
       <div className="flex justify-evenly items-center h-[15vh]">
         <a href="https://feuerwehr.hansehart.de/info/gtc">
           AGB
