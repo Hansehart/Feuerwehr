@@ -5,7 +5,7 @@ import highwayAccident from "/src/assets/pictures/highway-accident.jpg";
 
 export default function MobileDepartmentPreview() {
   return (
-    <section className="department">
+    <section className="department w-screen">
       <div
         className="department-background"
         style={{ backgroundImage: `url(${highwayAccident})` }}

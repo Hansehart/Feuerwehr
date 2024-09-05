@@ -116,14 +116,13 @@ function MobileQuizCard() {
   return (
     <div>
       {quizData && (
-        <div className="quiz">
-          <section className="question">
+        <div className="quiz w-screen">
+          <section className="question bg-secondary text-white">
             <h3>Frage</h3>
             <p>{quizData.text}</p>
           </section>
           <section className="answer-container">
             <section className="type">
-              <hr></hr>
               <h3 className="mt-4">
                 {quizData.solutionIndexes.length > 1
                   ? "Mehrfachauswahl"
@@ -142,7 +141,6 @@ function MobileQuizCard() {
                 </div>
               ))}
             </section>
-            <hr></hr>
             <section
               className="continue"
               onClick={fetchQuizData}

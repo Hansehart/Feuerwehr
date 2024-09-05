@@ -117,7 +117,7 @@ export default function MobileForm({
    * Build everything
    */
   return (
-    <section className="form-section">
+    <section className="form-section w-screen">
       <div
         className="form-background"
         style={

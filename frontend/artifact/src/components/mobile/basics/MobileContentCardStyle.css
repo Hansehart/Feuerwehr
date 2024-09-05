@@ -6,6 +6,7 @@
   position: relative;
   min-height: 20vh;
   padding: 1em;
+  border-radius: 1em 0 1em 0;
 
   color: #ea4138;
 }

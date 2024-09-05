@@ -34,7 +34,8 @@ export default function MobileNavBar({
             key={button.id}
             icon={button.icon}
             bgColor="#ffffff"
-            strokeWidth="10"
+            stroke="#05192a"
+            strokeWidth="2"
             isActive={activeButton === button.id}
             strokeActive="#ea4138"
             strokeWidthActive="5"

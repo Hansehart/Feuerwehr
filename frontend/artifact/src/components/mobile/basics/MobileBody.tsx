@@ -76,7 +76,7 @@ export default function MobileBody({
   ));
 
   return (
-    <main>
+    <main className="flex flex-col items-center">
       {before}
       {cards.length > 0 ? cards : main}
       {after}

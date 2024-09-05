@@ -4,7 +4,7 @@ header {
   grid-template-rows: 1fr;
   justify-content: center;
   align-items: center;
-  background-color: #ffffff;
+  background: linear-gradient(180deg, rgba(234,65,56,0) 86%, rgba(234,65,56,0.48) 95%, rgba(234,65,56,1) 100%); 
 }
 
 #header-title {

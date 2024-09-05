@@ -5,7 +5,7 @@ import firefighterPortrait from "/src/assets/pictures/firefighter-portrait.jpg";
 
 export default function MobileAuthPreview() {
   return (
-    <section className="auth">
+    <section className="auth w-screen">
       <div
         className="auth-background"
         style={{ backgroundImage: `url(${firefighterPortrait})` }}
