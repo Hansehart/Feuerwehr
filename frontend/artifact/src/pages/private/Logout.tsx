@@ -44,7 +44,7 @@ function Logout({
 
   return (
     <div>
-      <MobileHeader name="Logout" />
+      <MobileHeader name="Logout" link="/home"/>
       <div style={{
         height: "70vh",
         display: "flex",

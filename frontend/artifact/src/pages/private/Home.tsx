@@ -139,6 +139,7 @@ function Home() {
       <MobileHeader
         department={firedepartment ? true : false}
         name={firedepartment ? firedepartment : "Feuerwehr"}
+        link="/home"
       />
       {notification && (
         <Notificator type={notification.type} text={notification.message} />

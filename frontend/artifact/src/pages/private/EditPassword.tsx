@@ -118,7 +118,7 @@ function EditPassword() {
 
   return (
     <div>
-      <MobileHeader name="Einstellungen" />
+      <MobileHeader name="Einstellungen" link="/profile/settings" />
       <MobileBody
         main={
           <MobileForm identifier="settings" background={true} fields={fields} />

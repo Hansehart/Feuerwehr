@@ -139,7 +139,7 @@ function RegisterProfile() {
       {state && state.notification && (
         <Notificator type="success" text={state.notification} />
       )}
-      <MobileHeader name="Registrieren" />
+      <MobileHeader name="Registrieren" link="/register/account" />
       <MobileBody
         main={<MobileForm background={true} fields={fields} />}
       />

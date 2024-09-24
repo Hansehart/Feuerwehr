@@ -88,7 +88,7 @@ function Vehicle() {
 
   return (
     <div>
-      <MobileHeader name="Fahrzeuge" />
+      <MobileHeader name="Fahrzeuge" link="/home"/>
       <MobileBody
         main={
           <MobileVehicleView
