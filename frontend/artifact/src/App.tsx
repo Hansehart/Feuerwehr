@@ -42,7 +42,7 @@ function App() {
             <Route path="/main/vehicle/:rvt/:rvn" element={<Vehicle />} />
             <Route
               path="/profile/settings"
-              element={<Directory type="/profile/settings" navbar="profile" title="Einstellungen" />}
+              element={<Directory type="/profile/settings" navbar="profile" title="Einstellungen" titleLink="/profile/settings"/>}
             />
             <Route path="/profile/settings/data" element={<Construction />} />
             <Route
@@ -81,7 +81,7 @@ function App() {
 
         <Route
           path="/learn/exercises"
-          element={<Directory type="/learn/exercises" navbar="learn" title="Übung" />}
+          element={<Directory type="/learn/exercises" navbar="learn" title="Übung" titleLink="/learn/exercises"/>}
         />
         <Route path="/learn/exercises/shuffle" element={<Exercise />} />
         <Route path="/learn/exercises/vehicle" element={<Construction />} />
@@ -89,7 +89,7 @@ function App() {
 
         <Route
           path="/learn/regulations"
-          element={<Directory type="/learn/regulations" navbar="learn" title="Vorschriften" />}
+          element={<Directory type="/learn/regulations" navbar="learn" title="Vorschriften" titleLink="/learn/regulations" />}
         />
         <Route path="/learn/regulations/fwdv" element={<Construction />} />
 
