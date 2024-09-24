@@ -32,7 +32,7 @@ import MobileImprintFooter from "../../components/mobile/basics/MobileInfoFooter
 
   return (
     <div>
-      <MobileHeader name="Impressun" />
+      <MobileHeader name="Impressum" link="/info" />
       <MobileBody main={<Maintenance/>}/>
       <MobileNavBar changeView={changeView} preset="" />
       <MobileImprintFooter/>

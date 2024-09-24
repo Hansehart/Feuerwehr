@@ -30,7 +30,7 @@ function Regulations() {
 
   return (
     <div>
-      <MobileHeader name="Vorschriften" />
+      <MobileHeader name="Vorschriften" link="/learn/regulations"/>
       <MobileBody/>
       <MobileNavBar changeView={changeView} preset="learn" />
       <MobileImprintFooter/>

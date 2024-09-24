@@ -167,7 +167,7 @@ function RegisterAccount({
           onClose={() => setNotification(null)}
         />
       )}
-      <MobileHeader name="Registrieren" />
+      <MobileHeader name="Registrieren" link="/profile/register/account"/>
       <MobileBody
         main={<MobileForm background={true} fields={fields} classname="mt-8" />}
       />

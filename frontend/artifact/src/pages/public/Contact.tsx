@@ -125,7 +125,7 @@ function Contact() {
 
   return (
     <div>
-      <MobileHeader name="Kontakt" />
+      <MobileHeader name="Kontakt" link="/info" />
       {notification && (
         <Notificator
           type={notification.type}

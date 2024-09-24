@@ -98,7 +98,7 @@ function Login({
       {notification && (
         <Notificator type={notification.type} text={notification.message} />
       )}
-      <MobileHeader name="Login" />
+      <MobileHeader name="Login" link="/profile/login"/>
       <MobileBody main={<MobileForm background={true} fields={fields} />} />
       <MobileNavBar changeView={changeView} preset="profile" />
       <MobileImprintFooter />

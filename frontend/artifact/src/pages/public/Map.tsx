@@ -31,7 +31,7 @@ function Map() {
 
   return (
     <div>
-      <MobileHeader name="Karte" />
+      <MobileHeader name="Karte" link="/info/map"/>
       <h3>*** Karte ***</h3>
       <MobileBody main={<MobileMapPreview/>}/>
       <MobileNavBar changeView={changeView} preset="department" />

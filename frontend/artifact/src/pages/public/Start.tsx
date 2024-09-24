@@ -31,7 +31,7 @@ function Start() {
 
   return (
     <div>
-      <MobileHeader name="Feuerwehr" />
+      <MobileHeader name="Feuerwehr" link="/home"/>
       <MobileBody main={<MobileStartPreview/>}/>
       <MobileNavBar changeView={changeView} preset="" />
       <MobileImprintFooter/>

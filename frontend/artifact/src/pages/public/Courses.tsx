@@ -31,7 +31,7 @@ function Courses() {
 
   return (
     <div>
-      <MobileHeader name="Lehrgänge" />
+      <MobileHeader name="Lehrgänge" link="/learn/courses"/>
       <MobileBody/>
       <MobileNavBar changeView={changeView} preset="learn" />
       <MobileImprintFooter/>

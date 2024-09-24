@@ -31,7 +31,7 @@ import MobileImprintFooter from "../../components/mobile/basics/MobileInfoFooter
 
   return (
     <div>
-      <MobileHeader name="Feuerwehr" />
+      <MobileHeader name="Feuerwehr" link="/home"/>
       <MobileBody main={<Maintenance/>}/>
       <MobileNavBar changeView={changeView} preset="" />
       <MobileImprintFooter/>

@@ -53,7 +53,7 @@ function Home() {
 
   return (
     <div>
-      <MobileHeader name="Feuerwehr" />
+      <MobileHeader name="Feuerwehr" link="/home" />
       {notification && (
         <Notificator
           type={notification.type}

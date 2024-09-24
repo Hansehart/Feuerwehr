@@ -8,10 +8,11 @@ import MobileImprintFooter from "../../components/mobile/basics/MobileInfoFooter
 
 
 interface DirectoryProps {
+    title: string;
     type: string;
     navbar: string;
   }
-  function Directory({ type, navbar }: DirectoryProps) {
+  function Directory({ title, type, navbar }: DirectoryProps) {
   const navigate = useNavigate();
   const [select, setSelect] = useState("");
 
@@ -35,7 +36,7 @@ interface DirectoryProps {
 
   return (
     <div>
-      <MobileHeader name="Feuerwehr" />
+      <MobileHeader name={title} link="/home"/>
       <MobileBody type={type}/>
       <MobileNavBar changeView={changeView} preset={navbar} />
       <MobileImprintFooter/>

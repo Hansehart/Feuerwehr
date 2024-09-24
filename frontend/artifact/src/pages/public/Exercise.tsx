@@ -32,7 +32,7 @@ function Exercise() {
 
   return (
     <div>
-      <MobileHeader name="Übung" />
+      <MobileHeader name="Übung" link="/learn/exercises"/>
       <MobileBody before={<MobileQuizCard />}/>
       <MobileNavBar changeView={changeView} preset="learn" />
       <MobileImprintFooter/>
