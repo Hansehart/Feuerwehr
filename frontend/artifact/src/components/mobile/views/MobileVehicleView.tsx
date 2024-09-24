@@ -19,11 +19,11 @@ export default function MobileVehicleView({ title, material, details }: MobileVe
         <h2>{convertSoftHyphen(title)}</h2>
         <img src={fireEngine} alt="fire engine"></img>
       </section>
-      <section className="material">
+      <section className="material my-2">
         <h3>Material</h3>
         <Table header={["Gerät", "Ort", "Stk."]} data={material} />
       </section>
-      <section className="specification">
+      <section className="specification my-2">
         <h3>Details</h3>
         <Table header={["Spezifikation", "Wert"]} data={details} />
       </section>
