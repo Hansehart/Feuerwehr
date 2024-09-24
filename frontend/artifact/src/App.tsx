@@ -42,7 +42,7 @@ function App() {
             <Route path="/main/vehicle/:rvt/:rvn" element={<Vehicle />} />
             <Route
               path="/profile/settings"
-              element={<Directory type="/profile/settings" navbar="profile" />}
+              element={<Directory type="/profile/settings" navbar="profile" title="Einstellungen" />}
             />
             <Route path="/profile/settings/data" element={<Construction />} />
             <Route
