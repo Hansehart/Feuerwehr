@@ -73,7 +73,10 @@ function App() {
           </>
         )}
         <Route path="/start" element={<Start />} />
-        <Route path="/info" element={<Construction />} />
+        <Route
+          path="/info"
+          element={<Directory type="/info" navbar="department" title="Infopoint" titleLink="/info"/>}
+        />
         <Route path="/info/map" element={<Construction />} />
         <Route path="/info/gtc" element={<Construction />} />
         <Route path="/info/imprint" element={<Construction />} />
