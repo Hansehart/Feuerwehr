@@ -14,7 +14,7 @@ import lombok.Data;
 @Data
 @Entity
 @NoArgsConstructor
-@Table(name="user_and_question")
+@Table(name="users_and_questions")
 public class UsersAndQuestions {
     @EmbeddedId
     UsersAndQuestionsKey id = new UsersAndQuestionsKey();
