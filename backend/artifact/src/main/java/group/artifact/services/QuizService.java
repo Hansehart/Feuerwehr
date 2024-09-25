@@ -11,8 +11,11 @@ import org.springframework.stereotype.Service;
 import group.artifact.dtos.QuizDTO;
 import group.artifact.models.Question;
 import group.artifact.models.Selection;
+import group.artifact.models.mappers.UsersAndQuestions;
 import group.artifact.repositories.QuestionRepository;
 import group.artifact.repositories.SelectionRepository;
+import group.artifact.repositories.UserRepository;
+import group.artifact.repositories.UsersAndQuestionsRepository;
 
 @Service
 public class QuizService {
@@ -21,6 +24,10 @@ public class QuizService {
     QuestionRepository questionRepository;
     @Autowired
     SelectionRepository selectionRepository;
+    @Autowired
+    UsersAndQuestionsRepository usersAndQuestionsRepository;
+    @Autowired
+    UserRepository userRepository;
 
     public QuizDTO receive(Integer qid) { // question id
         Question question;
@@ -119,5 +126,12 @@ public class QuizService {
             s.setQuestion(q);
             selectionRepository.save(s);
         }
+    }
+
+    public void saveProgress(Integer qid, String sid) {
+        UsersAndQuestions uq = new UsersAndQuestions();
+        uq.setUser(userRepository.findById(qid).orElse(null));
+        uq.setQuestion(questionRepository.findById(qid).orElse(null));
+        usersAndQuestionsRepository.save(uq);
     }
 }

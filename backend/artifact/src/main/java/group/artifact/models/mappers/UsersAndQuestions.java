@@ -2,7 +2,7 @@ package group.artifact.models.mappers;
 
 import group.artifact.models.Question;
 import group.artifact.models.User;
-import group.artifact.models.keys.ImagesForVehiclesKey;
+import group.artifact.models.keys.UsersAndQuestionsKey;
 import jakarta.persistence.EmbeddedId;
 import jakarta.persistence.Entity;
 import jakarta.persistence.JoinColumn;
@@ -15,9 +15,9 @@ import lombok.Data;
 @Entity
 @NoArgsConstructor
 @Table(name="user_and_question")
-public class UserAndQuestion {
+public class UsersAndQuestions {
     @EmbeddedId
-    ImagesForVehiclesKey id = new ImagesForVehiclesKey();
+    UsersAndQuestionsKey id = new UsersAndQuestionsKey();
 
     @ManyToOne
     @JoinColumn(name = "fk_user", insertable = false, updatable = false)

@@ -5,7 +5,7 @@ import jakarta.persistence.Column;
 import jakarta.persistence.Embeddable;
 
 @Embeddable
-public class UserAndQuestionKey implements Serializable{
+public class UsersAndQuestionsKey implements Serializable{
     @Column(name = "fk_user")
     private Integer fkUser;
 
@@ -22,10 +22,10 @@ public class UserAndQuestionKey implements Serializable{
         if (this == o) {
             return true;
         }
-        if (!(o instanceof UserAndQuestionKey)) {
+        if (!(o instanceof UsersAndQuestionsKey)) {
             return false;
         }
-        UserAndQuestionKey other = (UserAndQuestionKey) o;
+        UsersAndQuestionsKey other = (UsersAndQuestionsKey) o;
         boolean equalsForeignKeys = (fkUser == null && other.fkUser == null) || (fkUser != null && this.fkUser.equals(other.fkUser))
          || (fkQuestion == null && other.fkQuestion == null) || (fkQuestion != null && this.fkQuestion.equals(other.fkQuestion));
         return equalsForeignKeys;
