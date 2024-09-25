@@ -130,7 +130,7 @@ public class QuizService {
 
     public void saveProgress(Integer qid, String sid) {
         UsersAndQuestions uq = new UsersAndQuestions();
-        uq.setUser(userRepository.findById(qid).orElse(null));
+        uq.setUser(userRepository.findById(sid).orElse(null));
         uq.setQuestion(questionRepository.findById(qid).orElse(null));
         usersAndQuestionsRepository.save(uq);
     }
