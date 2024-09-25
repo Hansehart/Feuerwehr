@@ -68,8 +68,16 @@ public class UserService {
             msg.setContent(u.getName());
         } else if (attr.equals("email")) {
             msg.setContent(u.getEmail());
+        } else if (attr.equals("id")) {
+            msg.setContent(u.getId().toString());
         }
         return msg;
+    }
+
+    public User receiveUser(String sid) {
+        ContainerDTO<String> msg = receiveUserAttr(sid, "id");
+        Integer id = Integer.parseInt(msg.getContent());
+        return userRepository.findById(id).orElse(null);
     }
 
     public ContainerDTO<Boolean> receiveProfile(String sid) {

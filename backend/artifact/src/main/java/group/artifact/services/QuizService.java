@@ -14,7 +14,6 @@ import group.artifact.models.Selection;
 import group.artifact.models.mappers.UsersAndQuestions;
 import group.artifact.repositories.QuestionRepository;
 import group.artifact.repositories.SelectionRepository;
-import group.artifact.repositories.UserRepository;
 import group.artifact.repositories.UsersAndQuestionsRepository;
 
 @Service
@@ -27,7 +26,7 @@ public class QuizService {
     @Autowired
     UsersAndQuestionsRepository usersAndQuestionsRepository;
     @Autowired
-    UserRepository userRepository;
+    UserService userService;
 
     public QuizDTO receive(Integer qid) { // question id
         Question question;
@@ -130,7 +129,7 @@ public class QuizService {
 
     public void saveProgress(Integer qid, String sid) {
         UsersAndQuestions uq = new UsersAndQuestions();
-        uq.setUser(userRepository.findById(sid).orElse(null));
+        uq.setUser(userService.receiveUser(sid));
         uq.setQuestion(questionRepository.findById(qid).orElse(null));
         usersAndQuestionsRepository.save(uq);
     }
