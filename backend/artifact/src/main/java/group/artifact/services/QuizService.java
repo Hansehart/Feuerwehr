@@ -131,7 +131,6 @@ public class QuizService {
         UsersAndQuestions uq = new UsersAndQuestions();
         uq.setUser(userService.receiveUser(sid));
         uq.setQuestion(questionRepository.findById(qid).orElse(null));
-        System.out.println("User: " + uq.getUser().getName());
         usersAndQuestionsRepository.save(uq);
     }
 }
