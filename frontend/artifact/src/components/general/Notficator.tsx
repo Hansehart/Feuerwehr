@@ -45,9 +45,10 @@ export default function Notificator({ type, text, onClose }: NotificatorProps) {
   const bgColor =
     type === "success" ? "bg-success" :
     type === "warning" ? "bg-warning" : "bg-error";
-  const borderColor =
-    type === "success" ? "border-green-600" :
-    type === "warning" ? "border-orange-600" : "border-secondary";
+
+  const progressColor =
+    type === "success" ? "bg-green-600" :
+    type === "warning" ? "bg-orange-600" : "bg-secondary";
 
   return (
     <div
@@ -55,14 +56,14 @@ export default function Notificator({ type, text, onClose }: NotificatorProps) {
         show ? "translate-x-0 opacity-100" : "translate-x-full opacity-0"
       }`}
     >
-      <div className={`${bgColor} border-l-8 ${borderColor} rounded-lg shadow-lg overflow-hidden`}>
+      <div className={`${bgColor} rounded-lg shadow-lg overflow-hidden`}>
         <div className="p-4 font-brooklyn">
           <h3 className="text-2vh font-bold text-primary font-teko">{title}</h3>
           <p className="text-2vh mt-1 text-primary">{text}</p>
         </div>
         <div className="h-1 bg-white bg-opacity-25">
           <div
-            className="h-full bg-white transition-all duration-100 ease-linear"
+            className={`h-full ${progressColor} transition-all duration-100 ease-linear`}
             style={{ width: `${progress}%` }}
           />
         </div>
