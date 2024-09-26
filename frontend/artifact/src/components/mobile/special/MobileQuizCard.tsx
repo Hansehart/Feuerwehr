@@ -85,6 +85,7 @@ const MobileQuizCard: React.FC = () => {
   const saveQuizProgress = useCallback((qid: string) => {
     fetch('https://feuerwehr.hansehart.de/api/service/save/quiz-progress', {
       method: 'POST',
+      credentials: "include",
       body: qid,
     })
       .then(response => {
