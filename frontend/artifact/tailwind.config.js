@@ -14,7 +14,8 @@ export default {
       colors: {
         primary: '#05192a',
         secondary: '#ea4138',
-        success: '8bdf84',
+        success: '#8bdf84',
+        warning: '#dfb984',
         error: '#e29999',
       },
       fontSize: {
