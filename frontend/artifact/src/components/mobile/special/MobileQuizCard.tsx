@@ -96,7 +96,7 @@ const MobileQuizCard: React.FC = () => {
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({ qid: qidInt }),
+      body: JSON.stringify({ content: qidInt }),
     })
       .then(response => {
         if (!response.ok) {
