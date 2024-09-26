@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 interface NotificatorProps {
   type: "success" | "warning" | "error";
   text: string;
-  onClose?: () => void;
+  onClose?: () => void; // update app state if needed
 }
 
 export default function Notificator({ type, text, onClose }: NotificatorProps) {

@@ -9,7 +9,7 @@ import MobileImprintFooter from "../../components/mobile/basics/MobileInfoFooter
 import Notificator from "../../components/general/Notficator";
 
 interface NotficatorProps {
-  type: string;
+  type: "success" | "warning" | "error";
   message: string;
 }
 
