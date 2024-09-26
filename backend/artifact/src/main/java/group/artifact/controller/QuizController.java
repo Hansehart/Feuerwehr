@@ -32,6 +32,7 @@ public class QuizController {
             QuizDTO q = learnService.receiveRand(qid);
             return ResponseEntity.ok(q);
         } catch (Exception e) {
+            System.out.println("ERROR: " + e);
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);
         }
     }
@@ -42,6 +43,7 @@ public class QuizController {
             learnService.save(quiz);
             return ResponseEntity.ok("quiz successfully created");
         } catch (Exception e) {
+            System.out.println("ERROR: " + e);
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);
         }
     }
@@ -61,6 +63,7 @@ public class QuizController {
             }
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(null);
         } catch (Exception e) {
+            System.out.println(e);
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);
         }
     }
