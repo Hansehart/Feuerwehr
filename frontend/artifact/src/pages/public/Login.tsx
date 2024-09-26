@@ -1,6 +1,5 @@
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-
 import MobileBody from "../../components/mobile/basics/MobileBody";
 import MobileHeader from "../../components/mobile/basics/MobileHeader";
 import MobileNavBar from "../../components/mobile/basics/MobileNavBar";
@@ -8,7 +7,7 @@ import MobileForm from "../../components/mobile/basics/MobileForm";
 import Notificator from "../../components/general/Notficator";
 import MobileImprintFooter from "../../components/mobile/basics/MobileInfoFooter";
 
-interface NotficatorProps {
+interface NotificatorProps {
   type: "success" | "warning" | "error";
   message: string;
 }
@@ -22,9 +21,7 @@ function Login({
   const [select, setSelect] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [notification, setNotification] = useState<NotficatorProps | null>(
-    null
-  );
+  const [notification, setNotification] = useState<NotificatorProps | null>(null);
 
   function login() {
     const formData = {
@@ -32,7 +29,6 @@ function Login({
       password: password,
     };
     const jsonData = JSON.stringify(formData);
-
     fetch("https://feuerwehr.hansehart.de/api/service/login", {
       credentials: "include",
       method: "POST",
@@ -47,7 +43,13 @@ function Login({
           .then((response) => response.json())
           .then((data) => {
             updateAuthStatus(data.content);
-            navigate("/home", { state: { select: "department", notification: {type: "success", message: "Erfolgreich angemeldet!"} } });
+            setNotification({
+              type: "success",
+              message: "Erfolgreich angemeldet!",
+            });
+            setTimeout(() => {
+              navigate("/home", { state: { select: "department" } });
+            }, 3000); // Navigate after notification is shown
           });
       } else if (response.status === 400) {
         // unknown account
@@ -87,16 +89,24 @@ function Login({
         navigate("/home", { state: { select: "profile" } });
         break;
     }
-  }, [select]);
+  }, [select, navigate]);
 
   const changeView = (view: string) => {
     setSelect(view);
   };
 
+  const clearNotification = () => {
+    setNotification(null);
+  };
+
   return (
     <div>
       {notification && (
-        <Notificator type={notification.type} text={notification.message} />
+        <Notificator
+          type={notification.type}
+          text={notification.message}
+          onClose={clearNotification}
+        />
       )}
       <MobileHeader name="Login" link="/profile/login"/>
       <MobileBody main={<MobileForm background={true} fields={fields} />} />
