@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 import group.artifact.dtos.QuizDTO;
 import group.artifact.models.Question;
 import group.artifact.models.Selection;
+import group.artifact.models.User;
 import group.artifact.models.mappers.UsersAndQuestions;
 import group.artifact.repositories.QuestionRepository;
 import group.artifact.repositories.SelectionRepository;
@@ -130,15 +131,21 @@ public class QuizService {
     }
 
     public boolean saveProgress(Integer qid, String sid) {
-        UsersAndQuestions uq = new UsersAndQuestions();
-        uq.setUser(userService.receiveUser(sid));
-
-        Question q = questionRepository.findById(qid).orElse(null);
-        if (q == null) {
+        User user = userService.receiveUser(sid);
+        Question question = questionRepository.findById(qid).orElse(null);
+        
+        if (question == null) { // question not found
             return false;
         }
-        uq.setQuestion(q);
-        System.out.println("User: " + uq.getUser().getName() + " Question: " + uq.getQuestion().getText());
+        
+        boolean progressExists = usersAndQuestionsRepository.existsByUserAndQuestion(user, question);        
+        if (progressExists) { // progress already exists
+            return false;
+        }
+        
+        UsersAndQuestions uq = new UsersAndQuestions();
+        uq.setUser(user);
+        uq.setQuestion(question);        
         usersAndQuestionsRepository.save(uq);
         return true;
     }
