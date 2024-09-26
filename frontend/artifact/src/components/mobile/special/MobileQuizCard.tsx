@@ -1,5 +1,4 @@
 import React, { useEffect, useState, useCallback } from 'react';
-import './MobileQuizCardStyle.css';
 
 interface QuizData {
   qid: string;
@@ -17,23 +16,24 @@ interface AnswerProps {
 }
 
 const Answer: React.FC<AnswerProps> = ({ index, text, onClick, isSelected, isCorrect }) => {
-  let style = {};
+  let styleClasses = "w-full sm:w-5/12 p-4 rounded-xl shadow-md transition-all duration-300 border-4";
   if (isCorrect === true) {
-    style = { borderColor: 'green', backgroundColor: 'green', color: 'white' };
+    styleClasses += " bg-green-500 text-white border-green-600";
   } else if (isCorrect === false) {
-    style = { borderColor: 'red' };
+    styleClasses += " bg-red-100 border-red-500";
   } else if (isSelected) {
-    style = { borderColor: 'orange' };
+    styleClasses += " bg-yellow-100 border-yellow-500";
+  } else {
+    styleClasses += " bg-white border-gray-300 hover:bg-gray-100";
   }
 
   return (
     <div
-      className="answer"
+      className={styleClasses}
       id={`answer-${index}`}
       onClick={() => onClick(index)}
-      style={style}
     >
-      <p>{text}</p>
+      <p className="text-center">{text}</p>
     </div>
   );
 };
@@ -141,41 +141,42 @@ const MobileQuizCard: React.FC = () => {
   if (!quizData) return null;
 
   return (
-    <div className="quiz w-screen">
-      <section className="question bg-secondary text-white">
-        <h3>Frage</h3>
-        <p>{quizData.text}</p>
-      </section>
-      <section className="answer-container">
-        <section className="type">
-          <h3 className="mt-4">
-            {quizData.solutionIndexes.length > 1 ? 'Mehrfachauswahl' : 'Einfachauswahl'}
-          </h3>
+    <div className="quiz min-h-[70vh] w-screen bg-gray-100 py-8">
+      <div className="max-w-7xl mx-auto px-4">
+        <section className="question bg-secondary text-white rounded-xl shadow-lg p-8 mb-8">
+          <h3 className="text-2xl font-bold mb-4">Frage</h3>
+          <p className="text-lg">{quizData.text}</p>
         </section>
-        <section className="select">
-          {quizData.selections.map((selection, index) => (
-            <Answer
-              key={index}
-              index={index}
-              text={selection}
-              onClick={handleAnswerClick}
-              isSelected={selectedAnswers.includes(index)}
-              isCorrect={revealAnswers
-                ? quizData.solutionIndexes.includes(index)
-                : null}
-            />
-          ))}
+        <section className="answer-container bg-white rounded-xl shadow-lg p-6">
+          <section className="type mb-6">
+            <h3 className="text-xl font-semibold text-center text-gray-800">
+              {quizData.solutionIndexes.length > 1 ? 'Mehrfachauswahl' : 'Einfachauswahl'}
+            </h3>
+          </section>
+          <section className="select flex flex-wrap justify-center gap-4 mb-8">
+            {quizData.selections.map((selection, index) => (
+              <Answer
+                key={index}
+                index={index}
+                text={selection}
+                onClick={handleAnswerClick}
+                isSelected={selectedAnswers.includes(index)}
+                isCorrect={revealAnswers
+                  ? quizData.solutionIndexes.includes(index)
+                  : null}
+              />
+            ))}
+          </section>
+          <section
+            className="continue flex justify-center items-center h-16 bg-gray-200 rounded-lg cursor-pointer hover:bg-gray-300 transition-colors duration-300"
+            onClick={fetchQuizData}
+          >
+            <p id="timer" className="text-lg font-medium text-gray-800">
+              {timerStarted ? `Weiter in ${count}` : 'Überspringen'}
+            </p>
+          </section>
         </section>
-        <section
-          className="continue"
-          onClick={fetchQuizData}
-          unselectable="on"
-        >
-          <p id="timer" style={{ display: 'block' }}>
-            {timerStarted ? `Weiter in ${count}` : 'überspringen'}
-          </p>
-        </section>
-      </section>
+      </div>
     </div>
   );
 };
