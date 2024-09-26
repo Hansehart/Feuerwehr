@@ -47,11 +47,12 @@ public class QuizController {
     }
 
     @PostMapping("/save/quiz-progress")
-    public ResponseEntity<String> saveProgress(@RequestBody Integer qid,
+    public ResponseEntity<String> saveProgress(@RequestBody ContainerDTO<Integer> container,
             @CookieValue(name = "sid", required = true) String sid) { // question id
         try {
             ContainerDTO<Boolean> msg = userService.authUser(sid);
-            if (msg.getContent()) {
+            if (msg.getContent()) { // user is authenticated
+                Integer qid = container.getContent();
                 Boolean success = learnService.saveProgress(qid, sid);
                 if (success) {
                     return ResponseEntity.ok("progress successfully saved");
