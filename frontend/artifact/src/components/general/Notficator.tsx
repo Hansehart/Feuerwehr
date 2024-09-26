@@ -9,24 +9,23 @@ interface NotificatorProps {
 export default function Notificator({ type, text, onClose }: NotificatorProps) {
   const [title, setTitle] = useState("");
   const [show, setShow] = useState(false);
-  const [progress, setProgress] = useState(100);
+  const [progress, setProgress] = useState(0);
 
   useEffect(() => {
     setTitle(
       type === "success" ? "Erfolg" :
       type === "warning" ? "Warnung" : "Fehler"
     );
-
     setShow(true);
-    setProgress(100);
+    setProgress(0);
 
     const progressInterval = setInterval(() => {
       setProgress((prev) => {
-        if (prev <= 0) {
+        if (prev >= 100) {
           clearInterval(progressInterval);
-          return 0;
+          return 100;
         }
-        return prev - 1;
+        return prev + 1;
       });
     }, 30);
 
@@ -43,16 +42,15 @@ export default function Notificator({ type, text, onClose }: NotificatorProps) {
     };
   }, [type, text, onClose]);
 
-  const bgColor = 
+  const bgColor =
     type === "success" ? "bg-success" :
     type === "warning" ? "bg-warning" : "bg-error";
-
-  const borderColor = 
+  const borderColor =
     type === "success" ? "border-green-600" :
     type === "warning" ? "border-orange-600" : "border-secondary";
 
   return (
-    <div 
+    <div
       className={`fixed top-4 right-4 w-11/12 max-w-md z-50 transition-all duration-300 ease-in-out ${
         show ? "translate-x-0 opacity-100" : "translate-x-full opacity-0"
       }`}
@@ -63,7 +61,7 @@ export default function Notificator({ type, text, onClose }: NotificatorProps) {
           <p className="text-2vh mt-1 text-primary">{text}</p>
         </div>
         <div className="h-1 bg-white bg-opacity-25">
-          <div 
+          <div
             className="h-full bg-white transition-all duration-100 ease-linear"
             style={{ width: `${progress}%` }}
           />
