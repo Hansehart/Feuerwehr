@@ -47,7 +47,7 @@ function Login({
           .then((response) => response.json())
           .then((data) => {
             updateAuthStatus(data.content);
-            navigate("/home", { state: { select: "department" } });
+            navigate("/home", { state: { select: "department", notification: {type: "success", message: "Erfolgreich angemeldet!"} } });
           });
       } else if (response.status === 400) {
         // unknown account
