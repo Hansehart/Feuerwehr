@@ -149,4 +149,15 @@ public class QuizService {
         usersAndQuestionsRepository.save(uq);
         return true;
     }
+
+    public long countUserEntries(String userId) {
+        User user = userService.receiveUser(userId);
+        
+        if (user == null) {
+            return 0;
+        }
+
+        long entryCount = usersAndQuestionsRepository.countByUser(user);        
+        return entryCount;
+    }
 }

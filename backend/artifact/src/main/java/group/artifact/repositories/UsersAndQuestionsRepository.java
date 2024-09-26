@@ -10,4 +10,5 @@ import group.artifact.models.mappers.UsersAndQuestions;
 @Repository
 public interface UsersAndQuestionsRepository extends JpaRepository<UsersAndQuestions, Long> {
     boolean existsByUserAndQuestion(User user, Question question);
+    long countByUser(User user);
 }
