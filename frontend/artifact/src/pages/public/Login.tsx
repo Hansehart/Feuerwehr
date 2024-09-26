@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import { useNavigate } from "react-router-dom";
 import MobileBody from "../../components/mobile/basics/MobileBody";
 import MobileHeader from "../../components/mobile/basics/MobileHeader";
@@ -23,7 +23,11 @@ function Login({
   const [password, setPassword] = useState("");
   const [notification, setNotification] = useState<NotificatorProps | null>(null);
 
-  function login() {
+  const clearNotification = useCallback(() => {
+    setNotification(null);
+  }, []);
+
+  const login = useCallback(() => {
     const formData = {
       email: email,
       password: password,
@@ -59,7 +63,7 @@ function Login({
         });
       }
     });
-  }
+  }, [email, password, navigate, updateAuthStatus]);
 
   const fields = [
     {
@@ -74,7 +78,15 @@ function Login({
       onChange: (e: React.ChangeEvent<HTMLInputElement>) =>
         setPassword(e.target.value),
     },
-    { value: "Anmelden", classname: "mt-8", type: "button", onClick: login },
+    { 
+      value: "Anmelden", 
+      classname: "mt-8", 
+      type: "button", 
+      onClick: () => {
+        clearNotification(); // Clear existing notification before attempting new login
+        login();
+      }
+    },
   ];
 
   useEffect(() => {
@@ -93,10 +105,6 @@ function Login({
 
   const changeView = (view: string) => {
     setSelect(view);
-  };
-
-  const clearNotification = () => {
-    setNotification(null);
   };
 
   return (
