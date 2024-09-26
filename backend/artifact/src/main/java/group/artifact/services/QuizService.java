@@ -127,11 +127,17 @@ public class QuizService {
         }
     }
 
-    public void saveProgress(Integer qid, String sid) {
+    public boolean saveProgress(Integer qid, String sid) {
         UsersAndQuestions uq = new UsersAndQuestions();
         uq.setUser(userService.receiveUser(sid));
-        uq.setQuestion(questionRepository.findById(qid).orElse(null));
+
+        Question q = questionRepository.findById(qid).orElse(null);
+        if (q == null) {
+            return false;
+        }
+        uq.setQuestion(q);
         System.out.println("User: " + uq.getUser().getName() + " Question: " + uq.getQuestion().getText());
         usersAndQuestionsRepository.save(uq);
+        return true;
     }
 }

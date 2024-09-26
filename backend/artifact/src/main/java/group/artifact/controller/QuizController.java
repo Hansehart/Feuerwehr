@@ -52,12 +52,14 @@ public class QuizController {
         try {
             ContainerDTO<Boolean> msg = userService.authUser(sid);
             if (msg.getContent()) {
-                learnService.saveProgress(qid, sid);
-                return ResponseEntity.ok("progress successfully saved");
+                Boolean success = learnService.saveProgress(qid, sid);
+                if (success) {
+                    return ResponseEntity.ok("progress successfully saved");
+                }
+                return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null);
             }
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(null);
         } catch (Exception e) {
-            System.out.println(e.getMessage());
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);
         }
     }
