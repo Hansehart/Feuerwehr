@@ -2,7 +2,7 @@ import React, { useEffect, useState, useCallback } from 'react';
 import './MobileQuizCardStyle.css';
 
 interface QuizData {
-  qid: string;  // Added qid to the QuizData interface
+  qid: string;
   text: string;
   solutionIndexes: number[];
   selections: string[];
@@ -83,13 +83,20 @@ const MobileQuizCard: React.FC = () => {
   }, [timerStarted, fetchQuizData]);
 
   const saveQuizProgress = useCallback((qid: string) => {
+    const qidInt = parseInt(qid, 10);
+    
+    if (isNaN(qidInt)) {
+      console.error('Invalid qid:', qid);
+      return;
+    }
+
     fetch('https://feuerwehr.hansehart.de/api/service/save/quiz-progress', {
-      credentials: "include",
-      method: "POST",
+      method: 'POST',
+      credentials: 'include',
       headers: {
-        "Content-Type": "text/plain",
+        'Content-Type': 'application/json',
       },
-      body: qid,
+      body: JSON.stringify({ qid: qidInt }),
     })
       .then(response => {
         if (!response.ok) {
