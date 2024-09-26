@@ -43,6 +43,7 @@ public class QuizService {
             return null;
         }
         QuizDTO quiz = new QuizDTO();
+        quiz.setQid(question.getId());
         quiz.setText(question.getText());
 
         List<Selection> selections = selectionRepository.findByQuestion(question);
@@ -76,6 +77,7 @@ public class QuizService {
             return null;
         }
         QuizDTO quiz = new QuizDTO();
+        quiz.setQid(question.getId());
         quiz.setText(question.getText());
 
         List<Selection> selections = selectionRepository.findByQuestion(question);

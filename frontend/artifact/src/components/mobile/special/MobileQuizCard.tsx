@@ -2,6 +2,7 @@ import React, { useEffect, useState, useCallback } from 'react';
 import './MobileQuizCardStyle.css';
 
 interface QuizData {
+  qid: string;  // Added qid to the QuizData interface
   text: string;
   solutionIndexes: number[];
   selections: string[];
@@ -81,10 +82,24 @@ const MobileQuizCard: React.FC = () => {
     };
   }, [timerStarted, fetchQuizData]);
 
+  const saveQuizProgress = useCallback((qid: string) => {
+    fetch('https://feuerwehr.hansehart.de/api/service/save/quiz-progress', {
+      method: 'POST',
+      body: qid,
+    })
+      .then(response => {
+        if (!response.ok) {
+          throw new Error('Failed to save quiz progress');
+        }
+      })
+      .catch(error => console.error('Error saving quiz progress:', error));
+  }, []);
+
   const handleAnswerClick = (answerIndex: number) => {
     if (!quizData || timerStarted) return;
 
     const isMultipleChoice = quizData.solutionIndexes.length > 1;
+    const isCorrectAnswer = quizData.solutionIndexes.includes(answerIndex);
 
     if (isMultipleChoice) {
       setSelectedAnswers((prev) => {
@@ -95,6 +110,9 @@ const MobileQuizCard: React.FC = () => {
         if (newSelections.length === quizData.solutionIndexes.length) {
           setRevealAnswers(true);
           setTimerStarted(true);
+          if (newSelections.every(index => quizData.solutionIndexes.includes(index))) {
+            saveQuizProgress(quizData.qid);
+          }
         }
         
         return newSelections;
@@ -103,6 +121,9 @@ const MobileQuizCard: React.FC = () => {
       setSelectedAnswers([answerIndex]);
       setRevealAnswers(true);
       setTimerStarted(true);
+      if (isCorrectAnswer) {
+        saveQuizProgress(quizData.qid);
+      }
     }
   };
 
