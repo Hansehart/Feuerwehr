@@ -76,6 +76,7 @@ function RegisterProfile() {
     const jsonData = JSON.stringify(payload);
     fetch("https://feuerwehr.hansehart.de/api/service/save/profile", {
       method: "POST",
+      credentials: "include",
       headers: {
         "Content-Type": "application/json",
       },
