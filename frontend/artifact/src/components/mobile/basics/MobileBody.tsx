@@ -44,7 +44,7 @@ export default function MobileBody({
               title: item.shortcut,
               subtitle: item.name,
               path: `/main/vehicle/${item.radioVehicleType}/${item.radioVehicleNumber}`,
-              img: "vehicle"
+              img: "vehicle",
             }));
             setPreview((prevPreview) => [...prevPreview, ...previews]);
           });
@@ -78,7 +78,9 @@ export default function MobileBody({
   return (
     <main className="flex flex-col items-center">
       {before}
-      {cards.length > 0 ? cards : main}
+      <div className="grid grid-cols-1 lg:grid-cols-2 2xl:grid-cols-3 gap-4 items-center">
+        {cards.length > 0 ? cards : main}
+      </div>
       {after}
     </main>
   );
