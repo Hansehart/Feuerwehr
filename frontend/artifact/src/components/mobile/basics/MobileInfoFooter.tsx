@@ -10,8 +10,8 @@ export default function MobileInfoFooter() {
       }}
     >
       <div className="container mx-auto px-4 py-4">
-        <div className="flex flex-col w-full md:flex-row justify-between items-center">
-          <div className="flex items-center mb-4 md:mb-0">
+        <div className="flex flex-col-reverse md:flex-row md: pt-6 justify-between items-center w-full">
+          <div className="flex items-center md:mb-0">
             <div className="w-32 h-32">
               <RoundedIcon
                 icon="hansehart"
@@ -27,14 +27,25 @@ export default function MobileInfoFooter() {
               </p>
             </div>
           </div>
-          <div className="flex items-center mb-4 md:mb-0">
+          <div className="flex items-center md:mb-0">
             <div>
-              <a href="/info" className="text-lg font-semibold text-lg font-semibold">Infopoint</a>
+              <a
+                href="/info"
+                className="text-lg font-semibold text-lg font-semibold"
+              >
+                Infopoint
+              </a>
               <div>
-                <a href="/info/imprint" className="text-xs m-1 ml-0 hover:underline">
+                <a
+                  href="/info/imprint"
+                  className="text-xs m-1 ml-0 hover:underline"
+                >
                   Impressum
                 </a>
-                <a href="/info/datenschutz" className="text-xs m-1 hover:underline">
+                <a
+                  href="/info/datenschutz"
+                  className="text-xs m-1 hover:underline"
+                >
                   Datenschutz
                 </a>
                 <a href="/info/gtc" className="text-xs m-1 hover:underline">
