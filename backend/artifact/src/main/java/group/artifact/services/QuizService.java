@@ -150,14 +150,20 @@ public class QuizService {
         return true;
     }
 
-    public long countUserEntries(String userId) {
-        User user = userService.receiveUser(userId);
+    public Integer receiveProgress(String sid) {
+        User user = userService.receiveUser(sid);
         
         if (user == null) {
             return 0;
         }
-
-        long entryCount = usersAndQuestionsRepository.countByUser(user);        
-        return entryCount;
+        
+        long rightAnswers = usersAndQuestionsRepository.countByUser(user);
+        long totalQuestions = questionRepository.count();
+        
+        if (totalQuestions == 0) {
+            return 0; // Avoid division by zero
+        }
+        
+        return (int) Math.round((rightAnswers * 100.0) / totalQuestions);
     }
 }

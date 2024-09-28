@@ -24,12 +24,12 @@ public class QuizController {
     UserService userService;
 
     @Autowired
-    QuizService learnService;
+    QuizService quizService;
 
     @GetMapping("/receive/quiz")
     public ResponseEntity<QuizDTO> receiveQuiz(@RequestParam(required = false) Integer qid) { // question id
         try {
-            QuizDTO q = learnService.receiveRand(qid);
+            QuizDTO q = quizService.receiveRand(qid);
             return ResponseEntity.ok(q);
         } catch (Exception e) {
             System.out.println("ERROR: " + e);
@@ -40,10 +40,26 @@ public class QuizController {
     @PostMapping("/save/quiz")
     public ResponseEntity<String> saveQuiz(@RequestBody QuizDTO quiz) {
         try {
-            learnService.save(quiz);
+            quizService.save(quiz);
             return ResponseEntity.ok("quiz successfully created");
         } catch (Exception e) {
             System.out.println("ERROR: " + e);
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);
+        }
+    }
+
+    @GetMapping("/receive/quiz-progress")
+    public ResponseEntity<ContainerDTO<Integer>> receiveProgress(
+            @CookieValue(name = "sid", required = true) String sid) {
+        try {
+            ContainerDTO<Boolean> msg = userService.authUser(sid);
+            if (msg.getContent()) { // user is authenticated
+                Integer progress = quizService.receiveProgress(sid);
+                return ResponseEntity.ok(new ContainerDTO<Integer>(progress));
+            }
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(null);
+        } catch (Exception e) {
+            System.out.println(e);
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);
         }
     }
@@ -55,7 +71,7 @@ public class QuizController {
             ContainerDTO<Boolean> msg = userService.authUser(sid);
             if (msg.getContent()) { // user is authenticated
                 Integer qid = container.getContent();
-                Boolean success = learnService.saveProgress(qid, sid);
+                Boolean success = quizService.saveProgress(qid, sid);
                 if (success) {
                     return ResponseEntity.ok("progress successfully saved");
                 }

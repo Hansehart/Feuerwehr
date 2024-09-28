@@ -59,6 +59,7 @@ public class UserController {
     @PostMapping("/login")
     public ResponseEntity<ContainerDTO<String>> login(@RequestBody UserDTO u, HttpServletResponse response) {
         try {
+            // generate session
             Cookie sid_cookie = userService.login(u);
             if (sid_cookie == null) {
                 return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null);
