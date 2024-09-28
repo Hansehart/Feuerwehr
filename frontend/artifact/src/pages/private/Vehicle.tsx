@@ -5,6 +5,7 @@ import MobileBody from "../../components/mobile/basics/MobileBody";
 import MobileHeader from "../../components/mobile/basics/MobileHeader";
 import MobileNavBar from "../../components/mobile/basics/MobileNavBar";
 import MobileVehicleView from "../../components/mobile/views/MobileVehicleView";
+import MobileInfoFooter from "../../components/mobile/basics/MobileInfoFooter";
 
 interface Vehicle {
   name: string;
@@ -99,6 +100,7 @@ function Vehicle() {
         }
       />
       <MobileNavBar changeView={changeView} preset="department" />
+      <MobileInfoFooter />
     </div>
   );
 }

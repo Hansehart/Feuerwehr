@@ -6,6 +6,7 @@ import MobileHeader from "../../components/mobile/basics/MobileHeader";
 import MobileNavBar from "../../components/mobile/basics/MobileNavBar";
 import MobileForm from "../../components/mobile/basics/MobileForm";
 import Notificator from "../../components/general/Notficator";
+import MobileInfoFooter from "../../components/mobile/basics/MobileInfoFooter";
 
 interface Firedepartment {
   id: number;
@@ -144,6 +145,7 @@ function RegisterProfile() {
         main={<MobileForm background={true} fields={fields} />}
       />
       <MobileNavBar changeView={changeView} preset="profile" />
+      <MobileInfoFooter />
     </div>
   );
 }

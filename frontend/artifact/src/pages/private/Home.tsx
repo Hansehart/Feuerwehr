@@ -7,6 +7,7 @@ import MobileNavBar from "../../components/mobile/basics/MobileNavBar";
 import ProgressBall from "../../components/general/ProgressBall";
 import MobileDepartmentPrivatePreview from "../../components/mobile/views/MobileDepartmentPrivatePreview";
 import Notificator from "../../components/general/Notficator";
+import MobileInfoFooter from "../../components/mobile/basics/MobileInfoFooter";
 
 function Home() {
   const location = useLocation();
@@ -151,6 +152,7 @@ function Home() {
       )}
       {displayComponent}
       <MobileNavBar changeView={changeView} preset={`${select}`} />
+      <MobileInfoFooter />
     </div>
   );
 }

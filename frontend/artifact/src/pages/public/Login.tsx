@@ -5,7 +5,7 @@ import MobileHeader from "../../components/mobile/basics/MobileHeader";
 import MobileNavBar from "../../components/mobile/basics/MobileNavBar";
 import MobileForm from "../../components/mobile/basics/MobileForm";
 import Notificator from "../../components/general/Notficator";
-import MobileImprintFooter from "../../components/mobile/basics/MobileInfoFooter";
+import MobileInfoFooter from "../../components/mobile/basics/MobileInfoFooter";
 
 interface NotificatorProps {
   type: "success" | "warning" | "error";
@@ -119,7 +119,7 @@ function Login({
       <MobileHeader name="Login" link="/profile/login"/>
       <MobileBody main={<MobileForm background={true} fields={fields} />} />
       <MobileNavBar changeView={changeView} preset="profile" />
-      <MobileImprintFooter />
+      <MobileInfoFooter />
     </div>
   );
 }

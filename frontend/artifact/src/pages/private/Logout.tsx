@@ -5,6 +5,7 @@ import MobileBody from "../../components/mobile/basics/MobileBody";
 import MobileHeader from "../../components/mobile/basics/MobileHeader";
 import MobileNavBar from "../../components/mobile/basics/MobileNavBar";
 import LoadingCircle from "../../components/general/LoadingCircle";
+import MobileInfoFooter from "../../components/mobile/basics/MobileInfoFooter";
 
 function Logout({
   updateAuthStatus,
@@ -57,6 +58,7 @@ function Logout({
       />
       </div>
       <MobileNavBar changeView={changeView} preset="profile" />
+      <MobileInfoFooter />
     </div>
   );
 }

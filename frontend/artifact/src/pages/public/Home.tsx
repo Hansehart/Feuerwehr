@@ -6,7 +6,7 @@ import MobileHeader from "../../components/mobile/basics/MobileHeader";
 import MobileNavBar from "../../components/mobile/basics/MobileNavBar";
 import MobileAuthPreview from "../../components/mobile/views/MobileAuthPreview";
 import MobileDepartmentPreview from "../../components/mobile/views/MobileDepartmentPreview";
-import MobileImprintFooter from "../../components/mobile/basics/MobileInfoFooter";
+import MobileInfoFooter from "../../components/mobile/basics/MobileInfoFooter";
 import Notificator from "../../components/general/Notficator";
 
 
@@ -62,7 +62,7 @@ function Home() {
       )}
       {displayComponent}
       <MobileNavBar changeView={changeView} preset={`${select}`} />
-      <MobileImprintFooter/>
+      <MobileInfoFooter/>
     </div>
   );
 }

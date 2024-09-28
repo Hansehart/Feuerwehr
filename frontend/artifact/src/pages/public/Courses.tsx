@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import MobileBody from "../../components/mobile/basics/MobileBody";
 import MobileHeader from "../../components/mobile/basics/MobileHeader";
 import MobileNavBar from "../../components/mobile/basics/MobileNavBar";
-import MobileImprintFooter from "../../components/mobile/basics/MobileInfoFooter";
+import MobileInfoFooter from "../../components/mobile/basics/MobileInfoFooter";
 
 
 function Courses() {
@@ -34,7 +34,7 @@ function Courses() {
       <MobileHeader name="Lehrgänge" link="/learn/courses"/>
       <MobileBody/>
       <MobileNavBar changeView={changeView} preset="learn" />
-      <MobileImprintFooter/>
+      <MobileInfoFooter/>
     </div>
   );
 }

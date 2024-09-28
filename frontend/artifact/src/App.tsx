@@ -20,6 +20,7 @@ import Start from "./pages/public/Start";
 import EditPassword from "./pages/private/EditPassword";
 import Directory from "./pages/public/Directory";
 import Construction from "./pages/public/Construction";
+import Imprint from "./pages/public/Imprint";
 
 function App() {
   const [auth, setAuth] = useState<boolean>(false);
@@ -79,7 +80,7 @@ function App() {
         />
         <Route path="/info/map" element={<Construction />} />
         <Route path="/info/gtc" element={<Construction />} />
-        <Route path="/info/imprint" element={<Construction />} />
+        <Route path="/info/imprint" element={<Imprint />} />
         <Route path="/info/contact" element={<Contact />} />
 
         <Route

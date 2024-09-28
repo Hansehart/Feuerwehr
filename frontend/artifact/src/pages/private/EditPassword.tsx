@@ -5,6 +5,7 @@ import MobileBody from "../../components/mobile/basics/MobileBody";
 import MobileHeader from "../../components/mobile/basics/MobileHeader";
 import MobileNavBar from "../../components/mobile/basics/MobileNavBar";
 import MobileForm from "../../components/mobile/basics/MobileForm";
+import MobileInfoFooter from "../../components/mobile/basics/MobileInfoFooter";
 
 function EditPassword() {
   const navigate = useNavigate();
@@ -125,6 +126,7 @@ function EditPassword() {
         }
       />
       <MobileNavBar changeView={changeView} preset="profile" />
+      <MobileInfoFooter />
     </div>
   );
 }

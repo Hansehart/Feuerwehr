@@ -16,7 +16,7 @@ interface AnswerProps {
 }
 
 const Answer: React.FC<AnswerProps> = ({ index, text, onClick, isSelected, isCorrect }) => {
-  let styleClasses = "w-full sm:w-5/12 p-4 rounded-xl shadow-md transition-all duration-300 border-4 flex justify-center align-center";
+  let styleClasses = "w-full sm:w-5/12 p-4 rounded-xl shadow-md transition-all duration-300 border-4 flex justify-center items-center";
   if (isCorrect === true) {
     styleClasses += " bg-green-500 text-white border-green-600";
   } else if (isCorrect === false) {

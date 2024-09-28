@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import MobileBody from "../../components/mobile/basics/MobileBody";
 import MobileHeader from "../../components/mobile/basics/MobileHeader";
 import MobileNavBar from "../../components/mobile/basics/MobileNavBar";
-import MobileImprintFooter from "../../components/mobile/basics/MobileInfoFooter";
+import MobileInfoFooter from "../../components/mobile/basics/MobileInfoFooter";
 import MobileMapPreview from "../../components/mobile/views/MobileMapView";
 
 function Map() {
@@ -35,7 +35,7 @@ function Map() {
       <h3>*** Karte ***</h3>
       <MobileBody main={<MobileMapPreview/>}/>
       <MobileNavBar changeView={changeView} preset="department" />
-      <MobileImprintFooter/>
+      <MobileInfoFooter/>
     </div>
   );
 }

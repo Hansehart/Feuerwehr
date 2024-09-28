@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import MobileBody from "../../components/mobile/basics/MobileBody";
 import MobileHeader from "../../components/mobile/basics/MobileHeader";
 import MobileNavBar from "../../components/mobile/basics/MobileNavBar";
-import MobileImprintFooter from "../../components/mobile/basics/MobileInfoFooter";
+import MobileInfoFooter from "../../components/mobile/basics/MobileInfoFooter";
 
 function Regulations() {
   const navigate = useNavigate();
@@ -33,7 +33,7 @@ function Regulations() {
       <MobileHeader name="Vorschriften" link="/learn/regulations"/>
       <MobileBody/>
       <MobileNavBar changeView={changeView} preset="learn" />
-      <MobileImprintFooter/>
+      <MobileInfoFooter/>
     </div>
   );
 }

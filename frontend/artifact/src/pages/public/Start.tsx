@@ -5,7 +5,7 @@ import MobileBody from "../../components/mobile/basics/MobileBody";
 import MobileHeader from "../../components/mobile/basics/MobileHeader";
 import MobileNavBar from "../../components/mobile/basics/MobileNavBar";
 import MobileStartPreview from "../../components/mobile/views/MobileStartPreview";
-import MobileImprintFooter from "../../components/mobile/basics/MobileInfoFooter";
+import MobileInfoFooter from "../../components/mobile/basics/MobileInfoFooter";
 
 function Start() {
   const navigate = useNavigate();
@@ -34,7 +34,7 @@ function Start() {
       <MobileHeader name="Feuerwehr" link="/home"/>
       <MobileBody main={<MobileStartPreview/>}/>
       <MobileNavBar changeView={changeView} preset="" />
-      <MobileImprintFooter/>
+      <MobileInfoFooter/>
     </div>
   );
 }

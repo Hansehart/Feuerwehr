@@ -5,6 +5,7 @@ import MobileBody from "../../components/mobile/basics/MobileBody";
 import MobileHeader from "../../components/mobile/basics/MobileHeader";
 import MobileNavBar from "../../components/mobile/basics/MobileNavBar";
 import MobileForm from "../../components/mobile/basics/MobileForm";
+import MobileInfoFooter from "../../components/mobile/basics/MobileInfoFooter";
 
 function Settings() {
   const navigate = useNavigate();
@@ -208,6 +209,7 @@ function Settings() {
         }
       />
       <MobileNavBar changeView={changeView} preset="profile" />
+      <MobileInfoFooter />
     </div>
   );
 }

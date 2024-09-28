@@ -5,7 +5,7 @@ import MobileBody from "../../components/mobile/basics/MobileBody";
 import MobileHeader from "../../components/mobile/basics/MobileHeader";
 import MobileNavBar from "../../components/mobile/basics/MobileNavBar";
 import MobileQuizCard from "../../components/mobile/special/MobileQuizCard";
-import MobileImprintFooter from "../../components/mobile/basics/MobileInfoFooter";
+import MobileInfoFooter from "../../components/mobile/basics/MobileInfoFooter";
 
 
 function Exercise() {
@@ -35,7 +35,7 @@ function Exercise() {
       <MobileHeader name="Übung" link="/learn/exercises"/>
       <MobileBody before={<MobileQuizCard />}/>
       <MobileNavBar changeView={changeView} preset="learn" />
-      <MobileImprintFooter/>
+      <MobileInfoFooter/>
     </div>
   );
 }
