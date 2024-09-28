@@ -6,6 +6,7 @@ interface MobileBodyProps {
   type?: string; // main is made with contentcards
   main?: React.ReactNode; // main is custom made
   after?: React.ReactNode; // footer (in main)
+  fullscreen?: React.ReactNode; // fullscreen content
 }
 
 interface Preview {
@@ -28,6 +29,7 @@ export default function MobileBody({
   type,
   main,
   after,
+  fullscreen,
 }: MobileBodyProps) {
   const [preview, setPreview] = useState<Preview[]>([]);
 
@@ -77,11 +79,17 @@ export default function MobileBody({
 
   return (
     <main className="flex flex-col items-center">
-      {before}
-      <div className="grid grid-cols-1 lg:grid-cols-2 2xl:grid-cols-3 gap-4 items-center min-h-[60vh] bg-gray-100 rounded-xl p-8 m-8">
-        {cards.length > 0 ? cards : main}
-      </div>
-      {after}
+      {fullscreen ? (
+        fullscreen
+      ) : (
+        <>
+          {before}
+          <div className="grid grid-cols-1 lg:grid-cols-2 2xl:grid-cols-3 gap-4 items-center min-h-[60vh] bg-gray-100 rounded-xl p-8 m-8">
+            {cards.length > 0 ? cards : main}
+          </div>
+          {after}
+        </>
+      )}
     </main>
   );
 }

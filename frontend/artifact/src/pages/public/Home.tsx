@@ -37,13 +37,13 @@ function Home() {
       break;
     case "department":
       displayComponent = (
-        <MobileBody before={<MobileDepartmentPreview />}/> // type is for public page not set because their should be no content loaded
+        <MobileBody fullscreen={<MobileDepartmentPreview />}/> // type is for public page not set because their should be no content loaded
       );
       window.history.replaceState({}, "");
       break;
     case "profile":
       displayComponent = (
-        <MobileBody before={<MobileAuthPreview />}/> // type is for public page not set because their should be no content loaded
+        <MobileBody fullscreen={<MobileAuthPreview />}/> // type is for public page not set because their should be no content loaded
       );
       window.history.replaceState({}, "");
       break;

@@ -105,7 +105,7 @@ function Home() {
         displayComponent = // no membership yet
           (
             <MobileBody
-              before={
+              fullscreen={
                 <MobileDepartmentPrivatePreview
                   text={
                     <>
