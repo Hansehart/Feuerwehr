@@ -9,7 +9,7 @@ export default function MobileInfoFooter() {
           "linear-gradient(180deg, rgba(5,25,42,0) 0%, rgba(5,25,42,0.554) 7%, rgba(5,25,42,1) 12%)",
       }}
     >
-      <div className="container mx-auto px-4 py-4">
+      <div className="container mx-auto px-4 pt-8">
         <div className="flex flex-col-reverse md:flex-row md:pt-6 justify-between items-center w-full">
           <a
             href="https://hansehart.de"
@@ -17,7 +17,7 @@ export default function MobileInfoFooter() {
             target="_blank"
           >
             <div className="flex items-center">
-              <div className="w-44 h-44">
+              <div className="w-36 h-36 flex justiy-center items-center">
                 <RoundedIcon
                   icon="hansehart"
                   bgColor="transparent"
