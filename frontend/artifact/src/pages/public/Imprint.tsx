@@ -8,7 +8,7 @@ import MobileInfoFooter from "../../components/mobile/basics/MobileInfoFooter";
 
 const ImprintContent = () => {
   return (
-    <div className="min-h-screen bg-gray-100 py-12 px-4 sm:px-6 lg:px-8">
+    <div className="min-h-screen w-screen bg-gray-100 py-12 px-4 sm:px-6 lg:px-8">
       <div className="max-w-3xl mx-auto bg-white shadow-md rounded-lg overflow-hidden">
         <div className="px-4 py-5 sm:p-6">
           <h1 className="text-3xl font-bold text-gray-900 mb-6">Impressum</h1>
@@ -16,26 +16,16 @@ const ImprintContent = () => {
           <section className="mb-8">
             <h2 className="text-2xl font-semibold text-gray-900 mb-4">Angaben gemäß § 5 TMG</h2>
             <p className="text-gray-700">
-              [Ihr Vorname] [Ihr Nachname]<br />
-              [Ihre Straße und Hausnummer]<br />
-              [Ihre Postleitzahl und Stadt]
+              Richard Hartung<br />
+              Dünenweg 25<br />
+              21033 Hamburg
             </p>
           </section>
 
           <section className="mb-8">
             <h2 className="text-2xl font-semibold text-gray-900 mb-4">Kontakt</h2>
             <p className="text-gray-700">
-              Telefon: [Ihre Telefonnummer]<br />
-              E-Mail: [Ihre E-Mail-Adresse]
-            </p>
-          </section>
-
-          <section className="mb-8">
-            <h2 className="text-2xl font-semibold text-gray-900 mb-4">Verantwortlich für den Inhalt nach § 55 Abs. 2 RStV</h2>
-            <p className="text-gray-700">
-              [Ihr Vorname] [Ihr Nachname]<br />
-              [Ihre Straße und Hausnummer]<br />
-              [Ihre Postleitzahl und Stadt]
+              E-Mail: feuerwehr@hansehart.de
             </p>
           </section>
 
@@ -61,7 +51,7 @@ const ImprintContent = () => {
           <section>
             <h2 className="text-2xl font-semibold text-gray-900 mb-4">Datenschutzerklärung</h2>
             <p className="text-gray-700">
-              [Hier könnten Sie einen Link zu Ihrer separaten Datenschutzerklärung einfügen, falls vorhanden]
+              
             </p>
           </section>
         </div>
@@ -94,7 +84,7 @@ function Imprint() {
 
   return (
     <div>
-      <MobileHeader name="Impressum" link="/info" />
+      <MobileHeader name="Infopoint" link="/info" />
       <MobileBody main={<ImprintContent />}/>
       <MobileNavBar changeView={changeView} preset="" />
       <MobileInfoFooter/>

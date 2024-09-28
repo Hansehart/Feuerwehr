@@ -3,6 +3,7 @@ import firefighter from "/src/assets/icons/firefighter.png";
 import firedepartment from "/src/assets/icons/firedepartment.png";
 import book from "/src/assets/icons/book.png";
 import pylon from "/src/assets/icons/pylon.png"
+import hansehart from "/src/assets/icons/hansehart512.png"
 
 interface RoundedIconProps {
   icon: string;
@@ -27,6 +28,8 @@ function getIconPath(icon: string) {
       return book;
     case "pylon":
       return pylon;
+    case "hansehart":
+      return hansehart;
   }
 }
 

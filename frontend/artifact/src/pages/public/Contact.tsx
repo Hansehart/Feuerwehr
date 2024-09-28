@@ -113,7 +113,7 @@ function Contact() {
       selectOptions: options,
     },
     {
-      label: "E-Mail",
+      label: "Deine E-Mail",
       type: "email",
     },
     {

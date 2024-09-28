@@ -88,8 +88,12 @@ form input[type="button"] {
 .field-container-inline {
     width: 60vw;
     display: flex;
-    justify-content: space-around;
+    justify-content: center;
     margin-top: .5em;
+}
+
+.field-container-inline > label{
+    margin-left: .5em;
 }
 
 .field-container-inline label {
