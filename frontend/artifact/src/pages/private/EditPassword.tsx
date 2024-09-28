@@ -121,7 +121,7 @@ function EditPassword() {
     <div>
       <MobileHeader name="Einstellungen" link="/profile/settings" />
       <MobileBody
-        main={
+        fullscreen={
           <MobileForm identifier="settings" background={true} fields={fields} />
         }
       />

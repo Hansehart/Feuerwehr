@@ -117,7 +117,7 @@ function Login({
         />
       )}
       <MobileHeader name="Login" link="/profile/login"/>
-      <MobileBody main={<MobileForm background={true} fields={fields} />} />
+      <MobileBody fullscreen={<MobileForm background={true} fields={fields} />} />
       <MobileNavBar changeView={changeView} preset="profile" />
       <MobileInfoFooter />
     </div>
