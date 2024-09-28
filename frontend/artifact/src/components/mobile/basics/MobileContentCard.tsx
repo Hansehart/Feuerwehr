@@ -67,7 +67,7 @@ export default function MobileContentCard({
 
   return (
     <section
-      className="content-card-section border-4 border-secondary my-2 w-[90vw] h-[40vh] lg:w-[40vw] lg:h-[40vh] 2xl:w-[30vw] 2xl:h-[40vh]"
+      className="content-card-section border-4 border-secondary my-2 z-10 w-[90vw] h-[40vh] lg:w-[40vw] lg:h-[40vh] 2xl:w-[30vw] 2xl:h-[40vh]"
       onClick={handeClick}
     >
       <div

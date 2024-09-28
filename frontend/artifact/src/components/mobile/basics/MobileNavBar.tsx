@@ -28,7 +28,7 @@ export default function MobileNavBar({
 
   return (
     <>
-      <nav className="border-t-4 border-secondary">
+      <nav className="border-t-4 border-secondary z-20">
         {buttons.map((button) => (
           <RoundedIcon
             key={button.id}
