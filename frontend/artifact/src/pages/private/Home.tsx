@@ -13,6 +13,7 @@ function Home() {
   const [select, setSelect] = useState("department");
   const [username, setUsername] = useState("");
   const [firedepartment, setFiredepartment] = useState<string | null>("");
+  const [progress, setProgress] = useState(0);
   const notification = location.state?.notification;
 
   const changeView = (view: string) => {
@@ -29,6 +30,10 @@ function Home() {
     fetch("https://feuerwehr.hansehart.de/api/service/receive/user?attr=name")
       .then((response) => response.json())
       .then((data) => setUsername(data.content));
+
+    fetch("https://feuerwehr.hansehart.de/api/service/receive/quiz-progress")
+      .then((response) => response.json())
+      .then((data) => setProgress(data.content));
 
     fetch(
       "https://feuerwehr.hansehart.de/api/service/receive/firedepartment?attr=name"
@@ -59,7 +64,7 @@ function Home() {
         <MobileBody
           before={
             <div className="mt-4 mb-4 flex flex-col items-center text-center">
-              <ProgressBall></ProgressBall>
+              <ProgressBall progress={progress}></ProgressBall>
               <h3>Lernfortschritt</h3>
             </div>
           }

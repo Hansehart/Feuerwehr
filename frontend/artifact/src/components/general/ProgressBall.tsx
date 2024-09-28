@@ -1,10 +1,11 @@
 import { useEffect } from "react";
 import "./ProgressBallStyle.css";
 
+interface ProgressBallProps {
+  progress: number;
+}
 
-
-export default function ProgressBall() {
-  const progress = 72;
+export default function ProgressBall({ progress }: ProgressBallProps) {
 
   useEffect(() => {
     const bar = document.getElementById("bar");
