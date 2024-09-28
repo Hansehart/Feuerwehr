@@ -10,6 +10,7 @@
 }
 
 .content-card-section > h1 {
+  align-self: self-start;
   margin-bottom: 0;
   grid-column: span 2;
   letter-spacing: .5vw;

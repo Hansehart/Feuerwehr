@@ -84,7 +84,7 @@ export default function MobileBody({
       ) : (
         <>
           {before}
-          <div className="grid grid-cols-1 lg:grid-cols-2 2xl:grid-cols-3 gap-4 items-center min-h-[60vh] bg-gray-100 rounded-xl p-4 m-8">
+          <div className="grid grid-cols-1 lg:grid-cols-2 2xl:grid-cols-3 gap-4 items-center min-h-[60vh] min-w-[90vw] bg-gray-100 rounded-xl p-4 m-8 md:min-w-[40}">
             {cards.length > 0 ? cards : main}
           </div>
           {after}
