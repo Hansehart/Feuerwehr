@@ -31,19 +31,19 @@ public class QuizService {
     public QuizDTO receive(String category) {
         Question question;
         switch (category.toLowerCase()) {
-            case "allgemeinwissen":
+            case "knowdledge":
                 question = questionRepository.findRandomByCategory("Allgemeinwissen");
                 break;
-            case "ausrüstung":
+            case "equipment":
                 question = questionRepository.findRandomByCategory("Ausrüstung");
                 break;
-            case "handwerk":
+            case "craft":
                 question = questionRepository.findRandomByCategory("Handwerk");
                 break;
-            case "fahrzeuge":
+            case "vehicle":
                 question = questionRepository.findRandomByCategory("Fahrzeuge");
                 break;
-            case "schläuche":
+            case "hoses":
                 question = questionRepository.findRandomByCategory("Schläuche");
                 break;
             default:
