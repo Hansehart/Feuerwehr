@@ -118,7 +118,7 @@ function RegisterAccount({
         <>
           Ich akzeptiere die{" "}
           <a
-            href="https://feuerwehr.hansehart.de/info/gtc"
+            href="/info/gtc"
             className="underline"
             target="_blank"
           >

@@ -22,6 +22,7 @@ import Directory from "./pages/public/Directory";
 import Construction from "./pages/public/Construction";
 import Imprint from "./pages/public/Imprint";
 import Privacy from "./pages/public/Privacy";
+import GTC from "./pages/public/GTC";
 
 function App() {
   const [auth, setAuth] = useState<boolean>(false);
@@ -79,7 +80,7 @@ function App() {
           element={<Directory type="/info" navbar="department" title="Infopoint" titleLink="/info"/>}
         />
         <Route path="/info/map" element={<Construction />} />
-        <Route path="/info/gtc" element={<Construction />} />
+        <Route path="/info/gtc" element={<GTC />} />
         <Route path="/info/imprint" element={<Imprint />} />
         <Route path="/info/contact" element={<Contact />} />
         <Route path="/info/privacy" element={<Privacy />} />
