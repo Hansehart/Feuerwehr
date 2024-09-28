@@ -1,13 +1,7 @@
 .content-card-section {
-  display: grid;
-  grid-template-columns: 3fr 1fr;
-  grid-template-rows: 1fr 1fr;
-
   position: relative;
   min-height: 20vh;
   padding: 1em;
-  border-radius: 1em 0 1em 0;
-
   color: #ea4138;
 }
 
