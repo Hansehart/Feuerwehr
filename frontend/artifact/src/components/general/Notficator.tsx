@@ -10,6 +10,7 @@ export default function Notificator({ type, text, onClose }: NotificatorProps) {
   const [title, setTitle] = useState("");
   const [show, setShow] = useState(false);
   const [progress, setProgress] = useState(0);
+  const [isClosing, setIsClosing] = useState(false);
 
   useEffect(() => {
     setTitle(
@@ -18,6 +19,7 @@ export default function Notificator({ type, text, onClose }: NotificatorProps) {
     );
     setShow(true);
     setProgress(0);
+    setIsClosing(false);
 
     const progressInterval = setInterval(() => {
       setProgress((prev) => {
@@ -30,10 +32,13 @@ export default function Notificator({ type, text, onClose }: NotificatorProps) {
     }, 30);
 
     const hideTimer = setTimeout(() => {
-      setShow(false);
-      if (onClose) {
-        onClose();
-      }
+      setIsClosing(true);
+      setTimeout(() => {
+        setShow(false);
+        if (onClose) {
+          onClose();
+        }
+      }, 300); // Match this with the CSS transition duration
     }, 3000);
 
     return () => {
@@ -45,7 +50,6 @@ export default function Notificator({ type, text, onClose }: NotificatorProps) {
   const bgColor =
     type === "success" ? "bg-success" :
     type === "warning" ? "bg-warning" : "bg-error";
-
   const progressColor =
     type === "success" ? "bg-green-600" :
     type === "warning" ? "bg-orange-600" : "bg-secondary";
@@ -54,12 +58,12 @@ export default function Notificator({ type, text, onClose }: NotificatorProps) {
     <div
       className={`fixed top-4 right-4 w-11/12 max-w-md z-50 transition-all duration-300 ease-in-out ${
         show ? "translate-x-0 opacity-100" : "translate-x-full opacity-0"
-      }`}
+      } ${isClosing ? "translate-x-full" : ""}`}
     >
       <div className={`${bgColor} rounded-lg shadow-lg overflow-hidden`}>
         <div className="p-4 font-brooklyn">
-          <h3 className="text-2vh font-bold text-primary font-teko">{title}</h3>
-          <p className="text-2vh mt-1 text-primary">{text}</p>
+          <h4 className="text-3xl font-bold text-primary font-teko">{title}</h4>
+          <p className="mt-1 text-primary">{text}</p>
         </div>
         <div className="h-1 bg-white bg-opacity-25">
           <div

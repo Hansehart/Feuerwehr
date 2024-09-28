@@ -59,11 +59,11 @@ public class UserController {
     @PostMapping("/login")
     public ResponseEntity<ContainerDTO<String>> login(@RequestBody UserDTO u, HttpServletResponse response) {
         try {
-            Cookie cookie = userService.login(u);
-            if (cookie == null) {
+            Cookie sid_cookie = userService.login(u);
+            if (sid_cookie == null) {
                 return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null);
             }
-            response.addCookie(cookie);
+            response.addCookie(sid_cookie);
             return ResponseEntity.ok(new ContainerDTO<>("successfully logged in"));
         } catch (Exception e) {
             System.out.println("ERROR: " + e);
