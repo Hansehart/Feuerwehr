@@ -38,7 +38,11 @@ const Answer: React.FC<AnswerProps> = ({ index, text, onClick, isSelected, isCor
   );
 };
 
-const MobileQuizCard: React.FC = () => {
+interface MobileQuizCardProps {
+  category: string;
+}
+
+const MobileQuizCard: React.FC<MobileQuizCardProps> = ({ category }) => {
   const [count, setCount] = useState(3);
   const [timerStarted, setTimerStarted] = useState(false);
   const [selectedAnswers, setSelectedAnswers] = useState<number[]>([]);
@@ -52,11 +56,11 @@ const MobileQuizCard: React.FC = () => {
     setCount(3);
     setRevealAnswers(false);
 
-    fetch('https://feuerwehr.hansehart.de/api/service/receive/quiz')
+    fetch(`https://feuerwehr.hansehart.de/api/service/receive/quiz?category=${category}`)
       .then((response) => response.json())
       .then((data: QuizData) => setQuizData(data))
       .catch((error) => console.error('Error fetching data: ', error));
-  }, []);
+  }, [category]);
 
   useEffect(() => {
     fetchQuizData();

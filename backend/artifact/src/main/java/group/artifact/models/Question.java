@@ -18,6 +18,7 @@ public class Question {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private String text;
+    private String category;
 
     @OneToMany(mappedBy = "question")
     private List<Selection> selections;

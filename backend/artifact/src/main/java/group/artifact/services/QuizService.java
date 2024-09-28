@@ -3,7 +3,6 @@ package group.artifact.services;
 import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.Random;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -29,52 +28,30 @@ public class QuizService {
     @Autowired
     UserService userService;
 
-    public QuizDTO receive(Integer qid) { // question id
+    public QuizDTO receive(String category) {
         Question question;
-        if (qid == null) { // choose a random question
-            List<Question> allQuestions = questionRepository.findAll();
-            Random random = new Random();
-            question = allQuestions.get(random.nextInt(allQuestions.size()));
-        } else { // select question by id
-            question = questionRepository.findById(qid).orElse(null);
+        switch (category.toLowerCase()) {
+            case "allgemeinwissen":
+                question = questionRepository.findRandomByCategory("Allgemeinwissen");
+                break;
+            case "ausrüstung":
+                question = questionRepository.findRandomByCategory("Ausrüstung");
+                break;
+            case "handwerk":
+                question = questionRepository.findRandomByCategory("Handwerk");
+                break;
+            case "fahrzeuge":
+                question = questionRepository.findRandomByCategory("Fahrzeuge");
+                break;
+            case "schläuche":
+                question = questionRepository.findRandomByCategory("Schläuche");
+                break;
+            default:
+                question = questionRepository.findRandomQuestion();
         }
 
         if (question == null) {
-            System.out.println("ERROR: no question found when searching by id or selecting a random one");
-            return null;
-        }
-        QuizDTO quiz = new QuizDTO();
-        quiz.setQid(question.getId());
-        quiz.setText(question.getText());
-
-        List<Selection> selections = selectionRepository.findByQuestion(question);
-        String[] s = selections.stream()
-                .map(Selection::getAnswer)
-                .toArray(String[]::new);
-        quiz.setSelections(s);
-
-        List<Integer> indexes = new LinkedList<>();
-        for (int i = 0; i < selections.size(); i++) {
-            if (selections.get(i).isSolution()) {
-                indexes.add(i);
-            }
-        }
-        quiz.setSolutionIndexes(indexes);
-        return quiz;
-    }
-
-    public QuizDTO receiveRand(Integer qid) { // question id
-        Question question;
-        if (qid == null) { // choose a random question
-            List<Question> allQuestions = questionRepository.findAll();
-            Random random = new Random();
-            question = allQuestions.get(random.nextInt(allQuestions.size()));
-        } else { // select question by id
-            question = questionRepository.findById(qid).orElse(null);
-        }
-
-        if (question == null) {
-            System.out.println("ERROR: no question found when searching by id or selecting a random one");
+            System.out.println("ERROR: no question found when searching by category or selecting a random one");
             return null;
         }
         QuizDTO quiz = new QuizDTO();
@@ -84,11 +61,10 @@ public class QuizService {
         List<Selection> selections = selectionRepository.findByQuestion(question);
 
         List<Integer> randomListHelper = new LinkedList<>();
-        for (int i = 0; i < selections.size(); i++) 
-        {
+        for (int i = 0; i < selections.size(); i++) {
             randomListHelper.add(i);
         }
-        
+
         Collections.shuffle(randomListHelper);
 
         List<Selection> newSelections = new LinkedList<>();
@@ -98,7 +74,6 @@ public class QuizService {
                 System.out.println("ERROR: Selection could not be inserted as part of randomization.");
             }
         }
-
 
         String[] s = newSelections.stream()
                 .map(Selection::getAnswer)
@@ -133,37 +108,37 @@ public class QuizService {
     public boolean saveProgress(Integer qid, String sid) {
         User user = userService.receiveUser(sid);
         Question question = questionRepository.findById(qid).orElse(null);
-        
+
         if (question == null) { // question not found
             return false;
         }
-        
-        boolean progressExists = usersAndQuestionsRepository.existsByUserAndQuestion(user, question);        
+
+        boolean progressExists = usersAndQuestionsRepository.existsByUserAndQuestion(user, question);
         if (progressExists) { // progress already exists
             return false;
         }
-        
+
         UsersAndQuestions uq = new UsersAndQuestions();
         uq.setUser(user);
-        uq.setQuestion(question);        
+        uq.setQuestion(question);
         usersAndQuestionsRepository.save(uq);
         return true;
     }
 
     public Integer receiveProgress(String sid) {
         User user = userService.receiveUser(sid);
-        
+
         if (user == null) {
             return 0;
         }
-        
+
         long rightAnswers = usersAndQuestionsRepository.countByUser(user);
         long totalQuestions = questionRepository.count();
-        
+
         if (totalQuestions == 0) {
             return 0; // Avoid division by zero
         }
-        
+
         return (int) Math.round((rightAnswers * 100.0) / totalQuestions);
     }
 }

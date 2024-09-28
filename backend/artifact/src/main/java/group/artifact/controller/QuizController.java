@@ -27,9 +27,12 @@ public class QuizController {
     QuizService quizService;
 
     @GetMapping("/receive/quiz")
-    public ResponseEntity<QuizDTO> receiveQuiz(@RequestParam(required = false) Integer qid) { // question id
+    public ResponseEntity<QuizDTO> receiveQuiz(@RequestParam(required = true) String category) { // question id
         try {
-            QuizDTO q = quizService.receiveRand(qid);
+            if (category == null) {
+                return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null);
+            }
+            QuizDTO q = quizService.receive(category);
             return ResponseEntity.ok(q);
         } catch (Exception e) {
             System.out.println("ERROR: " + e);

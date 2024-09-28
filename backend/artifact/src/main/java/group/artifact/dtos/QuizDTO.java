@@ -8,6 +8,7 @@ import lombok.Data;
 public class QuizDTO {
     private Integer qid; // question id
     private String text; // question
+    private String category;
     private List<Integer> solutionIndexes;
     private String[] selections;
 }
