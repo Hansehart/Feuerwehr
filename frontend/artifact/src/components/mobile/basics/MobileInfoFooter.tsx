@@ -10,48 +10,51 @@ export default function MobileInfoFooter() {
       }}
     >
       <div className="container mx-auto px-4 py-4">
-        <div className="flex flex-col-reverse md:flex-row md: pt-6 justify-between items-center w-full">
-          <div className="flex items-center md:mb-0">
-            <div className="w-32 h-32">
-              <RoundedIcon
-                icon="hansehart"
-                bgColor="transparent"
-                stroke="none"
-                strokeWidth="1"
-              />
+        <div className="flex flex-col-reverse md:flex-row md:pt-6 justify-between items-center w-full">
+          <a
+            href="https://hansehart.de"
+            className="hover:opacity-80 transition-opacity duration-300"
+          >
+            <div className="flex items-center">
+              <div className="w-44 h-44">
+                <RoundedIcon
+                  icon="hansehart"
+                  bgColor="transparent"
+                  stroke="none"
+                  strokeWidth="1"
+                />
+              </div>
+              <div>
+                <span className="text-2xl font-semibold">Hansehart</span>
+                <p className="text-sm mt-1 ml-0">
+                  © {new Date().getFullYear()} Alle Rechte vorbehalten.
+                </p>
+              </div>
             </div>
-            <div>
-              <span className="text-lg font-semibold">Hansehart</span>
-              <p className="text-xs mt-1 ml-0">
-                © {new Date().getFullYear()} Alle Rechte vorbehalten.
-              </p>
-            </div>
-          </div>
-          <div className="flex items-center md:mb-0">
+          </a>
+          <div className="flex flex-col items-center mt-4 md:mt-0">
+            <a
+              href="/info"
+              className="text-2xl  font-semibold block self-start hover:opacity-80 transition-opacity duration-300"
+            >
+              Infopoint
+            </a>
             <div>
               <a
-                href="/info"
-                className="text-lg font-semibold text-lg font-semibold"
+                href="/info/imprint"
+                className="text-sm m-1 ml-0 hover:underline"
               >
-                Infopoint
+                Impressum
               </a>
-              <div>
-                <a
-                  href="/info/imprint"
-                  className="text-xs m-1 ml-0 hover:underline"
-                >
-                  Impressum
-                </a>
-                <a
-                  href="/info/datenschutz"
-                  className="text-xs m-1 hover:underline"
-                >
-                  Datenschutz
-                </a>
-                <a href="/info/gtc" className="text-xs m-1 hover:underline">
-                  AGB
-                </a>
-              </div>
+              <a
+                href="/info/privacy"
+                className="text-sm m-1 hover:underline"
+              >
+                Datenschutz
+              </a>
+              <a href="/info/gtc" className="text-sm m-1 hover:underline">
+                AGB
+              </a>
             </div>
           </div>
         </div>
