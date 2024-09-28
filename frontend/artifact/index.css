@@ -19,7 +19,7 @@ body {
 
 /* Headings and table styles */
 h1 {
-  @apply text-8vh font-brooklyn;
+  @apply text-8vh font-teko;
 }
 
 h2 {
