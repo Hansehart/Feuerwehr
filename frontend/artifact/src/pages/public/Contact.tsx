@@ -21,6 +21,7 @@ function Contact() {
   );
 
   const options = [
+    "Datenschutz",
     "Fehler mitteilen",
     "Kontaktaufnahme",
     "Presseanfrage",
@@ -133,7 +134,7 @@ function Contact() {
           onClose={() => setNotification(null)}
         />
       )}
-      <MobileBody main={<MobileForm background={true} fields={fields} />} />
+      <MobileBody fullscreen={<MobileForm background={true} fields={fields} />} />
       <MobileNavBar changeView={changeView} preset="" />
       <MobileInfoFooter />
     </div>

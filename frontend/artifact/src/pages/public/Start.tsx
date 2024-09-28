@@ -32,7 +32,7 @@ function Start() {
   return (
     <div>
       <MobileHeader name="Feuerwehr" link="/home"/>
-      <MobileBody main={<MobileStartPreview/>}/>
+      <MobileBody fullscreen={<MobileStartPreview/>}/>
       <MobileNavBar changeView={changeView} preset="" />
       <MobileInfoFooter/>
     </div>

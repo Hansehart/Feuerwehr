@@ -32,7 +32,7 @@ import MobileInfoFooter from "../../components/mobile/basics/MobileInfoFooter";
   return (
     <div>
       <MobileHeader name="Feuerwehr" link="/home"/>
-      <MobileBody main={<Maintenance/>}/>
+      <MobileBody fullscreen={<Maintenance/>}/>
       <MobileNavBar changeView={changeView} preset="" />
       <MobileInfoFooter/>
     </div>
