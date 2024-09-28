@@ -14,6 +14,7 @@ export default function MobileInfoFooter() {
           <a
             href="https://hansehart.de"
             className="hover:opacity-80 transition-opacity duration-300"
+            target="_blank"
           >
             <div className="flex items-center">
               <div className="w-44 h-44">

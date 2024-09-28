@@ -21,6 +21,7 @@ import EditPassword from "./pages/private/EditPassword";
 import Directory from "./pages/public/Directory";
 import Construction from "./pages/public/Construction";
 import Imprint from "./pages/public/Imprint";
+import Privacy from "./pages/public/Privacy";
 
 function App() {
   const [auth, setAuth] = useState<boolean>(false);
@@ -73,7 +74,6 @@ function App() {
             />
           </>
         )}
-        <Route path="/start" element={<Start />} />
         <Route
           path="/info"
           element={<Directory type="/info" navbar="department" title="Infopoint" titleLink="/info"/>}
@@ -82,6 +82,8 @@ function App() {
         <Route path="/info/gtc" element={<Construction />} />
         <Route path="/info/imprint" element={<Imprint />} />
         <Route path="/info/contact" element={<Contact />} />
+        <Route path="/info/privacy" element={<Privacy />} />
+
 
         <Route
           path="/learn/exercises"
@@ -90,14 +92,16 @@ function App() {
         <Route path="/learn/exercises/shuffle" element={<Exercise />} />
         <Route path="/learn/exercises/vehicle" element={<Construction />} />
         <Route path="/learn/exercises/first-aid" element={<Construction />} />
-
         <Route
           path="/learn/regulations"
           element={<Directory type="/learn/regulations" navbar="learn" title="Vorschriften" titleLink="/learn/regulations" />}
         />
         <Route path="/learn/regulations/fwdv" element={<Construction />} />
-
         <Route path="/learn/courses" element={<Construction />} />
+
+
+        <Route path="/start" element={<Start />} />
+
 
         <Route path="*" element={<Navigate replace to="/start" />} />
       </Routes>
