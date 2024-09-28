@@ -78,7 +78,7 @@ export default function MobileBody({
   return (
     <main className="flex flex-col items-center">
       {before}
-      <div className="grid grid-cols-1 lg:grid-cols-2 2xl:grid-cols-3 gap-4 items-center">
+      <div className="grid grid-cols-1 lg:grid-cols-2 2xl:grid-cols-3 gap-4 items-center min-h-[70vh]">
         {cards.length > 0 ? cards : main}
       </div>
       {after}
