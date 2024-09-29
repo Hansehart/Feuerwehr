@@ -14,7 +14,7 @@ const convertSoftHyphen = (title: string) => {
 
 export default function MobileVehicleView({ title, material, details }: MobileVehicleView) {
   return (
-    <div className="vehicle-view">
+    <div className="vehicle-view col-span-3">
       <section className="vehicle">
         <h2>{convertSoftHyphen(title)}</h2>
         <img src={fireEngine} alt="fire engine"></img>
