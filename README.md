@@ -4,7 +4,7 @@ Diese Applikation unterstützt Feuerwehr-Angehörige. Dabei werden Funktionalit�
 
 - Lerninhalte und Vorschriften
 - Überprüfugung der Einsatzbereitschaft
-- Lehrgangsübersicht
+- Fahrzeugplege
 
 Das Repository ist in vier Bereiche aufgeteilt:
 
