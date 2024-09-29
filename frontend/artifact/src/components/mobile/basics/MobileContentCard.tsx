@@ -67,7 +67,7 @@ export default function MobileContentCard({
 
   return (
     <section
-      className="content-card-section flex flex-col justify-center items-center my-2 z-10 h-[40vh] lg:w-[40vw] lg:h-[40vh] 2xl:w-[30vw] 2xl:h-[40vh]"
+      className="content-card-section flex flex-col justify-center items-center my-2 z-10 h-[40vh] md:w-[80vw] lg:w-[45vw] lg:h-[40vh] 2xl:w-[30vw] 2xl:h-[40vh]"
       onClick={handeClick}
     >
       <div

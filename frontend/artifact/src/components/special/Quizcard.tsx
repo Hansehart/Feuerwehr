@@ -1,4 +1,6 @@
-import React, { useEffect, useState, useCallback } from 'react';
+import React, { useEffect, useState, useCallback } from "react";
+import { useLocation } from "react-router-dom";
+import Answer from "./Answer";
 
 interface QuizData {
   qid: string;
@@ -7,47 +9,18 @@ interface QuizData {
   selections: string[];
 }
 
-interface AnswerProps {
-  index: number;
-  text: string;
-  onClick: (index: number) => void;
-  isSelected: boolean;
-  isCorrect: boolean | null;
-}
-
-const Answer: React.FC<AnswerProps> = ({ index, text, onClick, isSelected, isCorrect }) => {
-  let styleClasses = "w-full sm:w-5/12 p-4 rounded-xl shadow-md transition-all duration-300 border-4 flex justify-center items-center";
-  if (isCorrect === true) {
-    styleClasses += " bg-green-500 text-white border-green-600";
-  } else if (isCorrect === false) {
-    styleClasses += " bg-red-100 border-red-500";
-  } else if (isSelected) {
-    styleClasses += " bg-yellow-100 border-yellow-500";
-  } else {
-    styleClasses += " bg-white border-gray-300 hover:bg-gray-100";
-  }
-
-  return (
-    <div
-      className={styleClasses}
-      id={`answer-${index}`}
-      onClick={() => onClick(index)}
-    >
-      <p className="text-center">{text}</p>
-    </div>
-  );
-};
-
-interface MobileQuizCardProps {
-  category: string;
-}
-
-const MobileQuizCard: React.FC<MobileQuizCardProps> = ({ category }) => {
+const Quizcard: React.FC = () => {
+  const location = useLocation();
   const [count, setCount] = useState(3);
   const [timerStarted, setTimerStarted] = useState(false);
   const [selectedAnswers, setSelectedAnswers] = useState<number[]>([]);
   const [quizData, setQuizData] = useState<QuizData | null>(null);
   const [revealAnswers, setRevealAnswers] = useState(false);
+
+  const getCategory = useCallback(() => {
+    const searchParams = new URLSearchParams(location.search);
+    return searchParams.get("category") || "";
+  }, [location.search]);
 
   const fetchQuizData = useCallback(() => {
     setQuizData(null);
@@ -56,11 +29,14 @@ const MobileQuizCard: React.FC<MobileQuizCardProps> = ({ category }) => {
     setCount(3);
     setRevealAnswers(false);
 
-    fetch(`https://feuerwehr.hansehart.de/api/service/receive/quiz?category=${category}`)
+    const category = getCategory();
+    fetch(
+      `https://feuerwehr.hansehart.de/api/service/receive/quiz?category=${category}`
+    )
       .then((response) => response.json())
       .then((data: QuizData) => setQuizData(data))
-      .catch((error) => console.error('Error fetching data: ', error));
-  }, [category]);
+      .catch((error) => console.error("Error fetching data: ", error));
+  }, [getCategory]);
 
   useEffect(() => {
     fetchQuizData();
@@ -88,26 +64,26 @@ const MobileQuizCard: React.FC<MobileQuizCardProps> = ({ category }) => {
 
   const saveQuizProgress = useCallback((qid: string) => {
     const qidInt = parseInt(qid, 10);
-    
+
     if (isNaN(qidInt)) {
-      console.error('Invalid qid:', qid);
+      console.error("Invalid qid:", qid);
       return;
     }
 
-    fetch('https://feuerwehr.hansehart.de/api/service/save/quiz-progress', {
-      method: 'POST',
-      credentials: 'include',
+    fetch("https://feuerwehr.hansehart.de/api/service/save/quiz-progress", {
+      method: "POST",
+      credentials: "include",
       headers: {
-        'Content-Type': 'application/json',
+        "Content-Type": "application/json",
       },
       body: JSON.stringify({ content: qidInt }),
     })
-      .then(response => {
+      .then((response) => {
         if (!response.ok) {
-          throw new Error('Failed to save quiz progress');
+          throw new Error("Failed to save quiz progress");
         }
       })
-      .catch(error => console.error('Error saving quiz progress:', error));
+      .catch((error) => console.error("Error saving quiz progress:", error));
   }, []);
 
   const handleAnswerClick = (answerIndex: number) => {
@@ -121,15 +97,19 @@ const MobileQuizCard: React.FC<MobileQuizCardProps> = ({ category }) => {
         const newSelections = prev.includes(answerIndex)
           ? prev.filter((index) => index !== answerIndex)
           : [...prev, answerIndex];
-        
+
         if (newSelections.length === quizData.solutionIndexes.length) {
           setRevealAnswers(true);
           setTimerStarted(true);
-          if (newSelections.every(index => quizData.solutionIndexes.includes(index))) {
+          if (
+            newSelections.every((index) =>
+              quizData.solutionIndexes.includes(index)
+            )
+          ) {
             saveQuizProgress(quizData.qid);
           }
         }
-        
+
         return newSelections;
       });
     } else {
@@ -154,7 +134,9 @@ const MobileQuizCard: React.FC<MobileQuizCardProps> = ({ category }) => {
         <section className="answer-container bg-white rounded-xl shadow-lg p-6">
           <section className="type mb-6">
             <h3 className="text-xl font-semibold text-center text-gray-800">
-              {quizData.solutionIndexes.length > 1 ? 'Mehrfachauswahl' : 'Einfachauswahl'}
+              {quizData.solutionIndexes.length > 1
+                ? "Mehrfachauswahl"
+                : "Einfachauswahl"}
             </h3>
           </section>
           <section className="select flex flex-wrap justify-center gap-4 mb-8">
@@ -165,9 +147,11 @@ const MobileQuizCard: React.FC<MobileQuizCardProps> = ({ category }) => {
                 text={selection}
                 onClick={handleAnswerClick}
                 isSelected={selectedAnswers.includes(index)}
-                isCorrect={revealAnswers
-                  ? quizData.solutionIndexes.includes(index)
-                  : null}
+                isCorrect={
+                  revealAnswers
+                    ? quizData.solutionIndexes.includes(index)
+                    : null
+                }
               />
             ))}
           </section>
@@ -176,7 +160,7 @@ const MobileQuizCard: React.FC<MobileQuizCardProps> = ({ category }) => {
             onClick={fetchQuizData}
           >
             <p id="timer" className="text-lg font-medium text-gray-800">
-              {timerStarted ? `Weiter in ${count}` : 'Überspringen'}
+              {timerStarted ? `Weiter in ${count}` : "Überspringen"}
             </p>
           </section>
         </section>
@@ -185,4 +169,4 @@ const MobileQuizCard: React.FC<MobileQuizCardProps> = ({ category }) => {
   );
 };
 
-export default MobileQuizCard;
+export default Quizcard;

@@ -54,7 +54,7 @@ export default function MobileBody({
       dataProcessor = (data: { content: string[] }) => data.content.map(category => ({
         title: category,
         subtitle: "",
-        path: `/learn/exercises/train?mode=${category}`,
+        path: `/learn/exercises/train?category=${category.toLowerCase()}`,
         img: "",
       }));
     } else {
