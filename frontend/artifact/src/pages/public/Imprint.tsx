@@ -78,7 +78,7 @@ function Imprint() {
   return (
     <div>
       <MobileHeader name="Infopoint" link="/info" />
-      <MobileBody main={<ImprintContent />}/>
+      <MobileBody fullscreen={<ImprintContent />}/>
       <MobileNavBar changeView={changeView} preset="" />
       <MobileInfoFooter/>
     </div>

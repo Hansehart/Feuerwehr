@@ -169,7 +169,7 @@ function RegisterAccount({
       )}
       <MobileHeader name="Registrieren" link="/profile/register/account"/>
       <MobileBody
-        main={<MobileForm background={true} fields={fields} classname="mt-8" />}
+        fullscreen={<MobileForm background={true} fields={fields} classname="mt-8" />}
       />
       <MobileNavBar changeView={changeView} preset="profile" />
       <MobileInfoFooter />
