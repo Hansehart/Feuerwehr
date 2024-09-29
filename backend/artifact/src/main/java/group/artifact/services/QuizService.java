@@ -57,6 +57,7 @@ public class QuizService {
         QuizDTO quiz = new QuizDTO();
         quiz.setQid(question.getId());
         quiz.setText(question.getText());
+        quiz.setCategory(question.getCategory());
 
         List<Selection> selections = selectionRepository.findByQuestion(question);
 
@@ -103,6 +104,10 @@ public class QuizService {
             s.setQuestion(q);
             selectionRepository.save(s);
         }
+    }
+
+    public List<String> receiveCategories() {
+        return questionRepository.findAllCategories();
     }
 
     public boolean saveProgress(Integer qid, String sid) {

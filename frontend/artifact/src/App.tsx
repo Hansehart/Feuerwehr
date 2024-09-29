@@ -90,9 +90,7 @@ function App() {
           path="/learn/exercises"
           element={<Directory type="/learn/exercises" navbar="learn" title="Übung" titleLink="/learn/exercises"/>}
         />
-        <Route path="/learn/exercises/shuffle" element={<Exercise />} />
-        <Route path="/learn/exercises/vehicle" element={<Construction />} />
-        <Route path="/learn/exercises/first-aid" element={<Construction />} />
+        <Route path="/learn/exercises/train" element={<Exercise />} />
         <Route
           path="/learn/regulations"
           element={<Directory type="/learn/regulations" navbar="learn" title="Vorschriften" titleLink="/learn/regulations" />}

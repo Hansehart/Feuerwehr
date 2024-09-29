@@ -1,5 +1,7 @@
 package group.artifact.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -47,6 +49,17 @@ public class QuizController {
             return ResponseEntity.ok("quiz successfully created");
         } catch (Exception e) {
             System.out.println("ERROR: " + e);
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);
+        }
+    }
+
+    @GetMapping("/receive/quiz-categories")
+    public ResponseEntity<List<String>> receiveCategories() {
+        try {
+            List<String> categories = quizService.receiveCategories();
+            return ResponseEntity.ok(categories);
+        } catch (Exception e) {
+            System.out.println(e);
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);
         }
     }
