@@ -18,7 +18,6 @@ interface Firedepartment {
 function RegisterProfile() {
   const location = useLocation();
   const navigate = useNavigate();
-  const [select, setSelect] = useState("");
   const [firedepartments, setFiredepartments] = useState<Firedepartment[]>([]);
 
   const { state } = location;
