@@ -50,7 +50,7 @@ export default function MobileBody({
             }));
             setPreview((prevPreview) => [...prevPreview, ...previews]);
           });
-      } else if (type === "/learn/exercise") {
+      } else if (type === "/learn/exercises") {
         fetch(
           "https://feuerwehr.hansehart.de/api/service/receive/quiz-categories"
         )
@@ -60,7 +60,7 @@ export default function MobileBody({
 
             const previews = categories.map((category: string) => ({
               title: category,
-              path: `/learn/exercise/train?mode=${category}`,
+              path: `/learn/exercises/train?mode=${category}`,
             }));
             setPreview((prevPreview) => [...prevPreview, ...previews]);
           })
