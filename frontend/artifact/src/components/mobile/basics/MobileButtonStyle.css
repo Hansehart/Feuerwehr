@@ -1,0 +1,12 @@
+button {
+    width: 100%;
+    border: none;
+    border-radius: .5em;
+    
+    font-weight: 600;
+    letter-spacing: .2vw;
+    color: white;
+
+    padding: 1em 0;
+    margin: .2em;
+}

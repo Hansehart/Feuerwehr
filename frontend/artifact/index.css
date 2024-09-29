@@ -1,0 +1,47 @@
+/* Import Tailwind CSS utilities */
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+
+/* Define custom fonts */
+@font-face {
+  font-family: "Brooklyn";
+  src: url("/src/assets/fonts/Brooklyn-Normal.woff") format("woff"), 
+       url("/src/assets/fonts/Brooklyn-Normal.woff2") format("woff2"),
+       url("/src/assets/fonts/Brooklyn-Normal.ttf") format("truetype");
+  font-style: normal;
+}
+
+/* Global styles */
+body {
+  @apply m-0 font-brooklyn font-normal;
+}
+
+/* Headings and table styles */
+h1 {
+  @apply text-8vh font-teko;
+}
+
+h2 {
+  @apply text-5vh font-teko;
+}
+
+h3 {
+  @apply text-4vh font-teko;
+}
+
+th {
+  @apply text-3vh font-teko;
+}
+
+td {
+  @apply text-2vh;
+}
+
+p {
+  @apply text-base m-p-margin;
+}
+
+button {
+  @apply font-brooklyn text-lg;
+}

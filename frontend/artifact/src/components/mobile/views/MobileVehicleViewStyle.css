@@ -1,0 +1,23 @@
+h2 {
+    text-align: center;
+}
+
+.vehicle {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 1em;    
+}
+
+.vehicle img {
+    width: 90vw;
+    margin-top: 1em;    
+}
+
+.material, .specification {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}

@@ -18,5 +18,5 @@ public class RadioCallSign {
     private Integer id;
     private String organisation;
     private String area;
-    private Short location; 
+    private String locationNumber; 
 }
