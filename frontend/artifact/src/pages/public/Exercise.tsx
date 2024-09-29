@@ -32,7 +32,7 @@ function Exercise() {
   return (
     <div>
       <MobileHeader name="Übung" link="/learn/exercises"/>
-      <MobileBody main={<QuizCard/>}/>
+      <MobileBody fullscreen={<QuizCard/>}/>
       <MobileNavBar changeView={changeView} preset="learn" />
       <MobileInfoFooter/>
     </div>

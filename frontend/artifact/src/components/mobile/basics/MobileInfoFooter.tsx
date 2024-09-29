@@ -1,4 +1,5 @@
 import RoundedIcon from "../../general/RoundedIcon";
+import hansehart from "/src/assets/icons/hansehart128.png";
 
 export default function MobileInfoFooter() {
   return (
@@ -10,14 +11,14 @@ export default function MobileInfoFooter() {
       }}
     >
       <div className="container mx-auto px-4 pt-8">
-        <div className="flex flex-col-reverse md:flex-row md:pt-6 justify-between items-center w-full">
+        <div className="flex flex-col-reverse md:flex-row md:pt-6 md:justify-between md:items-center w-full">
           <a
             href="https://hansehart.de"
-            className="hover:opacity-80 transition-opacity duration-300"
+            className="hover:opacity-80 transition-opacity duration-300 mt-2 md:mt-0"
             target="_blank"
           >
             <div className="flex items-center">
-              <div className="w-36 h-36 flex justiy-center items-center">
+              <div className="w-36 h-36 flex justiy-center md:items-center hidden md:block">
                 <RoundedIcon
                   icon="hansehart"
                   bgColor="transparent"
@@ -25,18 +26,22 @@ export default function MobileInfoFooter() {
                   strokeWidth="1"
                 />
               </div>
-              <div>
-                <span className="text-2xl font-semibold">Hansehart</span>
-                <p className="text-sm mt-1 ml-0">
-                  © {new Date().getFullYear()} Alle Rechte vorbehalten.
-                </p>
+              <div className="flex">
+                <div>
+                  <div className="flex">
+                  <span className="text-2xl font-semibold">Hansehart</span>
+                  <img className="w-10 h-8 md:hidden" src={hansehart}></img></div>
+                  <p className="text-sm mt-1 ml-0">
+                    © {new Date().getFullYear()} Alle Rechte vorbehalten.
+                  </p>
+                </div>
               </div>
             </div>
           </a>
-          <div className="flex flex-col items-center mt-4 md:mt-0">
+          <div className="flex flex-col md:items-center mt-4 md:mt-0">
             <a
               href="/info"
-              className="text-2xl  font-semibold block self-start hover:opacity-80 transition-opacity duration-300"
+              className="text-2xl font-semibold block self-start hover:opacity-80 transition-opacity duration-300"
             >
               Infopoint
             </a>
@@ -47,10 +52,7 @@ export default function MobileInfoFooter() {
               >
                 Impressum
               </a>
-              <a
-                href="/info/privacy"
-                className="text-sm m-1 hover:underline"
-              >
+              <a href="/info/privacy" className="text-sm m-1 hover:underline">
                 Datenschutz
               </a>
               <a href="/info/gtc" className="text-sm m-1 hover:underline">

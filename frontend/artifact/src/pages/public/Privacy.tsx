@@ -122,7 +122,7 @@ function Privacy() {
   return (
     <div>
       <MobileHeader name="Infopoint" link="/info" />
-      <MobileBody main={<PrivacyContent />}/>
+      <MobileBody fullscreen={<PrivacyContent />}/>
       <MobileNavBar changeView={changeView} preset="" />
       <MobileInfoFooter/>
     </div>
