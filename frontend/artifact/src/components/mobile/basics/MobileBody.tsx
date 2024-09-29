@@ -55,16 +55,13 @@ export default function MobileBody({
           "https://feuerwehr.hansehart.de/api/service/receive/quiz-categories"
         )
           .then((response) => response.json())
-          .then((categories) => {
-            const previews = categories.map((category) => ({
-              title: category,
-              subtitle: "Quiz Category",
-              path: `/learn/exercise/train?mode=${encodeURIComponent(
-                category
-              )}`,
-              img: "quiz",
-            }));
+          .then((data) => {
+            const categories = data.content;
 
+            const previews = categories.map((category: string) => ({
+              title: category,
+              path: `/learn/exercise/train?mode=${category}`,
+            }));
             setPreview((prevPreview) => [...prevPreview, ...previews]);
           })
           .catch((error) =>
