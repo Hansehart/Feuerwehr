@@ -1,12 +1,12 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useCallback } from "react";
 import MobileContentCard from "./MobileContentCard";
 
 interface MobileBodyProps {
-  before?: React.ReactNode; // header (in main)
-  type?: string; // main is made with contentcards
-  main?: React.ReactNode; // main is custom made
-  after?: React.ReactNode; // footer (in main)
-  fullscreen?: React.ReactNode; // fullscreen content
+  before?: React.ReactNode;
+  type?: string;
+  main?: React.ReactNode;
+  after?: React.ReactNode;
+  fullscreen?: React.ReactNode;
 }
 
 interface Preview {
@@ -33,52 +33,46 @@ export default function MobileBody({
 }: MobileBodyProps) {
   const [preview, setPreview] = useState<Preview[]>([]);
 
-  useEffect(() => {
-    // clear old cards from another tab
-    setPreview([]);
-    if (type) {
-      if (type === "/vehicle") {
-        fetch(`https://feuerwehr.hansehart.de/api/service/receive/vehicles`)
-          .then((response) => response.json())
-          .then((data) => {
-            // map and extract shortcut and name fields
-            const previews = data.map((item: Vehicle) => ({
-              title: item.shortcut,
-              subtitle: item.name,
-              path: `/main/vehicle/${item.radioVehicleType}/${item.radioVehicleNumber}`,
-              img: "vehicle",
-            }));
-            setPreview((prevPreview) => [...prevPreview, ...previews]);
-          });
-      } else if (type === "/learn/exercises") {
-        fetch(
-          "https://feuerwehr.hansehart.de/api/service/receive/quiz-categories"
-        )
-          .then((response) => response.json())
-          .then((data) => {
-            const categories = data.content;
+  const fetchData = useCallback(() => {
+    setPreview([]); // Clear old cards
 
-            const previews = categories.map((category: string) => ({
-              title: category,
-              path: `/learn/exercises/train?mode=${category}`,
-            }));
-            setPreview((prevPreview) => [...prevPreview, ...previews]);
-          })
-          .catch((error) =>
-            console.error("Error fetching quiz categories:", error)
-          );
-      } else {
-        fetch(
-          `https://feuerwehr.hansehart.de/api/service/receive/previews?type=${type}`
-        )
-          .then((response) => response.json())
-          .then((data) => {
-            setPreview(data);
-          })
-          .catch((error) => console.error("Error fetching data: ", error));
-      }
+    if (!type) return;
+
+    let url = '';
+    let dataProcessor = (data: any) => data;
+
+    if (type === "/vehicle") {
+      url = `https://feuerwehr.hansehart.de/api/service/receive/vehicles`;
+      dataProcessor = (data: Vehicle[]) => data.map(item => ({
+        title: item.shortcut,
+        subtitle: item.name,
+        path: `/main/vehicle/${item.radioVehicleType}/${item.radioVehicleNumber}`,
+        img: "vehicle",
+      }));
+    } else if (type === "/learn/exercises") {
+      url = "https://feuerwehr.hansehart.de/api/service/receive/quiz-categories";
+      dataProcessor = (data: { content: string[] }) => data.content.map(category => ({
+        title: category,
+        subtitle: "",
+        path: `/learn/exercises/train?mode=${category}`,
+        img: "",
+      }));
+    } else {
+      url = `https://feuerwehr.hansehart.de/api/service/receive/previews?type=${type}`;
     }
+
+    fetch(url)
+      .then(response => response.json())
+      .then(data => {
+        const processedData = dataProcessor(data);
+        setPreview(processedData);
+      })
+      .catch(error => console.error("Error fetching data: ", error));
   }, [type]);
+
+  useEffect(() => {
+    fetchData();
+  }, [fetchData]);
 
   const convertSoftHyphen = (title: string) => {
     return title.replace(/&shy;/g, "\u00AD");
@@ -101,7 +95,7 @@ export default function MobileBody({
       ) : (
         <>
           {before}
-          <div className="grid grid-cols-1 lg:grid-cols-2 2xl:grid-cols-3 gap-4 items-center min-h-[60vh] min-w-[90vw] bg-gray-100 rounded-xl p-4 m-8 md:min-w-[40}">
+          <div className="grid grid-cols-1 lg:grid-cols-2 2xl:grid-cols-3 gap-4 items-center min-h-[60vh] min-w-[90vw] bg-gray-100 rounded-xl p-4 m-8 md:min-w-[40vw]">
             {cards.length > 0 ? cards : main}
           </div>
           {after}
