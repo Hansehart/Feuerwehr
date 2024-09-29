@@ -117,7 +117,7 @@ function GTC() {
   return (
     <div>
       <MobileHeader name="Infopoint" link="/info" />
-      <MobileBody main={<GTCContent />} />
+      <MobileBody fullscreen={<GTCContent />} />
       <MobileNavBar changeView={changeView} preset="" />
       <MobileInfoFooter />
     </div>
