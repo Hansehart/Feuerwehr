@@ -31,22 +31,32 @@ public class QuizService {
     public QuizDTO receive(String category) {
         Question question;
         switch (category.toLowerCase()) {
-            case "knowdledge":
+            case "allgemeinwissen":
+            System.out.println(category + " 1");
                 question = questionRepository.findRandomByCategory("Allgemeinwissen");
                 break;
-            case "equipment":
+            case "ausrüstung":
+            System.out.println(category + " 2");
+
                 question = questionRepository.findRandomByCategory("Ausrüstung");
                 break;
-            case "craft":
+            case "handwerk":
+            System.out.println(category + " 3");
+
                 question = questionRepository.findRandomByCategory("Handwerk");
                 break;
-            case "vehicle":
+            case "fahrzeuge":
+            System.out.println(category + " 4");
+
                 question = questionRepository.findRandomByCategory("Fahrzeuge");
                 break;
-            case "hoses":
+            case "schläuche":
+            System.out.println(category + " 5");
+
                 question = questionRepository.findRandomByCategory("Schläuche");
                 break;
             default:
+                System.out.println(category + " 6");
                 question = questionRepository.findRandomQuestion();
         }
 
