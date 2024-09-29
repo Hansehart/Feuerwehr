@@ -38,36 +38,50 @@ export default function MobileBody({
 
     if (!type) return;
 
-    let url = '';
+    let url = "";
     let dataProcessor = (data: any) => data;
 
     if (type === "/vehicle") {
       url = `https://feuerwehr.hansehart.de/api/service/receive/vehicles`;
-      dataProcessor = (data: Vehicle[]) => data.map(item => ({
-        title: item.shortcut,
-        subtitle: item.name,
-        path: `/main/vehicle/${item.radioVehicleType}/${item.radioVehicleNumber}`,
-        img: "vehicle",
-      }));
+      dataProcessor = (data: Vehicle[]) =>
+        data.map((item) => ({
+          title: item.shortcut,
+          subtitle: item.name,
+          path: `/main/vehicle/${item.radioVehicleType}/${item.radioVehicleNumber}`,
+          img: "vehicle",
+        }));
     } else if (type === "/learn/exercises") {
-      url = "https://feuerwehr.hansehart.de/api/service/receive/quiz-categories";
-      dataProcessor = (data: { content: string[] }) => data.content.map(category => ({
-        title: category,
-        subtitle: "",
-        path: `/learn/exercises/train?category=${category.toLowerCase()}`,
-        img: "",
-      }));
+      url =
+        "https://feuerwehr.hansehart.de/api/service/receive/quiz-categories";
+      dataProcessor = (data: { content: string[] }) => {
+        const categoryCards = data.content.map((category) => ({
+          title: category,
+          subtitle: "",
+          path: `/learn/exercises/train?category=${category.toLowerCase()}`,
+          img: "",
+        }));
+
+        // all categories mixed
+        categoryCards.unshift({
+          title: "Shuffle",
+          subtitle: "Kategorien gemischt",
+          path: "/learn/exercises/train?category=any",
+          img: "",
+        });
+
+        return categoryCards;
+      };
     } else {
       url = `https://feuerwehr.hansehart.de/api/service/receive/previews?type=${type}`;
     }
 
     fetch(url)
-      .then(response => response.json())
-      .then(data => {
+      .then((response) => response.json())
+      .then((data) => {
         const processedData = dataProcessor(data);
         setPreview(processedData);
       })
-      .catch(error => console.error("Error fetching data: ", error));
+      .catch((error) => console.error("Error fetching data: ", error));
   }, [type]);
 
   useEffect(() => {

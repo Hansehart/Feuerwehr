@@ -47,7 +47,6 @@ public class QuizService {
                 question = questionRepository.findRandomByCategory("Schläuche");
                 break;
             default:
-
                 question = questionRepository.findRandomQuestion();
         }
 
