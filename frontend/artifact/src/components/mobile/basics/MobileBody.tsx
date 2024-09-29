@@ -50,6 +50,26 @@ export default function MobileBody({
             }));
             setPreview((prevPreview) => [...prevPreview, ...previews]);
           });
+      } else if (type === "/learn/exercise") {
+        fetch(
+          "https://feuerwehr.hansehart.de/api/service/receive/quiz-categories"
+        )
+          .then((response) => response.json())
+          .then((categories) => {
+            const previews = categories.map((category) => ({
+              title: category,
+              subtitle: "Quiz Category",
+              path: `/learn/exercise/train?mode=${encodeURIComponent(
+                category
+              )}`,
+              img: "quiz",
+            }));
+
+            setPreview((prevPreview) => [...prevPreview, ...previews]);
+          })
+          .catch((error) =>
+            console.error("Error fetching quiz categories:", error)
+          );
       } else {
         fetch(
           `https://feuerwehr.hansehart.de/api/service/receive/previews?type=${type}`

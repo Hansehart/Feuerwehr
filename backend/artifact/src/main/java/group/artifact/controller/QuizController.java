@@ -54,10 +54,12 @@ public class QuizController {
     }
 
     @GetMapping("/receive/quiz-categories")
-    public ResponseEntity<List<String>> receiveCategories() {
+    public ResponseEntity<ContainerDTO<List<String>>> receiveCategories() {
         try {
+            ContainerDTO<List<String>> container = new ContainerDTO<List<String>>();
             List<String> categories = quizService.receiveCategories();
-            return ResponseEntity.ok(categories);
+            container.setContent(categories);
+            return ResponseEntity.ok(container);
         } catch (Exception e) {
             System.out.println(e);
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);
