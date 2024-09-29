@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 import MobileBody from "../../components/mobile/basics/MobileBody";
@@ -7,6 +7,7 @@ import MobileNavBar from "../../components/mobile/basics/MobileNavBar";
 import MobileForm from "../../components/mobile/basics/MobileForm";
 import Notificator from "../../components/general/Notficator";
 import MobileInfoFooter from "../../components/mobile/basics/MobileInfoFooter";
+import { useNavbar } from "../../hooks/useNavbar";
 
 interface NotficatorProps {
   type: "success" | "warning" | "error";
@@ -19,7 +20,6 @@ function RegisterAccount({
   updateAuthStatus: (auth: boolean) => void;
 }) {
   const navigate = useNavigate();
-  const [select, setSelect] = useState("");
   const [notification, setNotification] = useState<NotficatorProps | null>(
     null
   );
@@ -139,24 +139,8 @@ function RegisterAccount({
       onClick: register,
     },
   ];
+  const { changeView } = useNavbar();
 
-  useEffect(() => {
-    switch (select) {
-      case "learn":
-        navigate("/home", { state: { select: "learn" } });
-        break;
-      case "department":
-        navigate("/home", { state: { select: "department" } });
-        break;
-      case "profile":
-        navigate("/home", { state: { select: "profile" } });
-        break;
-    }
-  }, [select]);
-
-  const changeView = (view: string) => {
-    setSelect(view);
-  };
 
   return (
     <div>

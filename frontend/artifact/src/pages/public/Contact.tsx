@@ -7,6 +7,7 @@ import MobileNavBar from "../../components/mobile/basics/MobileNavBar";
 import MobileForm from "../../components/mobile/basics/MobileForm";
 import MobileInfoFooter from "../../components/mobile/basics/MobileInfoFooter";
 import Notificator from "../../components/general/Notficator";
+import { useNavbar } from "../../hooks/useNavbar";
 
 interface NotficatorProps {
   type: "success" | "warning" | "error";
@@ -15,7 +16,6 @@ interface NotficatorProps {
 
 function Contact() {
   const navigate = useNavigate();
-  const [select, setSelect] = useState("");
   const [notification, setNotification] = useState<NotficatorProps | null>(
     null
   );
@@ -28,23 +28,8 @@ function Contact() {
     "Sonstiges",
   ];
 
-  useEffect(() => {
-    switch (select) {
-      case "learn":
-        navigate("/home", { state: { select: "learn" } });
-        break;
-      case "department":
-        navigate("/home", { state: { select: "department" } });
-        break;
-      case "profile":
-        navigate("/home", { state: { select: "profile" } });
-        break;
-    }
-  }, [select, navigate]);
+  const { changeView } = useNavbar();
 
-  const changeView = (view: string) => {
-    setSelect(view);
-  };
 
   useEffect(() => {
     if (notification) {

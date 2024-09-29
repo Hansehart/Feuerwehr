@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState, useEffect } from "react";
 import RoundedIcon from "../../general/RoundedIcon";
 import "./MobileNavBarStyle.css";
 
@@ -27,22 +27,20 @@ export default function MobileNavBar({
   };
 
   return (
-    <>
-      <nav className="border-t-4 border-secondary z-20">
-        {buttons.map((button) => (
-          <RoundedIcon
-            key={button.id}
-            icon={button.icon}
-            bgColor="#ffffff"
-            stroke="#05192a"
-            strokeWidth="2"
-            isActive={activeButton === button.id}
-            strokeActive="#ea4138"
-            strokeWidthActive="5"
-            onClick={() => handleIconClick(button.id)}
-          />
-        ))}
-      </nav>
-    </>
+    <nav className="border-t-4 border-secondary z-20">
+      {buttons.map((button) => (
+        <RoundedIcon
+          key={button.id}
+          icon={button.icon}
+          bgColor="#ffffff"
+          stroke="#05192a"
+          strokeWidth="2"
+          isActive={activeButton === button.id}
+          strokeActive="#ea4138"
+          strokeWidthActive="5"
+          onClick={() => handleIconClick(button.id)}
+        />
+      ))}
+    </nav>
   );
 }

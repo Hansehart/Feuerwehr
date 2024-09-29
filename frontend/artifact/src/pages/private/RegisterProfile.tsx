@@ -7,6 +7,7 @@ import MobileNavBar from "../../components/mobile/basics/MobileNavBar";
 import MobileForm from "../../components/mobile/basics/MobileForm";
 import Notificator from "../../components/general/Notficator";
 import MobileInfoFooter from "../../components/mobile/basics/MobileInfoFooter";
+import { useNavbar } from "../../hooks/useNavbar";
 
 interface Firedepartment {
   id: number;
@@ -117,23 +118,8 @@ function RegisterProfile() {
     },
   ];
 
-  useEffect(() => {
-    switch (select) {
-      case "learn":
-        navigate("/home", { state: { select: "learn" } });
-        break;
-      case "department":
-        navigate("/home", { state: { select: "department" } });
-        break;
-      case "profile":
-        navigate("/home", { state: { select: "profile" } });
-        break;
-    }
-  }, [select]);
+  const { changeView } = useNavbar();
 
-  const changeView = (view: string) => {
-    setSelect(view);
-  };
 
   return (
     <div>

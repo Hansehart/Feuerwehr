@@ -1,41 +1,25 @@
 import { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
 
 import MobileBody from "../../components/mobile/basics/MobileBody";
 import MobileHeader from "../../components/mobile/basics/MobileHeader";
 import MobileNavBar from "../../components/mobile/basics/MobileNavBar";
 import MobileForm from "../../components/mobile/basics/MobileForm";
 import MobileInfoFooter from "../../components/mobile/basics/MobileInfoFooter";
+import { useNavbar } from "../../hooks/useNavbar";
 
 function Settings() {
-  const navigate = useNavigate();
-  const [select, setSelect] = useState("");
   const [editMode, setEditMode] = useState(false);
   const [editUsername, setEditUsername] = useState(false);
   const [editPassword, setEditPassword] = useState(false);
   const [username, setUsername] = useState("");
 
-  useEffect(() => {
-    switch (select) {
-      case "learn":
-        navigate("/home", { state: { select: "learn" } });
-        break;
-      case "department":
-        navigate("/home", { state: { select: "department" } });
-        break;
-      case "profile":
-        navigate("/home", { state: { select: "profile" } });
-        break;
-    }
+  const { changeView } = useNavbar();
 
+  useEffect(() => {
     fetch("https://feuerwehr.hansehart.de/api/service/receive/user?attr=name")
       .then((response) => response.json())
       .then((data) => setUsername(data.content));
-  }, [select]);
-
-  const changeView = (view: string) => {
-    setSelect(view);
-  };
+  }, []);
 
   function saveChanges() {
     const inputFields = document.querySelectorAll("input");

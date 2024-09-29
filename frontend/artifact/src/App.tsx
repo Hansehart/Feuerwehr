@@ -79,10 +79,11 @@ function App() {
           path="/info"
           element={<Directory type="/info" navbar="department" title="Infopoint" titleLink="/info"/>}
         />
-        <Route path="/info/map" element={<Construction />} />
+        <Route path="/info/contact" element={<Contact />} />
         <Route path="/info/gtc" element={<GTC />} />
         <Route path="/info/imprint" element={<Imprint />} />
-        <Route path="/info/contact" element={<Contact />} />
+        <Route path="/info/map" element={<Construction />} />
+        <Route path="/info/licenses" element={<Construction />} />
         <Route path="/info/privacy" element={<Privacy />} />
 
 

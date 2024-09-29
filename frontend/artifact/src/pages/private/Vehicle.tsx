@@ -1,11 +1,12 @@
 import { useState, useEffect } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 
 import MobileBody from "../../components/mobile/basics/MobileBody";
 import MobileHeader from "../../components/mobile/basics/MobileHeader";
 import MobileNavBar from "../../components/mobile/basics/MobileNavBar";
 import MobileVehicleView from "../../components/mobile/views/MobileVehicleView";
 import MobileInfoFooter from "../../components/mobile/basics/MobileInfoFooter";
+import { useNavbar } from "../../hooks/useNavbar";
 
 interface Vehicle {
   name: string;
@@ -25,8 +26,6 @@ interface StorageWithMaterial {
 
 
 function Vehicle() {
-  const navigate = useNavigate();
-  const [select, setSelect] = useState("");
   const [vehicle, setVehicle] = useState<Vehicle | null>(null);
   const [detailsData, setDetailsData] = useState<string[][]>();
   const [materialData, setMaterialData] = useState<string[][]>();
@@ -69,23 +68,8 @@ function Vehicle() {
       .catch((error) => console.error("Error fetching data: ", error));
   }, []);
 
-  useEffect(() => {
-    switch (select) {
-      case "learn":
-        navigate("/home", { state: { select: "learn" } });
-        break;
-      case "department":
-        navigate("/home", { state: { select: "department" } });
-        break;
-      case "profile":
-        navigate("/home", { state: { select: "profile" } });
-        break;
-    }
-  }, [select]);
+  const { changeView } = useNavbar();
 
-  const changeView = (view: string) => {
-    setSelect(view);
-  };
 
   return (
     <div>
