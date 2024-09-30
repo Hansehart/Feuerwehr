@@ -10,7 +10,7 @@ const GTCContent = () => {
       <div className="max-w-3xl mx-auto bg-white shadow-md rounded-lg overflow-hidden">
         <div className="px-4 py-5 sm:p-6">
           <h1 className="text-3xl font-bold text-gray-900 mb-6">
-            Nutzungsbedingungen
+            Allgemeine Geschäftsbedingungen
           </h1>
 
           <section className="mb-8">
