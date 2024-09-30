@@ -18,8 +18,7 @@ const GTCContent = () => {
               1. Geltungsbereich
             </h2>
             <p className="text-gray-700">
-              Diese Nutzungsbedingungen gelten für die Nutzung dieser
-              gemeinnützigen Website. Mit der Nutzung erklärt man sich mit diesen Bedingungen einverstanden.
+              Die Bedingungen gelten für die Nutzung dieser Website. Mit der Nutzung erklärt man sich mit diesen Bedingungen einverstanden.
             </p>
           </section>
 
@@ -29,7 +28,7 @@ const GTCContent = () => {
             </h2>
             <p className="text-gray-700">
               Unsere Internetseite dient ausschließlich gemeinnützigen Zwecken.
-              Wir bieten Informationen und Ressourcen zu, Thema Feuerwehr.
+              Wir bieten Informationen und Ressourcen zum Thema Feuerwehr.
             </p>
           </section>
 
