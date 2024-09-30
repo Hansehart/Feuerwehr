@@ -1,10 +1,8 @@
-import { useNavigate } from "react-router-dom";
-
 import MobileBody from "../../components/mobile/basics/MobileBody";
 import MobileHeader from "../../components/mobile/basics/MobileHeader";
 import MobileNavBar from "../../components/mobile/basics/MobileNavBar";
 import MobileInfoFooter from "../../components/mobile/basics/MobileInfoFooter";
-import { useEffect, useState } from "react";
+import { useNavbar } from "../../hooks/useNavbar";
 
 const GTCContent = () => {
   return (
@@ -12,7 +10,7 @@ const GTCContent = () => {
       <div className="max-w-3xl mx-auto bg-white shadow-md rounded-lg overflow-hidden">
         <div className="px-4 py-5 sm:p-6">
           <h1 className="text-3xl font-bold text-gray-900 mb-6">
-            Nutzungsbedingungen
+            Allgemeine Geschäftsbedingungen
           </h1>
 
           <section className="mb-8">
@@ -94,26 +92,8 @@ const GTCContent = () => {
 };
 
 function GTC() {
-  const navigate = useNavigate();
-  const [select, setSelect] = useState("");
+  const { changeView } = useNavbar();
 
-  useEffect(() => {
-    switch (select) {
-      case "learn":
-        navigate("/home", { state: { select: "learn" } });
-        break;
-      case "department":
-        navigate("/home", { state: { select: "department" } });
-        break;
-      case "profile":
-        navigate("/home", { state: { select: "profile" } });
-        break;
-    }
-  }, [select, navigate]);
-
-  const changeView = (view: string) => {
-    setSelect(view);
-  };
   return (
     <div>
       <MobileHeader name="Infopoint" link="/info" />

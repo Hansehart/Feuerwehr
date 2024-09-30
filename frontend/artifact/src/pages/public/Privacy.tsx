@@ -1,10 +1,8 @@
-import { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
-
 import MobileBody from "../../components/mobile/basics/MobileBody";
 import MobileHeader from "../../components/mobile/basics/MobileHeader";
 import MobileNavBar from "../../components/mobile/basics/MobileNavBar";
 import MobileInfoFooter from "../../components/mobile/basics/MobileInfoFooter";
+import { useNavbar } from "../../hooks/useNavbar";
 
 const PrivacyContent = () => {
   return (
@@ -98,26 +96,7 @@ const PrivacyContent = () => {
 };
 
 function Privacy() {
-  const navigate = useNavigate();
-  const [select, setSelect] = useState("");
-
-  useEffect(() => {
-    switch (select) {
-      case "learn":
-        navigate("/home", { state: { select: "learn" } });
-        break;
-      case "department":
-        navigate("/home", { state: { select: "department" } });
-        break;
-      case "profile":
-        navigate("/home", { state: { select: "profile" } });
-        break;
-    }
-  }, [select, navigate]);
-
-  const changeView = (view: string) => {
-    setSelect(view);
-  };
+  const { changeView } = useNavbar();
 
   return (
     <div>

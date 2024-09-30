@@ -79,7 +79,7 @@ export default function MobileContentCard({
         }}
         className="rounded-xl"
       ></div>
-      <h1>{title}</h1>
+      <h1 className="break-all">{title}</h1>
       <h2>{subtitle}</h2>
     </section>
   );

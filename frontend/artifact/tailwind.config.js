@@ -19,7 +19,7 @@ export default {
         error: '#e29999',
       },
       fontSize: {
-        '8vh': '8vh',
+        '7vh': '7vh',
         '5vh': '5vh',
         '4vh': '4vh',
         '3vh': '3vh',

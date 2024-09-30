@@ -23,6 +23,7 @@ import Construction from "./pages/public/Construction";
 import Imprint from "./pages/public/Imprint";
 import Privacy from "./pages/public/Privacy";
 import GTC from "./pages/public/GTC";
+import License from "./pages/public/License";
 
 function App() {
   const [auth, setAuth] = useState<boolean>(false);
@@ -79,10 +80,11 @@ function App() {
           path="/info"
           element={<Directory type="/info" navbar="department" title="Infopoint" titleLink="/info"/>}
         />
-        <Route path="/info/map" element={<Construction />} />
+        <Route path="/info/contact" element={<Contact />} />
         <Route path="/info/gtc" element={<GTC />} />
         <Route path="/info/imprint" element={<Imprint />} />
-        <Route path="/info/contact" element={<Contact />} />
+        <Route path="/info/map" element={<Construction />} />
+        <Route path="/info/licenses" element={<License />} />
         <Route path="/info/privacy" element={<Privacy />} />
 
 
