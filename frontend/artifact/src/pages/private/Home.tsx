@@ -8,7 +8,6 @@ import ProgressBall from "../../components/general/ProgressBall";
 import MobileDepartmentPrivatePreview from "../../components/mobile/views/MobileDepartmentPrivatePreview";
 import Notificator from "../../components/general/Notficator";
 import MobileInfoFooter from "../../components/mobile/basics/MobileInfoFooter";
-import { useNavbar } from "../../hooks/useNavbar";
 
 function Home() {
   const location = useLocation();
@@ -18,7 +17,9 @@ function Home() {
   const [progress, setProgress] = useState(0);
   const notification = location.state?.notification;
 
-  const { changeView } = useNavbar();
+  const changeView = (view: string) => {
+    setSelect(view);
+  };
 
   // init values
   useEffect(() => {
