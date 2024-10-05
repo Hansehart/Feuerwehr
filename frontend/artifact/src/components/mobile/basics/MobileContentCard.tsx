@@ -21,7 +21,7 @@ interface MobileContentCardProps {
 export default function MobileContentCard({
   title,
   subtitle,
-  alignment,
+  alignment = "items-center",
   path,
   img,
 }: MobileContentCardProps) {
