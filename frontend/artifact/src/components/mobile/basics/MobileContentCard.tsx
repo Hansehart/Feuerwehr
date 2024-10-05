@@ -1,6 +1,5 @@
+import { useState } from 'react';
 import { useNavigate } from "react-router-dom";
-import "./MobileContentCardStyle.css";
-
 import vehicle from "/src/assets/pictures/vehicle.jpg";
 import serviceCenter from "/src/assets/pictures/service-center.jpg";
 import emergencyExit from "/src/assets/pictures/emergency-exit.jpg";
@@ -25,19 +24,19 @@ export default function MobileContentCard({
   img,
 }: MobileContentCardProps) {
   const navigate = useNavigate();
+  const [isLoading, setIsLoading] = useState(true);
 
-  const handeClick = () => {
+  const handleClick = () => {
     navigate(path);
   };
 
   // Determine the background image
   let backgroundImg;
-  let optionX;
+  let optionX = 'center';
   let optionFilter = "brightness(.4)";
   switch (img) {
     case "vehicle":
       backgroundImg = vehicle;
-      optionX = "center";
       optionFilter = "";
       break;
     case "serviceCenter":
@@ -67,20 +66,29 @@ export default function MobileContentCard({
 
   return (
     <section
-      className="content-card-section flex flex-col justify-center items-center my-2 z-10 h-[40vh] md:w-[80vw] lg:w-[45vw] lg:h-[40vh] 2xl:w-[30vw] 2xl:h-[40vh]"
-      onClick={handeClick}
+      className="content-card-section flex flex-col justify-center items-center my-2 z-10 h-[40vh] md:w-[80vw] lg:w-[45vw] lg:h-[40vh] 2xl:w-[30vw] 2xl:h-[40vh] relative overflow-hidden rounded-xl"
+      onClick={handleClick}
     >
       <div
-        id="content-card-background-image"
+        className="absolute inset-0 bg-cover bg-center transition-opacity duration-300 ease-in-out"
         style={{
           backgroundImage: `url(${backgroundImg})`,
           backgroundPositionX: optionX,
           filter: optionFilter,
+          opacity: isLoading ? 0 : 1,
         }}
-        className="rounded-xl"
-      ></div>
-      <h1 className="break-all">{title}</h1>
-      <h2>{subtitle}</h2>
+      />
+      {isLoading && (
+        <div className="absolute inset-0 bg-gray-200 animate-pulse" />
+      )}
+      <img
+        src={backgroundImg}
+        alt="Background"
+        onLoad={() => setIsLoading(false)}
+        className="hidden"
+      />
+      <h1 className="break-all relative z-10 text-white">{title}</h1>
+      <h2 className="relative z-10 text-white">{subtitle}</h2>
     </section>
   );
 }
