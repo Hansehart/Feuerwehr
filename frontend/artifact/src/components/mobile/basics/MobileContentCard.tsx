@@ -8,7 +8,7 @@ import exercisePortrait from "/src/assets/pictures/exercise-portrait.jpg";
 import mechanicPortrait from "/src/assets/pictures/mechanic-portrait.jpg";
 import serviceRegulation from "/src/assets/pictures/service-regulation.jpg";
 import firefighterTeaching from "/src/assets/pictures/firefighter-teaching.jpg";
-import questionmarkPlaceholder from "/src/assets/pictures/questionmark-placeholder.jpg";
+import placeholder from "/src/assets/pictures/placeholder.jpg";
 
 interface MobileContentCardProps {
   title: string;
@@ -61,7 +61,7 @@ export default function MobileContentCard({
       backgroundImg = firefighterTeaching;
       break;
     default: // template
-      backgroundImg = questionmarkPlaceholder;
+      backgroundImg = placeholder;
   }
 
   return (
@@ -88,7 +88,7 @@ export default function MobileContentCard({
         className="hidden"
       />
       <h1 className="break-all relative z-10 text-white">{title}</h1>
-      <h2 className="relative z-10 text-white">{subtitle}</h2>
+      <h2 className="relative z-10 text-white p-1">{subtitle}</h2>
     </section>
   );
 }
