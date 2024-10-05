@@ -47,6 +47,7 @@ export default function MobileBody({
         data.map((item) => ({
           title: item.shortcut,
           subtitle: item.name,
+          alignment: "items-start",
           path: `/main/vehicle/${item.radioVehicleType}/${item.radioVehicleNumber}`,
           img: "vehicle",
         }));
