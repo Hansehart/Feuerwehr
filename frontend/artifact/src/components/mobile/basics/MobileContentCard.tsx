@@ -13,7 +13,7 @@ import placeholder from "/src/assets/pictures/placeholder.jpg";
 interface MobileContentCardProps {
   title: string;
   subtitle: string;
-  alignment?: string;
+  alignment: string;
   path: string;
   img: string;
 }
@@ -21,7 +21,7 @@ interface MobileContentCardProps {
 export default function MobileContentCard({
   title,
   subtitle,
-  alignment = "items-center",
+  alignment,
   path,
   img,
 }: MobileContentCardProps) {

@@ -12,6 +12,7 @@ interface MobileBodyProps {
 interface Preview {
   title: string;
   subtitle: string;
+  alignment: string;
   path: string;
   img: string;
 }
@@ -58,6 +59,7 @@ export default function MobileBody({
         const categoryCards = data.content.map((category) => ({
           title: category,
           subtitle: "",
+          alignment: "items-center",
           path: `/learn/exercises/train?category=${category.toLowerCase()}`,
           img: "",
         }));
@@ -66,6 +68,7 @@ export default function MobileBody({
         categoryCards.unshift({
           title: "Shuffle",
           subtitle: "Kategorien gemischt",
+          alignment: "items-center",
           path: "/learn/exercises/train?category=any",
           img: "",
         });
@@ -98,6 +101,7 @@ export default function MobileBody({
       key={index}
       title={convertSoftHyphen(data.title)}
       subtitle={convertSoftHyphen(data.subtitle)}
+      alignment={data.alignment}
       path={data.path}
       img={data.img}
     />
