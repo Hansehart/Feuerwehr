@@ -68,7 +68,6 @@ const Quizcard: React.FC = () => {
 
   useEffect(() => {
     if (revealAnswers) {
-      // Delay the animation start slightly to ensure the bar is rendered
       setTimeout(() => setAnimateProgress(true), 50);
     }
   }, [revealAnswers]);
@@ -141,20 +140,23 @@ const Quizcard: React.FC = () => {
 
   return (
     <div className="quiz min-h-[70vh] w-screen bg-gray-100 py-8">
-      <div className="max-w-7xl mx-auto px-4">
+      <div className="max-w-7xl mx-auto px-4 flex flex-col">
+        {/* Question Section */}
         <section className="question bg-secondary text-white rounded-xl shadow-lg p-8 mb-8">
           <h3 className="text-2xl font-bold mb-4">Frage</h3>
           <p className="text-lg">{quizData.text}</p>
         </section>
-        <section className="answer-container bg-white rounded-xl shadow-lg p-6">
-          <section className="type mb-6">
+
+        {/* Answers Section */}
+        <section className="answers bg-white rounded-xl shadow-lg p-6 mb-8">
+          <div className="type mb-6">
             <h3 className="text-xl font-semibold text-center text-gray-800">
               {quizData.solutionIndexes.length > 1
                 ? "Mehrfachauswahl"
                 : "Einfachauswahl"}
             </h3>
-          </section>
-          <section className="select flex flex-wrap justify-center gap-4 mb-8">
+          </div>
+          <div className="select flex flex-wrap justify-center gap-4">
             {quizData.selections.map((selection, index) => (
               <Answer
                 key={index}
@@ -169,33 +171,44 @@ const Quizcard: React.FC = () => {
                 }
               />
             ))}
-          </section>
-          {revealAnswers && (
-            <section className="result-bar mb-8">
+          </div>
+        </section>
+
+        <div className="flex flex-col">
+          {/* Progress Bar Section */}
+          <section
+            className={`progress-bar overflow-hidden transition-all duration-500 ease-in-out ${
+              revealAnswers ? "max-h-40 opacity-100 mb-8" : "max-h-0 opacity-0"
+            }`}
+          >
+            <div className="bg-white rounded-xl shadow-lg p-6">
               <div className="bg-gray-200 rounded-full h-6 w-full overflow-hidden">
                 <div
                   className={`bg-green-500 h-6 rounded-full transition-all duration-1000 ease-out ${
-                    animateProgress ? 'animate-progress' : ''
+                    animateProgress ? "animate-progress" : ""
                   }`}
-                  style={{ 
-                    width: animateProgress ? `${progressPercentage}%` : '0%'
+                  style={{
+                    width: animateProgress ? `${progressPercentage}%` : "0%",
                   }}
                 ></div>
               </div>
-              <p className="text-center mt-2 text-gray-700">
-                Du hast {correctSelectedCount} von {requiredAnswers} richtigen Antworten ausgewählt.
+              <p className="text-center mt-4 text-gray-700">
+                Du hast {correctSelectedCount} von {requiredAnswers} richtigen
+                Antworten ausgewählt.
               </p>
-            </section>
-          )}
-          <section
-            className="continue flex justify-center items-center h-16 bg-gray-200 rounded-lg cursor-pointer hover:bg-gray-300 transition-colors duration-300"
-            onClick={fetchQuizData}
-          >
-            <p id="timer" className="text-lg font-medium text-gray-800">
-              {timerStarted ? `Weiter in ${count}` : "Überspringen"}
-            </p>
+            </div>
           </section>
-        </section>
+
+          {/* Skip Button Section */}
+          <section className="skip-button">
+            <button
+              className="w-full bg-gray-200 rounded-lg p-4 text-lg font-medium text-gray-800 hover:bg-gray-300 transition-colors duration-300"
+              onClick={fetchQuizData}
+            >
+              {timerStarted ? `Weiter in ${count}` : "Überspringen"}
+            </button>
+          </section>
+        </div>
       </div>
     </div>
   );
