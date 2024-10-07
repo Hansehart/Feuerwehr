@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 
 interface AnswerProps {
   index: number;
@@ -17,10 +17,15 @@ const Answer: React.FC<AnswerProps> = ({
 }) => {
   let styleClasses =
     "w-full sm:w-5/12 p-4 rounded-xl shadow-md transition-all duration-300 border-4 flex justify-center items-center";
-  if (isCorrect === true) {
+
+  if (isCorrect === true && isSelected) {
     styleClasses += " bg-green-500 text-white border-green-600";
+  } else if (isCorrect === true && !isSelected) {
+    styleClasses += " bg-green-200 border-green-400 text-green-800";
+  } else if (isCorrect === false && isSelected) {
+    styleClasses += " bg-red-500 text-white border-red-600";
   } else if (isCorrect === false) {
-    styleClasses += " bg-red-100 border-red-500";
+    styleClasses += " bg-red-100 border-red-300";
   } else if (isSelected) {
     styleClasses += " bg-yellow-100 border-yellow-500";
   } else {
