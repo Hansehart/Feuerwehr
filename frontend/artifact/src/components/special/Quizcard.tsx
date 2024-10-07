@@ -16,6 +16,8 @@ const Quizcard: React.FC = () => {
   const [selectedAnswers, setSelectedAnswers] = useState<number[]>([]);
   const [quizData, setQuizData] = useState<QuizData | null>(null);
   const [revealAnswers, setRevealAnswers] = useState(false);
+  const [correctSelectedCount, setCorrectSelectedCount] = useState(0);
+  const [animateProgress, setAnimateProgress] = useState(false);
 
   const getCategory = useCallback(() => {
     const searchParams = new URLSearchParams(location.search);
@@ -28,6 +30,8 @@ const Quizcard: React.FC = () => {
     setSelectedAnswers([]);
     setCount(3);
     setRevealAnswers(false);
+    setCorrectSelectedCount(0);
+    setAnimateProgress(false);
 
     const category = getCategory();
     fetch(
@@ -62,6 +66,13 @@ const Quizcard: React.FC = () => {
     };
   }, [timerStarted, fetchQuizData]);
 
+  useEffect(() => {
+    if (revealAnswers) {
+      // Delay the animation start slightly to ensure the bar is rendered
+      setTimeout(() => setAnimateProgress(true), 50);
+    }
+  }, [revealAnswers]);
+
   const saveQuizProgress = useCallback((qid: string) => {
     const qidInt = parseInt(qid, 10);
 
@@ -90,7 +101,6 @@ const Quizcard: React.FC = () => {
     if (!quizData || timerStarted) return;
 
     const isMultipleChoice = quizData.solutionIndexes.length > 1;
-    const isCorrectAnswer = quizData.solutionIndexes.includes(answerIndex);
 
     if (isMultipleChoice) {
       setSelectedAnswers((prev) => {
@@ -101,11 +111,11 @@ const Quizcard: React.FC = () => {
         if (newSelections.length === quizData.solutionIndexes.length) {
           setRevealAnswers(true);
           setTimerStarted(true);
-          if (
-            newSelections.every((index) =>
-              quizData.solutionIndexes.includes(index)
-            )
-          ) {
+          const correctCount = newSelections.filter((index) =>
+            quizData.solutionIndexes.includes(index)
+          ).length;
+          setCorrectSelectedCount(correctCount);
+          if (correctCount === quizData.solutionIndexes.length) {
             saveQuizProgress(quizData.qid);
           }
         }
@@ -116,13 +126,18 @@ const Quizcard: React.FC = () => {
       setSelectedAnswers([answerIndex]);
       setRevealAnswers(true);
       setTimerStarted(true);
-      if (isCorrectAnswer) {
+      const isCorrect = quizData.solutionIndexes.includes(answerIndex);
+      setCorrectSelectedCount(isCorrect ? 1 : 0);
+      if (isCorrect) {
         saveQuizProgress(quizData.qid);
       }
     }
   };
 
   if (!quizData) return null;
+
+  const requiredAnswers = quizData.solutionIndexes.length;
+  const progressPercentage = (correctSelectedCount / requiredAnswers) * 100;
 
   return (
     <div className="quiz min-h-[70vh] w-screen bg-gray-100 py-8">
@@ -155,6 +170,23 @@ const Quizcard: React.FC = () => {
               />
             ))}
           </section>
+          {revealAnswers && (
+            <section className="result-bar mb-8">
+              <div className="bg-gray-200 rounded-full h-6 w-full overflow-hidden">
+                <div
+                  className={`bg-green-500 h-6 rounded-full transition-all duration-1000 ease-out ${
+                    animateProgress ? 'animate-progress' : ''
+                  }`}
+                  style={{ 
+                    width: animateProgress ? `${progressPercentage}%` : '0%'
+                  }}
+                ></div>
+              </div>
+              <p className="text-center mt-2 text-gray-700">
+                Du hast {correctSelectedCount} von {requiredAnswers} richtigen Antworten ausgewählt.
+              </p>
+            </section>
+          )}
           <section
             className="continue flex justify-center items-center h-16 bg-gray-200 rounded-lg cursor-pointer hover:bg-gray-300 transition-colors duration-300"
             onClick={fetchQuizData}
