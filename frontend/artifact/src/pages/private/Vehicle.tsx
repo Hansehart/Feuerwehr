@@ -29,8 +29,8 @@ function Vehicle() {
   const [detailsData, setDetailsData] = useState<string[][]>();
   const [materialData, setMaterialData] = useState<string[][]>();
   const searchParams = new URLSearchParams(window.location.search);
-  const rvt = searchParams.get('type');
-  const rvn = searchParams.get('number');
+  const rvt = searchParams.get('rvt');
+  const rvn = searchParams.get('rvn');
 
   useEffect(() => {
     fetch(
