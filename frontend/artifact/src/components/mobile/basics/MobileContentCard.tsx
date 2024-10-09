@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useNavigate } from "react-router-dom";
 import vehicle from "/src/assets/pictures/vehicle.jpg";
+import vehicleGradient from "/src/assets/pictures/vehicle-gradient.jpg";
 import serviceCenter from "/src/assets/pictures/service-center.jpg";
 import emergencyExit from "/src/assets/pictures/emergency-exit.jpg";
 import highwayAccident from "/src/assets/pictures/highway-accident.jpg";
@@ -37,9 +38,12 @@ export default function MobileContentCard({
   let optionX = 'center';
   let optionFilter = "brightness(.4)";
   switch (img) {
+    case "vehicle-gradient":
+      backgroundImg = vehicleGradient;
+      optionFilter = "";
+      break;
     case "vehicle":
       backgroundImg = vehicle;
-      optionFilter = "";
       break;
     case "serviceCenter":
       backgroundImg = serviceCenter;
