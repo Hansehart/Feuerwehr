@@ -67,7 +67,7 @@ export default function MobileContentCard({
     case "firefighterTeaching":
       backgroundImg = firefighterTeaching;
       break;
-    case "placeholder2":
+    case "placeholder":
       backgroundImg = placeholder2;
       break;
     default: // template
