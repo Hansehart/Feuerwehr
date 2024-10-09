@@ -6,12 +6,21 @@ import { useNavbar } from "../../hooks/useNavbar";
 
 interface DirectoryProps {
   title: string;
-  titleLink: string; // link when clicking on title
-  type: string; // cards to fetch
+  type: string;
   navbar: string;
 }
-function Directory({ title, titleLink, type, navbar }: DirectoryProps) {
+
+function Directory({ title, type, navbar }: DirectoryProps) {
   const { changeView } = useNavbar();
+
+  // Function to generate titleLink from link
+  const getTitleLink = (link: string): string => {
+    const parts = link.split('/').filter(Boolean);
+    if (parts.length <= 1) return '/';
+    return '/' + parts.slice(0, -1).join('/');
+  };
+
+  const titleLink = getTitleLink(title);
 
   return (
     <div>

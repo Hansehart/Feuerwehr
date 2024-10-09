@@ -46,7 +46,7 @@ function App() {
             <Route path="/main/vehicle/:rvt/:rvn" element={<Vehicle />} />
             <Route
               path="/profile/settings"
-              element={<Directory type="/profile/settings" navbar="profile" title="Einstellungen" titleLink="/profile/settings"/>}
+              element={<Directory type="/profile/settings" navbar="profile" title="Einstellungen"/>}
             />
             <Route path="/profile/settings/data" element={<Construction />} />
             <Route
@@ -59,7 +59,7 @@ function App() {
             />
             <Route
               path="/profile/info"
-              element={<Directory type="/info" navbar="department" title="Infopoint" titleLink="/info"/>}
+              element={<Directory type="/info" navbar="department" title="Infopoint"/>}
             />
             <Route
               path="/profile/logout"
@@ -81,7 +81,7 @@ function App() {
         )}
         <Route
           path="/info"
-          element={<Directory type="/info" navbar="department" title="Infopoint" titleLink="/info"/>}
+          element={<Directory type="/info" navbar="department" title="Infopoint"/>}
         />
         <Route path="/info/contact" element={<Contact />} />
         <Route path="/info/gtc" element={<GTC />} />
@@ -93,16 +93,16 @@ function App() {
         <Route path="/learn/courses" element={<Construction />} />
         <Route
           path="/learn/exercises"
-          element={<Directory type="/learn/exercises" navbar="learn" title="Übung" titleLink="/learn/exercises"/>}
+          element={<Directory type="/learn/exercises" navbar="learn" title="Übung"/>}
         />
         <Route path="/learn/exercises/train" element={<Exercise />} />
         <Route
           path="/learn/book"
-          element={<Directory type="/learn/book" navbar="learn" title="Handbuch" titleLink="/learn/book" />}
+          element={<Directory type="/learn/book" navbar="learn" title="Handbuch" />}
         />
         <Route
           path="/learn/book/regulations"
-          element={<Directory type="/learn/book/regulations" navbar="learn" title="Vorschriften" titleLink="/learn/book/regulations" />}
+          element={<Directory type="/learn/book/regulations" navbar="learn" title="Vorschriften"/>}
         />
         <Route path="/learn/book/regulations/fwdv" element={<Construction />} />
 
