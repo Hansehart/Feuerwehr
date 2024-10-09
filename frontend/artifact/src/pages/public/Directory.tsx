@@ -19,8 +19,7 @@ function Directory({ title, type, navbar }: DirectoryProps) {
     if (parts.length <= 1) return '/';
     return '/' + parts.slice(0, -1).join('/');
   };
-
-  const titleLink = getTitleLink(title);
+  const titleLink = getTitleLink(type);
 
   return (
     <div>
