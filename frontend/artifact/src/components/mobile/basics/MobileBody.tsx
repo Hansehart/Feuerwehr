@@ -50,7 +50,7 @@ export default function MobileBody({
           subtitle: item.name,
           alignment: "items-start pl-4",
           path: `/main/vehicle/${item.radioVehicleType}/${item.radioVehicleNumber}`,
-          img: "vehicle",
+          img: "vehicle-gradient",
         }));
     } else if (type === "/learn/exercises") {
       url =
