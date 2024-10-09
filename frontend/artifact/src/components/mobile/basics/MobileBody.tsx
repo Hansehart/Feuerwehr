@@ -49,7 +49,7 @@ export default function MobileBody({
           title: item.shortcut,
           subtitle: item.name,
           alignment: "items-start pl-4",
-          path: `/main/vehicle/${item.radioVehicleType}/${item.radioVehicleNumber}`,
+          path: `/main/vehicle?rvt=${item.radioVehicleType}&rvn=${item.radioVehicleNumber}`,
           img: "vehicle",
         }));
     } else if (type === "/learn/exercises") {

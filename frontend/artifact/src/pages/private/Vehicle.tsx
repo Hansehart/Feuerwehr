@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
 
 import MobileBody from "../../components/mobile/basics/MobileBody";
 import MobileHeader from "../../components/mobile/basics/MobileHeader";
@@ -29,7 +28,9 @@ function Vehicle() {
   const [vehicle, setVehicle] = useState<Vehicle | null>(null);
   const [detailsData, setDetailsData] = useState<string[][]>();
   const [materialData, setMaterialData] = useState<string[][]>();
-  const { rvt, rvn } = useParams();
+  const searchParams = new URLSearchParams(window.location.search);
+  const rvt = searchParams.get('type');
+  const rvn = searchParams.get('number');
 
   useEffect(() => {
     fetch(
