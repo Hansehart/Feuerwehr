@@ -57,7 +57,10 @@ function App() {
               path="/profile/register/profile"
               element={<RegisterProfile />}
             />
-            <Route path="/profile/contact" element={<Contact />} />
+            <Route
+              path="/info"
+              element={<Directory type="/info" navbar="department" title="Infopoint" titleLink="/info"/>}
+            />
             <Route
               path="/profile/logout"
               element={<Logout updateAuthStatus={setAuth} />}
