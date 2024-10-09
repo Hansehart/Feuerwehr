@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import vehicle from "/src/assets/pictures/vehicle.jpg";
 import vehicleGradient from "/src/assets/pictures/vehicle-gradient.jpg";
@@ -9,7 +9,8 @@ import exercisePortrait from "/src/assets/pictures/exercise-portrait.jpg";
 import mechanicPortrait from "/src/assets/pictures/mechanic-portrait.jpg";
 import serviceRegulation from "/src/assets/pictures/service-regulation.jpg";
 import firefighterTeaching from "/src/assets/pictures/firefighter-teaching.jpg";
-import placeholder from "/src/assets/pictures/placeholder.jpg";
+import placeholder1 from "/src/assets/pictures/placeholder-1.jpg";
+import placeholder2 from "/src/assets/pictures/placeholder-2.jpg";
 
 interface MobileContentCardProps {
   title: string;
@@ -35,7 +36,7 @@ export default function MobileContentCard({
 
   // Determine the background image
   let backgroundImg;
-  let optionX = 'center';
+  let optionX = "center";
   let optionFilter = "brightness(.4)";
   switch (img) {
     case "vehicle-gradient":
@@ -66,8 +67,11 @@ export default function MobileContentCard({
     case "firefighterTeaching":
       backgroundImg = firefighterTeaching;
       break;
+    case "placeholder2":
+      backgroundImg = placeholder2;
+      break;
     default: // template
-      backgroundImg = placeholder;
+      backgroundImg = placeholder1;
   }
 
   return (

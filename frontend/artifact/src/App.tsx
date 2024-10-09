@@ -109,6 +109,7 @@ function App() {
           element={<Directory type="/learn/book/regulations" navbar="learn" title="Vorschriften"/>}
         />
         <Route path="/learn/book/regulations/fwdv" element={<Construction />} />
+        <Route path="/learn/book/vehicles/lf" element={<Construction />} />
 
         <Route path="/start" element={<Start />} />
         <Route path="*" element={<Navigate replace to="/start" />} />
