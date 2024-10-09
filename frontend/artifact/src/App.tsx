@@ -86,14 +86,13 @@ function App() {
         <Route path="/info/map" element={<Construction />} />
         <Route path="/info/licenses" element={<License />} />
         <Route path="/info/privacy" element={<Privacy />} />
-
-
+        
+        <Route path="/learn/courses" element={<Construction />} />
         <Route
           path="/learn/exercises"
           element={<Directory type="/learn/exercises" navbar="learn" title="Übung" titleLink="/learn/exercises"/>}
         />
         <Route path="/learn/exercises/train" element={<Exercise />} />
-
         <Route
           path="/learn/book"
           element={<Directory type="/learn/book" navbar="learn" title="Handbuch" titleLink="/learn/book" />}
@@ -102,13 +101,9 @@ function App() {
           path="/learn/book/regulations"
           element={<Directory type="/learn/book/regulations" navbar="learn" title="Vorschriften" titleLink="/learn/book/regulations" />}
         />
-        <Route path="/learn/regulations/fwdv" element={<Construction />} />
-        <Route path="/learn/courses" element={<Construction />} />
-
+        <Route path="/learn/book/regulations/fwdv" element={<Construction />} />
 
         <Route path="/start" element={<Start />} />
-
-
         <Route path="*" element={<Navigate replace to="/start" />} />
       </Routes>
     </Router>
