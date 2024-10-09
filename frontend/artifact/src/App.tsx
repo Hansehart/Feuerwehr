@@ -58,7 +58,7 @@ function App() {
               element={<RegisterProfile />}
             />
             <Route
-              path="/info"
+              path="/profile/info"
               element={<Directory type="/info" navbar="department" title="Infopoint" titleLink="/info"/>}
             />
             <Route
