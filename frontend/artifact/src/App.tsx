@@ -99,8 +99,8 @@ function App() {
           element={<Directory type="/learn/book" navbar="learn" title="Handbuch" titleLink="/learn/book" />}
         />
         <Route
-          path="/learn/regulations"
-          element={<Directory type="/learn/regulations" navbar="learn" title="Vorschriften" titleLink="/learn/regulations" />}
+          path="/learn/book/regulations"
+          element={<Directory type="/learn/book/regulations" navbar="learn" title="Vorschriften" titleLink="/learn/book/regulations" />}
         />
         <Route path="/learn/regulations/fwdv" element={<Construction />} />
         <Route path="/learn/courses" element={<Construction />} />
