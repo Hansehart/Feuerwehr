@@ -93,6 +93,11 @@ function App() {
           element={<Directory type="/learn/exercises" navbar="learn" title="Übung" titleLink="/learn/exercises"/>}
         />
         <Route path="/learn/exercises/train" element={<Exercise />} />
+
+        <Route
+          path="/learn/book"
+          element={<Directory type="/learn/book" navbar="learn" title="Handbuch" titleLink="/learn/book" />}
+        />
         <Route
           path="/learn/regulations"
           element={<Directory type="/learn/regulations" navbar="learn" title="Vorschriften" titleLink="/learn/regulations" />}
