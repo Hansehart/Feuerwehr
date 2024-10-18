@@ -76,7 +76,7 @@ export default function MobileContentCard({
 
   return (
     <section
-      className={`content-card-section flex flex-col justify-center ${alignment} my-2 z-10 h-[40vh] md:w-[80vw] lg:w-[45vw] lg:h-[40vh] 2xl:w-[30vw] 2xl:h-[40vh] relative overflow-hidden rounded-xl`}
+      className={`content-card-section flex flex-col justify-center ${alignment} my-2 z-10 h-[40vh] md:w-[80vw] lg:w-[45vw] lg:h-[40vh] 2xl:w-[30vw] 2xl:h-[40vh] relative overflow-hidden rounded-xl cursor-pointer`}
       onClick={handleClick}
     >
       <div
