@@ -18,7 +18,7 @@ export default function MobileInfoFooter() {
             target="_blank"
           >
             <div className="flex items-center">
-              <div className="w-36 h-36 flex justiy-center md:items-center hidden md:block">
+              <div className="w-36 h-36 justiy-center md:items-center hidden md:flex">
                 <RoundedIcon
                   icon="hansehart"
                   bgColor="transparent"
