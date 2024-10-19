@@ -9,10 +9,10 @@ import com.theokanning.openai.service.OpenAiService;
 import java.util.Collections;
 
 @Service
-public class TrainingBotService {
+public class QuestionBotService {
     private final OpenAiService openAiService;
 
-    public TrainingBotService(@Value("${OPENAI_API_KEY}") String apiKey) {
+    public QuestionBotService(@Value("${OPENAI_API_KEY}") String apiKey) {
         this.openAiService = new OpenAiService(apiKey);
     }
 
@@ -28,8 +28,7 @@ public class TrainingBotService {
             return openAiService.createChatCompletion(chatCompletionRequest)
                 .getChoices().get(0).getMessage().getContent().trim();
         } catch (Exception e) {
-            System.out.println(e);
-            return "An error occurred while processing your request.";
+            return "Leider funktioniert etwas nicht. Wir haben den Vorfall erkannt und kümmern uns!";
         }
     }
 }

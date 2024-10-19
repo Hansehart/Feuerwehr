@@ -17,8 +17,9 @@ interface Message {
 }
 
 const ChatbotComponent = () => {
-  const [messages, setMessages] = useState<Message[]>([]);
-  const [inputMessage, setInputMessage] = useState("");
+  const [messages, setMessages] = useState<Message[]>([
+    { text: "Moin, welche Fragen zur Feuerwehr hast Du?", sender: "bot" }
+  ]);  const [inputMessage, setInputMessage] = useState("");
   const [notification, setNotification] = useState<NotficatorProps | null>(null);
   const { changeView } = useNavbar();
   const textareaRef = useRef<HTMLTextAreaElement>(null);

@@ -24,7 +24,7 @@ import Imprint from "./pages/public/Imprint";
 import Privacy from "./pages/public/Privacy";
 import GTC from "./pages/public/GTC";
 import License from "./pages/public/License";
-import TrainingBot from "./pages/public/TrainingBot";
+import TrainingBot from "./pages/public/QuestionBot";
 
 function App() {
   const [auth, setAuth] = useState<boolean>(false);

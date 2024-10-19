@@ -9,14 +9,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import group.artifact.dtos.ContainerDTO;
-import group.artifact.services.TrainingBotService;
+import group.artifact.services.QuestionBotService;
 
 @RestController
 @RequestMapping("/api/service")
-public class TrainingBotController {
+public class QuestionBotController {
 
     @Autowired
-    TrainingBotService botService;
+    QuestionBotService botService;
 
     @PostMapping("/receive/response")
     public ResponseEntity<ContainerDTO<String>> receiveResponse(@RequestBody ContainerDTO<String> msg) {
