@@ -26,6 +26,7 @@ public class TrainingBotService {
             return openAiService.createCompletion(completionRequest)
                 .getChoices().get(0).getText().trim();
         } catch (Exception e) {
+            System.out.println(e);
             return "An error occurred while processing your request.";
         }
     }

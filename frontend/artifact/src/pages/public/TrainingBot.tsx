@@ -109,7 +109,7 @@ const ChatbotComponent = () => {
           />
           <button
             onClick={sendMessage}
-            className="bg-secondary m-0 rounded-none text-white p-2 focus:outline-none w-[20%] flex justify-center items-center h-full"
+            className="bg-secondary m-0 rounded-none text-white focus:outline-none w-[20%] flex justify-center items-center h-full"
           >
             <Send size={20} />
           </button>
