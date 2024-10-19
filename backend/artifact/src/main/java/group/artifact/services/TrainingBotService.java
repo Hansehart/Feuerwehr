@@ -19,7 +19,7 @@ public class TrainingBotService {
     public String sendRequest(String content) {
         ChatCompletionRequest chatCompletionRequest = ChatCompletionRequest.builder()
             .messages(Collections.singletonList(new ChatMessage("user", content)))
-            .model("gpt-3.5-turbo")
+            .model("gpt-4o-mini")
             .maxTokens(150)
             .temperature(0.7)
             .build();
