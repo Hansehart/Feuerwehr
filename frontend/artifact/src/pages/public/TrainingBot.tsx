@@ -1,5 +1,4 @@
-import React, { useState, useEffect, KeyboardEvent, useRef } from "react";
-import { useNavigate } from "react-router-dom";
+import { useState, useEffect, KeyboardEvent, useRef } from "react";
 import { Send } from "lucide-react";
 import MobileHeader from "../../components/mobile/basics/MobileHeader";
 import MobileNavBar from "../../components/mobile/basics/MobileNavBar";
@@ -18,7 +17,6 @@ interface Message {
 }
 
 const ChatbotComponent = () => {
-  const navigate = useNavigate();
   const [messages, setMessages] = useState<Message[]>([]);
   const [inputMessage, setInputMessage] = useState("");
   const [notification, setNotification] = useState<NotficatorProps | null>(null);
@@ -46,14 +44,14 @@ const ChatbotComponent = () => {
     const newMessage: Message = { text: inputMessage, sender: "user" };
     setMessages(prevMessages => [...prevMessages, newMessage]);
     try {
-      const response = await fetch("#a", {
+      const response = await fetch("/api/service/receive/response", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ message: inputMessage }),
+        body: JSON.stringify({ content: inputMessage }),
       });
       if (response.ok) {
         const data = await response.json();
-        const botReply: Message = { text: data.reply, sender: "bot" };
+        const botReply: Message = { text: data.content, sender: "bot" };
         setMessages(prevMessages => [...prevMessages, botReply]);
       } else {
         throw new Error("Failed to get response from the server");
@@ -66,7 +64,6 @@ const ChatbotComponent = () => {
     }
     setInputMessage("");
   };
-
   const handleKeyDown = (event: KeyboardEvent<HTMLTextAreaElement>) => {
     if (event.key === 'Enter' && !event.shiftKey) {
       event.preventDefault();
