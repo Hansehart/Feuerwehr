@@ -17,7 +17,7 @@ public class TrainingBotService {
     public String sendRequest(String content) {
         CompletionRequest completionRequest = CompletionRequest.builder()
             .prompt(content)
-            .model("gpt-4o-mini")
+            .model("gpt-3.5-turbo")
             .maxTokens(150)
             .temperature(0.7)
             .build();
