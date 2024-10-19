@@ -2,12 +2,14 @@ package group.artifact.services;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
-import com.theokanning.openai.completion.CompletionRequest;
+import com.theokanning.openai.completion.chat.ChatCompletionRequest;
+import com.theokanning.openai.completion.chat.ChatMessage;
 import com.theokanning.openai.service.OpenAiService;
+
+import java.util.Collections;
 
 @Service
 public class TrainingBotService {
-
     private final OpenAiService openAiService;
 
     public TrainingBotService(@Value("${OPENAI_API_KEY}") String apiKey) {
@@ -15,16 +17,16 @@ public class TrainingBotService {
     }
 
     public String sendRequest(String content) {
-        CompletionRequest completionRequest = CompletionRequest.builder()
-            .prompt(content)
+        ChatCompletionRequest chatCompletionRequest = ChatCompletionRequest.builder()
+            .messages(Collections.singletonList(new ChatMessage("user", content)))
             .model("gpt-3.5-turbo")
             .maxTokens(150)
             .temperature(0.7)
             .build();
 
         try {
-            return openAiService.createCompletion(completionRequest)
-                .getChoices().get(0).getText().trim();
+            return openAiService.createChatCompletion(chatCompletionRequest)
+                .getChoices().get(0).getMessage().getContent().trim();
         } catch (Exception e) {
             System.out.println(e);
             return "An error occurred while processing your request.";
