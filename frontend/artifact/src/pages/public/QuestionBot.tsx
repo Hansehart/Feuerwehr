@@ -1,5 +1,5 @@
 import { useState, useEffect, KeyboardEvent, useRef } from "react";
-import { Send } from "lucide-react";
+import { Send, User, Bot } from "lucide-react";
 import MobileHeader from "../../components/mobile/basics/MobileHeader";
 import MobileNavBar from "../../components/mobile/basics/MobileNavBar";
 import MobileInfoFooter from "../../components/mobile/basics/MobileInfoFooter";
@@ -82,20 +82,32 @@ const ChatbotComponent = () => {
           onClose={() => setNotification(null)}
         />
       )}
-      <div className="flex-1 p-2 sm:p-4 space-y-2 sm:space-y-4 break-normal">
-        {messages.map((msg, index) => (
-          <div
-            key={index}
-            className={`max-w-[80%] bg-secondary p-2 sm:p-3 rounded-lg text-sm sm:text-base ${
-              msg.sender === "user"
-                ? "text-white self-end ml-auto"
-                : "text-black"
-            }`}
-          >
-            {msg.text}
-          </div>
-        ))}
+<div className="flex-1 p-2 sm:p-4 space-y-2 sm:space-y-4 break-normal overflow-y-auto">
+  {messages.map((msg, index) => (
+    <div
+      key={index}
+      className={`flex items-start ${
+        msg.sender === "user" ? "justify-end" : "justify-start"
+      }`}
+    >
+      {msg.sender === "bot" && (
+        <Bot className="w-8 h-8 mr-2 text-secondary" />
+      )}
+      <div
+        className={`max-w-[70%] p-2 sm:p-3 rounded-lg text-sm sm:text-base ${
+          msg.sender === "user"
+            ? "bg-secondary text-white"
+            : "bg-gray-200 text-black"
+        }`}
+      >
+        {msg.text}
       </div>
+      {msg.sender === "user" && (
+        <User className="w-8 h-8 ml-2 text-secondary" />
+      )}
+    </div>
+  ))}
+</div>
       <div className="p-2 sm:p-4 bg-white border-t">
         <div className="flex items-end bg-white border border-primary overflow-hidden rounded-md">
           <textarea

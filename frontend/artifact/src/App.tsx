@@ -24,7 +24,7 @@ import Imprint from "./pages/public/Imprint";
 import Privacy from "./pages/public/Privacy";
 import GTC from "./pages/public/GTC";
 import License from "./pages/public/License";
-import TrainingBot from "./pages/public/QuestionBot";
+import QuestionBot from "./pages/public/QuestionBot";
 
 function App() {
   const [auth, setAuth] = useState<boolean>(false);
@@ -111,7 +111,7 @@ function App() {
         />
         <Route path="/learn/book/regulations/fwdv" element={<Construction />} />
         <Route path="/learn/book/vehicles/lf" element={<Construction />} />
-        <Route path="/learn/training" element={<TrainingBot />} />
+        <Route path="/learn/question" element={<QuestionBot />} />
 
         <Route path="/start" element={<Start />} />
         <Route path="*" element={<Navigate replace to="/start" />} />
