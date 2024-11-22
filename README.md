@@ -2,9 +2,9 @@
 
 Diese Applikation unterstützt Feuerwehr-Angehörige. Dabei werden Funktionalitäten angeboten wie:
 
-- Lerninhalte und Vorschriften
+- Ausrüstungsübersicht
 - Überprüfung der Einsatzbereitschaft
-- Fahrzeugpflege
+- Lerninhalte und Vorschriften
 
 Das Repository ist in vier Bereiche aufgeteilt:
 
