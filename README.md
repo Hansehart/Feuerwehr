@@ -10,5 +10,5 @@ Das Repository ist in vier Bereiche aufgeteilt:
 
 - Frontend
 - Backend
-- Deployment
+- Database
 - Documents
