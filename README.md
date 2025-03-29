@@ -20,4 +20,3 @@ Das Repository ist klar strukturiert und in vier Hauptbereiche unterteilt:
 
 Bei Fragen oder Problemen stehen wir jederzeit zur Verfügung:
 - 📧 E-Mail: support@hansehart.de
-- 🌐 Website: feuerwehr.hansehart.de
